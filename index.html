@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<meta charset="UTF-8">
+<title>Fair Clustering Repository</title>
+<style>
+  body { 
+    font-family: Arial, sans-serif; 
+    margin: 0em 2em 2em 2em; /* decrease top margin from 2em to 1em */
+  }
+  .site-title {
+    font-family: 'Garamond', 'Georgia', serif;
+    font-variant: small-caps;
+    font-size: 2.75em;
+    margin-bottom: 0;
+  }
+  .paper {
+    margin-bottom: 1.2em;
+    padding: 0.6em 0.8em 0.8em 0.8em; /* decrease bottom padding */
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(0,0,0,0.05);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    position: relative;
+    gap: 0.5em;
+    align-items: flex-start;
+    min-height: 60px; /* decrease height */
+  }
+  .paper:nth-child(even) { background-color: #f5f5f5; }
+  .paper:hover {
+    background-color: #fafafa;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  }
+  .paper-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+  }
+  .select-paper { margin-top: 0; }
+  .paper-label {
+    position: absolute;
+    right: 2.8em;
+    bottom: 0.6em;
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.78em;
+    color: #fff;
+    margin-left: 0.4em;
+    z-index: 2;
+  }
+  .title {
+    font-weight: bold;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-size: 1.25em;
+  }
+  .info { font-style: italic; color: #555; }
+  .submit-button { background-color: #007BFF; color: #fff; border: none; padding: 0.3em 0.7em; border-radius: 4px; cursor: pointer; font-family: inherit; }
+  .submit-button:hover { background-color: #0056b3; }
+  .report-button {
+    position: absolute;
+    right: 0.8em;
+    bottom: 0.4em; /* match citation-box */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 20.8px;   /* 20% smaller than 26px */
+    height: 20.8px;  /* 20% smaller than 26px */
+    z-index: 2;
+  }
+  .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
+  .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 320px; border-radius: 8px; font-family: 'Segoe UI', Arial, sans-serif; }
+  .modal-content input {
+    width: 100%;
+    padding: 0.4em;
+    margin-bottom: 0.6em;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-family: inherit;
+  }
+  #submit-form button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 0.4em 1em;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  #submit-form button:hover { background-color: #1e7e34; }
+  #report-form button { background-color: #5bc0de; color: #fff; border: none; padding: 0.4em 1em; border-radius: 6px; cursor: pointer; font-family: inherit; }
+  #report-form button:hover { background-color: #31b0d5; }
+  #close-modal { float: right; font-size: 1.2em; cursor: pointer; }
+  .update-date { font-size: 0.9em; color: #666; margin-bottom: 1.2em; }
+  .citation-box {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 1em;
+    color: #333;
+    margin-top: 1em; /* increase space above the citation box */
+    padding-left: 0.8em;
+    margin-left: 0;
+    padding-bottom: 0.1em;
+    position: static;
+    left: unset;
+    bottom: unset;
+    z-index: unset;
+  }
+  .citation-box a {
+    color: #4285f4;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-right: 0.2em;
+  }
+  .citation-box a:hover {
+    color: #174ea6;
+  }
+  .citation-box span {
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
+    font-size: 0.9em;   /* decreased from 1.08em */
+    letter-spacing: 0.5px;
+    color: #444;
+    font-weight: 500;
+  }
+  .header-row {
+    display: flex;
+    align-items: flex-end; /* align items to the bottom */
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+    gap: 1em;
+  }
+  .header-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .header-title > div {
+    display: flex;
+    flex-direction: column;
+  }
+  .download-btn {
+    background: #183153; /* navy-ish blue */
+    color: #fff;
+    border: none;
+    border-radius: 2em;
+    padding: 0.6em 1.5em;
+    font-size: 1.13em;
+    font-family: 'Segoe UI Semibold', 'Segoe UI', 'Arial Rounded MT Bold', Arial, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background 0.2s;
+    align-self: flex-end; /* align with subtitle */
+    letter-spacing: 0.03em;
+  }
+  .download-btn:hover {
+    background: #102040;
+  }
+  .deselect-btn {
+    background: #183153;
+    color: #fff;
+    border: none;
+    border-radius: 2em;
+    padding: 0.3em 1em;
+    font-size: 0.95em;
+    font-family: 'Segoe UI Semibold', 'Segoe UI', 'Arial Rounded MT Bold', Arial, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background 0.2s;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+    align-self: flex-start;
+    letter-spacing: 0.02em;
+  }
+  .deselect-btn:hover {
+    background: #102040;
+  }
+  /* --- Light theme overrides for download and deselect all buttons --- */
+  body.light-theme .download-btn {
+    background: #e0e4ea;
+    color: #222;
+  }
+  body.light-theme .download-btn:hover {
+    background: #cfd6df;
+    color: #222;
+  }
+  body.light-theme .deselect-btn {
+    background: #e0e4ea;
+    color: #222;
+  }
+  body.light-theme .deselect-btn:hover {
+    background: #cfd6df;
+    color: #222;
+  }
+  body.dark-theme {
+    background: #181c24;
+    color: #e0e0e0;
+  }
+  body.dark-theme .paper {
+    background-color: #232a36;
+    border-color: #2d3646;
+    box-shadow: 0 0 2px rgba(0,0,0,0.18);
+  }
+  body.dark-theme .paper:nth-child(even) {
+    background-color: #202632;
+  }
+  body.dark-theme .paper:nth-child(odd) {
+    background-color: #232a40;
+  }
+  body.dark-theme .paper:hover {
+    background-color: #262e3b;
+    box-shadow: 0 0 4px rgba(0,0,0,0.25);
+  }
+  body.dark-theme .citation-box {
+    color: #c8e0ff;
+  }
+  body.dark-theme .citation-box a {
+    color: #7bb6ff;
+  }
+  body.dark-theme .citation-box a:hover {
+    color: #fff;
+  }
+  body.dark-theme .citation-box span {
+    color: #b0cfff;
+  }
+  body.dark-theme .info {
+    color: #b0b9c6;
+  }
+  body.dark-theme .download-btn {
+    background: #22304a;
+    color: #fff;
+  }
+  body.dark-theme .download-btn:hover {
+    background: #162035;
+  }
+  body.dark-theme .modal-content {
+    background: #232a36;
+    color: #e0e0e0;
+    border-color: #2d3646;
+  }
+  body.dark-theme input, body.dark-theme textarea {
+    background: #232a36;
+    color: #e0e0e0;
+    border-color: #2d3646;
+  }
+  body.dark-theme .submit-button,
+  body.dark-theme #submit-form button,
+  body.dark-theme #report-form button {
+    background-color: #2d4a7a;
+    color: #fff;
+  }
+  body.dark-theme .submit-button:hover,
+  body.dark-theme #submit-form button:hover,
+  body.dark-theme #report-form button:hover {
+    background-color: #183153;
+  }
+  body.dark-theme .paper-label {
+    color: #fff;
+  }
+  body.dark-theme #light-theme-btn i {
+    color: #fff !important; /* glowing white */
+    filter: drop-shadow(0 0 2px #fff);
+  }
+  body.dark-theme #light-theme-btn:hover i {
+    color: #fff !important;
+    filter: drop-shadow(0 0 6px #fff);
+  }
+  body.light-theme #light-theme-btn i {
+    color: #bdbdbd !important;    /* light gray */
+    opacity: 0.65;
+    filter: none;
+  }
+  body.light-theme #light-theme-btn:hover i {
+    color: #f5e9b2 !important;    /* pale yellow on hover */
+    opacity: 1;
+  }
+  body.dark-theme .title {
+    color: #fff !important;         /* Make title link white in dark mode */
+    text-shadow: 0 1px 4px #0002;  /* Optional: subtle glow for readability */
+  }
+  /* 
+  #site-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 0.6em; 
+    margin-top: 0.6em;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    object-fit: contain;
+  }
+  */
+  body.dark-theme .title:hover,
+  body.dark-theme .title:focus {
+    color: #7bb6ff !important;      /* Light blue on hover/focus for accessibility */
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css">
+</head>
+<body>
+<div class="header-row">
+  <div class="header-title" style="display: flex; flex-direction: row; align-items: center;">
+    <!-- Site logo to the left of the site title -->
+    <img id="site-logo" src="logo.png" alt="Site logo" style="height: 5em; width: auto; margin-right: 0.7em; vertical-align: middle;">
+    <div style="display: flex; flex-direction: column;">
+      <h1 class="site-title">Fair Clustering Repository</h1>
+      <div class="update-date" id="last-update">Loading update info...</div>
+      <button id="deselect-all" class="deselect-btn">Deselect All</button>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: flex-end;">
+    <!-- Theme toggle buttons -->
+    <div id="theme-toggle" style="margin-bottom: 0.7em;">
+      <button id="light-theme-btn" title="Light theme" style="background: none; border: none; cursor: pointer; font-size: 1.4em; margin-right: 0.3em;">
+        <i class="fa-regular fa-sun"></i>
+      </button>
+      <button id="dark-theme-btn" title="Dark theme" style="background: none; border: none; cursor: pointer; font-size: 1.4em;">
+        <i class="fa-regular fa-moon"></i>
+      </button>
+    </div>
+    <button id="download-selected" class="download-btn">
+      Download
+    </button>
+  </div>
+</div>
+<div id="paper-list"></div>
+<p>Is there any missing publications? <button id="open-form" class="submit-button">form</button></p>
+<p class="review-note">Submitted entries are reviewed and approved papers appear after the next update.</p>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span id="close-modal">&times;</span>
+    <h2>Submit a missing publication</h2>
+    <p style="font-size:0.9em;margin-top:0;">Fields marked with * are required.</p>
+    <form id="submit-form">
+      <label>Title*:<br><input type="text" name="title" required></label><br>
+      <label>Paper Link*:<br><input type="url" name="paper_link" required></label><br>
+      <label>Bib Link*:<br><input type="url" name="bib_link" required></label><br>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<div id="report-modal" class="modal">
+  <div class="modal-content">
+    <span id="close-report">&times;</span>
+    <h2>Report issue</h2>
+    <form id="report-form">
+      <input type="hidden" name="title">
+      <label>New Bib Link*:<br><input type="url" name="bib_link" required></label><br>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+let paperRows = []; // Make paperRows global for access in download logic
+
+async function loadPapers() {
+  const [paperResp, confResp] = await Promise.all([
+    fetch('fc_papers.csv'),
+    fetch('conf_names.csv')
+  ]);
+  paperRows = parseCSV(await paperResp.text());
+  const confRows = parseCSV(await confResp.text());
+  const confMap = {};
+  confRows.forEach(r => {
+    const slug = (r.dblp_slug || '').trim();
+    const name = (r.conf_name || '').trim();
+    if (slug) confMap[slug] = name || slug;
+  });
+
+  const { curr, next } = computeUpdateDates();
+  document.getElementById('last-update').textContent =
+    `Last update: ${formatDate(curr)} (next update scheduled on ${formatDate(next)})`;
+
+  paperRows.sort((a, b) => parseInt(b.citations) - parseInt(a.citations));
+  const container = document.getElementById('paper-list');
+  const labelColors = {
+    'group fairness': '#17a2b8',
+    'individual fairness': '#ffc107',
+    'min-max fairness': '#28a745'
+  };
+
+  paperRows.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'paper';
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = 'select-paper';
+    div.appendChild(checkbox);
+
+    // --- Add event listener to update download button text ---
+    checkbox.addEventListener('change', updateDownloadButtonText);
+
+    const content = document.createElement('div');
+    content.className = 'paper-content';
+    div.appendChild(content);
+
+    const titleLink = document.createElement('a');
+    titleLink.className = 'title';
+    titleLink.href = r.paper_link || r.local_pdf;
+    titleLink.target = '_blank';
+    titleLink.textContent = r.title;
+
+    // Create a container for title and citation on the same line
+    const titleRow = document.createElement('div');
+    titleRow.style.display = 'flex';
+    titleRow.style.alignItems = 'baseline';
+    titleRow.appendChild(titleLink);
+
+    content.appendChild(titleRow);
+
+    // Add extra space between title/citation line and author line
+    const spacer = document.createElement('div');
+    spacer.style.height = '1.1em';
+    content.appendChild(spacer);
+
+    // Always use confMap to get the conf_name from conf_names.csv
+    const confSlug = parseVenueSlug(r.bib_link);
+    let venueName = confMap[confSlug];
+    if (!venueName) {
+      venueName = confSlug || 'Unknown venue';
+    }
+    const year = parseYear(r.bib_link);
+
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'info';
+    const authors = r.authors || 'Authors not available';
+    infoDiv.innerHTML = `${authors}, <b>${venueName} ${year}</b>`;
+    content.appendChild(infoDiv);
+
+    // Add label next to report icon if present
+    let labelSpan = null;
+    if (r.label) {
+      const lab = r.label.trim();
+      if (lab) {
+        labelSpan = document.createElement('span');
+        labelSpan.className = 'paper-label';
+        labelSpan.textContent = lab;
+        const color = labelColors[lab.toLowerCase()] || '#6c757d';
+        labelSpan.style.backgroundColor = color;
+        // Don't append to content, append to div after icon
+      }
+    }
+
+    // Use the requested icon for "report issue"
+    const reportIcon = document.createElement("img");
+    reportIcon.src = "https://cdn-icons-png.flaticon.com/512/595/595067.png";
+    reportIcon.alt = "Report issue";
+    reportIcon.title = "Report issue";
+    reportIcon.className = "report-button";
+    reportIcon.addEventListener("click", () => openReportModal(r.title));
+    div.appendChild(reportIcon);
+
+    if (labelSpan) {
+      div.appendChild(labelSpan);
+    }
+
+    // Add citation icon and count at bottom left INSIDE .paper-content
+    const citationBox = document.createElement('div');
+    citationBox.className = 'citation-box';
+
+    // Google Scholar icon (currently links to DBLP, TODO: update to Google Scholar)
+    const scholarLink = document.createElement('a');
+    scholarLink.href = r.bib_link || '#';
+    scholarLink.target = '_blank';
+    scholarLink.title = 'View on Google Scholar';
+    scholarLink.innerHTML = '<i class="fa-solid fa-graduation-cap"></i>';
+    citationBox.appendChild(scholarLink);
+
+    // Citation count
+    const citationCount = document.createElement('span');
+    citationCount.textContent = r.citations;
+    citationBox.appendChild(citationCount);
+
+    // --- DBLP logo and link removed ---
+
+    // Append citationBox to content, not to div
+    content.appendChild(citationBox);
+
+    container.appendChild(div);
+  });
+
+  // --- After all papers are loaded, update button text in case of reload ---
+  updateDownloadButtonText();
+}
+
+function parseCSV(text) {
+  const lines = text.trim().split(/\r?\n/);
+  const headers = splitCSVLine(lines[0]);
+  const rows = [];
+  for (let i = 1; i < lines.length; i++) {
+    if (!lines[i].trim()) continue; // Skip empty lines
+    const tokens = splitCSVLine(lines[i]);
+    if (tokens.length !== headers.length) continue; // Skip malformed lines
+    const obj = {};
+    headers.forEach((h, idx) => obj[h.trim()] = (tokens[idx] || '').trim());
+    if (!obj.title && !obj.dblp_slug) continue; // Only skip if both missing
+    rows.push(obj);
+  }
+  return rows;
+}
+
+function splitCSVLine(line) {
+  const result = [];
+  let cur = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') {
+      if (inQuotes && line[i + 1] === '"') {
+        cur += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (c === ',' && !inQuotes) {
+      result.push(cur);
+      cur = '';
+    } else {
+      cur += c;
+    }
+  }
+  result.push(cur);
+  return result;
+}
+
+function parseVenueSlug(link) {
+  if (!link || link === 'NONE') return '';
+  const m = link.match(/rec\/(?:conf|journals)\/([^\/]+)/);
+  return m ? m[1] : '';
+}
+
+function parseYear(link) {
+  if (!link) return '';
+  const m = link.match(/(\d{2})(?:\.bib)?$/);
+  if (!m) return '';
+  const y = parseInt(m[1], 10);
+  return y <= 25 ? 2000 + y : 1900 + y;
+}
+
+function computeUpdateDates() {
+  const now = new Date();
+  const year = now.getUTCFullYear();
+  const month = now.getUTCMonth();
+  const first = Date.UTC(year, month, 1, 6, 0, 0);
+  let curr = new Date(Date.UTC(year, month, 1));
+  if (now.getTime() < first) {
+    curr = new Date(Date.UTC(year, month - 1, 1));
+  }
+  const next = new Date(Date.UTC(curr.getUTCFullYear(), curr.getUTCMonth() + 1, 1));
+  return { curr, next };
+}
+
+function formatDate(d) {
+  const m = d.getUTCMonth() + 1;
+  const day = d.getUTCDate();
+  const y = d.getUTCFullYear();
+  return `${m}/${day}/${y}`;
+}
+
+// --- Add this function to update the download button text ---
+function updateDownloadButtonText() {
+  const checkboxes = document.querySelectorAll('.select-paper');
+  let count = 0;
+  checkboxes.forEach(cb => { if (cb.checked) count++; });
+  const btn = document.getElementById('download-selected');
+  btn.textContent = count > 0 ? `Download (${count})` : 'Download';
+}
+
+loadPapers();
+
+// --- Add this block to fix the Deselect All button ---
+document.getElementById('deselect-all').addEventListener('click', () => {
+  const checkboxes = document.querySelectorAll('.select-paper');
+  checkboxes.forEach(cb => { cb.checked = false; });
+  updateDownloadButtonText();
+});
+
+const modal = document.getElementById("modal");
+document.getElementById("open-form").addEventListener("click", () => { modal.style.display = "block"; });
+document.getElementById("close-modal").addEventListener("click", () => { modal.style.display = "none"; });
+window.addEventListener("click", e => { if (e.target === modal) modal.style.display = "none"; });
+
+document.getElementById('submit-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!e.target.reportValidity()) {
+    return;
+  }
+  const data = Object.fromEntries(new FormData(e.target).entries());
+  await fetch('submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+
+  alert('Submission received!');
+  e.target.reset();
+  modal.style.display = "none";
+});
+const reportModal = document.getElementById("report-modal");
+const reportTitleInput = document.querySelector('#report-form input[name="title"]');
+function openReportModal(title) {
+  reportTitleInput.value = title;
+  reportModal.style.display = "block";
+}
+document.getElementById("close-report").addEventListener("click", () => { reportModal.style.display = "none"; });
+window.addEventListener("click", e => { if (e.target === reportModal) reportModal.style.display = "none"; });
+document.getElementById("report-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (!e.target.reportValidity()) return;
+  const data = Object.fromEntries(new FormData(e.target).entries());
+  await fetch("report", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+  alert("Issue reported!");
+  e.target.reset();
+  reportModal.style.display = "none";
+});
+
+// Add a message bar for download errors
+const messageBar = document.createElement('div');
+messageBar.id = 'message-bar';
+messageBar.style.display = 'none';
+messageBar.style.position = 'fixed';
+messageBar.style.top = '0';
+messageBar.style.left = '0';
+messageBar.style.width = '100%';
+messageBar.style.background = '#ffc107';
+messageBar.style.color = '#222';
+messageBar.style.padding = '1em';
+messageBar.style.zIndex = '1000';
+messageBar.style.textAlign = 'center';
+messageBar.style.fontWeight = 'bold';
+document.body.appendChild(messageBar);
+
+function showMessageBar(msg) {
+  messageBar.textContent = msg;
+  messageBar.style.display = 'block';
+  setTimeout(() => { messageBar.style.display = 'none'; }, 6000);
+}
+
+document.getElementById('download-selected').addEventListener('click', async () => {
+  // Collect selected papers
+  const checkboxes = document.querySelectorAll('.select-paper');
+  const selected = [];
+  checkboxes.forEach((cb, idx) => {
+    if (cb.checked) selected.push(idx);
+  });
+  if (selected.length === 0) {
+    alert('Please select at least one paper to download.');
+    return;
+  }
+
+  // Find the corresponding paperRows (order is preserved)
+  const selectedPapers = selected.map(idx => paperRows[idx]);
+  const bibEntries = [];
+  const missingTitles = [];
+
+  for (const r of selectedPapers) {
+    // Try to get the DBLP key from bib_link or paper_link
+    let key = '';
+    if (r.bib_link && r.bib_link.includes('dblp.org/rec/')) {
+      const m = r.bib_link.match(/dblp\.org\/rec\/([^/?#]+)/);
+      if (m) key = m[1].split('/').pop().replace(/\.bib$/, '');
+    }
+    if (!key && r.paper_link && r.paper_link.includes('dblp.org/rec/')) {
+      const m = r.paper_link.match(/dblp\.org\/rec\/([^/?#]+)/);
+      if (m) key = m[1].split('/').pop().replace(/\.bib$/, '');
+    }
+    if (!key && r.bib_link) {
+      key = r.bib_link.split('/').pop().replace(/\.bib$/, '');
+    }
+    if (!key && r.paper_link) {
+      key = r.paper_link.split('/').pop().replace(/\.bib$/, '');
+    }
+
+    // Fetch the corresponding JSON record from papers/
+    let bib = '';
+    if (key) {
+      try {
+        const resp = await fetch(`papers/${key}.json`);
+        if (resp.ok) {
+          const rec = await resp.json();
+          bib = (rec.bib_entry || '').trim();
+        }
+      } catch (e) {
+        // ignore fetch errors
+      }
+    }
+
+    if (bib) {
+      bibEntries.push(bib);
+    } else {
+      missingTitles.push(r.title);
+    }
+  }
+
+  if (bibEntries.length === 0) {
+    showMessageBar('No BibTeX entries found for the selected papers.');
+    return;
+  }
+
+  if (missingTitles.length > 0) {
+    showMessageBar('We could not find the BibTeX entry of: ' + missingTitles.join(', '));
+  }
+
+  // Create a .bib file and trigger download
+  const bibContent = bibEntries.join('\n\n');
+  const blob = new Blob([bibContent], { type: 'application/x-bibtex' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'selected_papers.bib';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+});
+
+// --- Theme toggle logic ---
+function setTheme(theme) {
+  document.body.classList.remove('light-theme', 'dark-theme');
+  document.body.classList.add(theme + '-theme');
+  localStorage.setItem('theme', theme);
+}
+function getPreferredTheme() {
+  return localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+}
+document.getElementById('light-theme-btn').addEventListener('click', () => setTheme('light'));
+document.getElementById('dark-theme-btn').addEventListener('click', () => setTheme('dark'));
+// Set initial theme on page load
+setTheme(getPreferredTheme());
+</script>
+</body>
+</html>
