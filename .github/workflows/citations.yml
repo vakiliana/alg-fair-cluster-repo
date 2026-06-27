@@ -2,7 +2,11 @@ name: Refresh citations (monthly)
 
 # Pulls current Google Scholar citation counts via SerpApi and opens a pull
 # request with the deltas. Review the numbers, then merge to publish.
-# To skip review and commit straight to main, set OPEN_PR: "false" below.
+#
+# SerpApi is used cautiously: an author-batch pass (one call returns up to 100
+# of an author's papers), a staleness gate (skips recently-refreshed papers),
+# and a hard per-run call budget. Tune via the env vars below.
+# To skip review and commit straight to main, set OPEN_PR: "false".
 
 on:
   schedule:
@@ -29,10 +33,14 @@ jobs:
 
       - name: Refresh citation counts
         id: refresh
-        working-directory: scripts
         env:
           SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
-        run: python refresh_citations.py
+          FC_MIN_AGE_DAYS: "25"     # don't re-query papers refreshed in the last 25 days
+          FC_MAX_QUERIES: "130"     # hard cap on SerpApi calls per run
+          FC_BATCH: "1"             # author-batch pass (big call saver)
+          FC_RESOLVE_AUTHORS: "1"   # auto-resolve author ids (cached afterwards)
+          FC_AUTHOR_PAGES: "2"      # up to 200 papers per author
+        run: python scripts/refresh_citations.py
 
       # --- Option A (default): open a PR with the citation deltas ---
       - name: Open pull request
@@ -40,12 +48,13 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           branch: bot/citation-refresh
-          title: "🔢 Monthly citation refresh (${{ steps.refresh.outputs.count }} updated)"
+          title: "🔢 Monthly citation refresh (${{ steps.refresh.outputs.count }} updated, ${{ steps.refresh.outputs.calls }} API calls)"
           body-path: citation_summary.md
           labels: citations, automated
           commit-message: "Monthly Google Scholar citation refresh"
           add-paths: |
             data/papers.json
+            data/scholar_authors.json
           delete-branch: true
 
       # --- Option B: commit straight to main (set OPEN_PR=false to use) ---
@@ -54,6 +63,6 @@ jobs:
         run: |
           git config user.name  "fair-clustering-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/papers.json
+          git add data/papers.json data/scholar_authors.json
           git commit -m "Monthly Google Scholar citation refresh"
           git push

@@ -26,8 +26,7 @@ jobs:
 
       - name: Scan for new papers
         id: scan
-        working-directory: scripts
-        run: python discover.py
+        run: python scripts/discover.py
 
       - name: Open pull request
         if: steps.scan.outputs.changed == 'true'

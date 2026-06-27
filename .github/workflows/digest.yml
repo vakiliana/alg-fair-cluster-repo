@@ -26,13 +26,12 @@ jobs:
           python-version: "3.12"
 
       - name: Build & post digest
-        working-directory: scripts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           # Set to your GitHub username to get the digest issue assigned to you:
           DIGEST_ASSIGNEE: ""
-        run: python digest.py
+        run: python scripts/digest.py
 
       # --- Optional email delivery -------------------------------------------
       # Uncomment and add the SMTP_* secrets to also receive the digest by email.
@@ -47,4 +46,4 @@ jobs:
       #     subject: "Fair Clustering Repository — maintenance digest"
       #     to: you@example.edu
       #     from: Fair Clustering Repo Bot
-      #     body: file://scripts/digest.md
+      #     body: file://digest.md

@@ -1,0 +1,3 @@
+{
+  "_comment": "Cache of Google Scholar author ids, used by refresh_citations.py to batch-update citations (one API call returns up to 100 of an author's papers). The script auto-fills this as it resolves authors. You can also paste known ids by hand: set author_id to the value from a scholar.google.com/citations?user=XXXX URL. An entry with author_id=null means 'no reliable profile found, do not retry'."
+}

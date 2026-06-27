@@ -111,15 +111,35 @@ opens a pre-filled issue showing *current → proposed* for each field:
 
 ## 4. The monthly citation refresh
 
-On the 1st, the citation job queries Google Scholar (via SerpApi) for every
-paper and opens a PR **"Monthly citation refresh (N updated)"** containing a
-delta table (Δ, was, now, paper). Skim it for anything wild (a mis-matched
-Scholar cluster), then merge.
+On the 1st, the citation job refreshes Google Scholar counts (via SerpApi) and
+opens a PR **"Monthly citation refresh (N updated, M API calls)"** with a delta
+table (Δ, was, now, paper). Skim it for anything wild (a mis-matched Scholar
+cluster), then merge.
 
-- The first run also stores each paper's Scholar **cluster id** in
-  `scholar_id`, so subsequent runs are exact and cheaper.
-- Prefer fully automatic? In `.github/workflows/citations.yml` set
-  `OPEN_PR: "false"` and it commits straight to `main`.
+**SerpApi is used cautiously — not one call per paper.** The job:
+
+1. **Author-batch pass.** SerpApi's *Google Scholar Author* endpoint returns up
+   to 100 of one author's papers (with citation counts) in a **single call**.
+   Since fair-clustering papers share a small set of prolific authors, a handful
+   of calls updates most of the corpus. Returned articles are matched to our
+   papers by *exact title*, so a wrong author profile produces no updates (it
+   can't corrupt data). Resolved author ids are cached in
+   `data/scholar_authors.json` so they're never looked up twice.
+2. **Staleness gate + budget.** Papers refreshed within the last
+   `FC_MIN_AGE_DAYS` (default 25) are skipped; the rest are done oldest-first;
+   and `FC_MAX_QUERIES` (default 130) hard-caps calls per run. A large corpus is
+   refreshed gradually across months rather than in one burst. The PR title and
+   summary report exactly how many API calls were used.
+
+Knobs live in `.github/workflows/citations.yml` (`FC_MIN_AGE_DAYS`,
+`FC_MAX_QUERIES`, `FC_AUTHOR_PAGES`, `FC_BATCH`, `FC_RESOLVE_AUTHORS`). Run a
+full forced refresh manually with `FC_FORCE=1` if ever needed.
+
+- Per-paper **cluster ids** are cached in `scholar_id` for exact, cheap
+  re-lookups; **author ids** in `data/scholar_authors.json`. You can paste a
+  known author id by hand (from a `scholar.google.com/citations?user=XXXX` URL)
+  to make batching even more reliable.
+- Prefer fully automatic? Set `OPEN_PR: "false"` to commit straight to `main`.
 - A paper's Scholar match looks wrong? Clear its `scholar_id` (re-matches by
   title next run) or paste the correct cluster id by hand.
 
