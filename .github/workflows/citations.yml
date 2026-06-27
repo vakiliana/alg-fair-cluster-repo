@@ -36,10 +36,7 @@ jobs:
         env:
           SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
           FC_MIN_AGE_DAYS: "25"     # don't re-query papers refreshed in the last 25 days
-          FC_MAX_QUERIES: "130"     # hard cap on SerpApi calls per run
-          FC_BATCH: "1"             # author-batch pass (big call saver)
-          FC_RESOLVE_AUTHORS: "1"   # auto-resolve author ids (cached afterwards)
-          FC_AUTHOR_PAGES: "2"      # up to 200 papers per author
+          FC_MAX_QUERIES: "200"     # hard cap on SerpApi calls per run
         run: python scripts/refresh_citations.py
 
       # --- Option A (default): open a PR with the citation deltas ---
@@ -48,13 +45,12 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           branch: bot/citation-refresh
-          title: "🔢 Monthly citation refresh (${{ steps.refresh.outputs.count }} updated, ${{ steps.refresh.outputs.calls }} API calls)"
+          title: "🔢 Monthly citation refresh (${{ steps.refresh.outputs.count }} applied, ${{ steps.refresh.outputs.flagged }} flagged)"
           body-path: citation_summary.md
           labels: citations, automated
           commit-message: "Monthly Google Scholar citation refresh"
           add-paths: |
             data/papers.json
-            data/scholar_authors.json
           delete-branch: true
 
       # --- Option B: commit straight to main (set OPEN_PR=false to use) ---
@@ -63,6 +59,6 @@ jobs:
         run: |
           git config user.name  "fair-clustering-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/papers.json data/scholar_authors.json
+          git add data/papers.json
           git commit -m "Monthly Google Scholar citation refresh"
           git push

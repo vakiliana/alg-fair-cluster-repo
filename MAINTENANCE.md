@@ -112,36 +112,35 @@ opens a pre-filled issue showing *current → proposed* for each field:
 ## 4. The monthly citation refresh
 
 On the 1st, the citation job refreshes Google Scholar counts (via SerpApi) and
-opens a PR **"Monthly citation refresh (N updated, M API calls)"** with a delta
-table (Δ, was, now, paper). Skim it for anything wild (a mis-matched Scholar
-cluster), then merge.
+opens a PR **"Monthly citation refresh (N applied, M flagged)"**. Skim it, then
+merge.
 
-**SerpApi is used cautiously — not one call per paper.** The job:
+**Accuracy is enforced, so a bad scrape can't silently corrupt counts:**
 
-1. **Author-batch pass.** SerpApi's *Google Scholar Author* endpoint returns up
-   to 100 of one author's papers (with citation counts) in a **single call**.
-   Since fair-clustering papers share a small set of prolific authors, a handful
-   of calls updates most of the corpus. Returned articles are matched to our
-   papers by *exact title*, so a wrong author profile produces no updates (it
-   can't corrupt data). Resolved author ids are cached in
-   `data/scholar_authors.json` so they're never looked up twice.
-2. **Staleness gate + budget.** Papers refreshed within the last
-   `FC_MIN_AGE_DAYS` (default 25) are skipped; the rest are done oldest-first;
-   and `FC_MAX_QUERIES` (default 130) hard-caps calls per run. A large corpus is
-   refreshed gradually across months rather than in one burst. The PR title and
-   summary report exactly how many API calls were used.
+1. **Title-matched, canonical pick.** Each paper is looked up by a Scholar
+   *search*; only results whose title matches are kept, and the **highest-cited**
+   one is used (Scholar's merged entry, not a low-cited preprint duplicate).
+2. **Sanity guard.** Citation counts don't fall or jump 40× in a month. Any
+   proposed change that **drops** the count or **spikes** implausibly is treated
+   as a likely mismatch — it is **not written**, and instead listed in the PR
+   under **"⚠️ Needs manual check"** for you to verify by hand. (This is what
+   would have caught the earlier 301→41 and 66→2851 errors.)
+3. **Cautious API use.** A staleness gate (`FC_MIN_AGE_DAYS`, default 25) skips
+   recently-refreshed papers; the rest go oldest-first; and `FC_MAX_QUERIES`
+   (default 200) caps calls per run, so a large corpus refreshes gradually. The
+   PR title reports calls used.
 
-Knobs live in `.github/workflows/citations.yml` (`FC_MIN_AGE_DAYS`,
-`FC_MAX_QUERIES`, `FC_AUTHOR_PAGES`, `FC_BATCH`, `FC_RESOLVE_AUTHORS`). Run a
-full forced refresh manually with `FC_FORCE=1` if ever needed.
+When a flagged change is actually real, just edit the count in `data/papers.json`
+(or fix the paper's `scholar_id`) — merging the PR applies the safe updates and
+leaves the flagged ones for you.
 
 - Per-paper **cluster ids** are cached in `scholar_id` for exact, cheap
-  re-lookups; **author ids** in `data/scholar_authors.json`. You can paste a
-  known author id by hand (from a `scholar.google.com/citations?user=XXXX` URL)
-  to make batching even more reliable.
+  re-lookups. A match looks wrong? Clear `scholar_id` (re-matches by title) or
+  paste the correct cluster id by hand.
+- Knobs live in `.github/workflows/citations.yml`
+  (`FC_MIN_AGE_DAYS`, `FC_MAX_QUERIES`, `FC_DECREASE_TOL`, `FC_SPIKE_FACTOR`).
+  Force a full refresh with `FC_FORCE=1`.
 - Prefer fully automatic? Set `OPEN_PR: "false"` to commit straight to `main`.
-- A paper's Scholar match looks wrong? Clear its `scholar_id` (re-matches by
-  title next run) or paste the correct cluster id by hand.
 
 ---
 
