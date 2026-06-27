@@ -10,7 +10,7 @@
     "pdf": "http://arxiv.org/pdf/1802.05733v1",
     "bib_link": "https://dblp.org/rec/conf/nips/Chierichetti0LV17",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "kLNOA7rDSKoJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Theory / approximation",
@@ -24,7 +24,7 @@
       "Scalability of fairlet decomposition to massive datasets",
       "Fairlets for k-means (sum-of-squares) objective"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -35,12 +35,12 @@
     "authors": "Suman Kalyan Bera, Deeparnab Chakrabarty, Nicolas Flores, Maryam Negahbani",
     "year": 2019,
     "venue": "NeurIPS",
-    "citations": 378,
+    "citations": 431,
     "link": "http://arxiv.org/abs/1901.02393v2",
     "pdf": "http://arxiv.org/pdf/1901.02393v2",
     "bib_link": "https://dblp.org/rec/conf/nips/BeraCFN19",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "7XO52PqLhdwJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Theory / approximation",
@@ -53,7 +53,7 @@
       "Eliminating the additive constraint violation",
       "Lower bounds on the price of fairness for multiple overlapping groups"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -64,12 +64,12 @@
     "authors": "Arturs Backurs, Piotr Indyk, Krzysztof Onak, Baruch Schieber, Ali Vakilian, Tal Wagner",
     "year": 2019,
     "venue": "ICML",
-    "citations": 301,
+    "citations": 41,
     "link": "http://arxiv.org/abs/1902.03519v2",
     "pdf": "http://arxiv.org/pdf/1902.03519v2",
     "bib_link": "https://dblp.org/rec/conf/icml/BackursIOSVW19",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "Ldju8mqZcHEJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems",
@@ -82,7 +82,7 @@
       "Near-linear fair clustering for more than two groups",
       "Dynamic / streaming maintenance of fairlets"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -93,12 +93,12 @@
     "authors": "Matthäus Kleindessner, Samira Samadi, Pranjal Awasthi, Jamie Morgenstern",
     "year": 2019,
     "venue": "ICML",
-    "citations": 247,
+    "citations": 18,
     "link": "http://arxiv.org/abs/1901.08668v2",
     "pdf": "http://arxiv.org/pdf/1901.08668v2",
     "bib_link": "https://dblp.org/rec/conf/icml/KleindessnerSAM19",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "5qVQkak2KNoJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems",
@@ -112,7 +112,7 @@
       "Individual- rather than group-fairness variants of spectral clustering",
       "Quantifying the fairness–cut-quality trade-off"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -123,12 +123,12 @@
     "authors": "Haris Angelidakis, Adam Kurpisz, Leon Sering, Rico Zenklusen",
     "year": 2022,
     "venue": "ICML",
-    "citations": 236,
+    "citations": 262,
     "link": "http://arxiv.org/abs/1901.08628v2",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Fair_k-center_clustering_for_data_summarization.pdf",
     "bib_link": "https://dblp.org/rec/conf/icml/AngelidakisKSZ22",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "ywyKZcQpHpAJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Theory / approximation",
@@ -142,7 +142,7 @@
       "Scaling fair summarization to streaming or massive inputs",
       "Tight approximation lower bounds under representation constraints"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -153,12 +153,12 @@
     "authors": "Evi Micha, Nisarg Shah",
     "year": 2020,
     "venue": "ICALP",
-    "citations": 234,
+    "citations": 18,
     "link": "http://arxiv.org/abs/1905.03674v3",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Proportionally_fair_clustering.pdf",
     "bib_link": "https://dblp.org/rec/conf/icalp/Micha020",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "XKOfdkf1D8oJ",
     "fairness_notion": "Proportional / core",
     "work_nature": [
       "Theory / approximation"
@@ -171,7 +171,7 @@
       "Efficient algorithms achieving the best possible proportionality factor",
       "Proportional fairness for non-centroid and correlation clustering"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -182,12 +182,12 @@
     "authors": "Mehrdad Ghadiri, Samira Samadi, Santosh S. Vempala",
     "year": 2021,
     "venue": "FAccT",
-    "citations": 178,
+    "citations": 204,
     "link": "http://arxiv.org/abs/2006.10085v2",
     "pdf": "http://arxiv.org/pdf/2006.10085v2",
     "bib_link": "https://dblp.org/rec/conf/fat/GhadiriSV21",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "rtRjNBgho0IJ",
     "fairness_notion": "Socially fair (min-max)",
     "work_nature": [
       "Algorithms / systems",
@@ -200,7 +200,7 @@
       "Tight approximation factor for socially fair k-means",
       "Hardness of the min-max objective for many groups"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -211,12 +211,12 @@
     "authors": "Alessandro Fabris, Stefano Messina, Gianmaria Silvello, Gian Antonio Susto",
     "year": 2022,
     "venue": "Data Min. Knowl. Discov.",
-    "citations": 169,
+    "citations": 239,
     "link": "https://link.springer.com/article/10.1007/s10618-022-00854-z",
     "pdf": "",
     "bib_link": "https://dblp.org/rec/journals/datamine/FabrisMSS22",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "OydNhqZRDZoJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Survey / position"
@@ -229,7 +229,7 @@
       "Clustering-specific benchmark datasets with ground-truth sensitive groups",
       "Assessing representativeness and licensing of widely-reused datasets"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -240,12 +240,12 @@
     "authors": "Ioana Oriana Bercea, Martin Großand Samir Khuller, Aounon Kumar, Clemens Rösner, Daniel R. Schmidt, Melanie Schmidt",
     "year": 2019,
     "venue": "APPROX",
-    "citations": 149,
+    "citations": 165,
     "link": "http://arxiv.org/abs/1811.10319v1",
     "pdf": "http://arxiv.org/pdf/1811.10319v1",
     "bib_link": "https://dblp.org/rec/conf/approx/Bercea0KKRS019",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "KR3AqxuDoFEJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Theory / approximation",
@@ -259,7 +259,7 @@
       "Tight bounds for many overlapping groups",
       "Lower bounds on the true price of (exact) fairness"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -270,12 +270,12 @@
     "authors": "Lingxiao Huang, Shaofeng H.-C. Jiang, Nisheeth K. Vishnoi",
     "year": 2019,
     "venue": "NeurIPS",
-    "citations": 144,
+    "citations": 156,
     "link": "http://arxiv.org/abs/1906.08484v4",
     "pdf": "http://arxiv.org/pdf/1906.08484v4",
     "bib_link": "https://dblp.org/rec/conf/nips/HuangJV19",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "AE49Mt2g7L4J",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Theory / approximation",
@@ -289,7 +289,7 @@
       "Coresets for many groups without exponential blow-up",
       "Coresets for individually-fair objectives"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -300,12 +300,12 @@
     "authors": "Melanie Schmidt, Chris Schwiegelshohn, Christian Sohler",
     "year": 2019,
     "venue": "WAOA",
-    "citations": 138,
+    "citations": 147,
     "link": "http://arxiv.org/abs/1812.10854v4",
     "pdf": "http://arxiv.org/pdf/1812.10854v4",
     "bib_link": "https://dblp.org/rec/conf/waoa/0001SS19",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "emZQBW9SJbwJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Theory / approximation",
@@ -319,7 +319,7 @@
       "Fully-dynamic maintenance of fair coresets",
       "Fair coresets for objectives beyond k-means"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -330,12 +330,12 @@
     "authors": "Mohsen Abbasi, Aditya Bhaskara, Suresh Venkatasubramanian",
     "year": 2021,
     "venue": "FAccT",
-    "citations": 138,
+    "citations": 154,
     "link": "http://arxiv.org/abs/2006.11009v2",
     "pdf": "http://arxiv.org/pdf/2006.11009v2",
     "bib_link": "https://dblp.org/rec/conf/fat/AbbasiBV21",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "9tP6Vr1LshcJ",
     "fairness_notion": "Socially fair (min-max)",
     "work_nature": [
       "Algorithms / systems",
@@ -349,7 +349,7 @@
       "Behaviour with many or overlapping groups",
       "Reconciling representation-cost fairness with balance fairness"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -360,12 +360,12 @@
     "authors": "Anshuman Chhabra, Karina Masalkovaite, Prasant Mohapatra",
     "year": 2021,
     "venue": "IEEE Access",
-    "citations": 138,
+    "citations": 171,
     "link": "https://ieeexplore.ieee.org/abstract/document/9541160/",
     "pdf": "",
     "bib_link": "https://dblp.org/rec/journals/access/ChhabraMM21",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "9ayfXDsnihIJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Survey / position"
@@ -378,7 +378,7 @@
       "Standard benchmarks and metrics for fair clustering",
       "Bridging theoretical and deep-learning fair clustering"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -389,12 +389,12 @@
     "authors": "Sepideh Mahabadi, Ali Vakilian",
     "year": 2020,
     "venue": "ICML",
-    "citations": 114,
+    "citations": 138,
     "link": "https://doi.org/10.1007/978-981-99-7184-8_2",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Individual_fairness_for_k-clustering.pdf",
     "bib_link": "https://dblp.org/rec/conf/icml/MahabadiV20",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "PRQwbz1vcBcJ",
     "fairness_notion": "Individual fairness",
     "work_nature": [
       "Theory / approximation",
@@ -408,7 +408,7 @@
       "Combining individual fairness with group fairness",
       "Scalable individually-fair algorithms"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -419,12 +419,12 @@
     "authors": "Peizhao Li, Han Zhao, Hongfu Liu",
     "year": 2020,
     "venue": "CVPR",
-    "citations": 105,
+    "citations": 113,
     "link": "http://openaccess.thecvf.com/content_CVPR_2020/html/Li_Deep_Fair_Clustering_for_Visual_Learning_CVPR_2020_paper.html",
     "pdf": "",
     "bib_link": "https://dblp.org/rec/conf/cvpr/LiZL20",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "D11hFcB_HbQJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Deep / ML"
@@ -437,7 +437,7 @@
       "Handling multiple sensitive attributes jointly",
       "Training stability and reproducibility of the adversarial objective"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -448,12 +448,12 @@
     "authors": "Sara Ahmadian, Alessandro Epasto, Ravi Kumar, Mohammad Mahdian",
     "year": 2020,
     "venue": "AISTATS",
-    "citations": 94,
+    "citations": 100,
     "link": "http://arxiv.org/abs/2002.02274v2",
     "pdf": "http://arxiv.org/pdf/2002.02274v2",
     "bib_link": "https://dblp.org/rec/conf/aistats/AhmadianE0M20",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "4VnsVz4F_mYJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Theory / approximation",
@@ -467,7 +467,7 @@
       "Many colors with tight ratios",
       "Min-max / social-fairness variants of correlation clustering"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -478,12 +478,12 @@
     "authors": "Sara Ahmadian, Alessandro Epasto, Marina Knittel, Ravi Kumar, Mohammad Mahdian, Benjamin Moseley, Philip Pham, Sergei Vassilvitskii, Yuyan Wang",
     "year": 2020,
     "venue": "NeurIPS",
-    "citations": 77,
+    "citations": 84,
     "link": "http://arxiv.org/abs/2006.10221v2",
     "pdf": "http://arxiv.org/pdf/2006.10221v2",
     "bib_link": "https://dblp.org/rec/conf/nips/AhmadianEK0MMPV20",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "TEoU4wI28IMJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Theory / approximation",
@@ -497,7 +497,7 @@
       "Individual fairness in hierarchies",
       "Scalable fair hierarchical clustering"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -508,12 +508,12 @@
     "authors": "Xinrui Jia, Kshiteej Sheth, Ola Svensson",
     "year": 2020,
     "venue": "IPCO",
-    "citations": 75,
+    "citations": 44,
     "link": "http://arxiv.org/abs/2007.04059v1",
     "pdf": "http://arxiv.org/pdf/2007.04059v1",
     "bib_link": "https://dblp.org/rec/conf/ipco/JiaSS20",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "VXxhRIt350sJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Theory / approximation"
@@ -526,7 +526,7 @@
       "Tight approximation factors for fair k-center with outliers",
       "Streaming / distributed colorful k-center"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -537,12 +537,12 @@
     "authors": "Yury Makarychev, Ali Vakilian",
     "year": 2021,
     "venue": "COLT",
-    "citations": 74,
+    "citations": 84,
     "link": "http://arxiv.org/abs/2103.02512v2",
     "pdf": "http://arxiv.org/pdf/2103.02512v2",
     "bib_link": "https://dblp.org/rec/conf/colt/MakarychevV21",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "Xzi3LR73e-wJ",
     "fairness_notion": "Socially fair (min-max)",
     "work_nature": [
       "Theory / approximation"
@@ -554,7 +554,7 @@
       "Closing the gap between upper and lower bounds",
       "Polynomial-time constant-factor approximations for fixed number of groups"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -570,7 +570,7 @@
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Proportionally_fair_clustering_revisited.pdf",
     "bib_link": "https://dblp.org/rec/conf/icalp/Micha020",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "RFWxoKYTwa0J",
     "fairness_notion": "Proportional / core",
     "work_nature": [
       "Theory / approximation"
@@ -583,7 +583,7 @@
       "Efficient algorithms achieving the best possible core approximation",
       "Proportional fairness for non-centroid / correlation clustering"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -594,12 +594,12 @@
     "authors": "Savitha Sam Abraham, Deepak P, Sowmya S. Sundaram",
     "year": 2020,
     "venue": "edbt",
-    "citations": 68,
+    "citations": 156,
     "link": "http://arxiv.org/abs/1910.05113v2",
     "pdf": "http://arxiv.org/pdf/1910.05113v2",
     "bib_link": "https://dblp.org/rec/conf/edbt/Abraham0S20",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "AE49Mt2g7L4J",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems"
@@ -612,7 +612,7 @@
       "Scalability with many attributes",
       "Trade-offs between competing attributes’ fairness"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -623,12 +623,12 @@
     "authors": "Ali Vakilian, Mustafa Yal\\cciner",
     "year": 2022,
     "venue": "AISTATS",
-    "citations": 68,
+    "citations": 83,
     "link": "http://arxiv.org/abs/2106.14043v2",
     "pdf": "http://arxiv.org/pdf/2106.14043v2",
     "bib_link": "https://dblp.org/rec/conf/aistats/VakilianY22",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "j4pAIkWvPAoJ",
     "fairness_notion": "Individual fairness",
     "work_nature": [
       "Theory / approximation"
@@ -641,7 +641,7 @@
       "Removing bicriteria relaxations",
       "Scalable individually-fair algorithms"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -652,12 +652,12 @@
     "authors": "Maryam Negahbani, Deeparnab Chakrabarty",
     "year": 2021,
     "venue": "NeurIPS",
-    "citations": 66,
+    "citations": 2851,
     "link": "https://proceedings.neurips.cc/paper/2021/hash/6f221fcb5c504fe96789df252123770b-Abstract.html",
     "pdf": "https://arxiv.org/pdf/2106.12150",
     "bib_link": "https://dblp.org/rec/conf/nips/NegahbaniC21",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "V4-zAmi-ElUJ",
     "fairness_notion": "Individual fairness",
     "work_nature": [
       "Theory / approximation"
@@ -670,7 +670,7 @@
       "Jointly individual- and group-fair clustering",
       "Faster, scalable implementations"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -681,12 +681,12 @@
     "authors": "Christopher Jung, Sampath Kannan, Neil Lutz",
     "year": 2019,
     "venue": "arXiv",
-    "citations": 57,
+    "citations": 3,
     "link": "https://arxiv.org/abs/1908.09041",
     "pdf": "",
     "bib_link": "https://dblp.org/rec/journals/corr/abs-1908-09041",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "w4MIUmpb_5EJ",
     "fairness_notion": "Individual fairness",
     "work_nature": [
       "Theory / approximation"
@@ -699,7 +699,7 @@
       "Combining individual with group fairness",
       "Efficient algorithms at scale"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -710,12 +710,12 @@
     "authors": "Youpeng Li, Xuyu Wang, Lingling An",
     "year": 2023,
     "venue": "imwut",
-    "citations": 57,
+    "citations": 76,
     "link": "https://dl.acm.org/doi/abs/10.1145/3580795",
     "pdf": "",
     "bib_link": "https://dblp.org/rec/journals/imwut/LiWA23",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "XFbNhvNglq0J",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Deep / ML",
@@ -729,7 +729,7 @@
       "Scaling to many heterogeneous clients",
       "Privacy–fairness interactions"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -740,12 +740,12 @@
     "authors": "Imtiaz Masud Ziko, Jing Yuan, Eric Granger, Ismail Ben Ayed",
     "year": 2021,
     "venue": "AAAI",
-    "citations": 55,
+    "citations": 4,
     "link": "http://arxiv.org/abs/1906.08207v5",
     "pdf": "http://arxiv.org/pdf/1906.08207v5",
     "bib_link": "https://dblp.org/rec/conf/aaai/ZikoYGA21",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "DKHxxK_4EPkJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Deep / ML",
@@ -759,7 +759,7 @@
       "Many groups / continuous sensitive attributes",
       "Tuning the fairness–quality trade-off automatically"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -770,12 +770,12 @@
     "authors": "Seyed A. Esmaeili, Brian Brubach, Leonidas Tsepenekas, John Dickerson",
     "year": 2020,
     "venue": "NeurIPS",
-    "citations": 54,
+    "citations": 59,
     "link": "http://arxiv.org/abs/2006.10916v3",
     "pdf": "http://arxiv.org/pdf/2006.10916v3",
     "bib_link": "https://dblp.org/rec/conf/nips/EsmaeiliBT020",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "pHII3Jjzq7MJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Theory / approximation",
@@ -789,7 +789,7 @@
       "Tight bounds under noisy memberships",
       "Many groups with correlated uncertainty"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -805,7 +805,7 @@
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/A_pairwise_fair_and_community-preserving_approach_to_k-center_clustering.pdf",
     "bib_link": "https://dblp.org/rec/conf/icml/BrubachCDKST20",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "QP3gj-4LA70J",
     "fairness_notion": "Individual fairness",
     "work_nature": [
       "Algorithms / systems",
@@ -819,7 +819,7 @@
       "Approximation guarantees for the pairwise objective",
       "Scaling community-preserving fair clustering"
     ],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": true
@@ -830,12 +830,12 @@
     "authors": "Seyed A. Esmaeili, Brian Brubach, Aravind Srinivasan, John Dickerson",
     "year": 2021,
     "venue": "NeurIPS",
-    "citations": 48,
+    "citations": 51,
     "link": "http://arxiv.org/abs/2106.07239v2",
     "pdf": "http://arxiv.org/pdf/2106.07239v2",
     "bib_link": "https://dblp.org/rec/conf/nips/EsmaeiliBSD21",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "ttbkixvCmhUJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems"
@@ -844,7 +844,7 @@
     "definition": "",
     "contribution": "",
     "open_problems": [],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": false
@@ -855,12 +855,12 @@
     "authors": "Christopher Jung, Sampath Kannan, Neil Lutz",
     "year": 2020,
     "venue": "FORC",
-    "citations": 47,
+    "citations": 62,
     "link": "https://doi.org/10.1177/0145482x7506900712",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Service_in_your_neighborhood_Fairness_in_center_location.pdf",
     "bib_link": "https://dblp.org/rec/conf/forc/JungKL20",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "t5HYLOXHjkMJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems"
@@ -869,7 +869,7 @@
     "definition": "",
     "contribution": "",
     "open_problems": [],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": false
@@ -880,12 +880,12 @@
     "authors": "Eden Chlamtác, Yury Makarychev, Ali Vakilian",
     "year": 2022,
     "venue": "SODA",
-    "citations": 40,
+    "citations": 5,
     "link": "http://arxiv.org/abs/2111.04804v1",
     "pdf": "http://arxiv.org/pdf/2111.04804v1",
     "bib_link": "https://dblp.org/rec/conf/soda/ChlamtacMV22",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "4VfK3QKUfqYJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems"
@@ -894,7 +894,7 @@
     "definition": "",
     "contribution": "",
     "open_problems": [],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": false
@@ -905,12 +905,12 @@
     "authors": "Suhas Thejaswi, Bruno Ordozgoiti, Aristides Gionis",
     "year": 2021,
     "venue": "PKDD",
-    "citations": 39,
+    "citations": 50,
     "link": "https://doi.org/10.1007/978-3-030-86520-7_47",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Diversity-Aware_k-median_Clustering_with_Fair_Center_Representation.pdf",
     "bib_link": "https://dblp.org/rec/conf/pkdd/ThejaswiOG21",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "1yXvBMzp9FAJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems"
@@ -919,7 +919,7 @@
     "definition": "",
     "contribution": "",
     "open_problems": [],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": false
@@ -930,12 +930,12 @@
     "authors": "Darshan Chakrabarti, John P. Dickerson, Seyed A. Esmaeili, Aravind Srinivasan, Leonidas Tsepenekas",
     "year": 2022,
     "venue": "AISTATS",
-    "citations": 39,
+    "citations": 11,
     "link": "https://proceedings.mlr.press/v151/chakrabarti22a.html",
     "pdf": "",
     "bib_link": "https://dblp.org/rec/conf/aistats/ChakrabartiDEST22",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "7PMz1Kv2a3sJ",
     "fairness_notion": "Individual fairness",
     "work_nature": [
       "Algorithms / systems"
@@ -944,7 +944,7 @@
     "definition": "",
     "contribution": "",
     "open_problems": [],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": false
@@ -955,12 +955,12 @@
     "authors": "Anshuman Chhabra, Prasant Mohapatra",
     "year": 2022,
     "venue": "ICMLA",
-    "citations": 38,
+    "citations": 40,
     "link": "http://arxiv.org/abs/2005.03197v4",
     "pdf": "http://arxiv.org/pdf/2005.03197v4",
     "bib_link": "https://dblp.org/rec/conf/icmla/ChhabraM22",
     "bib_entry": "",
-    "scholar_id": "",
+    "scholar_id": "UQFtdCbcRt4J",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems"
@@ -969,7 +969,7 @@
     "definition": "",
     "contribution": "",
     "open_problems": [],
-    "citations_updated": "2026-06-01",
+    "citations_updated": "2026-06-27",
     "added": "2025-01-01",
     "ai_labeled": true,
     "ai_notes": false
