@@ -72,6 +72,28 @@ def cited_by(result):
     return v if isinstance(v, int) else None
 
 
+def cluster_id(result):
+    cb = ((result.get("inline_links") or {}).get("cited_by") or {})
+    return cb.get("cluster_id") or ""
+
+
+def result_authors(result):
+    pi = result.get("publication_info") or {}
+    names = [a.get("name", "") for a in (pi.get("authors") or []) if a.get("name")]
+    if names:
+        return " ".join(names)
+    return (pi.get("summary") or "").split(" - ")[0]   # fallback: text before the venue
+
+
+def surnames(s):
+    return {t for t in normalize_title(s).split() if len(t) > 2}   # drop initials
+
+
+def author_overlap(result, paper):
+    rs, ps = surnames(result_authors(result)), surnames(paper.get("authors", ""))
+    return len(rs & ps) if rs and ps else 0
+
+
 def tokens(title):
     return set(normalize_title(title).split())
 
@@ -93,7 +115,9 @@ def title_match(a, b):
 
 def best_count(paper):
     """Return (count, cluster_id, matched) for a paper. One SerpApi call.
-    Picks the highest-cited result whose title matches (Scholar's merged entry)."""
+    Among title-matching results, prefers the one whose AUTHORS overlap this
+    paper's authors, then the highest citation count (Scholar's merged entry).
+    Author verification stops a wrong same-titled paper from being matched."""
     if paper.get("scholar_id"):
         data = serp_get({"engine": "google_scholar", "cluster": paper["scholar_id"], "api_key": API_KEY})
         res = data.get("organic_results") or []
@@ -105,8 +129,13 @@ def best_count(paper):
     cands = [r for r in res if title_match(r.get("title", ""), paper["title"])]
     if not cands:
         return None, "", False
-    best = max(cands, key=lambda r: (cited_by(r) or -1))
-    return cited_by(best), best.get("result_id", ""), True
+    # If any candidate's authors match ours, restrict to those (kills same-title
+    # different-paper mismatches like the old 301->41); else fall back to all.
+    verified = [r for r in cands if author_overlap(r, paper) > 0]
+    pool = verified or cands
+    best = max(pool, key=lambda r: (author_overlap(r, paper), cited_by(r) or -1))
+    cid = cluster_id(best) or best.get("result_id", "")
+    return cited_by(best), cid, True
 
 
 def classify(old, new):
