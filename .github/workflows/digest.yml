@@ -1,0 +1,50 @@
+name: Maintenance digest (biweekly)
+
+# Compiles everything awaiting review (submissions, corrections, new-tag
+# proposals) plus recent discovery/citation PRs into one summary issue you
+# get notified about. Optionally emails it too (see the commented step).
+
+on:
+  schedule:
+    # 07:00 UTC on the 2nd and 16th — the day after each discovery run.
+    - cron: "0 7 2,16 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build & post digest
+        working-directory: scripts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          # Set to your GitHub username to get the digest issue assigned to you:
+          DIGEST_ASSIGNEE: ""
+        run: python digest.py
+
+      # --- Optional email delivery -------------------------------------------
+      # Uncomment and add the SMTP_* secrets to also receive the digest by email.
+      # - name: Email the digest
+      #   if: always()
+      #   uses: dawidd6/action-send-mail@v3
+      #   with:
+      #     server_address: smtp.gmail.com
+      #     server_port: 465
+      #     username: ${{ secrets.SMTP_USER }}
+      #     password: ${{ secrets.SMTP_PASS }}
+      #     subject: "Fair Clustering Repository — maintenance digest"
+      #     to: you@example.edu
+      #     from: Fair Clustering Repo Bot
+      #     body: file://scripts/digest.md

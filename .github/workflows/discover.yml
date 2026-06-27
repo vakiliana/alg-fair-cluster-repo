@@ -1,0 +1,43 @@
+name: Discover new papers (biweekly)
+
+# Scans arXiv + DBLP for new fair-clustering papers and opens a pull request
+# with the candidates. The PR is your approval queue — review, fix tags,
+# delete off-topic entries, then merge to publish.
+
+on:
+  schedule:
+    # 06:00 UTC on the 1st and 15th of every month (~biweekly).
+    - cron: "0 6 1,15 * *"
+  workflow_dispatch: {}        # lets you run it on demand from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scan for new papers
+        id: scan
+        working-directory: scripts
+        run: python discover.py
+
+      - name: Open pull request
+        if: steps.scan.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: bot/new-papers
+          title: "📚 ${{ steps.scan.outputs.count }} new fair-clustering paper(s) for review"
+          body-path: discovery_summary.md
+          labels: paper-submission, automated
+          commit-message: "Add ${{ steps.scan.outputs.count }} discovered paper(s) for review"
+          add-paths: |
+            data/papers.json
+          delete-branch: true

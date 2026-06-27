@@ -1,750 +1,632 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPSTR96YP4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-TPSTR96YP4');
-</script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<meta charset="UTF-8">
-<title>Fair Clustering Repository</title>
-<style>
-  body { 
-    font-family: Arial, sans-serif; 
-    margin: 0em 2em 2em 2em; /* decrease top margin from 2em to 1em */
-  }
-  .site-title {
-    font-family: 'Garamond', 'Georgia', serif;
-    font-variant: small-caps;
-    font-size: 2.75em;
-    margin-bottom: 0;
-  }
-  .paper {
-    margin-bottom: 1.2em;
-    padding: 0.6em 0.8em 0.8em 0.8em; /* decrease bottom padding */
-    background-color: #fff;
-    box-shadow: 0 0 2px rgba(0,0,0,0.05);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    transition: background-color 0.2s, box-shadow 0.2s;
-    display: flex;
-    position: relative;
-    gap: 0.5em;
-    align-items: flex-start;
-    min-height: 60px; /* decrease height */
-  }
-  .paper:nth-child(even) { background-color: #f5f5f5; }
-  .paper:hover {
-    background-color: #fafafa;
-    box-shadow: 0 0 4px rgba(0,0,0,0.1);
-  }
-  .paper-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    position: relative;
-  }
-  .select-paper { margin-top: 0; }
-  .paper-label {
-    position: absolute;
-    right: 2.8em;
-    bottom: 0.6em;
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 0.78em;
-    color: #fff;
-    margin-left: 0.4em;
-    z-index: 2;
-  }
-  .title {
-    font-weight: bold;
-    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-    font-size: 1.25em;
-  }
-  .info { font-style: italic; color: #555; }
-  .submit-button { background-color: #007BFF; color: #fff; border: none; padding: 0.3em 0.7em; border-radius: 4px; cursor: pointer; font-family: inherit; }
-  .submit-button:hover { background-color: #0056b3; }
-  .report-button {
-    position: absolute;
-    right: 0.8em;
-    bottom: 0.4em; /* match citation-box */
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    width: 20.8px;   /* 20% smaller than 26px */
-    height: 20.8px;  /* 20% smaller than 26px */
-    z-index: 2;
-  }
-  .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
-  .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 320px; border-radius: 8px; font-family: 'Segoe UI', Arial, sans-serif; }
-  .modal-content input {
-    width: 100%;
-    padding: 0.4em;
-    margin-bottom: 0.6em;
-    border: 1px solid #bbb;
-    border-radius: 6px;
-    font-family: inherit;
-  }
-  #submit-form button {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 0.4em 1em;
-    border-radius: 6px;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  #submit-form button:hover { background-color: #1e7e34; }
-  #report-form button { background-color: #5bc0de; color: #fff; border: none; padding: 0.4em 1em; border-radius: 6px; cursor: pointer; font-family: inherit; }
-  #report-form button:hover { background-color: #31b0d5; }
-  #close-modal { float: right; font-size: 1.2em; cursor: pointer; }
-  .update-date { font-size: 0.9em; color: #666; margin-bottom: 1.2em; }
-  .citation-box {
-    display: flex;
-    align-items: center;
-    gap: 0.3em;
-    font-size: 1em;
-    color: #333;
-    margin-top: 1em; /* increase space above the citation box */
-    padding-left: 0.8em;
-    margin-left: 0;
-    padding-bottom: 0.1em;
-    position: static;
-    left: unset;
-    bottom: unset;
-    z-index: unset;
-  }
-  .citation-box a {
-    color: #4285f4;
-    text-decoration: none;
-    font-size: 1.2em;
-    margin-right: 0.2em;
-  }
-  .citation-box a:hover {
-    color: #174ea6;
-  }
-  .citation-box span {
-    font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
-    font-size: 0.9em;   /* decreased from 1.08em */
-    letter-spacing: 0.5px;
-    color: #444;
-    font-weight: 500;
-  }
-  .header-row {
-    display: flex;
-    align-items: flex-end; /* align items to the bottom */
-    justify-content: space-between;
-    margin-bottom: 1.5em;
-    gap: 1em;
-  }
-  .header-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .header-title > div {
-    display: flex;
-    flex-direction: column;
-  }
-  .download-btn {
-    background: #183153; /* navy-ish blue */
-    color: #fff;
-    border: none;
-    border-radius: 2em;
-    padding: 0.6em 1.5em;
-    font-size: 1.13em;
-    font-family: 'Segoe UI Semibold', 'Segoe UI', 'Arial Rounded MT Bold', Arial, sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: none;
-    transition: background 0.2s;
-    align-self: flex-end; /* align with subtitle */
-    letter-spacing: 0.03em;
-  }
-  .download-btn:hover {
-    background: #102040;
-  }
-  .deselect-btn {
-    background: #183153;
-    color: #fff;
-    border: none;
-    border-radius: 2em;
-    padding: 0.3em 1em;
-    font-size: 0.95em;
-    font-family: 'Segoe UI Semibold', 'Segoe UI', 'Arial Rounded MT Bold', Arial, sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: none;
-    transition: background 0.2s;
-    margin-top: 0.5em;
-    margin-bottom: 0.2em;
-    align-self: flex-start;
-    letter-spacing: 0.02em;
-  }
-  .deselect-btn:hover {
-    background: #102040;
-  }
-  /* --- Light theme overrides for download and deselect all buttons --- */
-  body.light-theme .download-btn {
-    background: #e0e4ea;
-    color: #222;
-  }
-  body.light-theme .download-btn:hover {
-    background: #cfd6df;
-    color: #222;
-  }
-  body.light-theme .deselect-btn {
-    background: #e0e4ea;
-    color: #222;
-  }
-  body.light-theme .deselect-btn:hover {
-    background: #cfd6df;
-    color: #222;
-  }
-  body.dark-theme {
-    background: #181c24;
-    color: #e0e0e0;
-  }
-  body.dark-theme .paper {
-    background-color: #232a36;
-    border-color: #2d3646;
-    box-shadow: 0 0 2px rgba(0,0,0,0.18);
-  }
-  body.dark-theme .paper:nth-child(even) {
-    background-color: #202632;
-  }
-  body.dark-theme .paper:nth-child(odd) {
-    background-color: #232a40;
-  }
-  body.dark-theme .paper:hover {
-    background-color: #262e3b;
-    box-shadow: 0 0 4px rgba(0,0,0,0.25);
-  }
-  body.dark-theme .citation-box {
-    color: #c8e0ff;
-  }
-  body.dark-theme .citation-box a {
-    color: #7bb6ff;
-  }
-  body.dark-theme .citation-box a:hover {
-    color: #fff;
-  }
-  body.dark-theme .citation-box span {
-    color: #b0cfff;
-  }
-  body.dark-theme .info {
-    color: #b0b9c6;
-  }
-  body.dark-theme .download-btn {
-    background: #22304a;
-    color: #fff;
-  }
-  body.dark-theme .download-btn:hover {
-    background: #162035;
-  }
-  body.dark-theme .modal-content {
-    background: #232a36;
-    color: #e0e0e0;
-    border-color: #2d3646;
-  }
-  body.dark-theme input, body.dark-theme textarea {
-    background: #232a36;
-    color: #e0e0e0;
-    border-color: #2d3646;
-  }
-  body.dark-theme .submit-button,
-  body.dark-theme #submit-form button,
-  body.dark-theme #report-form button {
-    background-color: #2d4a7a;
-    color: #fff;
-  }
-  body.dark-theme .submit-button:hover,
-  body.dark-theme #submit-form button:hover,
-  body.dark-theme #report-form button:hover {
-    background-color: #183153;
-  }
-  body.dark-theme .paper-label {
-    color: #fff;
-  }
-  body.dark-theme #light-theme-btn i {
-    color: #fff !important; /* glowing white */
-    filter: drop-shadow(0 0 2px #fff);
-  }
-  body.dark-theme #light-theme-btn:hover i {
-    color: #fff !important;
-    filter: drop-shadow(0 0 6px #fff);
-  }
-  body.light-theme #light-theme-btn i {
-    color: #bdbdbd !important;    /* light gray */
-    opacity: 0.65;
-    filter: none;
-  }
-  body.light-theme #light-theme-btn:hover i {
-    color: #f5e9b2 !important;    /* pale yellow on hover */
-    opacity: 1;
-  }
-  body.dark-theme .title {
-    color: #fff !important;         /* Make title link white in dark mode */
-    text-shadow: 0 1px 4px #0002;  /* Optional: subtle glow for readability */
-  }
-  /* 
-  #site-logo {
-    width: 100px;
-    height: auto;
-    margin-bottom: 0.6em; 
-    margin-top: 0.6em;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    object-fit: contain;
-  }
-  */
-  body.dark-theme .title:hover,
-  body.dark-theme .title:focus {
-    color: #7bb6ff !important;      /* Light blue on hover/focus for accessibility */
-  }
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-<div class="header-row">
-  <div class="header-title" style="display: flex; flex-direction: row; align-items: center;">
-    <!-- Site logo to the left of the site title -->
-    <img id="site-logo" src="logo.png" alt="Site logo" style="height: 5em; width: auto; margin-right: 0.7em; vertical-align: middle;">
-    <div style="display: flex; flex-direction: column;">
-      <h1 class="site-title">Fair Clustering Repository</h1>
-      <div class="update-date" id="last-update">Loading update info...</div>
-      <button id="deselect-all" class="deselect-btn">Deselect All</button>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  :root{
+    --bg:#f7f7f5; --surface:#ffffff; --subtle:#efefec; --ink:#1a1a1e; --muted:#6a6a72; --faint:#9a9aa1;
+    --border:#e6e6e2; --border-strong:#d8d8d3;
+    --accent:#2563eb; --accent-soft:#eef3ff;
+    --group:#2563eb; --individual:#b45309; --social:#15803d; --proportional:#7c3aed;
+    --gold:#9a7400; --gold-soft:#fbf1d4; --gold-line:#e6c766;
+    --shadow:0 1px 2px rgba(20,20,30,.04),0 2px 6px rgba(20,20,30,.05);
+    --radius:12px;
+  }
+  html[data-theme=dark]{
+    --bg:#0e1014; --surface:#161922; --subtle:#1c2029; --ink:#e8e8ec; --muted:#9aa1ad; --faint:#646b78;
+    --border:#252a35; --border-strong:#333a48;
+    --accent:#6b9bff; --accent-soft:#19233a;
+    --group:#6b9bff; --individual:#e0a86a; --social:#56c98a; --proportional:#b69bff;
+    --gold:#e9c46a; --gold-soft:#2c2409; --gold-line:#6b561d;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 2px 8px rgba(0,0,0,.25);
+  }
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  input,button,select,textarea{font-family:inherit;color:inherit}
+  ::selection{background:color-mix(in srgb,var(--accent) 24%,transparent)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  ::-webkit-scrollbar{width:11px;height:11px}
+  ::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:8px;border:3px solid var(--bg)}
+</style>
+</helmet>
+
+<div style="max-width:1120px;margin:0 auto;padding:0 28px 96px">
+
+  <header style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:40px 0 22px">
+    <div style="display:flex;align-items:center;gap:18px;min-width:0">
+      <img src="logo.svg" alt="Fair Clustering Repository logo" style="height:62px;width:62px;flex-shrink:0">
+      <div style="min-width:0">
+        <h1 style="margin:0;font-family:'Spectral',Georgia,serif;font-weight:600;font-size:33px;letter-spacing:-.015em;line-height:1.05">Fair Clustering Repository</h1>
+        <p style="margin:7px 0 0;color:var(--muted);font-size:14px;max-width:560px;line-height:1.5">A curated, continuously-updated index of algorithmic fairness in clustering — definitions, contributions, and open problems for the TCS &amp; ML communities.</p>
+      </div>
     </div>
-  </div>
-  <div style="display: flex; flex-direction: column; align-items: flex-end;">
-    <!-- Theme toggle buttons -->
-    <div id="theme-toggle" style="margin-bottom: 0.7em;">
-      <button id="light-theme-btn" title="Light theme" style="background: none; border: none; cursor: pointer; font-size: 1.4em; margin-right: 0.3em;">
-        <i class="fa-regular fa-sun"></i>
-      </button>
-      <button id="dark-theme-btn" title="Dark theme" style="background: none; border: none; cursor: pointer; font-size: 1.4em;">
-        <i class="fa-regular fa-moon"></i>
-      </button>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:11px;flex-shrink:0">
+      <div style="display:flex;gap:3px;padding:3px;background:var(--subtle);border:1px solid var(--border);border-radius:10px">
+        <button onClick="{{ onLight }}" style="{{ lightSeg }}">Light</button>
+        <button onClick="{{ onDark }}" style="{{ darkSeg }}">Dark</button>
+      </div>
+      <div style="font-size:12px;color:var(--faint);font-family:'IBM Plex Mono',monospace;text-align:right;line-height:1.6">{{ lastUpdate }}</div>
     </div>
-    <button id="download-selected" class="download-btn">
-      Download
-    </button>
+  </header>
+
+  <sc-if value="{{ showDashboard }}" hint-placeholder-val="{{ true }}">
+  <section style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 16px">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)">
+      <div style="font-family:'Spectral',serif;font-size:30px;font-weight:600;line-height:1">{{ stats.count }}</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:5px;letter-spacing:.02em;text-transform:uppercase">Publications</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)">
+      <div style="font-family:'Spectral',serif;font-size:30px;font-weight:600;line-height:1">{{ stats.venueCount }}</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:5px;letter-spacing:.02em;text-transform:uppercase">Venues</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)">
+      <div style="font-family:'Spectral',serif;font-size:30px;font-weight:600;line-height:1">{{ stats.yearRange }}</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:5px;letter-spacing:.02em;text-transform:uppercase">Years covered</div>
+    </div>
+  </section>
+
+  <section style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:22px;box-shadow:var(--shadow)">
+    <div style="font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px">Composition by fairness notion</div>
+    <div style="display:flex;height:12px;border-radius:7px;overflow:hidden;background:var(--subtle)">
+      <sc-for list="{{ stats.dist }}" as="seg" hint-placeholder-count="4">
+        <div style="{{ seg.barStyle }}" title="{{ seg.label }}"></div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:12px">
+      <sc-for list="{{ stats.dist }}" as="seg" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted)">
+          <span style="{{ seg.dotStyle }}"></span>
+          <span style="color:var(--ink);font-weight:500">{{ seg.label }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px">{{ seg.count }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <section style="position:sticky;top:0;z-index:6;padding:14px 0 4px;background:var(--bg);backdrop-filter:blur(6px)">
+    <div style="display:flex;gap:12px;align-items:center">
+      <div style="position:relative;flex:1">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="2" style="position:absolute;left:14px;top:50%;transform:translateY(-50%)"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+        <input value="{{ q }}" onInput="{{ onSearch }}" placeholder="Search titles, authors, venues, notions…" style="width:100%;padding:11px 14px 11px 40px;background:var(--surface);border:1px solid var(--border-strong);border-radius:10px;font-size:14px;outline:none;box-shadow:var(--shadow)">
+      </div>
+      <select value="{{ sortValue }}" onChange="{{ onSort }}" style="padding:11px 14px;background:var(--surface);border:1px solid var(--border-strong);border-radius:10px;font-size:13.5px;font-weight:500;cursor:pointer;box-shadow:var(--shadow)">
+        <option value="cite-desc">Most cited</option>
+        <option value="cite-asc">Least cited</option>
+        <option value="year-desc">Newest first</option>
+        <option value="year-asc">Oldest first</option>
+        <option value="title-asc">Title A–Z</option>
+      </select>
+      <select value="{{ selectedYear }}" onChange="{{ onYear }}" style="padding:11px 14px;background:var(--surface);border:1px solid var(--border-strong);border-radius:10px;font-size:13.5px;font-weight:500;cursor:pointer;box-shadow:var(--shadow)">
+        <sc-for list="{{ yearOptions }}" as="y" hint-placeholder-count="6">
+          <option value="{{ y.value }}">{{ y.label }}</option>
+        </sc-for>
+      </select>
+    </div>
+  </section>
+
+  <section style="margin:14px 0 6px">
+    <div style="font-size:11px;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Fairness notion</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ notionFilters }}" as="f" hint-placeholder-count="5">
+        <button onClick="{{ f.on }}" style="{{ f.style }}">{{ f.label }} <span style="opacity:.6;font-family:'IBM Plex Mono',monospace;font-size:11px">{{ f.count }}</span></button>
+      </sc-for>
+    </div>
+    <div style="font-size:11px;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;margin:14px 0 8px">Nature of work</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ natureFilters }}" as="f" hint-placeholder-count="6">
+        <button onClick="{{ f.on }}" style="{{ f.style }}">{{ f.label }} <span style="opacity:.6;font-family:'IBM Plex Mono',monospace;font-size:11px">{{ f.count }}</span></button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin:22px 0 12px;flex-wrap:wrap">
+    <div style="font-size:13.5px;color:var(--muted)">{{ showingText }}</div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <button onClick="{{ onSelectAll }}" style="padding:8px 13px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted)">Select shown</button>
+      <button onClick="{{ onClear }}" style="padding:8px 13px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted)">Clear</button>
+      <button onClick="{{ onDownload }}" style="{{ downloadStyle }}">{{ downloadLabel }}</button>
+    </div>
+  </section>
+
+  <sc-if value="{{ notLoaded }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:80px 0;color:var(--muted)">
+      <div style="width:26px;height:26px;border:3px solid var(--border-strong);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite"></div>
+      <div style="font-size:14px">Loading the repository…</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+    <div style="text-align:center;padding:70px 0;color:var(--muted)">
+      <div style="font-family:'Spectral',serif;font-size:21px;color:var(--ink);margin-bottom:6px">No matching papers</div>
+      <div style="font-size:14px">Try clearing filters or broadening your search.</div>
+    </div>
+  </sc-if>
+
+  <div style="display:flex;flex-direction:column;gap:11px">
+    <sc-for list="{{ papers }}" as="p" hint-placeholder-count="6">
+      <article style="{{ p.cardStyle }}">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <label style="display:flex;align-items:center;padding-top:3px;cursor:pointer;flex-shrink:0">
+            <input type="checkbox" checked="{{ p.selected }}" onChange="{{ p.onToggleSel }}" style="width:17px;height:17px;accent-color:var(--accent);cursor:pointer">
+          </label>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;justify-content:space-between;gap:14px;align-items:baseline">
+              <a href="{{ p.link }}" target="_blank" rel="noopener" style="font-size:16.5px;font-weight:600;letter-spacing:-.01em;line-height:1.32;color:var(--ink)">{{ p.title }}</a>
+              <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;color:var(--muted)">
+                <a href="{{ p.scholarUrl }}" target="_blank" rel="noopener" title="Google Scholar" style="display:flex;color:var(--accent)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 8l11 6 9-4.9V16h2V8L12 2zM3 13.2v3.3C3 18.4 7 20 12 20s9-1.6 9-3.5v-3.3l-9 4.9-9-4.9z"></path></svg>
+                </a>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500">{{ p.citations }}</span>
+              </div>
+            </div>
+            <div style="font-size:13.5px;color:var(--muted);margin-top:5px;line-height:1.45">{{ p.authorsText }}</div>
+            <div style="font-size:12.5px;color:var(--faint);margin-top:2px;font-style:italic">{{ p.venueYearText }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:11px">
+              <span style="{{ p.notionStyle }}">{{ p.notionLabel }}</span>
+              <sc-for list="{{ p.natures }}" as="n" hint-placeholder-count="2">
+                <span style="display:inline-block;padding:3px 9px;border-radius:7px;font-size:11.5px;font-weight:500;color:var(--muted);background:var(--subtle);border:1px solid var(--border)">{{ n.label }}</span>
+              </sc-for>
+              <sc-if value="{{ p.aiNotes }}" hint-placeholder-val="{{ false }}">
+                <span title="Details and tags were generated automatically and have not yet been verified by a maintainer." style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:7px;font-size:11px;font-weight:600;color:var(--gold);background:var(--gold-soft);border:1px solid var(--gold-line)">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"></path></svg>AI-labeled
+                </span>
+              </sc-if>
+              <button onClick="{{ p.onToggleExp }}" style="{{ p.detailBtnStyle }}">{{ p.detailLabel }}</button>
+            </div>
+
+            <sc-if value="{{ p.expanded }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:14px;padding-top:15px;border-top:1px dashed var(--border-strong);animation:fadeUp .25s ease both">
+                <sc-if value="{{ p.aiNotes }}" hint-placeholder-val="{{ false }}">
+                  <div title="Generated automatically — not yet verified by a maintainer." style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:8px;font-size:11.5px;font-weight:700;letter-spacing:.01em;color:var(--gold);background:var(--gold-soft);border:1px solid var(--gold-line);margin-bottom:14px">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"></path></svg>{{ p.aiInfoLabel }}
+                  </div>
+                </sc-if>
+                <sc-if value="{{ p.hasNotes }}" hint-placeholder-val="{{ true }}">
+                  <div style="display:flex;flex-direction:column;gap:13px">
+                    <sc-if value="{{ p.definition }}" hint-placeholder-val="{{ true }}">
+                      <div>
+                        <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--individual);margin-bottom:4px">Definition</div>
+                        <div style="font-size:13.5px;line-height:1.6;color:var(--ink)">{{ p.definition }}</div>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ p.contribution }}" hint-placeholder-val="{{ true }}">
+                      <div>
+                        <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--social);margin-bottom:4px">Contribution</div>
+                        <div style="font-size:13.5px;line-height:1.6;color:var(--ink)">{{ p.contribution }}</div>
+                      </div>
+                    </sc-if>
+                    <sc-if value="{{ p.hasOpen }}" hint-placeholder-val="{{ false }}">
+                      <div>
+                        <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--proportional);margin-bottom:6px">Open problems</div>
+                        <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px">
+                          <sc-for list="{{ p.openProblems }}" as="op" hint-placeholder-count="2">
+                            <li style="font-size:13.5px;line-height:1.5;color:var(--ink)">{{ op.text }}</li>
+                          </sc-for>
+                        </ul>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ p.noNotes }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:13px;color:var(--faint);font-style:italic;margin-bottom:12px">No structured notes yet — definition, contribution &amp; open problems are added during review.</div>
+                </sc-if>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+                  <sc-if value="{{ p.pdf }}" hint-placeholder-val="{{ true }}"><a href="{{ p.pdf }}" target="_blank" rel="noopener" style="padding:6px 12px;border:1px solid var(--border-strong);border-radius:8px;font-size:12.5px;font-weight:500;color:var(--ink)">PDF</a></sc-if>
+                  <sc-if value="{{ p.bibLink }}" hint-placeholder-val="{{ true }}"><a href="{{ p.bibLink }}" target="_blank" rel="noopener" style="padding:6px 12px;border:1px solid var(--border-strong);border-radius:8px;font-size:12.5px;font-weight:500;color:var(--ink)">DBLP</a></sc-if>
+                  <button onClick="{{ p.onCopyBib }}" style="padding:6px 12px;border:1px solid var(--border-strong);border-radius:8px;font-size:12.5px;font-weight:500;cursor:pointer;background:transparent;color:var(--ink)">{{ p.copyLabel }}</button>
+                  <button onClick="{{ p.onEdit }}" style="padding:6px 12px;border:1px solid var(--border-strong);border-radius:8px;font-size:12.5px;font-weight:600;cursor:pointer;background:transparent;color:var(--accent)">Suggest an edit</button>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </article>
+    </sc-for>
   </div>
+
+  <footer style="margin-top:48px;padding-top:22px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+    <div style="font-size:13.5px;color:var(--muted)">
+      Missing a paper? <button onClick="{{ onOpenSubmit }}" style="color:var(--accent);background:none;border:none;font-size:13.5px;font-weight:600;cursor:pointer;padding:0;text-decoration:underline">Submit it for review</button>
+    </div>
+    <div style="font-size:12px;color:var(--faint);font-family:'IBM Plex Mono',monospace">Submissions are reviewed before appearing.</div>
+  </footer>
+
+  <sc-if value="{{ showSubmit }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ onCloseSubmit }}" style="position:fixed;inset:0;background:rgba(15,17,21,.5);z-index:30;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeUp .2s ease both">
+      <div onClick="{{ stop }}" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px;width:420px;max-width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+          <h2 style="margin:0;font-family:'Spectral',serif;font-size:21px;font-weight:600">Submit a publication</h2>
+          <button onClick="{{ onCloseSubmit }}" style="background:none;border:none;font-size:22px;line-height:1;cursor:pointer;color:var(--faint)">×</button>
+        </div>
+        <p style="margin:0 0 18px;font-size:13px;color:var(--muted);line-height:1.5">Opens a pre-filled GitHub issue. A maintainer reviews it and merges it into the next update.</p>
+        <form id="fcr-submit" onSubmit="{{ onSubmitForm }}">
+          <label style="display:block;font-size:12.5px;font-weight:500;margin-bottom:5px">Title <span style="color:var(--accent)">*</span></label>
+          <input name="title" required style="width:100%;padding:9px 12px;margin-bottom:13px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13.5px;outline:none">
+          <label style="display:block;font-size:12.5px;font-weight:500;margin-bottom:5px">Paper link <span style="color:var(--accent)">*</span></label>
+          <input name="paper_link" type="url" required placeholder="https://arxiv.org/abs/…" style="width:100%;padding:9px 12px;margin-bottom:13px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13.5px;outline:none">
+          <label style="display:block;font-size:12.5px;font-weight:500;margin-bottom:5px">DBLP / BibTeX link</label>
+          <input name="bib_link" type="url" placeholder="https://dblp.org/rec/…" style="width:100%;padding:9px 12px;margin-bottom:18px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13.5px;outline:none">
+          <button type="submit" style="width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer">Open submission issue</button>
+        </form>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showEdit }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ onCloseEdit }}" style="position:fixed;inset:0;background:rgba(15,17,21,.5);z-index:30;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeUp .2s ease both">
+      <div onClick="{{ stop }}" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 26px;width:580px;max-width:100%;max-height:88vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:3px">
+          <h2 style="margin:0;font-family:'Spectral',serif;font-size:20px;font-weight:600;line-height:1.25">Suggest an edit</h2>
+          <button onClick="{{ onCloseEdit }}" style="background:none;border:none;font-size:22px;line-height:1;cursor:pointer;color:var(--faint)">×</button>
+        </div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:8px;line-height:1.4">{{ editTitle }}</div>
+        <p style="margin:0 0 18px;font-size:12.5px;color:var(--faint);line-height:1.5">Your suggestion opens a pre-filled GitHub issue for a maintainer to review and merge.</p>
+
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--individual);margin-bottom:6px">Definition</div>
+        <textarea value="{{ editDefinition }}" onInput="{{ onEditDefinition }}" rows="3" placeholder="The fairness notion this paper uses…" style="width:100%;padding:9px 12px;margin-bottom:14px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13px;line-height:1.5;outline:none;resize:vertical"></textarea>
+
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--social);margin-bottom:6px">Contribution</div>
+        <textarea value="{{ editContribution }}" onInput="{{ onEditContribution }}" rows="3" placeholder="What the paper contributes…" style="width:100%;padding:9px 12px;margin-bottom:14px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13px;line-height:1.5;outline:none;resize:vertical"></textarea>
+
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--proportional);margin-bottom:6px">Open problems <span style="font-weight:400;color:var(--faint);text-transform:none;letter-spacing:0">— one per line</span></div>
+        <textarea value="{{ editOpen }}" onInput="{{ onEditOpen }}" rows="3" placeholder="One open problem per line…" style="width:100%;padding:9px 12px;margin-bottom:18px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13px;line-height:1.5;outline:none;resize:vertical"></textarea>
+
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Fairness notion</div>
+        <select value="{{ editNotion }}" onChange="{{ onEditNotion }}" style="width:100%;padding:9px 12px;margin-bottom:16px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13px;cursor:pointer;outline:none">
+          <sc-for list="{{ editNotionOptions }}" as="o" hint-placeholder-count="4">
+            <option value="{{ o.value }}">{{ o.label }}</option>
+          </sc-for>
+        </select>
+
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Nature of work</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px">
+          <sc-for list="{{ editNatures }}" as="n" hint-placeholder-count="5">
+            <label style="{{ n.style }}">
+              <input type="checkbox" checked="{{ n.checked }}" onChange="{{ n.onToggle }}" style="accent-color:var(--accent);cursor:pointer">{{ n.label }}
+            </label>
+          </sc-for>
+        </div>
+
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Propose a new tag</div>
+        <input value="{{ editNewTag }}" onInput="{{ onEditNewTag }}" placeholder="e.g. Federated, Streaming, Privacy…" style="width:100%;padding:9px 12px;margin-bottom:7px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13px;outline:none">
+        <div style="font-size:12px;color:var(--faint);margin-bottom:18px;line-height:1.5">Changes to <b>existing</b> tags above are applied on merge. A <b>brand-new</b> tag is held for verification before it's added to the taxonomy.</div>
+
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Other comments <span style="font-weight:400;color:var(--faint);text-transform:none;letter-spacing:0">— optional</span></div>
+        <textarea value="{{ editComments }}" onInput="{{ onEditComments }}" rows="2" placeholder="Anything else for the maintainer — context, sources, a citation correction…" style="width:100%;padding:9px 12px;margin-bottom:18px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13px;line-height:1.5;outline:none;resize:vertical"></textarea>
+
+        <button onClick="{{ onSubmitEdit }}" style="width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer">Open correction issue</button>
+      </div>
+    </div>
+  </sc-if>
+
 </div>
-<div id="paper-list"></div>
-<p>Is there any missing publications? <button id="open-form" class="submit-button">form</button></p>
-<p class="review-note">Submitted entries are reviewed and approved papers appear after the next update.</p>
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span id="close-modal">&times;</span>
-    <h2>Submit a missing publication</h2>
-    <p style="font-size:0.9em;margin-top:0;">Fields marked with * are required.</p>
-    <form id="submit-form">
-      <label>Title*:<br><input type="text" name="title" required></label><br>
-      <label>Paper Link*:<br><input type="url" name="paper_link" required></label><br>
-      <label>Bib Link*:<br><input type="url" name="bib_link" required></label><br>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</div>
-<div id="report-modal" class="modal">
-  <div class="modal-content">
-    <span id="close-report">&times;</span>
-    <h2>Report issue</h2>
-    <form id="report-form">
-      <input type="hidden" name="title">
-      <label>New Bib Link*:<br><input type="url" name="bib_link" required></label><br>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1120,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2563eb&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;showDashboard&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
+class Component extends DCLogic {
+  state = { papers: [], loaded: false, q: '', notion: 'all', nature: 'all', year: 'all',
+            sort: 'cite-desc', selected: {}, expanded: {}, theme: 'light', showSubmit: false, copiedId: '',
+            showEdit: false, editId: null, editForm: null };
 
-<script>
-let paperRows = []; // Make paperRows global for access in download logic
+  REPO = 'vakiliana/alg-fair-cluster-repo';
+  NOTIONS = [
+    ['Group fairness (balance)', '--group'],
+    ['Individual fairness', '--individual'],
+    ['Socially fair (min-max)', '--social'],
+    ['Proportional / core', '--proportional'],
+  ];
+  NATURES = ['Theory / approximation', 'Algorithms / systems', 'Deep / ML', 'Robustness / attacks', 'Survey / position'];
 
-async function loadPapers() {
-  const [paperResp, confResp] = await Promise.all([
-    fetch('fc_papers.csv'),
-    fetch('conf_names.csv')
-  ]);
-  paperRows = parseCSV(await paperResp.text());
-  const confRows = parseCSV(await confResp.text());
-  const confMap = {};
-  confRows.forEach(r => {
-    const slug = (r.dblp_slug || '').trim();
-    const name = (r.conf_name || '').trim();
-    if (slug) confMap[slug] = name || slug;
-  });
+  componentDidMount() {
+    const t = localStorage.getItem('fcr-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    this.applyTheme(t);
+    if (this.props.accent) document.documentElement.style.setProperty('--accent', this.props.accent);
+    fetch('data/papers.json')
+      .then(r => r.json())
+      .then(d => this.setState({ papers: Array.isArray(d) ? d : [], loaded: true }))
+      .catch(() => this.setState({ loaded: true }));
+  }
+  componentDidUpdate() {
+    if (this.props.accent) document.documentElement.style.setProperty('--accent', this.props.accent);
+  }
+  applyTheme(t) { document.documentElement.dataset.theme = t; localStorage.setItem('fcr-theme', t); this.setState({ theme: t }); }
 
-  const { curr, next } = computeUpdateDates();
-  document.getElementById('last-update').textContent =
-    `Last update: ${formatDate(curr)} (next update scheduled on ${formatDate(next)})`;
+  notionVar(n) { const m = this.NOTIONS.find(x => x[0] === n); return m ? m[1] : '--group'; }
 
-  paperRows.sort((a, b) => parseInt(b.citations) - parseInt(a.citations));
-  const container = document.getElementById('paper-list');
-  const labelColors = {
-    'group fairness': '#17a2b8',
-    'individual fairness': '#ffc107',
-    'min-max fairness': '#28a745'
+  makeBib(p) {
+    if (p.bib_entry && p.bib_entry.trim()) return p.bib_entry.trim();
+    const key = (p.id || 'paper').replace(/[^A-Za-z0-9]/g, '') || 'paper';
+    const authors = (p.authors || '').split(/,\s*/).filter(Boolean).join(' and ');
+    const isJournal = /journal|trans\.|sci\.|letters| inf\.|comput\.|program\.|evaluation|informatics|entropy|symmetry|neurocomputing|access|systems/i.test(p.venue || '');
+    const type = isJournal ? 'article' : 'inproceedings';
+    const field = isJournal ? 'journal' : 'booktitle';
+    return `@${type}{${key},\n  title     = {${p.title || ''}},\n  author    = {${authors}},\n  ${field} = {${p.venue || ''}},\n  year      = {${p.year || ''}}\n}`;
+  }
+
+  filtered() {
+    const s = this.state;
+    const q = s.q.trim().toLowerCase();
+    let r = s.papers.filter(p => {
+      if (s.notion !== 'all' && p.fairness_notion !== s.notion) return false;
+      if (s.nature !== 'all' && !(p.work_nature || []).includes(s.nature)) return false;
+      if (s.year !== 'all' && String(p.year) !== String(s.year)) return false;
+      if (q) {
+        const hay = [p.title, p.authors, p.venue, p.fairness_notion, (p.work_nature || []).join(' '), p.definition, p.contribution]
+          .join(' ').toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+    const dir = s.sort;
+    r.sort((a, b) => {
+      if (dir === 'cite-desc') return (b.citations || 0) - (a.citations || 0);
+      if (dir === 'cite-asc') return (a.citations || 0) - (b.citations || 0);
+      if (dir === 'year-desc') return (b.year || 0) - (a.year || 0) || (b.citations || 0) - (a.citations || 0);
+      if (dir === 'year-asc') return (a.year || 0) - (b.year || 0) || (b.citations || 0) - (a.citations || 0);
+      if (dir === 'title-asc') return (a.title || '').localeCompare(b.title || '');
+      return 0;
+    });
+    return r;
+  }
+
+  chipStyle(active, cssVar) {
+    const base = { display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '6px 12px', borderRadius: '8px',
+      fontSize: '12.5px', fontWeight: 500, cursor: 'pointer', transition: 'all .15s', whiteSpace: 'nowrap' };
+    if (!cssVar) {
+      return active
+        ? { ...base, color: 'var(--ink)', background: 'var(--accent-soft)', border: '1px solid var(--accent)' }
+        : { ...base, color: 'var(--muted)', background: 'var(--surface)', border: '1px solid var(--border)' };
+    }
+    return active
+      ? { ...base, color: `var(${cssVar})`, background: `color-mix(in srgb, var(${cssVar}) 13%, transparent)`, border: `1px solid color-mix(in srgb, var(${cssVar}) 45%, transparent)` }
+      : { ...base, color: 'var(--muted)', background: 'var(--surface)', border: '1px solid var(--border)' };
+  }
+
+  download = () => {
+    const ids = Object.keys(this.state.selected).filter(k => this.state.selected[k]);
+    if (!ids.length) { alert('Select at least one paper to download its BibTeX.'); return; }
+    const map = {}; this.state.papers.forEach(p => map[p.id] = p);
+    const bib = ids.map(id => map[id] ? this.makeBib(map[id]) : '').filter(Boolean).join('\n\n');
+    const blob = new Blob([bib], { type: 'application/x-bibtex' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'fair-clustering.bib';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
   };
 
-  paperRows.forEach(r => {
-    const div = document.createElement('div');
-    div.className = 'paper';
+  copyBib = (p) => {
+    navigator.clipboard.writeText(this.makeBib(p)).then(() => {
+      this.setState({ copiedId: p.id });
+      setTimeout(() => this.setState(st => st.copiedId === p.id ? { copiedId: '' } : null), 1600);
+    });
+  };
 
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.className = 'select-paper';
-    div.appendChild(checkbox);
+  submitForm = (e) => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(e.target).entries());
+    const body = `**Title:** ${d.title}\n**Paper link:** ${d.paper_link}\n**DBLP/BibTeX:** ${d.bib_link || '(none)'}\n\n_Submitted via the Fair Clustering Repository._`;
+    const url = `https://github.com/${this.REPO}/issues/new?title=${encodeURIComponent('[paper] ' + d.title)}&labels=paper-submission&body=${encodeURIComponent(body)}`;
+    window.open(url, '_blank');
+    this.setState({ showSubmit: false });
+  };
+  report = (p) => {
+    const body = `**Paper:** ${p.title}\n**Issue:** (describe the correction — wrong venue, citation, BibTeX, tag, etc.)\n\n_Reported via the Fair Clustering Repository._`;
+    const url = `https://github.com/${this.REPO}/issues/new?title=${encodeURIComponent('[correction] ' + p.title)}&labels=data-correction&body=${encodeURIComponent(body)}`;
+    window.open(url, '_blank');
+  };
 
-    // --- Add event listener to update download button text ---
-    checkbox.addEventListener('change', updateDownloadButtonText);
-
-    const content = document.createElement('div');
-    content.className = 'paper-content';
-    div.appendChild(content);
-
-    const titleLink = document.createElement('a');
-    titleLink.className = 'title';
-    titleLink.href = r.paper_link || r.local_pdf;
-    titleLink.target = '_blank';
-    titleLink.textContent = r.title;
-
-    // Create a container for title and citation on the same line
-    const titleRow = document.createElement('div');
-    titleRow.style.display = 'flex';
-    titleRow.style.alignItems = 'baseline';
-    titleRow.appendChild(titleLink);
-
-    content.appendChild(titleRow);
-
-    // Add extra space between title/citation line and author line
-    const spacer = document.createElement('div');
-    spacer.style.height = '1.1em';
-    content.appendChild(spacer);
-
-    // Always use confMap to get the conf_name from conf_names.csv
-    const confSlug = parseVenueSlug(r.bib_link);
-    let venueName = confMap[confSlug];
-    if (!venueName) {
-      venueName = confSlug || 'Unknown venue';
-    }
-    const year = parseYear(r.bib_link);
-
-    const infoDiv = document.createElement('div');
-    infoDiv.className = 'info';
-    const authors = r.authors || 'Authors not available';
-    infoDiv.innerHTML = `${authors}, <b>${venueName} ${year}</b>`;
-    content.appendChild(infoDiv);
-
-    // Add label next to report icon if present
-    let labelSpan = null;
-    if (r.label) {
-      const lab = r.label.trim();
-      if (lab) {
-        labelSpan = document.createElement('span');
-        labelSpan.className = 'paper-label';
-        labelSpan.textContent = lab;
-        const color = labelColors[lab.toLowerCase()] || '#6c757d';
-        labelSpan.style.backgroundColor = color;
-        // Don't append to content, append to div after icon
-      }
-    }
-
-    // Use the requested icon for "report issue"
-    const reportIcon = document.createElement("img");
-    reportIcon.src = "https://cdn-icons-png.flaticon.com/512/595/595067.png";
-    reportIcon.alt = "Report issue";
-    reportIcon.title = "Report issue";
-    reportIcon.className = "report-button";
-    reportIcon.addEventListener("click", () => openReportModal(r.title));
-    div.appendChild(reportIcon);
-
-    if (labelSpan) {
-      div.appendChild(labelSpan);
-    }
-
-    // Add citation icon and count at bottom left INSIDE .paper-content
-    const citationBox = document.createElement('div');
-    citationBox.className = 'citation-box';
-
-    // Google Scholar icon (currently links to DBLP, TODO: update to Google Scholar)
-    const scholarLink = document.createElement('a');
-    scholarLink.href = r.bib_link || '#';
-    scholarLink.target = '_blank';
-    scholarLink.title = 'View on Google Scholar';
-    scholarLink.innerHTML = '<i class="fa-solid fa-graduation-cap"></i>';
-    citationBox.appendChild(scholarLink);
-
-    // Citation count
-    const citationCount = document.createElement('span');
-    citationCount.textContent = r.citations;
-    citationBox.appendChild(citationCount);
-
-    // --- DBLP logo and link removed ---
-
-    // Append citationBox to content, not to div
-    content.appendChild(citationBox);
-
-    container.appendChild(div);
+  openEdit = (p) => {
+    this.setState({
+      showEdit: true, editId: p.id,
+      editForm: {
+        definition: p.definition || '', contribution: p.contribution || '',
+        openText: (p.open_problems || []).join('\n'),
+        notion: p.fairness_notion || this.NOTIONS[0][0],
+        natures: [...(p.work_nature || [])], newTag: '', comments: '',
+      },
+    });
+  };
+  setEdit = (k, v) => this.setState(st => ({ editForm: { ...st.editForm, [k]: v } }));
+  toggleEditNature = (label) => this.setState(st => {
+    const set = new Set(st.editForm.natures);
+    set.has(label) ? set.delete(label) : set.add(label);
+    return { editForm: { ...st.editForm, natures: [...set] } };
   });
 
-  // --- After all papers are loaded, update button text in case of reload ---
-  updateDownloadButtonText();
-}
-
-function parseCSV(text) {
-  const lines = text.trim().split(/\r?\n/);
-  const headers = splitCSVLine(lines[0]);
-  const rows = [];
-  for (let i = 1; i < lines.length; i++) {
-    if (!lines[i].trim()) continue; // Skip empty lines
-    const tokens = splitCSVLine(lines[i]);
-    if (tokens.length !== headers.length) continue; // Skip malformed lines
-    const obj = {};
-    headers.forEach((h, idx) => obj[h.trim()] = (tokens[idx] || '').trim());
-    if (!obj.title && !obj.dblp_slug) continue; // Only skip if both missing
-    rows.push(obj);
-  }
-  return rows;
-}
-
-function splitCSVLine(line) {
-  const result = [];
-  let cur = '';
-  let inQuotes = false;
-  for (let i = 0; i < line.length; i++) {
-    const c = line[i];
-    if (c === '"') {
-      if (inQuotes && line[i + 1] === '"') {
-        cur += '"';
-        i++;
-      } else {
-        inQuotes = !inQuotes;
+  submitEdit = () => {
+    const p = this.state.papers.find(x => x.id === this.state.editId) || {};
+    const f = this.state.editForm;
+    const newOpen = f.openText.split('\n').map(s => s.trim()).filter(Boolean);
+    const oldOpen = (p.open_problems || []);
+    const lines = [], changed = [];
+    const fld = (label, oldV, newV) => {
+      if ((oldV || '') !== (newV || '')) {
+        changed.push(label);
+        lines.push(`#### ${label}\n- **Current:** ${oldV ? oldV : '_(empty)_'}\n- **Proposed:** ${newV ? newV : '_(empty)_'}`);
       }
-    } else if (c === ',' && !inQuotes) {
-      result.push(cur);
-      cur = '';
-    } else {
-      cur += c;
+    };
+    fld('Definition', p.definition, f.definition);
+    fld('Contribution', p.contribution, f.contribution);
+    if (oldOpen.join('|') !== newOpen.join('|')) {
+      changed.push('Open problems');
+      lines.push(`#### Open problems\n- **Current:**\n${oldOpen.length ? oldOpen.map(x => '  - ' + x).join('\n') : '  _(none)_'}\n- **Proposed:**\n${newOpen.length ? newOpen.map(x => '  - ' + x).join('\n') : '  _(none)_'}`);
     }
-  }
-  result.push(cur);
-  return result;
-}
+    if ((p.fairness_notion || '') !== f.notion) {
+      changed.push('Fairness notion');
+      lines.push(`#### Fairness notion\n- **Current:** ${p.fairness_notion || '_(none)_'}\n- **Proposed:** ${f.notion}`);
+    }
+    const oldNat = (p.work_nature || []).slice().sort().join('|');
+    const newNat = f.natures.slice().sort().join('|');
+    if (oldNat !== newNat) {
+      changed.push('Nature of work');
+      lines.push(`#### Nature of work\n- **Current:** ${(p.work_nature || []).join(', ') || '_(none)_'}\n- **Proposed:** ${f.natures.join(', ') || '_(none)_'}`);
+    }
+    const labels = ['data-correction'];
+    if (f.newTag.trim()) {
+      labels.push('tag-proposal');
+      lines.push(`#### ⚠️ Proposed NEW tag (requires verification)\n- \`${f.newTag.trim()}\`\n\n_New tags are held for maintainer verification before being added to the taxonomy._`);
+      changed.push('New tag');
+    }
+    const comments = (f.comments || '').trim();
+    if (comments) lines.push(`#### Other comments\n${comments}`);
+    if (!changed.length && !comments) { alert('Nothing to submit yet — edit a field or add a comment first.'); return; }
+    const summary = changed.length ? changed.join(', ') : 'comment only';
+    const body = `**Paper:** ${p.title}\n**Record id:** \`${p.id}\`\n**Proposed changes:** ${summary}\n\n${lines.join('\n\n')}\n\n_Submitted via the Fair Clustering Repository edit form._`;
+    const url = `https://github.com/${this.REPO}/issues/new?title=${encodeURIComponent('[edit] ' + p.title)}&labels=${encodeURIComponent(labels.join(','))}&body=${encodeURIComponent(body)}`;
+    window.open(url, '_blank');
+    this.setState({ showEdit: false });
+  };
 
-function parseVenueSlug(link) {
-  if (!link || link === 'NONE') return '';
-  const m = link.match(/rec\/(?:conf|journals)\/([^\/]+)/);
-  return m ? m[1] : '';
-}
-
-function parseYear(link) {
-  if (!link) return '';
-  const m = link.match(/(\d{2})(?:\.bib)?$/);
-  if (!m) return '';
-  const y = parseInt(m[1], 10);
-  return y <= 25 ? 2000 + y : 1900 + y;
-}
-
-function computeUpdateDates() {
-  const now = new Date();
-  const year = now.getUTCFullYear();
-  const month = now.getUTCMonth();
-  const first = Date.UTC(year, month, 1, 6, 0, 0);
-  let curr = new Date(Date.UTC(year, month, 1));
-  if (now.getTime() < first) {
-    curr = new Date(Date.UTC(year, month - 1, 1));
-  }
-  const next = new Date(Date.UTC(curr.getUTCFullYear(), curr.getUTCMonth() + 1, 1));
-  return { curr, next };
-}
-
-function formatDate(d) {
-  const m = d.getUTCMonth() + 1;
-  const day = d.getUTCDate();
-  const y = d.getUTCFullYear();
-  return `${m}/${day}/${y}`;
-}
-
-// --- Add this function to update the download button text ---
-function updateDownloadButtonText() {
-  const checkboxes = document.querySelectorAll('.select-paper');
-  let count = 0;
-  checkboxes.forEach(cb => { if (cb.checked) count++; });
-  const btn = document.getElementById('download-selected');
-  btn.textContent = count > 0 ? `Download (${count})` : 'Download';
-}
-
-loadPapers();
-
-// --- Add this block to fix the Deselect All button ---
-document.getElementById('deselect-all').addEventListener('click', () => {
-  const checkboxes = document.querySelectorAll('.select-paper');
-  checkboxes.forEach(cb => { cb.checked = false; });
-  updateDownloadButtonText();
-});
-
-const modal = document.getElementById("modal");
-document.getElementById("open-form").addEventListener("click", () => { modal.style.display = "block"; });
-document.getElementById("close-modal").addEventListener("click", () => { modal.style.display = "none"; });
-window.addEventListener("click", e => { if (e.target === modal) modal.style.display = "none"; });
-
-document.getElementById('submit-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  if (!e.target.reportValidity()) {
-    return;
-  }
-  const data = Object.fromEntries(new FormData(e.target).entries());
-  await fetch('submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-
-  alert('Submission received!');
-  e.target.reset();
-  modal.style.display = "none";
-});
-const reportModal = document.getElementById("report-modal");
-const reportTitleInput = document.querySelector('#report-form input[name="title"]');
-function openReportModal(title) {
-  reportTitleInput.value = title;
-  reportModal.style.display = "block";
-}
-document.getElementById("close-report").addEventListener("click", () => { reportModal.style.display = "none"; });
-window.addEventListener("click", e => { if (e.target === reportModal) reportModal.style.display = "none"; });
-document.getElementById("report-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  if (!e.target.reportValidity()) return;
-  const data = Object.fromEntries(new FormData(e.target).entries());
-  await fetch("report", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
-  alert("Issue reported!");
-  e.target.reset();
-  reportModal.style.display = "none";
-});
-
-// Add a message bar for download errors
-const messageBar = document.createElement('div');
-messageBar.id = 'message-bar';
-messageBar.style.display = 'none';
-messageBar.style.position = 'fixed';
-messageBar.style.top = '0';
-messageBar.style.left = '0';
-messageBar.style.width = '100%';
-messageBar.style.background = '#ffc107';
-messageBar.style.color = '#222';
-messageBar.style.padding = '1em';
-messageBar.style.zIndex = '1000';
-messageBar.style.textAlign = 'center';
-messageBar.style.fontWeight = 'bold';
-document.body.appendChild(messageBar);
-
-function showMessageBar(msg) {
-  messageBar.textContent = msg;
-  messageBar.style.display = 'block';
-  setTimeout(() => { messageBar.style.display = 'none'; }, 6000);
-}
-
-document.getElementById('download-selected').addEventListener('click', async () => {
-  // Collect selected papers
-  const checkboxes = document.querySelectorAll('.select-paper');
-  const selected = [];
-  checkboxes.forEach((cb, idx) => {
-    if (cb.checked) selected.push(idx);
-  });
-  if (selected.length === 0) {
-    alert('Please select at least one paper to download.');
-    return;
+  updateLine() {
+    const now = new Date();
+    const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    const next = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    return `Citations refreshed ${fmt(now)} · next ${fmt(next)}`;
   }
 
-  // Find the corresponding paperRows (order is preserved)
-  const selectedPapers = selected.map(idx => paperRows[idx]);
-  const bibEntries = [];
-  const missingTitles = [];
+  renderVals() {
+    const s = this.state;
+    const all = s.papers;
+    const list = this.filtered();
 
-  for (const r of selectedPapers) {
-    // Try to get the DBLP key from bib_link or paper_link
-    let key = '';
-    if (r.bib_link && r.bib_link.includes('dblp.org/rec/')) {
-      const m = r.bib_link.match(/dblp\.org\/rec\/([^/?#]+)/);
-      if (m) key = m[1].split('/').pop().replace(/\.bib$/, '');
-    }
-    if (!key && r.paper_link && r.paper_link.includes('dblp.org/rec/')) {
-      const m = r.paper_link.match(/dblp\.org\/rec\/([^/?#]+)/);
-      if (m) key = m[1].split('/').pop().replace(/\.bib$/, '');
-    }
-    if (!key && r.bib_link) {
-      key = r.bib_link.split('/').pop().replace(/\.bib$/, '');
-    }
-    if (!key && r.paper_link) {
-      key = r.paper_link.split('/').pop().replace(/\.bib$/, '');
-    }
+    // stats
+    const venues = new Set(all.map(p => p.venue).filter(Boolean));
+    const years = all.map(p => p.year).filter(y => y && y > 0);
+    const totalCites = all.reduce((a, p) => a + (p.citations || 0), 0);
+    const distRaw = this.NOTIONS.map(([label, v]) => ({ label, v, count: all.filter(p => p.fairness_notion === label).length }));
+    const distTotal = distRaw.reduce((a, d) => a + d.count, 0) || 1;
+    const dist = distRaw.map(d => ({
+      label: d.label, count: d.count,
+      barStyle: { width: (100 * d.count / distTotal) + '%', background: `var(${d.v})` },
+      dotStyle: { width: '11px', height: '11px', borderRadius: '3px', background: `var(${d.v})`, display: 'inline-block', flexShrink: 0 },
+    }));
+    const stats = {
+      count: all.length, venueCount: venues.size,
+      yearRange: years.length ? Math.min(...years) + '–' + Math.max(...years) : '—',
+      totalCites: totalCites.toLocaleString(), dist,
+    };
 
-    // Fetch the corresponding JSON record from papers/
-    let bib = '';
-    if (key) {
-      try {
-        const resp = await fetch(`papers/${key}.json`);
-        if (resp.ok) {
-          const rec = await resp.json();
-          bib = (rec.bib_entry || '').trim();
-        }
-      } catch (e) {
-        // ignore fetch errors
-      }
-    }
+    // filters
+    const notionFilters = [{ key: 'all', label: 'All notions', count: all.length, active: s.notion === 'all',
+        style: this.chipStyle(s.notion === 'all', null), on: () => this.setState({ notion: 'all' }) }]
+      .concat(this.NOTIONS.map(([label, v]) => ({
+        key: label, label, count: all.filter(p => p.fairness_notion === label).length,
+        style: this.chipStyle(s.notion === label, v),
+        on: () => this.setState({ notion: s.notion === label ? 'all' : label }),
+      })));
+    const natureFilters = [{ key: 'all', label: 'All work', count: all.length,
+        style: this.chipStyle(s.nature === 'all', null), on: () => this.setState({ nature: 'all' }) }]
+      .concat(this.NATURES.map(label => ({
+        key: label, label, count: all.filter(p => (p.work_nature || []).includes(label)).length,
+        style: this.chipStyle(s.nature === label, null),
+        on: () => this.setState({ nature: s.nature === label ? 'all' : label }),
+      })));
 
-    if (bib) {
-      bibEntries.push(bib);
-    } else {
-      missingTitles.push(r.title);
-    }
+    const yearList = [...new Set(years)].sort((a, b) => b - a);
+    const yearOptions = [{ value: 'all', label: 'All years' }].concat(yearList.map(y => ({ value: String(y), label: String(y) })));
+
+    const selCount = Object.keys(s.selected).filter(k => s.selected[k]).length;
+
+    const seg = (active) => ({ padding: '5px 13px', fontSize: '12px', fontWeight: 600, border: 'none', cursor: 'pointer', borderRadius: '7px',
+      background: active ? 'var(--surface)' : 'transparent', color: active ? 'var(--ink)' : 'var(--muted)', boxShadow: active ? '0 1px 2px rgba(0,0,0,.1)' : 'none' });
+
+    const papers = list.map((p, i) => {
+      const nv = this.notionVar(p.fairness_notion);
+      const open = (p.open_problems || []).filter(Boolean);
+      const hasNotes = !!(p.definition || p.contribution || open.length);
+      return {
+        id: p.id, num: i + 1, title: p.title, link: p.link || p.pdf || '#',
+        authorsText: p.authors || 'Authors not listed',
+        venueYearText: [p.venue, p.year].filter(Boolean).join(' · ') || '—',
+        citations: (p.citations || 0).toLocaleString(),
+        scholarUrl: 'https://scholar.google.com/scholar?q=' + encodeURIComponent(p.title || ''),
+        notionLabel: p.fairness_notion,
+        notionStyle: { display: 'inline-block', padding: '3px 10px', borderRadius: '7px', fontSize: '11.5px', fontWeight: 600,
+          color: `var(${nv})`, background: `color-mix(in srgb, var(${nv}) 12%, transparent)`, border: `1px solid color-mix(in srgb, var(${nv}) 30%, transparent)` },
+        natures: (p.work_nature || []).map(n => ({ label: n })),
+        selected: !!s.selected[p.id],
+        onToggleSel: () => this.setState(st => ({ selected: { ...st.selected, [p.id]: !st.selected[p.id] } })),
+        cardStyle: { background: 'var(--surface)', border: s.selected[p.id] ? '1px solid var(--accent)' : '1px solid var(--border)',
+          borderRadius: 'var(--radius)', padding: '15px 18px', boxShadow: 'var(--shadow)', animation: 'fadeUp .3s ease both',
+          transition: 'border-color .15s' },
+        expanded: !!s.expanded[p.id],
+        onToggleExp: () => this.setState(st => ({ expanded: { ...st.expanded, [p.id]: !st.expanded[p.id] } })),
+        detailLabel: s.expanded[p.id] ? 'Hide details' : 'Details',
+        detailBtnStyle: { marginLeft: 'auto', padding: '4px 11px', borderRadius: '7px', fontSize: '12px', fontWeight: 500, cursor: 'pointer',
+          background: 'transparent', border: '1px solid var(--border)', color: 'var(--muted)' },
+        hasNotes, noNotes: !hasNotes,
+        definition: p.definition || '', contribution: p.contribution || '',
+        openProblems: open.map(t => ({ text: t })), hasOpen: open.length > 0,
+        pdf: p.pdf || '', bibLink: p.bib_link || '',
+        onCopyBib: () => this.copyBib(p), copyLabel: s.copiedId === p.id ? 'Copied ✓' : 'Copy BibTeX',
+        onReport: () => this.report(p), onEdit: () => this.openEdit(p),
+        aiLabeled: !!p.ai_labeled, aiNotes: !!p.ai_notes,
+        aiInfo: !!(p.ai_labeled || p.ai_notes),
+        aiInfoLabel: p.ai_notes ? 'AI-generated details & tags · unverified' : 'AI-generated tags · unverified',
+      };
+    });
+
+    // edit/correction modal
+    const ef = s.editForm || { definition: '', contribution: '', openText: '', notion: this.NOTIONS[0][0], natures: [], newTag: '', comments: '' };
+    const editTitle = (all.find(x => x.id === s.editId) || {}).title || '';
+    const natChip = (on) => ({ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 11px',
+      border: on ? '1px solid var(--accent)' : '1px solid var(--border-strong)', borderRadius: '8px', fontSize: '12.5px',
+      cursor: 'pointer', background: on ? 'var(--accent-soft)' : 'transparent', color: on ? 'var(--ink)' : 'var(--muted)' });
+    const editNatures = this.NATURES.map(label => {
+      const checked = (ef.natures || []).includes(label);
+      return { label, checked, onToggle: () => this.toggleEditNature(label), style: natChip(checked) };
+    });
+    const editNotionOptions = this.NOTIONS.map(([label]) => ({ value: label, label }));
+
+    return {
+      loaded: s.loaded, notLoaded: !s.loaded, isEmpty: s.loaded && list.length === 0,
+      showDashboard: this.props.showDashboard !== false,
+      lastUpdate: this.updateLine(),
+      theme: s.theme, lightSeg: seg(s.theme === 'light'), darkSeg: seg(s.theme === 'dark'),
+      onLight: () => this.applyTheme('light'), onDark: () => this.applyTheme('dark'),
+      stats,
+      q: s.q, onSearch: (e) => this.setState({ q: e.target.value }),
+      sortValue: s.sort, onSort: (e) => this.setState({ sort: e.target.value }),
+      selectedYear: s.year, onYear: (e) => this.setState({ year: e.target.value }), yearOptions,
+      notionFilters, natureFilters,
+      showingText: s.loaded ? `Showing ${list.length} of ${all.length} publications` : '',
+      selectedCount: selCount,
+      downloadLabel: selCount > 0 ? `Download BibTeX (${selCount})` : 'Download BibTeX',
+      downloadStyle: { padding: '8px 15px', borderRadius: '9px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', border: 'none',
+        background: selCount > 0 ? 'var(--accent)' : 'var(--subtle)', color: selCount > 0 ? '#fff' : 'var(--faint)' },
+      onSelectAll: () => this.setState(st => { const sel = { ...st.selected }; list.forEach(p => sel[p.id] = true); return { selected: sel }; }),
+      onClear: () => this.setState({ selected: {} }),
+      onDownload: this.download,
+      onOpenSubmit: () => this.setState({ showSubmit: true }),
+      onCloseSubmit: () => this.setState({ showSubmit: false }),
+      showSubmit: s.showSubmit, onSubmitForm: this.submitForm,
+      stop: (e) => e.stopPropagation(),
+      showEdit: s.showEdit, onCloseEdit: () => this.setState({ showEdit: false }),
+      editTitle,
+      editDefinition: ef.definition, onEditDefinition: (e) => this.setEdit('definition', e.target.value),
+      editContribution: ef.contribution, onEditContribution: (e) => this.setEdit('contribution', e.target.value),
+      editOpen: ef.openText, onEditOpen: (e) => this.setEdit('openText', e.target.value),
+      editNotion: ef.notion, onEditNotion: (e) => this.setEdit('notion', e.target.value), editNotionOptions,
+      editNatures,
+      editNewTag: ef.newTag, onEditNewTag: (e) => this.setEdit('newTag', e.target.value),
+      editComments: ef.comments, onEditComments: (e) => this.setEdit('comments', e.target.value),
+      onSubmitEdit: this.submitEdit,
+      papers,
+    };
   }
-
-  if (bibEntries.length === 0) {
-    showMessageBar('No BibTeX entries found for the selected papers.');
-    return;
-  }
-
-  if (missingTitles.length > 0) {
-    showMessageBar('We could not find the BibTeX entry of: ' + missingTitles.join(', '));
-  }
-
-  // Create a .bib file and trigger download
-  const bibContent = bibEntries.join('\n\n');
-  const blob = new Blob([bibContent], { type: 'application/x-bibtex' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'selected_papers.bib';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-});
-
-// --- Theme toggle logic ---
-function setTheme(theme) {
-  document.body.classList.remove('light-theme', 'dark-theme');
-  document.body.classList.add(theme + '-theme');
-  localStorage.setItem('theme', theme);
 }
-function getPreferredTheme() {
-  return localStorage.getItem('theme') ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-}
-document.getElementById('light-theme-btn').addEventListener('click', () => setTheme('light'));
-document.getElementById('dark-theme-btn').addEventListener('click', () => setTheme('dark'));
-// Set initial theme on page load
-setTheme(getPreferredTheme());
 </script>
 </body>
 </html>
