@@ -1,0 +1,12 @@
+{
+  "title": "Scalable spectral clustering with group fairness constraints",
+  "authors": "Ji Wang and Ding Lu and Ian Davidson and Zhaojun Bai",
+  "citations": 24,
+  "venue_name": "AISTATS",
+  "publication_year": 2023,
+  "labels": [],
+  "link": "http://arxiv.org/abs/2210.16435v3",
+  "link_to_pdf": "http://arxiv.org/pdf/2210.16435v3",
+  "bib_link_url": "https://dblp.org/rec/conf/aistats/WangLDB23",
+  "bib_entry": ""
+}

@@ -17,14 +17,14 @@ logo.png             ← header logo
 
 scripts/
   fc_lib.py              shared helpers + the tagging taxonomy
-  discover.py            biweekly: find new papers  → PR
+  discover.py            monthly: find new papers  → PR
   refresh_citations.py   monthly: Google Scholar counts via SerpApi → PR
-  digest.py              biweekly: summary of what's awaiting you → issue
+  digest.py              monthly: summary of what's awaiting you → issue
 
 .github/workflows/
-  discover.yml         cron: 1st & 15th  (biweekly discovery)
+  discover.yml         cron: 1st of month (discovery)
   citations.yml        cron: 1st of month (citation refresh)
-  digest.yml           cron: 2nd & 16th  (biweekly admin digest)
+  digest.yml           cron: 2nd of month (admin digest)
 ```
 
 Each record in `data/papers.json` carries the two **tag facets** plus the
@@ -38,7 +38,8 @@ Each record in `data/papers.json` carries the two **tag facets** plus the
 | `contribution` | short prose: what the paper adds |
 | `open_problems` | array of strings — shown as the expandable list |
 | `citations`, `citations_updated`, `scholar_id` | maintained by the citation job |
-| `ai_labeled` | `true` = the fairness-notion / work-nature tags (and any notes) were generated automatically and **not yet verified**; the site shows a dashed **AI-labeled** badge. Set it to `false` when you've checked the entry. |
+| `ai_notes` | `true` = the Definition / Contribution / Open-problems were drafted automatically and **not yet verified**; the expanded card shows a gold **AI-generated details · unverified** badge. Set it to `false` once you've checked the notes and the badge disappears. (There is no separate tag-level badge — only the details one.) |
+| `ai_labeled` | legacy flag, no longer shown on the site; safe to ignore. |
 | `status` | `pending-review` while a discovered paper awaits your sign-off; clear it (or leave it) on merge |
 
 ---
@@ -62,7 +63,7 @@ That's it — the cron schedules in the two workflow files do the rest.
 
 ---
 
-## 3. The biweekly approval routine (≈10 min)
+## 3. The monthly approval routine (≈10 min)
 
 When the discovery job runs it opens a PR titled
 **"N new fair-clustering paper(s) for review"**.
@@ -92,17 +93,18 @@ opens a pre-filled issue showing *current → proposed* for each field:
 
 - **`data-correction`** — edits using the existing taxonomy. Apply the ones you
   agree with by editing `data/papers.json` (directly on `main`, or in the
-  current discovery PR), then close the issue. If the entry was `ai_labeled`,
-  flip it to `false` once you've verified it.
+  current discovery PR), then close the issue. If the entry was AI-drafted,
+  flip `ai_notes` to `false` once you've verified it.
 - **`tag-proposal`** — the reader asked for a *new* tag the taxonomy doesn't
   have yet. **Verify before adding:** decide whether it's worth a new facet
   value; if so, add it to `WORK_NATURES` (or the notion list) in
   `scripts/fc_lib.py` *and* the `NATURES` / `NOTIONS` arrays in the site, then
   apply it. Existing-tag changes need no such gate.
 
-> The **AI-labeled** badge marks entries whose tags/notes the bot guessed.
-> Clearing `ai_labeled` (to `false`) is how you certify an entry as
-> human-checked — the badge then disappears on the live site.
+> The **AI-generated details · unverified** badge (gold) marks entries whose
+> Definition / Contribution / Open-problems the bot drafted. Clearing `ai_notes`
+> (to `false`) certifies the notes as human-checked — the badge then disappears
+> on the live site. It only ever shows when the entry actually has notes.
 
 > **Tip:** you can trigger a scan any time from the **Actions** tab →
 > *Discover new papers* → **Run workflow** (no need to wait for the cron).
@@ -148,10 +150,10 @@ leaves the flagged ones for you.
 
 | Job | Schedule | Output | Your action |
 |---|---|---|---|
-| Discovery (arXiv + DBLP) | 1st & 15th, 06:00 UTC | PR with new candidates | Review tags + notes, merge |
+| Discovery (arXiv + DBLP) | 1st, 06:00 UTC | PR with new candidates | Review tags + notes, merge |
 | Citation refresh (SerpApi/Scholar) | 1st, 06:00 UTC | PR with citation deltas | Skim, merge |
-| **Admin digest** | 2nd & 16th, 07:00 UTC | summary issue (what's awaiting you) | Read, act on links |
-| Site submissions / corrections / tag proposals | on demand (users) | GitHub issues | Triage into `papers.json` |
+| **Admin digest** | 2nd, 07:00 UTC | summary issue (what's awaiting you) | Read, act on links |
+| Site submissions / corrections / tag proposals | on demand (users) | GitHub issues (`needs-approval`) | Triage into `papers.json` |
 
 Change a schedule by editing the `cron:` line in the relevant workflow
 ([crontab.guru](https://crontab.guru) helps).
@@ -169,8 +171,8 @@ ways — pick whichever fits:
 count). Actions tab → **Edit a paper** → **Run workflow** → fill the form
 (paper id or title, field, new value) → it opens a PR (or commits directly if
 you tick the box). Example: paper `BackursIOSVW19`, field `citations`,
-value `335`. Setting notes/tags this way auto-clears the AI-labeled / AI-details
-flags and stamps the date. No clone, no conflict.
+value `335`. Setting notes this way auto-clears the AI-details flag (`ai_notes`)
+and stamps the date. No clone, no conflict.
 
 **b) Edit the file in the browser.** Open `data/papers.json` on github.com →
 pencil icon → change the record → "Commit" (to a new branch → PR, or straight to

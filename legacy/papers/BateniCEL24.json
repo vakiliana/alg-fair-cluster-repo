@@ -1,0 +1,12 @@
+{
+  "title": "A scalable algorithm for individually fair k-means clustering",
+  "authors": "MohammadHossein Bateni and Vincent Cohen-Addad and Alessandro Epasto and Silvio Lattanzi",
+  "citations": 6,
+  "venue_name": "AISTATS",
+  "publication_year": 2024,
+  "labels": [],
+  "link": "http://arxiv.org/abs/2402.06730v1",
+  "link_to_pdf": "http://arxiv.org/pdf/2402.06730v1",
+  "bib_link_url": "https://dblp.org/rec/conf/aistats/BateniCEL24",
+  "bib_entry": ""
+}

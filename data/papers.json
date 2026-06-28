@@ -18,11 +18,11 @@
     ],
     "tags": [],
     "definition": "Introduces the *fairlet* decomposition: a clustering is fair if every cluster preserves the population-level ratio of two protected groups (the \"balance\" notion). Fairness is enforced as a hard constraint on group proportions within each cluster.",
-    "contribution": "Reduces fair k-center and fair k-median (with two colors) to first partitioning points into small fair sets (fairlets) and then clustering the fairlet centers, giving the first approximation algorithms for fair clustering with provable guarantees.",
+    "contribution": "Reduces fair $k$-center and fair $k$-median (with two colors) to first partitioning points into small fair sets (fairlets) and then clustering the fairlet centers, giving the first approximation algorithms for fair clustering with provable guarantees.",
     "open_problems": [
       "Extension beyond two protected groups to many colors with tight ratios",
       "Scalability of fairlet decomposition to massive datasets",
-      "Fairlets for k-means (sum-of-squares) objective"
+      "Fairlets for $k$-means (sum-of-squares) objective"
     ],
     "citations_updated": "2026-06-01",
     "added": "2025-01-01",
@@ -47,8 +47,8 @@
       "Algorithms / systems"
     ],
     "tags": [],
-    "definition": "Generalizes balance to (alpha, beta)-proportional fairness: each protected group's representation in every cluster is bounded within [beta, alpha] of its overall fraction, supporting multiple, overlapping groups.",
-    "contribution": "Gives a general framework that converts any vanilla clustering approximation into a fair one with only a small additive violation of the fairness constraints, for k-center, k-median and k-means.",
+    "definition": "Generalizes balance to $(\\alpha,\\beta)$-proportional fairness: each protected group's representation in every cluster is bounded within $[\\beta,\\alpha]$ of its overall fraction, supporting multiple, overlapping groups.",
+    "contribution": "Gives a general framework that converts any vanilla clustering approximation into a fair one with only a small additive violation of the fairness constraints, for $k$-center, $k$-median and $k$-means.",
     "open_problems": [
       "Eliminating the additive constraint violation",
       "Lower bounds on the price of fairness for multiple overlapping groups"
@@ -119,7 +119,7 @@
   },
   {
     "id": "AngelidakisKSZ22",
-    "title": "Fair k-center clustering for data summarization",
+    "title": "Fair $k$-center clustering for data summarization",
     "authors": "Haris Angelidakis, Adam Kurpisz, Leon Sering, Rico Zenklusen",
     "year": 2022,
     "venue": "ICML",
@@ -136,7 +136,7 @@
     ],
     "tags": [],
     "definition": "Group fairness as representation constraints for data summarization: when choosing k centers (a summary), each protected group must receive a prescribed number/share of the selected centers.",
-    "contribution": "Approximation algorithms for k-center summarization under per-group representation (cardinality) constraints, balancing summary quality against fair coverage of every group.",
+    "contribution": "Approximation algorithms for $k$-center summarization under per-group representation (cardinality) constraints, balancing summary quality against fair coverage of every group.",
     "open_problems": [
       "Handling many simultaneous / overlapping sensitive attributes",
       "Scaling fair summarization to streaming or massive inputs",
@@ -164,10 +164,10 @@
       "Theory / approximation"
     ],
     "tags": [],
-    "definition": "Proportional fairness (the *core*): any block of at least n/k points that could all move closer to some alternative center has a justified complaint; a clustering is proportionally fair if no such blocking coalition exists.",
+    "definition": "Proportional fairness (the *core*): any block of at least $n/k$ points that could all move closer to some alternative center has a justified complaint; a clustering is proportionally fair if no such blocking coalition exists.",
     "contribution": "Introduces proportional fairness for centroid clustering, proves approximately-proportional (approximate-core) solutions always exist and are computable, and bounds the price of proportional fairness.",
     "open_problems": [
-      "Whether an exact core solution always exists for k-means",
+      "Whether an exact core solution always exists for $k$-means",
       "Efficient algorithms achieving the best possible proportionality factor",
       "Proportional fairness for non-centroid and correlation clustering"
     ],
@@ -178,7 +178,7 @@
   },
   {
     "id": "GhadiriSV21",
-    "title": "Socially fair k-means clustering",
+    "title": "Socially fair $k$-means clustering",
     "authors": "Mehrdad Ghadiri, Samira Samadi, Santosh S. Vempala",
     "year": 2021,
     "venue": "FAccT",
@@ -194,10 +194,10 @@
       "Theory / approximation"
     ],
     "tags": [],
-    "definition": "Socially fair (min-max) k-means: minimize the maximum average clustering cost over the protected groups, rather than the aggregate cost — protecting the worst-off group.",
-    "contribution": "Formalizes the socially fair k-means objective and gives a practical Lloyd-style algorithm plus approximation analysis, launching the min-max line of work.",
+    "definition": "Socially fair (min-max) $k$-means: minimize the maximum average clustering cost over the protected groups, rather than the aggregate cost — protecting the worst-off group.",
+    "contribution": "Formalizes the socially fair $k$-means objective and gives a practical Lloyd-style algorithm plus approximation analysis, launching the min-max line of work.",
     "open_problems": [
-      "Tight approximation factor for socially fair k-means",
+      "Tight approximation factor for socially fair $k$-means",
       "Hardness of the min-max objective for many groups"
     ],
     "citations_updated": "2026-06-01",
@@ -253,7 +253,7 @@
     ],
     "tags": [],
     "definition": "“Essentially fair” clustering: each cluster matches the dataset’s group proportions up to a small additive slack — a relaxation of exact balance that admits good approximations.",
-    "contribution": "A general framework converting standard k-center/median/means approximations into fair ones with bounded constraint violation, plus bicriteria guarantees and structural results on the cost of fairness.",
+    "contribution": "A general framework converting standard $k$-center/median/means approximations into fair ones with bounded constraint violation, plus bicriteria guarantees and structural results on the cost of fairness.",
     "open_problems": [
       "Removing the additive fairness violation entirely",
       "Tight bounds for many overlapping groups",
@@ -282,7 +282,7 @@
       "Algorithms / systems"
     ],
     "tags": [],
-    "definition": "Group-fair clustering under balance constraints (bounded fraction of each protected color per cluster) for the k-means / k-median objective.",
+    "definition": "Group-fair clustering under balance constraints (bounded fraction of each protected color per cluster) for the $k$-means / $k$-median objective.",
     "contribution": "The first **coreset** constructions for fair clustering: small weighted summaries that preserve both cost and fairness constraints, making constrained fair clustering scalable.",
     "open_problems": [
       "Coreset size lower bounds under fairness constraints",
@@ -296,7 +296,7 @@
   },
   {
     "id": "0001SS19",
-    "title": "Fair Coresets and Streaming Algorithms for Fair k-means",
+    "title": "Fair Coresets and Streaming Algorithms for Fair $k$-means",
     "authors": "Melanie Schmidt, Chris Schwiegelshohn, Christian Sohler",
     "year": 2019,
     "venue": "WAOA",
@@ -312,12 +312,12 @@
       "Algorithms / systems"
     ],
     "tags": [],
-    "definition": "Fair k-means in the fairlet/balance sense: every cluster must preserve the dataset’s group proportions.",
-    "contribution": "Introduces **fair coresets** — shows any k-means coreset can be made fair — and uses them to give the first streaming algorithm for fair k-means.",
+    "definition": "Fair $k$-means in the fairlet/balance sense: every cluster must preserve the dataset’s group proportions.",
+    "contribution": "Introduces **fair coresets** — shows any $k$-means coreset can be made fair — and uses them to give the first streaming algorithm for fair $k$-means.",
     "open_problems": [
       "Streaming fair clustering with many groups",
       "Fully-dynamic maintenance of fair coresets",
-      "Fair coresets for objectives beyond k-means"
+      "Fair coresets for objectives beyond $k$-means"
     ],
     "citations_updated": "2026-06-01",
     "added": "2025-01-01",
@@ -385,7 +385,7 @@
   },
   {
     "id": "MahabadiV20",
-    "title": "Individual fairness for k-clustering",
+    "title": "Individual fairness for $k$-clustering",
     "authors": "Sepideh Mahabadi, Ali Vakilian",
     "year": 2020,
     "venue": "ICML",
@@ -401,8 +401,8 @@
       "Algorithms / systems"
     ],
     "tags": [],
-    "definition": "Individual fairness for clustering (Jung–Kannan–Lutz style): every point is entitled to a center within its n/k nearest-neighbor radius, so no individual is left far from a center relative to the local density.",
-    "contribution": "Gives the first approximation algorithms (bicriteria and true) for individually fair k-clustering via LP relaxation and rounding.",
+    "definition": "Individual fairness for clustering (Jung–Kannan–Lutz style): every point is entitled to a center within its $n/k$ nearest-neighbor radius, so no individual is left far from a center relative to the local density.",
+    "contribution": "Gives the first approximation algorithms (bicriteria and true) for individually fair $k$-clustering via LP relaxation and rounding.",
     "open_problems": [
       "Constant-factor approximation without bicriteria relaxation",
       "Combining individual fairness with group fairness",
@@ -504,7 +504,7 @@
   },
   {
     "id": "JiaSS20",
-    "title": "Fair colorful k-center clustering",
+    "title": "Fair colorful $k$-center clustering",
     "authors": "Xinrui Jia, Kshiteej Sheth, Ola Svensson",
     "year": 2020,
     "venue": "IPCO",
@@ -519,12 +519,12 @@
       "Theory / approximation"
     ],
     "tags": [],
-    "definition": "Fair / colorful k-center: points carry colors with per-color coverage requirements; choose centers minimizing the covering radius while meeting every color’s quota (optionally with outliers).",
-    "contribution": "Improved constant-factor approximations for colorful (fair) k-center, including the outlier setting, sharpening earlier pseudo-approximations.",
+    "definition": "Fair / colorful $k$-center: points carry colors with per-color coverage requirements; choose centers minimizing the covering radius while meeting every color’s quota (optionally with outliers).",
+    "contribution": "Improved constant-factor approximations for colorful (fair) $k$-center, including the outlier setting, sharpening earlier pseudo-approximations.",
     "open_problems": [
       "Avoiding exponential dependence on the number of colors",
-      "Tight approximation factors for fair k-center with outliers",
-      "Streaming / distributed colorful k-center"
+      "Tight approximation factors for fair $k$-center with outliers",
+      "Streaming / distributed colorful $k$-center"
     ],
     "citations_updated": "2026-06-01",
     "added": "2025-01-01",
@@ -548,8 +548,8 @@
       "Theory / approximation"
     ],
     "tags": [],
-    "definition": "Socially fair (min-max) clustering under l_p objectives: minimize the largest group-wise cost.",
-    "contribution": "Provides O(log k / log log k)-style approximation guarantees for socially fair k-median/k-means via LP rounding, and matching hardness, characterizing the price of social fairness.",
+    "definition": "Socially fair (min-max) clustering under $\\ell_p$ objectives: minimize the largest group-wise cost.",
+    "contribution": "Provides $O(\\log k / \\log\\log k)$-style approximation guarantees for socially fair $k$-median/$k$-means via LP rounding, and matching hardness, characterizing the price of social fairness.",
     "open_problems": [
       "Closing the gap between upper and lower bounds",
       "Polynomial-time constant-factor approximations for fixed number of groups"
@@ -579,7 +579,7 @@
     "definition": "Proportional fairness / the core: any sufficiently large group of points that could collectively reduce their cost by deviating to their own center constitutes a justified complaint; a clustering is proportionally fair (in the core) if no such blocking coalition exists.",
     "contribution": "Establishes existence and approximation of proportionally fair (core) solutions for centroid clustering and bounds the price of proportional fairness.",
     "open_problems": [
-      "Exact core existence for k-means",
+      "Exact core existence for $k$-means",
       "Efficient algorithms achieving the best possible core approximation",
       "Proportional fairness for non-centroid / correlation clustering"
     ],
@@ -634,7 +634,7 @@
       "Theory / approximation"
     ],
     "tags": [],
-    "definition": "Individual fairness (each point gets a center within its n/k-nearest-neighbor radius) for k-median / k-means.",
+    "definition": "Individual fairness (each point gets a center within its $n/k$-nearest-neighbor radius) for $k$-median / $k$-means.",
     "contribution": "Improved approximation algorithms for individually fair clustering, reducing the cost factor and fairness violation over the original guarantees.",
     "open_problems": [
       "Closing the gap to a tight constant factor",
@@ -648,7 +648,7 @@
   },
   {
     "id": "NegahbaniC21",
-    "title": "Better Algorithms for Individually Fair -Clustering",
+    "title": "Better Algorithms for Individually Fair $k$-Clustering",
     "authors": "Maryam Negahbani, Deeparnab Chakrabarty",
     "year": 2021,
     "venue": "NeurIPS",
@@ -663,8 +663,8 @@
       "Theory / approximation"
     ],
     "tags": [],
-    "definition": "Individual fairness for k-clustering: every point deserves a center within the radius of its n/k nearest neighbours.",
-    "contribution": "Better algorithms for individually fair clustering via LP rounding, improving the approximation ratio for k-median / k-means with individual-fairness guarantees.",
+    "definition": "Individual fairness for $k$-clustering: every point deserves a center within the radius of its $n/k$ nearest neighbours.",
+    "contribution": "Better algorithms for individually fair clustering via LP rounding, improving the approximation ratio for $k$-median / $k$-means with individual-fairness guarantees.",
     "open_problems": [
       "Matching approximation lower bounds",
       "Jointly individual- and group-fair clustering",
@@ -692,7 +692,7 @@
       "Theory / approximation"
     ],
     "tags": [],
-    "definition": "Individual fairness (the neighborhood notion): every point is entitled to a center within the radius that contains its n/k nearest points — no individual may be left disproportionately far from a center.",
+    "definition": "Individual fairness (the neighborhood notion): every point is entitled to a center within the radius that contains its $n/k$ nearest points — no individual may be left disproportionately far from a center.",
     "contribution": "Originates individual fairness for clustering / facility location, establishing existence and approximate computation of solutions that honor every point’s fair radius.",
     "open_problems": [
       "True constant-factor (non-bicriteria) algorithms",
@@ -753,7 +753,7 @@
     ],
     "tags": [],
     "definition": "Balance fairness expressed as a divergence penalty: each cluster’s group proportions are pushed to match the dataset distribution.",
-    "contribution": "A general variational framework that adds a fairness (balance) regularizer to existing clustering objectives (k-means, spectral, …) and scales to large data.",
+    "contribution": "A general variational framework that adds a fairness (balance) regularizer to existing clustering objectives ($k$-means, spectral, …) and scales to large data.",
     "open_problems": [
       "Theoretical balance guarantees for the variational objective",
       "Many groups / continuous sensitive attributes",
@@ -796,7 +796,7 @@
   },
   {
     "id": "BrubachCDKST20",
-    "title": "A pairwise fair and community-preserving approach to k-center clustering",
+    "title": "A pairwise fair and community-preserving approach to $k$-center clustering",
     "authors": "Brian Brubach, Darshan Chakrabarti, John P. Dickerson, Samir Khuller, Aravind Srinivasan, Leonidas Tsepenekas",
     "year": 2020,
     "venue": "ICML",
@@ -813,7 +813,7 @@
     ],
     "tags": [],
     "definition": "Pairwise fairness with community preservation: similar points (same community) should be treated similarly by the clustering, a pairwise/individual-style fairness rather than group balance.",
-    "contribution": "Introduces a pairwise-fair, community-preserving objective for k-center and gives algorithms that respect it.",
+    "contribution": "Introduces a pairwise-fair, community-preserving objective for $k$-center and gives algorithms that respect it.",
     "open_problems": [
       "Reconciling pairwise fairness with group balance",
       "Approximation guarantees for the pairwise objective",
@@ -901,7 +901,7 @@
   },
   {
     "id": "ThejaswiOG21",
-    "title": "Diversity-Aware k-median: Clustering with Fair Center Representation",
+    "title": "Diversity-Aware $k$-median: Clustering with Fair Center Representation",
     "authors": "Suhas Thejaswi, Bruno Ordozgoiti, Aristides Gionis",
     "year": 2021,
     "venue": "PKDD",
@@ -926,7 +926,7 @@
   },
   {
     "id": "ChakrabartiDEST22",
-    "title": "A New Notion of Individually Fair Clustering: -Equitable -Center",
+    "title": "A New Notion of Individually Fair Clustering: $\\alpha$-Equitable $k$-Center",
     "authors": "Darshan Chakrabarti, John P. Dickerson, Seyed A. Esmaeili, Aravind Srinivasan, Leonidas Tsepenekas",
     "year": 2022,
     "venue": "AISTATS",
@@ -976,7 +976,7 @@
   },
   {
     "id": "HarbL20",
-    "title": "KFC: A Scalable Approximation Algorithm for −center Fair Clustering",
+    "title": "KFC: A Scalable Approximation Algorithm for $k$-center Fair Clustering",
     "authors": "Elfarouk Harb, Ho Shan Lam",
     "year": 2020,
     "venue": "NeurIPS",
@@ -1230,7 +1230,7 @@
   },
   {
     "id": "AngelidakisKSZ22-2",
-    "title": "Fair and fast k-center clustering for data summarization",
+    "title": "Fair and fast $k$-center clustering for data summarization",
     "authors": "Haris Angelidakis, Adam Kurpisz, Leon Sering, Rico Zenklusen",
     "year": 2022,
     "venue": "ICML",
@@ -1405,7 +1405,7 @@
   },
   {
     "id": "BajpaiCCN21",
-    "title": "Revisiting Priority -Center: Fairness and Outliers",
+    "title": "Revisiting Priority $k$-Center: Fairness and Outliers",
     "authors": "Tanvi Bajpai, Deeparnab Chakrabarty, Chandra Chekuri, Maryam Negahbani",
     "year": 2021,
     "venue": "ICALP",
@@ -1530,7 +1530,7 @@
   },
   {
     "id": "LiuV22",
-    "title": "A Stochastic Alternating Balance k-Means Algorithm for Fair Clustering",
+    "title": "A Stochastic Alternating Balance $k$-Means Algorithm for Fair Clustering",
     "authors": "Suyun Liu, Lu\\'\\is Nunes Vicente",
     "year": 2022,
     "venue": "LION",
@@ -1555,7 +1555,7 @@
   },
   {
     "id": "BeraDGK22",
-    "title": "Fair k-center clustering in MapReduce and streaming settings",
+    "title": "Fair $k$-center clustering in MapReduce and streaming settings",
     "authors": "Suman K. Bera, Syamantak Das, Sainyam Galhotra, Sagar Sudhir Kale",
     "year": 2022,
     "venue": "WWW",
@@ -1756,7 +1756,7 @@
   },
   {
     "id": "BateniCEL24",
-    "title": "A scalable algorithm for individually fair k-means clustering",
+    "title": "A scalable algorithm for individually fair $k$-means clustering",
     "authors": "MohammadHossein Bateni, Vincent Cohen-Addad, Alessandro Epasto, Silvio Lattanzi",
     "year": 2024,
     "venue": "AISTATS",
@@ -1781,7 +1781,7 @@
   },
   {
     "id": "BeraDGK22-2",
-    "title": "Fair k-Center Clustering",
+    "title": "Fair $k$-Center Clustering",
     "authors": "Suman K. Bera, Syamantak Das, Sainyam Galhotra, Sagar Sudhir Kale",
     "year": 2022,
     "venue": "WWW",
@@ -1806,7 +1806,7 @@
   },
   {
     "id": "XuZYZ021",
-    "title": "Fairness constraint of fuzzy c-means clustering improves clustering fairness",
+    "title": "Fairness constraint of fuzzy $c$-means clustering improves clustering fairness",
     "authors": "Xia Xu, Hui Zhang, Chunming Yang, Xujian Zhao, Bo Li",
     "year": 2021,
     "venue": "acml",
@@ -1831,7 +1831,7 @@
   },
   {
     "id": "KarKMMSDS23",
-    "title": "Feature-based individual fairness in k-clustering",
+    "title": "Feature-based individual fairness in $k$-clustering",
     "authors": "Debajyoti Kar, Mert Kosan, Debmalya Mandal, Sourav Medya, Arlei Silva, Palash Dey, Swagato Sanyal",
     "year": 2023,
     "venue": "atal",
@@ -2007,7 +2007,7 @@
   },
   {
     "id": "abs-2206-11210",
-    "title": "Constant-Factor Approximation Algorithms for Socially Fair -Clustering",
+    "title": "Constant-Factor Approximation Algorithms for Socially Fair $k$-Clustering",
     "authors": "Mehrdad Ghadiri, Mohit Singh, Santosh S. Vempala",
     "year": 2022,
     "venue": "arXiv",
@@ -2083,7 +2083,7 @@
   },
   {
     "id": "Amagata24",
-    "title": "k-Clustering with Fair Outliers",
+    "title": "$k$-Clustering with Fair Outliers",
     "authors": "Daichi Amagata",
     "year": 2024,
     "venue": "AISTATS",
@@ -2184,7 +2184,7 @@
   },
   {
     "id": "PanZQ24",
-    "title": "Balanced fair K-Means clustering",
+    "title": "Balanced fair $K$-Means clustering",
     "authors": "Renbo Pan, Caiming Zhong, Jiangbo Qian",
     "year": 2024,
     "venue": "tii",
@@ -2334,7 +2334,7 @@
   },
   {
     "id": "BohmFLMS21",
-    "title": "Algorithms for fair k-clustering with multiple protected attributes",
+    "title": "Algorithms for fair $k$-clustering with multiple protected attributes",
     "authors": "Matteo Böhm, Adriano Fazzone, Stefano Leonardi, Cristina Menghini, Chris Schwiegelshohn",
     "year": 2021,
     "venue": "orl",
@@ -2359,7 +2359,7 @@
   },
   {
     "id": "CeccarelloPP24",
-    "title": "Fast and accurate fair k-center clustering in doubling metrics",
+    "title": "Fast and accurate fair $k$-center clustering in doubling metrics",
     "authors": "Matteo Ceccarello, Andrea Pietracaprina, Geppino Pucci",
     "year": 2024,
     "venue": "WWW",
@@ -2409,7 +2409,7 @@
   },
   {
     "id": "Amagata24-2",
-    "title": "Fair k-center clustering with outliers",
+    "title": "Fair $k$-center clustering with outliers",
     "authors": "Daichi Amagata",
     "year": 2024,
     "venue": "AISTATS",
@@ -2584,7 +2584,7 @@
   },
   {
     "id": "abs-2405-10378",
-    "title": "A Polynomial-Time Approximation for Pairwise Fair -Median Clustering",
+    "title": "A Polynomial-Time Approximation for Pairwise Fair $k$-Median Clustering",
     "authors": "Sayan Bandyapadhyay, Eden Chlamtác, Yury Makarychev, Ali Vakilian",
     "year": 2024,
     "venue": "arXiv",
@@ -2759,7 +2759,7 @@
   },
   {
     "id": "WuFH0024",
-    "title": "New algorithms for distributed fair k-center clustering: almost accurate as sequential algorithms",
+    "title": "New algorithms for distributed fair $k$-center clustering: almost accurate as sequential algorithms",
     "authors": "Xiaoliang Wu, Qilong Feng, Ziyun Huang, Jinhui Xu, Jianxin Wang",
     "year": 2024,
     "venue": "atal",
@@ -2909,7 +2909,7 @@
   },
   {
     "id": "abs-2205-02052",
-    "title": "Exploring rawlsian fairness for k-means clustering",
+    "title": "Exploring rawlsian fairness for $k$-means clustering",
     "authors": "Stanley Simoes, Deepak P, Muiris MacCarthaigh",
     "year": 2022,
     "venue": "arXiv",
@@ -2984,7 +2984,7 @@
   },
   {
     "id": "abs-2412-10923",
-    "title": "Linear programming based approximation to individually fair k-clustering with outliers",
+    "title": "Linear programming based approximation to individually fair $k$-clustering with outliers",
     "authors": "Binita Maity, Shrutimoy Das, Anirban Dasgupta",
     "year": 2023,
     "venue": "arXiv",
@@ -3261,7 +3261,7 @@
   },
   {
     "id": "Simoes0M24",
-    "title": "Towards fairer centroids in k-means clustering",
+    "title": "Towards fairer centroids in $k$-means clustering",
     "authors": "Stanley Simoes, Deepak P, Muiris MacCarthaigh",
     "year": 2024,
     "venue": "AAAI",
@@ -3311,7 +3311,7 @@
   },
   {
     "id": "XuHDY21",
-    "title": "K-Means Clustering with Fairness Constraints",
+    "title": "$K$-Means Clustering with Fairness Constraints",
     "authors": "Weiting Xu, Jie Hu, Shengdong Du, Yan Yang",
     "year": 2021,
     "venue": "iske",
@@ -3864,7 +3864,7 @@
   },
   {
     "id": "2505.22984v2",
-    "title": "A Computational Approach to Improving Fairness in K-means Clustering",
+    "title": "A Computational Approach to Improving Fairness in $K$-means Clustering",
     "authors": "Guancheng Zhou, Haiping Xu, Hongkang Xu, Chenyu Li, Donghui Yan",
     "year": 2025,
     "venue": "CoRR",
@@ -3889,7 +3889,7 @@
   },
   {
     "id": "abs-2212-14467",
-    "title": "Cluster-level Group Representativity Fairness in -means Clustering",
+    "title": "Cluster-level Group Representativity Fairness in $k$-means Clustering",
     "authors": "Stanley Simoes, Deepak P, Muiris MacCarthaigh",
     "year": 2022,
     "venue": "arXiv",
@@ -3939,7 +3939,7 @@
   },
   {
     "id": "YangYZTQZ25",
-    "title": "Individual Fairness for Fuzzy C-Means Clustering",
+    "title": "Individual Fairness for Fuzzy $C$-Means Clustering",
     "authors": "Zhijing Yang, Boyang Yan, Junjie Zheng, Yiding Tang, Chuan Qian, Hui Zhang",
     "year": 2025,
     "venue": "ICASSP",
@@ -3989,7 +3989,7 @@
   },
   {
     "id": "2406.16557v1",
-    "title": "Efficient k-means with Individual Fairness via Exponential Tilting",
+    "title": "Efficient $k$-means with Individual Fairness via Exponential Tilting",
     "authors": "Shengkun Zhu, Jinshan Zeng, Yuan Sun, Sheng Wang, Xiaodong Li, Zhiyong Peng",
     "year": 2024,
     "venue": "CoRR",
@@ -4039,7 +4039,7 @@
   },
   {
     "id": "comparison-of-fairness-conditions-compar",
-    "title": "Comparison of Fairness Conditions Comparison Study with Fuzzy C-Means and K-Means Methods",
+    "title": "Comparison of Fairness Conditions Comparison Study with Fuzzy $C$-Means and $K$-Means Methods",
     "authors": "I Lestari, A Mahfud, E Zamroni… - QALAMUNA …, 2024 - ejournal.insuriponorogo.ac.id",
     "year": 2024,
     "venue": "",

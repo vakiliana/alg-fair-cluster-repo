@@ -1,4 +1,4 @@
-name: Maintenance digest (biweekly)
+name: Maintenance digest (monthly)
 
 # Compiles everything awaiting review (submissions, corrections, new-tag
 # proposals) plus recent discovery/citation PRs into one summary issue you
@@ -6,8 +6,8 @@ name: Maintenance digest (biweekly)
 
 on:
   schedule:
-    # 07:00 UTC on the 2nd and 16th — the day after each discovery run.
-    - cron: "0 7 2,16 * *"
+    # 07:00 UTC on the 2nd — the day after the monthly discovery + citation runs.
+    - cron: "0 7 2 * *"
   workflow_dispatch: {}
 
 permissions:

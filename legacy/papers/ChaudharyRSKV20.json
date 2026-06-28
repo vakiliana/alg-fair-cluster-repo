@@ -1,0 +1,12 @@
+{
+  "title": "Balancing efficiency and fairness in heterogeneous GPU clusters for deep learning",
+  "authors": "Shubham Chaudhary and Ramachandran Ramjee and Muthian Sivathanu and Nipun Kwatra and Srinidhi Viswanatha",
+  "citations": 190,
+  "venue_name": "EuroSys",
+  "publication_year": 2020,
+  "labels": [],
+  "link": "https://doi.org/10.1145/3342195.3387555",
+  "link_to_pdf": "",
+  "bib_link_url": "https://dblp.org/rec/conf/eurosys/ChaudharyRSKV20",
+  "bib_entry": ""
+}

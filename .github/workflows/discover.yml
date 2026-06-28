@@ -1,4 +1,4 @@
-name: Discover new papers (biweekly)
+name: Discover new papers (monthly)
 
 # Scans arXiv + DBLP for new fair-clustering papers and opens a pull request
 # with the candidates. The PR is your approval queue — review, fix tags,
@@ -6,8 +6,8 @@ name: Discover new papers (biweekly)
 
 on:
   schedule:
-    # 06:00 UTC on the 1st and 15th of every month (~biweekly).
-    - cron: "0 6 1,15 * *"
+    # 06:00 UTC on the 1st of every month.
+    - cron: "0 6 1 * *"
   workflow_dispatch: {}        # lets you run it on demand from the Actions tab
 
 permissions:

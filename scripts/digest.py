@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-digest.py — biweekly maintenance digest for the admin.
+digest.py — monthly maintenance digest for the admin.
 
 Pulls together everything that changed (or is waiting on you) and posts a single
 summary issue you get notified about:

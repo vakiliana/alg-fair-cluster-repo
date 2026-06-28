@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-discover.py — biweekly discovery of new fair-clustering papers.
+discover.py — monthly discovery of new fair-clustering papers.
 
 Scans arXiv + DBLP for candidate papers, filters to genuine fair-clustering
 work, removes anything already in data/papers.json, auto-tags the survivors
