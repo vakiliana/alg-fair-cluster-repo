@@ -151,7 +151,12 @@
   </section>
 
   <section style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin:22px 0 12px;flex-wrap:wrap">
-    <div style="font-size:13.5px;color:var(--muted)">{{ showingText }}</div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <span style="font-size:13.5px;color:var(--muted)">{{ showingText }}</span>
+      <button onClick="{{ onOpenSubmit }}" style="display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--accent);background:none;border:none;cursor:pointer;padding:0">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Submit a missing paper
+      </button>
+    </div>
     <div style="display:flex;align-items:center;gap:8px">
       <button onClick="{{ onSelectAll }}" style="padding:8px 13px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted)">Select shown</button>
       <button onClick="{{ onClear }}" style="padding:8px 13px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted)">Clear</button>
@@ -267,12 +272,28 @@
         <p style="margin:0 0 18px;font-size:13px;color:var(--muted);line-height:1.5">Opens a pre-filled GitHub issue. Every submission is <b>manually reviewed and approved</b> by a maintainer before it appears — nothing is added automatically.</p>
         <form id="fcr-submit" onSubmit="{{ onSubmitForm }}">
           <label style="display:block;font-size:12.5px;font-weight:500;margin-bottom:5px">Title <span style="color:var(--accent)">*</span></label>
-          <input name="title" required style="width:100%;padding:9px 12px;margin-bottom:13px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13.5px;outline:none">
+          <input name="title" required onInput="{{ onSubmitFieldChange }}" style="width:100%;padding:9px 12px;margin-bottom:13px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13.5px;outline:none">
           <label style="display:block;font-size:12.5px;font-weight:500;margin-bottom:5px">Paper link <span style="color:var(--accent)">*</span></label>
-          <input name="paper_link" type="url" required placeholder="https://arxiv.org/abs/…" style="width:100%;padding:9px 12px;margin-bottom:13px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13.5px;outline:none">
+          <input name="paper_link" type="url" required onInput="{{ onSubmitFieldChange }}" placeholder="https://arxiv.org/abs/…" style="width:100%;padding:9px 12px;margin-bottom:13px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13.5px;outline:none">
           <label style="display:block;font-size:12.5px;font-weight:500;margin-bottom:5px">DBLP / BibTeX link</label>
           <input name="bib_link" type="url" placeholder="https://dblp.org/rec/…" style="width:100%;padding:9px 12px;margin-bottom:18px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13.5px;outline:none">
-          <button type="submit" style="width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer">Open submission issue</button>
+          <sc-if value="{{ submitHasMatches }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-bottom:14px;border:1px solid var(--gold-line);background:var(--gold-soft);border-radius:10px;padding:12px 14px">
+              <div style="font-weight:600;font-size:12.5px;color:var(--gold);margin-bottom:9px;display:flex;align-items:center;gap:6px">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>{{ submitMatchHeading }}
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ submitMatches }}" as="m" hint-placeholder-count="1">
+                  <a href="{{ m.link }}" target="_blank" rel="noopener" style="display:block;padding:8px 10px;background:var(--surface);border:1px solid var(--border);border-radius:8px">
+                    <div style="font-size:13px;font-weight:600;color:var(--ink);line-height:1.35">{{ m.title }}</div>
+                    <div style="font-size:11.5px;color:var(--muted);margin-top:3px">{{ m.meta }}</div>
+                  </a>
+                </sc-for>
+              </div>
+              <div style="font-size:11.5px;color:var(--muted);margin-top:9px;line-height:1.45">If your paper is genuinely different, you can still submit it for review.</div>
+            </div>
+          </sc-if>
+          <button type="submit" style="width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer">{{ submitBtnLabel }}</button>
         </form>
       </div>
     </div>
@@ -325,13 +346,20 @@
     </div>
   </sc-if>
 
+  <sc-if value="{{ showTop }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ onScrollTop }}" title="Back to top" aria-label="Back to top" style="position:fixed;right:24px;bottom:24px;z-index:25;width:44px;height:44px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;display:flex;align-items:center;justify-content:center;animation:fadeUp .2s ease both">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
+    </button>
+  </sc-if>
+
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1120,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2563eb&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;showDashboard&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
 class Component extends DCLogic {
   state = { papers: [], loaded: false, q: '', notion: 'all', nature: 'all', year: 'all',
             sort: 'cite-desc', selected: {}, expanded: {}, theme: 'light', showSubmit: false, copiedId: '',
-            showEdit: false, editId: null, editForm: null };
+            showEdit: false, editId: null, editForm: null, showTop: false,
+            submitMatches: [], submitArmed: false };
 
   REPO = 'vakiliana/alg-fair-cluster-repo';
   NOTIONS = [
@@ -352,6 +380,11 @@ class Component extends DCLogic {
       .then(r => r.json())
       .then(d => this.setState({ papers: Array.isArray(d) ? d : [], loaded: true }))
       .catch(() => this.setState({ loaded: true }));
+    this._onScroll = () => {
+      const v = (window.scrollY || document.documentElement.scrollTop || 0) > 400;
+      if (v !== this.state.showTop) this.setState({ showTop: v });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
     // KaTeX loads deferred — re-render once it's ready so math paints.
     if (!window.katex) {
       this._kt = setInterval(() => {
@@ -360,7 +393,10 @@ class Component extends DCLogic {
       setTimeout(() => clearInterval(this._kt), 6000);
     }
   }
-  componentWillUnmount() { if (this._kt) clearInterval(this._kt); }
+  componentWillUnmount() {
+    if (this._kt) clearInterval(this._kt);
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
 
   // Render inline TeX ($...$) to HTML via KaTeX. Plain text (no '$') is returned
   // as a string so the host's inline text-editing still works on it.
@@ -475,13 +511,50 @@ class Component extends DCLogic {
     });
   };
 
+  // Normalized title for dup-matching (TeX-stripped, alphanumerics only).
+  normTitle(s) { return this.stripTeX(s).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
+
+  // Find existing records that likely match a submitted title / link.
+  findDuplicates(title, link) {
+    const nt = this.normTitle(title);
+    if (!nt) return [];
+    const toks = new Set(nt.split(' ').filter(Boolean));
+    const ll = (link || '').toLowerCase();
+    const arx = (ll.match(/arxiv\.org\/(?:abs|pdf)\/([0-9]+\.[0-9]+)/) || [])[1];
+    const out = [];
+    for (const p of this.state.papers) {
+      const pn = this.normTitle(p.title);
+      let hit = false;
+      if (pn && pn === nt) hit = true;
+      else if (pn) {
+        const pt = new Set(pn.split(' ').filter(Boolean));
+        const inter = [...toks].filter(x => pt.has(x)).length;
+        const uni = new Set([...toks, ...pt]).size;
+        if (uni && inter / uni >= 0.8) hit = true;       // near-duplicate title
+      }
+      if (!hit && arx) {
+        const pl = `${p.link || ''} ${p.pdf || ''} ${p.id || ''}`.toLowerCase();
+        if (pl.includes(arx)) hit = true;                 // same arXiv id
+      }
+      if (hit) out.push(p);
+      if (out.length >= 5) break;
+    }
+    return out;
+  }
+
   submitForm = (e) => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.target).entries());
+    // First click: check the database. If matches exist, show them and require
+    // an explicit "Submit anyway" before filing a ticket.
+    if (!this.state.submitArmed) {
+      const matches = this.findDuplicates(d.title, d.paper_link);
+      if (matches.length) { this.setState({ submitMatches: matches, submitArmed: true }); return; }
+    }
     const body = `**Title:** ${d.title}\n**Paper link:** ${d.paper_link}\n**DBLP/BibTeX:** ${d.bib_link || '(none)'}\n\n> ⏳ Pending maintainer approval — this submission is **not** added to the repository until a maintainer reviews and merges it.\n\n_Submitted via the Fair Clustering Repository._`;
     const url = `https://github.com/${this.REPO}/issues/new?title=${encodeURIComponent('[paper] ' + d.title)}&labels=${encodeURIComponent('paper-submission,needs-approval')}&body=${encodeURIComponent(body)}`;
     window.open(url, '_blank');
-    this.setState({ showSubmit: false });
+    this.setState({ showSubmit: false, submitMatches: [], submitArmed: false });
   };
   report = (p) => {
     const body = `**Paper:** ${p.title}\n**Issue:** (describe the correction — wrong venue, citation, BibTeX, tag, etc.)\n\n_Reported via the Fair Clustering Repository._`;
@@ -671,9 +744,20 @@ class Component extends DCLogic {
       onSelectAll: () => this.setState(st => { const sel = { ...st.selected }; list.forEach(p => sel[p.id] = true); return { selected: sel }; }),
       onClear: () => this.setState({ selected: {} }),
       onDownload: this.download,
-      onOpenSubmit: () => this.setState({ showSubmit: true }),
-      onCloseSubmit: () => this.setState({ showSubmit: false }),
+      showTop: s.showTop,
+      onScrollTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+      onOpenSubmit: () => this.setState({ showSubmit: true, submitMatches: [], submitArmed: false }),
+      onCloseSubmit: () => this.setState({ showSubmit: false, submitMatches: [], submitArmed: false }),
+      onSubmitFieldChange: () => { if (s.submitArmed || s.submitMatches.length) this.setState({ submitArmed: false, submitMatches: [] }); },
       showSubmit: s.showSubmit, onSubmitForm: this.submitForm,
+      submitHasMatches: s.submitMatches.length > 0,
+      submitMatchHeading: s.submitMatches.length > 1 ? 'Possibly already in the repository' : 'Possibly already in the repository',
+      submitBtnLabel: s.submitArmed ? 'Submit anyway for review' : 'Check & submit',
+      submitMatches: s.submitMatches.map(p => ({
+        title: this.renderTeX(p.title),
+        meta: [p.authors, [p.venue, p.year].filter(Boolean).join(' '), (p.citations || 0).toLocaleString() + ' citations'].filter(Boolean).join(' · '),
+        link: p.link || p.pdf || ('https://scholar.google.com/scholar?q=' + encodeURIComponent(this.stripTeX(p.title))),
+      })),
       stop: (e) => e.stopPropagation(),
       showEdit: s.showEdit, onCloseEdit: () => this.setState({ showEdit: false }),
       editTitle,
