@@ -1,0 +1,80 @@
+name: Edit a paper (manual)
+
+# One-click editorial change to data/papers.json — entirely from the browser.
+# Actions tab → "Edit a paper" → Run workflow → fill the form → it opens a PR
+# (or commits straight to main if you tick commit_directly). No local git, so
+# this never conflicts with the bot's commits.
+
+on:
+  workflow_dispatch:
+    inputs:
+      paper:
+        description: "Paper id (e.g. BackursIOSVW19) or a unique title substring"
+        required: true
+      field:
+        description: "Field to set"
+        required: true
+        type: choice
+        options:
+          - citations
+          - definition
+          - contribution
+          - open_problems
+          - fairness_notion
+          - work_nature
+          - authors
+          - venue
+          - year
+          - scholar_id
+          - title
+          - ai_labeled
+          - ai_notes
+      value:
+        description: "New value (lists: one item per line or use ||)"
+        required: true
+      commit_directly:
+        description: "Commit straight to main instead of opening a PR"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Apply edit
+        id: edit
+        env:
+          FC_PAPER: ${{ inputs.paper }}
+          FC_FIELD: ${{ inputs.field }}
+          FC_VALUE: ${{ inputs.value }}
+        run: python scripts/edit_paper.py
+
+      - name: Open pull request
+        if: steps.edit.outputs.changed == 'true' && inputs.commit_directly == false
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: bot/manual-edit
+          title: "✏️ Edit ${{ inputs.field }} — ${{ steps.edit.outputs.title }}"
+          body-path: edit_summary.md
+          labels: data-correction, automated
+          commit-message: "Edit ${{ inputs.field }} for ${{ inputs.paper }}"
+          add-paths: data/papers.json
+          delete-branch: true
+
+      - name: Commit to main
+        if: steps.edit.outputs.changed == 'true' && inputs.commit_directly == true
+        run: |
+          git config user.name  "fair-clustering-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/papers.json
+          git commit -m "Edit ${{ inputs.field }} for ${{ inputs.paper }}"
+          git push

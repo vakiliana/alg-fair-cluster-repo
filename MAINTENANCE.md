@@ -158,12 +158,45 @@ Change a schedule by editing the `cron:` line in the relevant workflow
 
 ---
 
-## 6. Editing a paper by hand
+## 6. Editing a paper — the smooth way (no local git)
 
-Everything is just `data/papers.json`. Edit a record, commit to `main`, done.
-To add a paper manually, copy an existing block and fill the fields — only
-`title` is strictly required; missing `bib_entry` falls back to BibTeX
-generated from the metadata when someone downloads it.
+**Recommended: never edit `data/papers.json` on your laptop.** Local edits race
+with the bot's commits to `main`, which is what causes `fetch first` /
+rebase / merge-conflict headaches. Instead, make every change *on GitHub*, three
+ways — pick whichever fits:
+
+**a) One-click "Edit a paper" workflow** (best for a quick fix like a citation
+count). Actions tab → **Edit a paper** → **Run workflow** → fill the form
+(paper id or title, field, new value) → it opens a PR (or commits directly if
+you tick the box). Example: paper `BackursIOSVW19`, field `citations`,
+value `335`. Setting notes/tags this way auto-clears the AI-labeled / AI-details
+flags and stamps the date. No clone, no conflict.
+
+**b) Edit the file in the browser.** Open `data/papers.json` on github.com →
+pencil icon → change the record → "Commit" (to a new branch → PR, or straight to
+`main`). GitHub commits on top of the current tip, so it never conflicts.
+
+**c) Reader "Suggest an edit" issues.** Apply those by doing (a) or (b).
+
+**If you DO keep a local clone**, make pulls painless by only ever *reading*
+locally and pushing code (scripts/site), not data. When you must pull:
+
+```bash
+git pull --rebase --autostash      # rebase your work on top of the bot's commits
+# data/papers.json is machine-generated — if it ever conflicts, just take main's:
+git checkout --theirs data/papers.json && git add data/papers.json && git rebase --continue
+```
+
+To go fully clean and match the remote exactly (discards local changes):
+`git fetch origin && git reset --hard origin/main`.
+
+> **Why this works:** the repo has two writers — you and the automation. Keeping
+> all *data* edits on GitHub means there's effectively one writer to `main` at a
+> time (whoever merges next), so fast-forward pushes just work.
+
+To add a paper manually, the discovery PR is the normal path; or copy an existing
+block in the browser editor and fill the fields — only `title` is strictly
+required (missing `bib_entry` falls back to generated BibTeX on download).
 
 ---
 
