@@ -86,38 +86,67 @@
   </header>
 
   <sc-if value="{{ showDashboard }}" hint-placeholder-val="{{ true }}">
-  <section class="fcr-stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 16px">
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)">
+  <section style="display:flex;flex-wrap:wrap;gap:14px;margin:14px 0 22px;align-items:stretch">
+    <div style="flex:1 1 120px;min-width:110px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center">
       <div class="fcr-stat-num" style="font-family:'Spectral',serif;font-size:30px;font-weight:600;line-height:1">{{ stats.count }}</div>
       <div style="font-size:12px;color:var(--muted);margin-top:5px;letter-spacing:.02em;text-transform:uppercase">Publications</div>
     </div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)">
+    <div style="flex:1 1 120px;min-width:110px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center">
       <div class="fcr-stat-num" style="font-family:'Spectral',serif;font-size:30px;font-weight:600;line-height:1">{{ stats.venueCount }}</div>
       <div style="font-size:12px;color:var(--muted);margin-top:5px;letter-spacing:.02em;text-transform:uppercase">Venues</div>
     </div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)">
-      <div class="fcr-stat-num" style="font-family:'Spectral',serif;font-size:30px;font-weight:600;line-height:1">{{ stats.yearRange }}</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:5px;letter-spacing:.02em;text-transform:uppercase">Years covered</div>
+    <div style="flex:6 1 300px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)">
+      <div style="font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px">Composition by fairness notion</div>
+      <div style="display:flex;height:12px;border-radius:7px;overflow:hidden;background:var(--subtle)">
+        <sc-for list="{{ stats.dist }}" as="seg" hint-placeholder-count="4">
+          <div style="{{ seg.barStyle }}" title="{{ seg.label }}"></div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:12px">
+        <sc-for list="{{ stats.dist }}" as="seg" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted)">
+            <span style="{{ seg.dotStyle }}"></span>
+            <span style="color:var(--ink);font-weight:500">{{ seg.label }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px">{{ seg.count }}</span>
+          </div>
+        </sc-for>
+      </div>
     </div>
   </section>
 
-  <section class="fcr-compose" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:22px;box-shadow:var(--shadow)">
-    <div style="font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px">Composition by fairness notion</div>
-    <div style="display:flex;height:12px;border-radius:7px;overflow:hidden;background:var(--subtle)">
-      <sc-for list="{{ stats.dist }}" as="seg" hint-placeholder-count="4">
-        <div style="{{ seg.barStyle }}" title="{{ seg.label }}"></div>
-      </sc-for>
+  <div style="margin:0 0 16px"><button onClick="{{ onToggleCharts }}" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border-strong);border-radius:9px;padding:9px 15px;font-size:13px;font-weight:600;color:var(--accent);cursor:pointer;box-shadow:var(--shadow)">{{ chartsToggleLabel }}</button></div>
+  <sc-if value="{{ showCharts }}" hint-placeholder-val="{{ false }}">
+  <section class="fcr-charts" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:22px;align-items:stretch">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column">
+      <div style="font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px">Publications by year</div>
+      <div style="flex:1;display:flex;align-items:flex-end;gap:5px;min-height:150px">
+        <sc-for list="{{ stats.yearBars }}" as="b" hint-placeholder-count="9">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:5px;min-width:0">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted)">{{ b.count }}</span>
+            <div title="{{ b.title }}" style="{{ b.barStyle }}"></div>
+            <span style="font-size:10px;color:var(--faint)">{{ b.yearShort }}</span>
+          </div>
+        </sc-for>
+      </div>
     </div>
-    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:12px">
-      <sc-for list="{{ stats.dist }}" as="seg" hint-placeholder-count="4">
-        <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted)">
-          <span style="{{ seg.dotStyle }}"></span>
-          <span style="color:var(--ink);font-weight:500">{{ seg.label }}</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px">{{ seg.count }}</span>
-        </div>
-      </sc-for>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)">
+      <div style="margin-bottom:12px">
+        <span style="font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase">Top venues</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <sc-for list="{{ stats.venueBars }}" as="v" hint-placeholder-count="8">
+          <div style="display:flex;align-items:center;gap:9px">
+            <span title="{{ v.venue }}" style="width:118px;flex-shrink:0;font-size:11.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ v.venue }}</span>
+            <div style="flex:1;background:var(--subtle);border-radius:5px;height:14px;overflow:hidden">
+              <div style="{{ v.barStyle }}"></div>
+            </div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);width:20px;text-align:right;flex-shrink:0">{{ v.count }}</span>
+          </div>
+        </sc-for>
+      </div>
     </div>
   </section>
+  </sc-if>
   </sc-if>
 
   <section style="position:sticky;top:0;z-index:6;padding:14px 0 4px;background:var(--bg);backdrop-filter:blur(6px)">
@@ -364,7 +393,7 @@
 class Component extends DCLogic {
   state = { papers: [], loaded: false, q: '', notion: 'all', nature: 'all', year: 'all',
             sort: 'cite-desc', selected: {}, expanded: {}, theme: 'light', showSubmit: false, copiedId: '',
-            showEdit: false, editId: null, editForm: null, showTop: false,
+            showEdit: false, editId: null, editForm: null, showTop: false, venuesExpanded: false, showCharts: false,
             submitMatches: [], submitArmed: false };
 
   REPO = 'vakiliana/alg-fair-cluster-repo';
@@ -653,10 +682,39 @@ class Component extends DCLogic {
       barStyle: { width: (100 * d.count / distTotal) + '%', background: `var(${d.v})` },
       dotStyle: { width: '11px', height: '11px', borderRadius: '3px', background: `var(${d.v})`, display: 'inline-block', flexShrink: 0 },
     }));
+    // year histogram (publications per year across the full range)
+    const yearCounts = {};
+    years.forEach(y => { yearCounts[y] = (yearCounts[y] || 0) + 1; });
+    const ysorted = Object.keys(yearCounts).map(Number).sort((a, b) => a - b);
+    const maxYearCount = Math.max(1, ...Object.values(yearCounts), 1);
+    const yearBars = [];
+    if (ysorted.length) {
+      for (let y = ysorted[0]; y <= ysorted[ysorted.length - 1]; y++) {
+        const cnt = yearCounts[y] || 0;
+        yearBars.push({ year: y, yearShort: "'" + String(y).slice(2), count: cnt,
+          title: y + ': ' + cnt + ' publication' + (cnt === 1 ? '' : 's'),
+          barStyle: { width: '100%', height: Math.max(3, Math.round(100 * cnt / maxYearCount)) + '%', background: 'var(--accent)', borderRadius: '4px 4px 0 0', minHeight: '3px', transition: 'height .3s' } });
+      }
+    }
+    // venue histogram (sorted by publication count, top 8 with expand-all)
+    const venueCounts = {};
+    all.forEach(p => { if (p.venue) venueCounts[p.venue] = (venueCounts[p.venue] || 0) + 1; });
+    const venueArr = Object.entries(venueCounts).map(([venue, count]) => ({ venue, count }))
+      .sort((a, b) => b.count - a.count || a.venue.localeCompare(b.venue));
+    const maxVenueCount = Math.max(1, ...venueArr.map(v => v.count));
+    const TOPV = 10;
+    const venueShown = venueArr.slice(0, 10);
+    const venueBars = venueShown.map(v => ({ venue: v.venue, count: v.count,
+      barStyle: { width: Math.max(5, Math.round(100 * v.count / maxVenueCount)) + '%', height: '100%', background: 'var(--accent)', borderRadius: '5px' } }));
+
     const stats = {
       count: all.length, venueCount: venues.size,
       yearRange: years.length ? Math.min(...years) + '–' + Math.max(...years) : '—',
       totalCites: totalCites.toLocaleString(), dist,
+      yearBars, venueBars,
+      hasMoreVenues: venueArr.length > TOPV,
+      venuesToggleLabel: s.venuesExpanded ? 'Show fewer ▴' : 'Show all ' + venueArr.length + ' venues ▾',
+      onToggleVenues: () => this.setState(st => ({ venuesExpanded: !st.venuesExpanded })),
     };
 
     // filters
@@ -734,6 +792,9 @@ class Component extends DCLogic {
     return {
       loaded: s.loaded, notLoaded: !s.loaded, isEmpty: s.loaded && list.length === 0,
       showDashboard: this.props.showDashboard !== false,
+      showCharts: s.showCharts,
+      onToggleCharts: () => this.setState(st => ({ showCharts: !st.showCharts })),
+      chartsToggleLabel: s.showCharts ? '▴  Hide detailed stats' : '▾  Show more stats (by year & venue)',
       lastUpdate: this.updateLine(),
       theme: s.theme, lightSeg: seg(s.theme === 'light'), darkSeg: seg(s.theme === 'dark'),
       onLight: () => this.applyTheme('light'), onDark: () => this.applyTheme('dark'),
