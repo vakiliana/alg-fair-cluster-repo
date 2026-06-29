@@ -150,25 +150,87 @@
     h1.title{font-size:30px}
   }
 
-  /* ---------- PRINT / PDF ---------- */
+  /* ---------- PRINT / PDF — single-column academic article ---------- */
   @media print{
-    @page{margin:22mm 20mm 20mm;}
-    body{background:#fff;font-size:10.5pt;line-height:1.5}
-    .wrap{display:block;max-width:none;padding:0}
-    nav.toc,.totop,.sec-fb,.no-print,.btn{display:none !important}
-    .masthead,.abstract,.provenance,.masthead-rule,article,section.refs,.doc-footer{max-width:none;margin:0}
-    h1.title{font-size:22pt}.subtitle{font-size:13pt}
-    article{padding:0}
-    article h2{font-size:15pt;margin-top:18pt;break-after:avoid}
-    article h3{font-size:12.5pt;break-after:avoid}
-    article h4{font-size:11pt}
-    p,li{orphans:2;widows:2}
-    figure.fig,.table-wrap,.callout{break-inside:avoid}
-    .ai-banner{background:#f7efd8 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    .provenance,.abstract,.callout.question,table.results tbody tr:hover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    a.cite,a{color:#19427f !important}
-    section.refs{break-before:page}
-    .abstract{border-left-color:#1f5fbf !important}
+    @page{margin:20mm 18mm 18mm;}
+    html,body{background:#fff}
+    body{font-family:var(--serif);color:#000;font-size:10pt;line-height:1.42;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .wrap{display:block;max-width:none;padding:0;gap:0}
+    nav.toc,.totop,.sec-fb,.sec-admin,.no-print,.btn,.meta-row,.eyebrow,#admin-bar{display:none !important}
+    .masthead,.abstract,.provenance,.masthead-rule,article,section.refs,.doc-footer{grid-column:auto;max-width:none;width:auto;margin:0}
+
+    /* Title block */
+    .masthead{text-align:center;padding:0 0 4pt}
+    h1.title{font-family:var(--serif);font-size:19pt;line-height:1.12;margin:0 0 4pt}
+    .subtitle{font-size:12pt;margin:0 0 8pt}
+    .byline{font-size:10.5pt;text-align:center}
+    .byline a{font-family:var(--serif)}
+    .masthead-rule{display:none}
+
+    /* Abstract + provenance */
+    .abstract{margin:12pt 6% 0;padding:0;background:none;border:none;border-left:none}
+    .abstract h2{font-family:var(--serif);font-size:10pt;font-weight:700;text-transform:none;letter-spacing:0;color:#000;text-align:center;margin:0 0 3pt}
+    .abstract .tag{display:none}
+    .abstract p{font-size:9.5pt;line-height:1.4;text-align:justify;hyphens:auto;color:#000}
+    .provenance{margin:8pt 6% 0;background:#f4efe2 !important;border:1px solid #d9cba0;color:#3f3008;font-size:8.5pt}
+    .provenance .h{color:#7a5a12}
+
+    /* Section numbering + headings */
+    article{counter-reset:sec;padding:0;margin-top:10pt}
+    article h2{counter-reset:sub;font-family:var(--serif);font-size:13pt;font-weight:700;margin:14pt 0 4pt;break-after:avoid}
+    article h2::before{counter-increment:sec;content:counter(sec) "\2003"}
+    article h3{counter-reset:ssub;font-family:var(--serif);font-size:11pt;font-weight:700;font-style:normal;margin:9pt 0 3pt;break-after:avoid}
+    article h3::before{counter-increment:sub;content:counter(sec) "." counter(sub) "\2002"}
+    article h4{font-family:var(--serif);font-size:10pt;font-weight:700;font-style:italic;color:#000;margin:7pt 0 2pt;break-after:avoid}
+    article h4::before{counter-increment:ssub;content:counter(sec) "." counter(sub) "." counter(ssub) "\2002";font-style:normal}
+    h2.ai-section::after{font-family:var(--sans);font-size:7pt;color:#7a5a12;background:none;border:1px solid #d9cba0}
+
+    /* Body — justified, indented, no inter-paragraph gap (article style) */
+    article p{margin:0;text-indent:1.4em;text-align:justify;hyphens:auto;font-size:10pt}
+    article h2 + p,article h3 + p,article h4 + p,.ai-banner + p,p.runin{text-indent:0}
+    p.runin{margin-top:5pt}
+    article ul.open-list{margin:5pt 0}
+    article ul.open-list li{margin-bottom:3pt}
+    p,li{orphans:3;widows:3}
+
+    /* AI banner — quiet inline note */
+    .ai-banner{background:#f4efe2 !important;border:1px solid #d9cba0;color:#5a4313;font-size:8.5pt;padding:5pt 8pt;margin:5pt 0 7pt}
+    .ai-banner svg{color:#7a5a12}
+
+    /* Callout questions */
+    .callout.question{background:#eef3fc !important;border:1px solid #c8d8f0;padding:6pt 10pt;margin:7pt 0}
+    .callout.question p{font-size:9.5pt;text-indent:0;color:#102a52}
+    .callout .callout-tag{color:#19427f;font-size:8pt}
+
+    /* Figures + taxonomy scaled to page width */
+    figure.fig{margin:10pt 0;break-inside:avoid}
+    figure.fig img{border:none;padding:0;max-width:80%}
+    figcaption{font-size:8.5pt;color:#222;max-width:92%}
+    #fig-taxonomy .tx-scroll{overflow:visible;height:auto;text-align:center}
+    #fig-taxonomy .tx-stage{zoom:.6}
+
+    /* Table */
+    .table-wrap{break-inside:avoid;margin:9pt 0}
+    table.results{font-size:8.2pt}
+    table.results caption{font-size:8.5pt;text-align:left}
+    table.results th{font-family:var(--sans);font-size:7.5pt;border-bottom:1.2pt solid #000}
+    table.results td{border-bottom:.5pt solid #bbb;padding:3pt 6pt}
+    table.results tbody tr:hover{background:none}
+
+    /* References — hanging indent, compact */
+    section.refs{break-before:auto;margin-top:14pt;border-top:.8pt solid #000;padding-top:8pt}
+    section.refs h2{font-family:var(--serif);font-size:13pt}
+    section.refs h2::before{content:none}
+    ol.reflist li{font-size:9pt;line-height:1.34;padding-left:30pt;margin-bottom:4pt;color:#000}
+    ol.reflist li .rn{font-family:var(--serif);color:#000}
+    ol.reflist li .rtitle{color:#000;font-style:italic;font-weight:400}
+    ol.reflist li .rai{color:#7a5a12;border-color:#d9cba0}
+    ol.reflist li a.rlink{display:none}
+
+    a.cite,a:not(.txb){color:#000 !important;text-decoration:none}
+    #fig-taxonomy .txb{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .doc-footer{border-top:.5pt solid #999;font-size:8pt;color:#444;margin-top:10pt}
+    .pending{display:none}
   }
 </style>
 </helmet>
