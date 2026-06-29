@@ -1,0 +1,56 @@
+name: Survey — mark AI section reviewed (admin)
+
+# Marks an AI-drafted survey section as author-reviewed, which removes its
+# "AI-drafted" banner and tag on the website. Only repository collaborators
+# can run workflows, so this is effectively admin-only.
+#
+# Actions tab → "Survey — mark AI section reviewed" → Run workflow →
+# pick the section (or "all") → Run.
+
+on:
+  workflow_dispatch:
+    inputs:
+      section:
+        description: "Which AI section to mark"
+        required: true
+        type: choice
+        default: all
+        options:
+          - all
+          - abstract
+          - preliminaries
+          - proportionality
+          - techniques
+          - future-directions
+          - fig-taxonomy
+          - tab-results
+      reviewed:
+        description: "Reviewed? (untick to restore the AI tag)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Update review status
+        id: rev
+        env:
+          FC_SECTION: ${{ inputs.section }}
+          FC_REVIEWED: ${{ inputs.reviewed }}
+        run: python scripts/survey_review.py
+      - name: Commit
+        if: steps.rev.outputs.changed == 'true'
+        run: |
+          git config user.name  "fair-clustering-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add survey/ai_status.json
+          git commit -m "Survey review: ${{ steps.rev.outputs.summary }}"
+          git push

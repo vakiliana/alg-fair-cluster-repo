@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&family=Source+Sans+3:ital,wght@0,400..700;1,400..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+  *{box-sizing:border-box}
+  :root{
+    --paper:#ffffff; --bg:#f4f3ef; --ink:#1b2330; --soft:#444e5e; --mut:#717c8c; --faint:#9aa3b1;
+    --rule:#e6e4dd; --rule2:#d7d4cb; --accent:#1f5fbf; --accent-ink:#19427f; --accent-soft:#eef3fc;
+    --gold:#9a6a18; --gold-bg:#fbf3df; --gold-ln:#e7d191;
+    --maxw:720px; --toc:248px;
+    --serif:'Source Serif 4',Georgia,serif; --sans:'Source Sans 3',system-ui,sans-serif; --mono:'IBM Plex Mono',monospace;
+  }
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:calc(var(--maxw) + var(--toc) + 80px);margin:0 auto;padding:0 32px;display:grid;grid-template-columns:var(--toc) minmax(0,1fr);gap:48px;align-items:start}
+
+  /* Title block */
+  .masthead{grid-column:1 / -1;max-width:var(--maxw);margin:0 auto;padding:64px 0 0;width:100%}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  h1.title{font-family:var(--serif);font-weight:700;font-size:38px;line-height:1.1;letter-spacing:-.01em;margin:0 0 8px}
+  .subtitle{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--soft);margin:0 0 22px}
+  .byline{font-size:15.5px;color:var(--soft);line-height:1.5}
+  .byline .name{font-weight:600;color:var(--ink)}
+  .byline a{font-family:var(--mono);font-size:13.5px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin-top:16px}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid var(--rule2);color:var(--soft);background:var(--paper)}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-size:13px;font-weight:600;padding:7px 13px;border-radius:9px;border:1px solid var(--accent);color:#fff;background:var(--accent);cursor:pointer}
+  .btn.ghost{background:var(--paper);color:var(--accent)}
+  .btn:hover{text-decoration:none;filter:brightness(1.05)}
+
+  .abstract{grid-column:1 / -1;max-width:var(--maxw);margin:30px auto 0;width:100%;background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:10px;padding:20px 24px}
+  .abstract h2{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  .abstract p{margin:0;font-size:15.5px;color:var(--soft);line-height:1.6}
+  .abstract .tag{font-size:11px}
+
+  .provenance{grid-column:1 / -1;max-width:var(--maxw);margin:16px auto 0;width:100%;background:var(--gold-bg);border:1px solid var(--gold-ln);border-radius:10px;padding:16px 20px;font-size:13.5px;color:#6b5018;line-height:1.55}
+  .provenance .h{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--gold);margin-bottom:6px;font-size:13px;letter-spacing:.02em;text-transform:uppercase}
+  .provenance b{color:#5a4313}
+
+  .masthead-rule{grid-column:1 / -1;max-width:var(--maxw);margin:38px auto 0;width:100%;border:none;border-top:1px solid var(--rule2)}
+
+  /* TOC */
+  nav.toc{position:sticky;top:0;max-height:100vh;overflow-y:auto;padding:64px 0 40px;font-size:13.5px}
+  nav.toc .toc-h{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0 0 12px}
+  nav.toc a{display:block;color:var(--mut);padding:4px 0 4px 12px;border-left:2px solid transparent;line-height:1.35}
+  nav.toc a:hover{color:var(--ink);text-decoration:none}
+  nav.toc a.lvl3{padding-left:24px;font-size:12.5px}
+  nav.toc a.active{color:var(--accent);border-left-color:var(--accent);font-weight:600}
+  nav.toc .toc-ai{font-size:9px;color:var(--gold);border:1px solid var(--gold-ln);border-radius:4px;padding:0 4px;margin-left:6px;vertical-align:1px;font-weight:700}
+
+  /* Article */
+  article{max-width:var(--maxw);min-width:0;padding-top:40px;padding-bottom:80px}
+  article h2{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.18;letter-spacing:-.01em;margin:46px 0 6px;padding-top:8px;scroll-margin-top:18px;position:relative}
+  article h3{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.25;margin:32px 0 4px;scroll-margin-top:18px;position:relative}
+  article h4{font-family:var(--serif);font-weight:600;font-size:17px;font-style:italic;color:var(--soft);margin:24px 0 2px;scroll-margin-top:18px}
+  article p{margin:0 0 16px}
+  article p.runin{margin-top:18px}
+  article p.runin>strong:first-child{font-family:var(--serif);font-weight:700;font-style:normal}
+  article em{font-style:italic}
+  .sc{font-variant:small-caps;letter-spacing:.02em}
+  .pending{color:var(--faint);font-style:italic;font-size:.9em}
+  code{font-family:var(--mono);font-size:.88em;background:var(--accent-soft);padding:1px 5px;border-radius:4px}
+
+  /* Citations */
+  a.cite{color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap;cursor:pointer;font-weight:500}
+  a.cite:hover{text-decoration:underline}
+  sup.fn{color:var(--accent);cursor:help;font-weight:700;font-size:.7em;padding:0 1px}
+
+  /* Callout: open questions */
+  .callout.question{background:var(--accent-soft);border:1px solid #cfe0f7;border-radius:11px;padding:16px 20px;margin:22px 0;position:relative}
+  .callout .callout-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:7px}
+  .callout .callout-tag::before{content:"?";display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--serif);font-weight:700;font-size:12px}
+  .callout.question p{margin:0;font-size:16px;color:var(--accent-ink)}
+
+  /* AI section banner */
+  h2.ai-section,h3.ai-section{}
+  .ai-banner{display:flex;gap:9px;align-items:flex-start;background:var(--gold-bg);border:1px solid var(--gold-ln);border-radius:9px;padding:10px 14px;margin:10px 0 20px;font-size:13px;color:#6b5018;line-height:1.45}
+  .ai-banner svg{color:var(--gold);flex-shrink:0;margin-top:1px}
+  .ai-banner strong{color:#5a4313}
+  h2.ai-section::after{content:"AI";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-ln);border-radius:5px;padding:1px 5px;vertical-align:middle;margin-left:10px;position:relative;top:-3px}
+
+  /* Figures */
+  figure.fig{margin:26px 0;text-align:center}
+  figure.fig img{max-width:100%;height:auto;border:1px solid var(--rule);border-radius:8px;background:#fff;padding:8px}
+  .taxo-wrap{display:flex;justify-content:center;padding:8px 0}
+  figcaption{font-size:13.5px;color:var(--mut);line-height:1.5;margin-top:10px;text-align:left;max-width:88%;margin-left:auto;margin-right:auto}
+  .fig-n{font-weight:700;color:var(--soft)}
+
+  /* Tables */
+  .table-wrap{overflow-x:auto;margin:22px 0}
+  table.results{border-collapse:collapse;width:100%;font-size:13.5px;line-height:1.4}
+  table.results caption{caption-side:top;text-align:left;font-size:13.5px;color:var(--mut);margin-bottom:8px}
+  table.results th{text-align:left;font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:var(--soft);border-bottom:2px solid var(--rule2);padding:8px 10px}
+  table.results td{border-bottom:1px solid var(--rule);padding:7px 10px;vertical-align:top}
+  table.results tbody tr:hover{background:var(--accent-soft)}
+  table.results td:last-child{white-space:nowrap}
+
+  ul.open-list{margin:6px 0 16px;padding-left:0;list-style:none}
+  ul.open-list li{position:relative;padding-left:22px;margin-bottom:11px}
+  ul.open-list li::before{content:"";position:absolute;left:4px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+  /* Section feedback button (added by JS) */
+  .sec-fb{position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:24px;height:24px;border:none;background:transparent;color:var(--faint);cursor:pointer;opacity:0;transition:opacity .15s;display:inline-flex;align-items:center;justify-content:center;border-radius:6px}
+  h2:hover .sec-fb,h3:hover .sec-fb{opacity:1}
+  .sec-fb:hover{color:var(--accent);background:var(--accent-soft)}
+
+  /* References */
+  section.refs{grid-column:2;max-width:var(--maxw);padding-top:24px;border-top:1px solid var(--rule2);margin-top:40px}
+  section.refs h2{font-family:var(--serif);font-size:24px;margin:0 0 16px}
+  ol.reflist{margin:0;padding:0;list-style:none;counter-reset:r}
+  ol.reflist li{position:relative;padding-left:42px;margin-bottom:12px;font-size:14px;line-height:1.5;color:var(--soft)}
+  ol.reflist li .rn{position:absolute;left:0;top:0;font-family:var(--mono);font-size:12.5px;color:var(--accent);font-weight:500}
+  ol.reflist li .rtitle{color:var(--ink);font-weight:600}
+  ol.reflist li .rvenue{font-style:italic}
+  ol.reflist li .rai{font-size:10.5px;color:var(--gold);border:1px solid var(--gold-ln);border-radius:4px;padding:0 4px;margin-left:5px;font-weight:700;white-space:nowrap}
+  ol.reflist li a.rlink{font-family:var(--mono);font-size:12px}
+  ol.reflist li:target{background:var(--accent-soft);border-radius:6px;outline:6px solid var(--accent-soft)}
+
+  .loading{padding:60px 0;text-align:center;color:var(--mut);font-size:15px}
+  .spin{display:inline-block;width:22px;height:22px;border:3px solid var(--rule2);border-top-color:var(--accent);border-radius:50%;animation:sp .8s linear infinite;margin-bottom:12px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+
+  /* Footer */
+  .doc-footer{grid-column:1 / -1;max-width:var(--maxw);margin:0 auto;width:100%;border-top:1px solid var(--rule);padding:22px 0 60px;font-size:13px;color:var(--mut);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  /* Back to top */
+  .totop{position:fixed;right:22px;bottom:22px;width:42px;height:42px;border-radius:50%;border:1px solid var(--rule2);background:var(--paper);color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,.12);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:20}
+  .totop.show{display:flex}
+
+  @media (max-width:920px){
+    .wrap{grid-template-columns:1fr;gap:0}
+    nav.toc{display:none}
+    article{padding-top:8px;margin:0 auto}
+    .sec-fb{position:static;transform:none;opacity:1;margin-left:8px;vertical-align:middle}
+    h1.title{font-size:30px}
+  }
+
+  /* ---------- PRINT / PDF ---------- */
+  @media print{
+    @page{margin:22mm 20mm 20mm;}
+    body{background:#fff;font-size:10.5pt;line-height:1.5}
+    .wrap{display:block;max-width:none;padding:0}
+    nav.toc,.totop,.sec-fb,.no-print,.btn{display:none !important}
+    .masthead,.abstract,.provenance,.masthead-rule,article,section.refs,.doc-footer{max-width:none;margin:0}
+    h1.title{font-size:22pt}.subtitle{font-size:13pt}
+    article{padding:0}
+    article h2{font-size:15pt;margin-top:18pt;break-after:avoid}
+    article h3{font-size:12.5pt;break-after:avoid}
+    article h4{font-size:11pt}
+    p,li{orphans:2;widows:2}
+    figure.fig,.table-wrap,.callout{break-inside:avoid}
+    .ai-banner{background:#f7efd8 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .provenance,.abstract,.callout.question,table.results tbody tr:hover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    a.cite,a{color:#19427f !important}
+    section.refs{break-before:page}
+    .abstract{border-left-color:#1f5fbf !important}
+  }
+</style>
+</helmet>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow"><a href="index.html" style="color:var(--accent)">← Fair Clustering Repository</a> · A survey</div>
+    <h1 class="title">Fair Clustering: Concepts, Methods, and Algorithms</h1>
+    <p class="subtitle">An algorithmic perspective on fair clustering</p>
+    <div class="byline">
+      <span class="name">Ali Vakilian</span><br>
+      Department of Computer Science, Virginia Tech · <a href="mailto:vakilian@vt.edu">vakilian@vt.edu</a>
+    </div>
+    <div class="meta-row no-print">
+      <span class="pill">Working draft · June 2026</span>
+      <span class="pill">62 references</span>
+      <button class="btn ghost" id="fb-top">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        Suggest a correction
+      </button>
+      <button class="btn ghost" id="print-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"></path></svg>
+        Save as PDF
+      </button>
+    </div>
+  </header>
+
+  <aside class="provenance">
+    <div class="h">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"></path></svg>
+      Provenance &amp; AI disclosure
+    </div>
+    This document combines author-written material with clearly-marked AI-drafted sections.
+    <b>Author-written (Ali Vakilian):</b> Introduction, Group-Fairness Notions, Individual Fairness, and Conclusion.
+    <b>AI-drafted (Claude, pending author review):</b> Abstract, Preliminaries &amp; Notation, Proportionality/Core &amp; Stability, Algorithmic Techniques, Future Directions, the taxonomy (Fig.&nbsp;2) and the results table (Table&nbsp;1). AI-drafted passages also carry an inline banner; please verify before relying on them.
+  </aside>
+
+  <section class="abstract">
+    <h2>Abstract <span class="tag pill" style="border-color:var(--gold-ln);color:var(--gold);background:var(--gold-bg)">AI-drafted</span></h2>
+    <p>Clustering is a workhorse of unsupervised learning, yet classical objectives optimize only compactness and can entrench demographic disparities. This survey gives an algorithmic account of <em>fair clustering</em>, organized around <em>where</em> fairness is imposed. Part&nbsp;I focuses on <strong>group fairness</strong> — balanced representation within clusters, demographic constraints on the chosen centers, and min-max (socially fair) cost — and reviews the approximation guarantees, hardness results, and core techniques (fairlet decomposition, LP rounding, coresets, tree embeddings, local search) that define the area. We also summarize individual fairness, proportionality and the core, and stability-based notions, and collect representative results and open problems.</p>
+  </section>
+
+  <hr class="masthead-rule">
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-h">Contents</div>
+    <div id="toc-list"></div>
+  </nav>
+
+  <article id="article">
+    <div class="loading"><div class="spin"></div><div>Loading the survey…</div></div>
+  </article>
+
+  <section class="refs" id="refs-section" style="display:none">
+    <h2 id="references">References</h2>
+    <ol class="reflist" id="reflist"></ol>
+  </section>
+
+  <footer class="doc-footer">
+    <span>© 2026 Ali Vakilian · Fair Clustering Repository</span>
+    <span class="no-print">Spotted an error? Use the <strong>comment</strong> icon beside any heading.</span>
+  </footer>
+</div>
+
+<button class="totop" id="totop" title="Back to top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
+</button>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  REPO = 'vakiliana/alg-fair-cluster-repo';
+  state = { html: '', refs: [], keyToNum: {}, loaded: false };
+
+  componentDidMount() {
+    Promise.all([
+      fetch('survey/content.html').then(r => r.text()),
+      fetch('survey/references.json').then(r => r.json()),
+      fetch('survey/ai_status.json').then(r => r.json()).catch(() => ({})),
+    ]).then(([html, refsData, aiStatus]) => {
+      this.refs = refsData.refs || [];
+      this.keyToNum = refsData.keyToNum || {};
+      this.aiStatus = aiStatus || {};
+      const art = document.getElementById('article');
+      if (art) art.innerHTML = html;
+      this.renderRefs();
+      this.enhance();
+      this.state.loaded = true;
+    }).catch(e => {
+      const art = document.getElementById('article');
+      if (art) art.innerHTML = '<p style="color:#b00">Could not load the survey content (' + e + ').</p>';
+    });
+
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    const pb = document.getElementById('print-btn'); if (pb) pb.onclick = () => window.print();
+    const tt = document.getElementById('totop'); if (tt) tt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    const ft = document.getElementById('fb-top'); if (ft) ft.onclick = () => this.openFeedback('General', 'survey');
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); }
+
+  safeId(k) { return 'ref-' + String(k).replace(/[^a-zA-Z0-9]+/g, '-'); }
+
+  openFeedback(sectionTitle, anchorId) {
+    const url = (typeof location !== 'undefined' ? location.href.split('#')[0] : '');
+    const title = `[survey feedback] ${sectionTitle}`;
+    const body =
+`**Section:** ${sectionTitle}
+**Anchor:** ${url}#${anchorId}
+
+**Type of feedback:** (correction / clarification / missing reference / suggestion)
+
+**Comment:**
+(Please describe the issue. To point to an exact spot, quote the sentence or give the paragraph.)
+
+_Submitted via the Fair Clustering survey._`;
+    const gh = `https://github.com/${this.REPO}/issues/new?title=${encodeURIComponent(title)}&labels=${encodeURIComponent('survey-feedback')}&body=${encodeURIComponent(body)}`;
+    window.open(gh, '_blank');
+  }
+
+  renderRefs() {
+    const ol = document.getElementById('reflist'); if (!ol) return;
+    const html = this.refs.map(r => {
+      const au = (r.authors || []).join(', ');
+      const ai = r.ai_added ? ' <span class="rai" title="Reference added during AI augmentation; verify">added by AI</span>' : '';
+      const link = r.url ? ` <a class="rlink" href="${r.url}" target="_blank" rel="noopener">link ↗</a>` : '';
+      return `<li id="${this.safeId(r.key)}"><span class="rn">[${r.num}]</span>${au}. <span class="rtitle">${r.title}.</span> <span class="rvenue">${r.venue||''}</span> ${r.year||''}.${ai}${link}</li>`;
+    }).join('');
+    ol.innerHTML = html;
+    document.getElementById('refs-section').style.display = '';
+  }
+
+  enhance() {
+    const art = document.getElementById('article');
+    if (!art) return;
+
+    // 1) Resolve inline citations [n] with links
+    art.querySelectorAll('.cite[data-k]').forEach(el => {
+      const keys = el.getAttribute('data-k').split(',').map(s => s.trim());
+      const parts = keys.map(k => {
+        const n = this.keyToNum[k];
+        if (!n) return '?';
+        return `<a href="#${this.safeId(k)}" style="color:inherit">${n}</a>`;
+      });
+      el.innerHTML = '[' + parts.join(', ') + ']';
+    });
+
+    // 2) Footnotes -> hover tooltip via title
+    art.querySelectorAll('sup.fn[data-note]').forEach(el => {
+      const note = el.getAttribute('data-note').replace(/<[^>]+>/g, '');
+      el.setAttribute('title', note);
+    });
+
+    // 3) qref -> link to question
+    art.querySelectorAll('.qref[data-ref]').forEach(el => {
+      el.outerHTML = `<a href="#${el.getAttribute('data-ref')}">open question</a>`;
+    });
+
+    // 3b) number open questions
+    art.querySelectorAll('.callout.question .callout-tag').forEach((t, i) => { t.textContent = 'Open Question ' + (i + 1); });
+
+    // 3c) apply AI-review status (hide banner + tag for author-reviewed sections)
+    this.applyReview();
+
+    // 3d) admin mode (collaborator shortcuts; GitHub enforces who can actually write)
+    this.detectAdmin();
+
+    // 4) KaTeX render
+    const doMath = () => {
+      if (!window.renderMathInElement) return false;
+      [art, document.getElementById('reflist')].forEach(node => {
+        if (node) window.renderMathInElement(node, {
+          delimiters: [{ left: '$', right: '$', display: false }],
+          throwOnError: false,
+        });
+      });
+      return true;
+    };
+    if (!doMath()) {
+      let tries = 0;
+      const iv = setInterval(() => { if (doMath() || ++tries > 40) clearInterval(iv); }, 150);
+    }
+
+    // 5) Build TOC + per-section feedback buttons
+    const toc = document.getElementById('toc-list');
+    const heads = art.querySelectorAll('h2, h3');
+    heads.forEach(h => {
+      if (!h.id) return;
+      const isAI = h.classList.contains('ai-section');
+      // feedback button
+      const btn = document.createElement('button');
+      btn.className = 'sec-fb no-print';
+      btn.title = 'Comment on this section';
+      btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
+      const title = h.textContent.replace(/\s+/g, ' ').trim();
+      btn.onclick = () => this.openFeedback(title, h.id);
+      h.appendChild(btn);
+      // admin-only inline tools
+      if (this.admin) {
+        const tools = document.createElement('span');
+        tools.className = 'sec-admin no-print';
+        tools.style.cssText = 'margin-left:10px;font-size:11px;font-weight:700;white-space:nowrap;vertical-align:middle';
+        let inner = `<a href="https://github.com/${this.REPO}/edit/main/survey/content.html" target="_blank" rel="noopener" title="Edit the survey source on GitHub" style="color:#1f5fbf;text-decoration:none">\u270e edit</a>`;
+        if (h.classList.contains('ai-section')) {
+          inner += ` &middot; <a href="https://github.com/${this.REPO}/actions/workflows/survey-review.yml" target="_blank" rel="noopener" title="Mark this AI section reviewed (removes the AI tag) via the admin workflow" style="color:#0f7b6c;text-decoration:none">\u2713 mark reviewed</a>`;
+        }
+        tools.innerHTML = inner;
+        h.appendChild(tools);
+      }
+      // toc entry
+      if (toc) {
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.className = (h.tagName === 'H3' ? 'lvl3' : '');
+        a.textContent = title.replace(/\s+AI$/, '');
+        if (isAI) { const s = document.createElement('span'); s.className = 'toc-ai'; s.textContent = 'AI'; a.appendChild(s); }
+        a.onclick = (e) => { e.preventDefault(); document.getElementById(h.id).scrollIntoView({ behavior: 'smooth', block: 'start' }); history.replaceState(null, '', '#' + h.id); };
+        toc.appendChild(a);
+      }
+    });
+    this._heads = [...heads].filter(h => h.id);
+    this._tocLinks = toc ? [...toc.querySelectorAll('a')] : [];
+    this.onScroll();
+  }
+
+  applyReview() {
+    const st = this.aiStatus || {};
+    document.querySelectorAll('#article h2.ai-section').forEach(h => {
+      if (st[h.id]) {
+        h.classList.remove('ai-section');
+        const n = h.nextElementSibling;
+        if (n && n.classList.contains('ai-banner')) n.remove();
+      }
+    });
+    if (st['abstract']) { const pill = document.querySelector('.abstract .tag'); if (pill) pill.remove(); }
+  }
+
+  detectAdmin() {
+    try {
+      const p = new URLSearchParams(location.search);
+      if (p.has('admin')) {
+        if (p.get('admin') === '0') localStorage.removeItem('fcr-survey-admin');
+        else localStorage.setItem('fcr-survey-admin', '1');
+      }
+      this.admin = localStorage.getItem('fcr-survey-admin') === '1';
+    } catch (e) { this.admin = false; }
+    if (this.admin && !document.getElementById('admin-bar')) {
+      const bar = document.createElement('div');
+      bar.id = 'admin-bar'; bar.className = 'no-print';
+      bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:30;background:#1b2330;color:#fff;font-size:12.5px;padding:9px 16px;display:flex;justify-content:center;gap:16px;align-items:center;flex-wrap:wrap;box-shadow:0 -2px 12px rgba(0,0,0,.2)';
+      bar.innerHTML = '<span><strong>Admin mode</strong> \u2014 \u201cedit\u201d &amp; \u201cmark reviewed\u201d open GitHub (collaborators only).</span>'
+        + '<a href="https://github.com/' + this.REPO + '/actions/workflows/survey-review.yml" target="_blank" rel="noopener" style="color:#9dc0ef;font-weight:700;text-decoration:none">Review workflow \u2197</a>'
+        + '<a href="?admin=0" style="color:#cdb6f0;font-weight:700;text-decoration:none">Exit admin</a>';
+      document.body.appendChild(bar);
+    }
+  }
+
+  onScroll = () => {
+    const tt = document.getElementById('totop');
+    if (tt) tt.classList.toggle('show', (window.scrollY || 0) > 500);
+    if (!this._heads || !this._heads.length) return;
+    const y = (window.scrollY || 0) + 90;
+    let cur = this._heads[0];
+    for (const h of this._heads) { if (h.offsetTop <= y) cur = h; else break; }
+    if (this._tocLinks) this._tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur.id));
+  };
+
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

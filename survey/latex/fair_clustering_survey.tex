@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+% --- Page and Typography ---
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+
+\usepackage{amsthm}
+\newtheorem{question}{Question}
+
+% --- Font (modern look) ---
+\usepackage{newpxtext,newpxmath}
+
+% --- Colors and Links ---
+\usepackage{xcolor}
+\definecolor{aigold}{HTML}{9A6A18}
+\definecolor{aigoldbg}{HTML}{FBF3DF}
+\definecolor{aigoldln}{HTML}{E7D191}
+\usepackage[colorlinks=true, linkcolor=blue!50!black, citecolor=purple!70!black, urlcolor=blue!70!black]{hyperref}
+
+% --- AI-disclosure helpers -------------------------------------------------
+% Banner placed at the top of every AI-drafted section.
+\newcommand{\aibanner}{%
+  \par\smallskip\noindent
+  \setlength{\fboxsep}{7pt}%
+  \fcolorbox{aigoldln}{aigoldbg}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+      \footnotesize\textcolor{aigold}{\faRobot~\textbf{AI-drafted section.}}%
+      ~Synthesized from the cited literature; \textbf{pending author review}. Please verify claims and constants before relying on them.}}%
+  \par\smallskip}
+
+% --- Header/Footer ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Ali Vakilian}
+\chead{\textit{An algorithmic perspective on fair clustering}}
+
+% --- Section Styling ---
+\titleformat{\section}{\large\bfseries\sffamily\color{blue!60!black}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries\sffamily\color{blue!40!black}}{\thesubsection}{1em}{}
+
+\usepackage{natbib}
+
+\title{Fair Clustering: Concepts, Methods, and Algorithms}
+\author{Ali Vakilian \\ Department of Computer Science, Virginia Tech \\ {\sf vakilian@vt.edu}}
+\date{Working draft -- June 2026}
+
+\begin{document}
+\maketitle
+
+% ===== Abstract (AI-drafted) =====
+\begin{abstract}
+\noindent\textcolor{aigold}{\faRobot~\footnotesize\textbf{AI-drafted abstract.}}\\[2pt]
+Clustering is a workhorse of unsupervised learning, yet classical objectives optimize only compactness and can entrench demographic disparities. This survey gives an algorithmic account of \emph{fair clustering}, organized around \emph{where} fairness is imposed. Part~I focuses on \textbf{group fairness}---balanced representation within clusters, demographic constraints on the chosen centers, and min-max (socially fair) cost---and reviews the approximation guarantees, hardness results, and core techniques (fairlet decomposition, LP rounding, coresets, tree embeddings, local search) that define the area. We also summarize individual fairness, proportionality and the core, and stability-based notions, and collect representative results (Table~\ref{tab:results}) and open problems.
+\end{abstract}
+
+% ===== Provenance & AI disclosure =====
+\noindent\setlength{\fboxsep}{8pt}\fcolorbox{aigoldln}{aigoldbg}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+\footnotesize\textcolor{aigold}{\faInfoCircle~\textbf{Provenance \& AI disclosure.}}\;
+This document combines author-written material with clearly-marked AI-drafted sections.
+\textbf{Author-written (Ali Vakilian):} Introduction, Group-Fairness Notions, Individual Fairness, Conclusion.
+\textbf{AI-drafted (pending review):} Abstract, Preliminaries \& Notation (\S\ref{sec:prelim}), Proportionality/Core \& Stability (\S\ref{sec:prop}), Algorithmic Techniques (\S\ref{sec:tech}), Future Directions (\S\ref{sec:open}), and Table~\ref{tab:results}. AI-drafted sections also carry an inline banner.}}
+\medskip
+
+\input{intro}
+\input{ai-preliminaries}
+\input{group-fair}
+\input{ai-results-table}
+\input{individual}
+\input{ai-proportionality}
+\input{ai-techniques}
+\input{ai-open}
+
+\paragraph{Conclusion.}
+Fair clustering is a vibrant area at the intersection of algorithm design and social responsibility. This survey reviewed core fairness definitions and highlighted key algorithmic techniques, with an emphasis on group-fairness notions. In future parts of this survey, we will cover additional notions of fairness for clustering, in particular those related to individual fairness.
+
+\bibliographystyle{plainnat}
+\bibliography{fair_clustering_ref, fair_ref, fair_clustering_gscholar, survey_ai_additions}
+\end{document}

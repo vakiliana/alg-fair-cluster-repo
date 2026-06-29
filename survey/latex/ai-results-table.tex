@@ -1,0 +1,31 @@
+% ===== AI-DRAFTED (pending author review) =====
+\begin{table}[t]\centering\footnotesize
+\caption{Representative fair-clustering guarantees surveyed in Part~I. Entries $(\alpha,\beta)$ denote bicriteria bounds (cost factor $\alpha$, fairness slack $\beta$); $\ell$ is the number of groups and $\Delta$ the maximum group-membership multiplicity. \emph{AI-drafted table; verify before use.}}\label{tab:results}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{3.5cm}p{2.2cm}p{4.6cm}l@{}}
+\toprule
+\textbf{Fairness notion} & \textbf{Objective} & \textbf{Guarantee} & \textbf{Ref.}\\
+\midrule
+Balance (2 groups) & $k$-center & $4$-approx. (fairlets) & \citep{DBLP:conf/nips/Chierichetti0LV17}\\
+Balance (2 groups) & $k$-median & near-linear time, $O(1)$ & \citep{backurs2019scalable}\\
+$(\alpha,\beta)$ representation & $\ell_p$ & $O(1)$ cost, $+4\Delta{+}3$ viol. & \citep{bera2019fair}\\
+$(\alpha,\beta)$ representation & $k$-center & $5$-approx. $+$ add. viol. & \citep{DBLP:conf/nips/HarbL20}\\
+$(\alpha,\beta)$ representation & $k$-med/means & $O(1)$, no viol. (coresets) & \citep{DBLP:conf/icalp/BandyapadhyayFS21}\\
+$(\alpha,\beta)$ representation & $k$-median & $O(\log k)$, multiplicative & \citep{DBLP:conf/fat/DaiMV22}\\
+Pairwise (2 groups) & $k$-center & $O(1)$ ($t\in\mathbb{Z}$ or $t{=}1$) & \citep{bandyapadhyay2025constant}\\
+Pairwise ($\ell$ groups) & $k$-median & $O(k^2\ell t)$ & \citep{bandyapadhyay2024polynomial}\\
+Representation in centers & fair range $\ell_p$ & $O(1)$ & \citep{hotegni2023approximation,nguyen2022fair}\\
+Min-max / socially fair & $k$-med/means & $O(\ell)$ & \citep{abbasi2021fair,ghadiri2021socially}\\
+Min-max / socially fair & $\ell_p$ & $\tilde{O}(\log\ell/\log\log\ell)$ (tight) & \citep{makarychev2021approximation}\\
+Socially fair (FPT) & $k$-med/means & $(3^z{+}\varepsilon)$, optimal & \citep{DBLP:journals/ipl/GoyalJ23}\\
+$(p,q)$-fair & $\ell_p$ over $\ell_q$ & interpolates avg/worst-case & \citep{DBLP:conf/soda/ChlamtacMV22}\\
+Individual (neighborhood) & $k$-clustering & $2$-approx. (radius) & \citep{JungKL20}\\
+Individual & $\ell_p$ & $(84,7)$ bicriteria & \citep{MahabadiV20}\\
+Individual & $k$-median & $(2p{+}2,8)$ & \citep{ChakrabartyN21}\\
+Individual & $\ell_p$/$k$-median & $(16p{+}\varepsilon,3)$; $(7.08{+}\varepsilon,3)$ & \citep{VakilianY22}\\
+Individual (scalable) & $k$-means & $(O(1),6)$ & \citep{bateni2024scalable}\\
+Individual & $k$-center & $(2,2)$; $(10,2{+}\varepsilon)$ & \citep{ebbens2024subquadratic}\\
+Proportional / core & $k$-median & $(1{+}\sqrt{2})$-approx. core & \citep{chen2019proportionally}\\
+\bottomrule
+\end{tabular}
+\end{table}
