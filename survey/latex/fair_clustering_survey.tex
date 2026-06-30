@@ -53,23 +53,25 @@
 
 \title{Fair Clustering: Concepts, Methods, and Algorithms}
 \author{Ali Vakilian \\ Department of Computer Science, Virginia Tech \\ {\sf vakilian@vt.edu}}
-\date{Working draft -- June 2026}
+\date{Living draft --- under construction}
 
 \begin{document}
 \maketitle
 
 % ===== Abstract (AI-drafted) =====
 \begin{abstract}
-\noindent\textcolor{aigold}{\faRobot~\footnotesize\textbf{AI-drafted abstract.}}\\[2pt]
-Clustering is a workhorse of unsupervised learning, yet classical objectives optimize only compactness and can entrench demographic disparities. This survey gives an algorithmic account of \emph{fair clustering}, organized around \emph{where} fairness is imposed. Part~I focuses on \textbf{group fairness}---balanced representation within clusters, demographic constraints on the chosen centers, and min-max (socially fair) cost---and reviews the approximation guarantees, hardness results, and core techniques (fairlet decomposition, LP rounding, coresets, tree embeddings, local search) that define the area. We also summarize individual fairness, proportionality and the core, and stability-based notions, and collect representative results (Table~\ref{tab:results}) and open problems.
+\noindent
+Clustering is a foundational task in machine learning and data analysis, yet its classical objectives---$k$-center, $k$-median, and $k$-means---optimize solely for proximity and may treat individuals from different demographic or social groups inequitably. This survey provides an algorithmic overview of \emph{fair clustering}, with an emphasis on theoretical models, approximation guarantees, and the techniques that underlie them. We organize the discussion by how fairness is defined: \emph{group-fairness} notions, including balanced representation within clusters, demographic constraints on the chosen centers, and minimizing the worst-case (socially fair) cost across groups; \emph{individual fairness}, which asks that comparable points receive comparable service; and \emph{proportionality and stability} notions drawn from cooperative game theory. Our focus throughout is on centroid-based objectives, and we summarize the recurring algorithmic ideas---fairlet decomposition, linear-programming relaxation and rounding, coresets, metric embeddings, and local search---together with representative results and open problems. This is intended as a curated rather than comprehensive account of the core algorithmic contributions that have shaped the area.
+
+\medskip\noindent\emph{This survey is a living document and remains under active construction; sections may be revised, expanded, or added over time.}
 \end{abstract}
 
 % ===== Provenance & AI disclosure =====
 \noindent\setlength{\fboxsep}{8pt}\fcolorbox{aigoldln}{aigoldbg}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
 \footnotesize\textcolor{aigold}{\faInfoCircle~\textbf{Provenance \& AI disclosure.}}\;
 This document combines author-written material with clearly-marked AI-drafted sections.
-\textbf{Author-written (Ali Vakilian):} Introduction, Group-Fairness Notions, Individual Fairness, Conclusion.
-\textbf{AI-drafted (pending review):} Abstract, Preliminaries \& Notation (\S\ref{sec:prelim}), Proportionality/Core \& Stability (\S\ref{sec:prop}), Algorithmic Techniques (\S\ref{sec:tech}), Future Directions (\S\ref{sec:open}), and Table~\ref{tab:results}. AI-drafted sections also carry an inline banner.}}
+\textbf{Author-written (Ali Vakilian):} Abstract, Introduction, Group-Fairness Notions, Individual Fairness, Conclusion.
+\textbf{AI-drafted (pending review):} Preliminaries \& Notation (\S\ref{sec:prelim}), Proportionality/Core \& Stability (\S\ref{sec:prop}), Algorithmic Techniques (\S\ref{sec:tech}), Future Directions (\S\ref{sec:open}), and Table~\ref{tab:results}. AI-drafted sections also carry an inline banner.}}
 \medskip
 
 \input{intro}

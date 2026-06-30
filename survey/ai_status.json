@@ -1,6 +1,6 @@
 {
   "_comment": "Per-section AI review status for the survey. true = author-verified (AI tag/banner hidden). Flip via the 'Survey: mark AI section reviewed' GitHub Action (collaborators only), or by editing this file and committing.",
-  "abstract": false,
+  "abstract": true,
   "preliminaries": false,
   "proportionality": false,
   "techniques": false,

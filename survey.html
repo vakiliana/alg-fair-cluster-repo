@@ -263,7 +263,7 @@
       Department of Computer Science, Virginia Tech · <a href="mailto:vakilian@vt.edu">vakilian@vt.edu</a>
     </div>
     <div class="meta-row no-print">
-      <span class="pill">Working draft · June 2026</span>
+      <span class="pill">Living draft · under construction</span>
       <span class="pill">62 references</span>
       <button class="btn ghost" id="fb-top">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -282,13 +282,14 @@
       Provenance &amp; AI disclosure
     </div>
     This document combines author-written material with clearly-marked AI-drafted sections.
-    <b>Author-written (Ali Vakilian):</b> Introduction, Group-Fairness Notions, Individual Fairness, and Conclusion.
-    <b>AI-drafted (Claude, pending author review):</b> Abstract, Preliminaries &amp; Notation, Proportionality/Core &amp; Stability, Algorithmic Techniques, Future Directions, the taxonomy (Fig.&nbsp;2) and the results table (Table&nbsp;1). AI-drafted passages also carry an inline banner; please verify before relying on them.
+    <b>Author-written (Ali Vakilian):</b> Abstract, Introduction, Group-Fairness Notions, Individual Fairness, and Conclusion.
+    <b>AI-drafted (Claude, pending author review):</b> Preliminaries &amp; Notation, Proportionality/Core &amp; Stability, Algorithmic Techniques, Future Directions, the taxonomy (Fig.&nbsp;2) and the results table (Table&nbsp;1). AI-drafted passages also carry an inline banner; please verify before relying on them.
   </aside>
 
   <section class="abstract">
-    <h2>Abstract <span class="tag pill" style="border-color:var(--gold-ln);color:var(--gold);background:var(--gold-bg)">AI-drafted</span></h2>
-    <p>Clustering is a workhorse of unsupervised learning, yet classical objectives optimize only compactness and can entrench demographic disparities. This survey gives an algorithmic account of <em>fair clustering</em>, organized around <em>where</em> fairness is imposed. Part&nbsp;I focuses on <strong>group fairness</strong> — balanced representation within clusters, demographic constraints on the chosen centers, and min-max (socially fair) cost — and reviews the approximation guarantees, hardness results, and core techniques (fairlet decomposition, LP rounding, coresets, tree embeddings, local search) that define the area. We also summarize individual fairness, proportionality and the core, and stability-based notions, and collect representative results and open problems.</p>
+    <h2>Abstract</h2>
+    <p>Clustering is a foundational task in machine learning and data analysis, yet its classical objectives — $k$-center, $k$-median, and $k$-means — optimize solely for proximity and may treat individuals from different demographic or social groups inequitably. This survey provides an algorithmic overview of <em>fair clustering</em>, with an emphasis on theoretical models, approximation guarantees, and the techniques that underlie them. We organize the discussion by how fairness is defined: <strong>group-fairness</strong> notions, including balanced representation within clusters, demographic constraints on the chosen centers, and minimizing the worst-case (socially fair) cost across groups; <strong>individual fairness</strong>, which asks that comparable points receive comparable service; and <strong>proportionality and stability</strong> notions drawn from cooperative game theory. Our focus throughout is on centroid-based objectives, and we summarize the recurring algorithmic ideas — fairlet decomposition, linear-programming relaxation and rounding, coresets, metric embeddings, and local search — together with representative results and open problems. This is intended as a curated rather than comprehensive account of the core algorithmic contributions that have shaped the area.</p>
+    <p style="margin-top:10px;font-style:italic;color:var(--mut);font-size:14.5px">This survey is a living document and remains under active construction; sections may be revised, expanded, or added over time.</p>
   </section>
 
   <aside class="provenance" style="background:var(--accent-soft);border-color:#cfe0f7;color:var(--accent-ink)">
@@ -427,7 +428,7 @@ _Submitted via the Fair Clustering survey._`;
     // 4) KaTeX render
     const doMath = () => {
       if (!window.renderMathInElement) return false;
-      [art, document.getElementById('reflist')].forEach(node => {
+      [art, document.getElementById('reflist'), document.querySelector('.abstract')].forEach(node => {
         if (node) window.renderMathInElement(node, {
           delimiters: [{ left: '$', right: '$', display: false }],
           throwOnError: false,
