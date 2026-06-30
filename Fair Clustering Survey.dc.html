@@ -33,7 +33,9 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <style>
   *{box-sizing:border-box}
+  html,body{background:#f4f3ef !important}
   :root{
+    color-scheme:light;
     --paper:#ffffff; --bg:#f4f3ef; --ink:#1b2330; --soft:#444e5e; --mut:#717c8c; --faint:#9aa3b1;
     --rule:#e6e4dd; --rule2:#d7d4cb; --accent:#1f5fbf; --accent-ink:#19427f; --accent-soft:#eef3fc;
     --gold:#9a6a18; --gold-bg:#fbf3df; --gold-ln:#e7d191;
@@ -41,6 +43,7 @@
     --serif:'Source Serif 4',Georgia,serif; --sans:'Source Sans 3',system-ui,sans-serif; --mono:'IBM Plex Mono',monospace;
   }
   html,body{margin:0;padding:0}
+  html{background:#f4f3ef}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
@@ -215,7 +218,7 @@
   /* ---------- PRINT / PDF — single-column academic article ---------- */
   @media print{
     @page{margin:20mm 18mm 18mm;}
-    html,body{background:#fff}
+    html,body{background:#fff !important}
     body{font-family:var(--serif);color:#000;font-size:10pt;line-height:1.42;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     .wrap{display:block;max-width:none;padding:0;gap:0}
     nav.toc,.totop,.sec-fb,.sec-admin,.no-print,.btn,.meta-row,.eyebrow,#admin-bar{display:none !important}
@@ -477,6 +480,7 @@ _Submitted via the Fair Clustering survey._`;
         if (node) window.renderMathInElement(node, {
           delimiters: [{ left: '$', right: '$', display: false }],
           throwOnError: false,
+          ignoredClasses: ['nokatex'],
         });
       });
       return true;
