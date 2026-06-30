@@ -131,10 +131,10 @@
   ul.open-list li{position:relative;padding-left:22px;margin-bottom:11px}
   ul.open-list li::before{content:"";position:absolute;left:4px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
 
-  /* Section feedback button (added by JS) */
-  .sec-fb{position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:24px;height:24px;border:none;background:transparent;color:var(--faint);cursor:pointer;opacity:0;transition:opacity .15s;display:inline-flex;align-items:center;justify-content:center;border-radius:6px}
-  h2:hover .sec-fb,h3:hover .sec-fb{opacity:1}
-  .sec-fb:hover{color:var(--accent);background:var(--accent-soft)}
+  /* Section feedback button (added by JS) — inline, always visible but quiet */
+  .sec-fb{display:inline-flex;align-items:center;gap:4px;margin-left:10px;padding:2px 8px;border:1px solid var(--rule2);border-radius:999px;background:var(--paper);color:var(--mut);cursor:pointer;font-family:var(--sans);font-size:10.5px;font-weight:600;vertical-align:middle;opacity:.7;transition:all .15s;position:relative;top:-2px}
+  .sec-fb:hover{opacity:1;color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+  h2 .sec-fb,h3 .sec-fb{}
 
   /* References */
   section.refs{grid-column:2;max-width:var(--maxw);padding-top:24px;border-top:1px solid var(--rule2);margin-top:40px}
@@ -163,7 +163,7 @@
     .wrap{grid-template-columns:1fr;gap:0}
     nav.toc{display:none}
     article{padding-top:8px;margin:0 auto}
-    .sec-fb{position:static;transform:none;opacity:1;margin-left:8px;vertical-align:middle}
+    .sec-fb{opacity:1;margin-left:8px;vertical-align:middle}
     h1.title{font-size:30px}
   }
 
@@ -290,6 +290,16 @@
     <h2>Abstract <span class="tag pill" style="border-color:var(--gold-ln);color:var(--gold);background:var(--gold-bg)">AI-drafted</span></h2>
     <p>Clustering is a workhorse of unsupervised learning, yet classical objectives optimize only compactness and can entrench demographic disparities. This survey gives an algorithmic account of <em>fair clustering</em>, organized around <em>where</em> fairness is imposed. Part&nbsp;I focuses on <strong>group fairness</strong> — balanced representation within clusters, demographic constraints on the chosen centers, and min-max (socially fair) cost — and reviews the approximation guarantees, hardness results, and core techniques (fairlet decomposition, LP rounding, coresets, tree embeddings, local search) that define the area. We also summarize individual fairness, proportionality and the core, and stability-based notions, and collect representative results and open problems.</p>
   </section>
+
+  <aside class="provenance" style="background:var(--accent-soft);border-color:#cfe0f7;color:var(--accent-ink)">
+    <div class="h" style="color:var(--accent)">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      Comments &amp; corrections welcome
+    </div>
+    Spotted an error, a missing reference, or have a suggestion? Every section heading has a small
+    <span style="display:inline-flex;align-items:center;gap:3px;padding:1px 7px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:11px;font-weight:600;vertical-align:middle"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Comment</span>
+    button — click it to open a pre-filled GitHub issue tied to that exact section (quote the sentence to point precisely). For general feedback, use <b>“Suggest a correction”</b> at the top. A GitHub account is all you need.
+  </aside>
 
   <hr class="masthead-rule">
 
@@ -439,8 +449,8 @@ _Submitted via the Fair Clustering survey._`;
       // feedback button
       const btn = document.createElement('button');
       btn.className = 'sec-fb no-print';
-      btn.title = 'Comment on this section';
-      btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
+      btn.title = 'Suggest a correction or comment on this section (opens a pre-filled GitHub issue)';
+      btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Comment';
       const title = h.textContent.replace(/\s+/g, ' ').trim();
       btn.onclick = () => this.openFeedback(title, h.id);
       h.appendChild(btn);
