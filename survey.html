@@ -160,11 +160,56 @@
   .totop.show{display:flex}
 
   @media (max-width:920px){
-    .wrap{grid-template-columns:1fr;gap:0}
-    nav.toc{display:none}
-    article{padding-top:8px;margin:0 auto}
-    .sec-fb{opacity:1;margin-left:8px;vertical-align:middle}
-    h1.title{font-size:30px}
+    .wrap{grid-template-columns:1fr;gap:0;padding:0 18px;max-width:680px}
+    /* everything flows in the single content column, full width */
+    .masthead,.abstract,.provenance,.masthead-rule,article,section.refs,.doc-footer,nav.toc{grid-column:1 !important;max-width:none;width:auto;margin-left:0;margin-right:0}
+    .abstract{margin-left:0;margin-right:0}
+    .provenance{margin-left:0;margin-right:0}
+    article{padding-top:8px;padding-bottom:64px;margin:0}
+    section.refs{margin-top:34px}
+
+    /* TOC becomes an inline collapsible box at the top of the column */
+    nav.toc{position:static;max-height:none;overflow:visible;padding:0;margin:22px 0 8px;border:1px solid var(--rule);border-radius:10px;background:var(--paper)}
+    nav.toc .toc-h{margin:0;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:12px;color:var(--soft)}
+    nav.toc .toc-h::after{content:"\25be";font-size:11px;color:var(--mut);transition:transform .2s}
+    nav.toc.toc-collapsed .toc-h::after{transform:rotate(-90deg)}
+    nav.toc #toc-list{padding:0 12px 12px;max-height:50vh;overflow-y:auto}
+    nav.toc.toc-collapsed #toc-list{display:none}
+    nav.toc a{padding:6px 8px;border-left:none;border-radius:6px}
+    nav.toc a.lvl3{padding-left:22px}
+    nav.toc a.active{background:var(--accent-soft);border-left:none}
+
+    /* typography + spacing tuned for small screens */
+    body{font-size:16.5px;line-height:1.6}
+    h1.title{font-size:26px;line-height:1.14}
+    .subtitle{font-size:17px}
+    .masthead{padding-top:40px}
+    .eyebrow{margin-bottom:12px}
+    article h2{font-size:22px;margin-top:36px}
+    article h3{font-size:18px}
+    .abstract,.provenance{padding:16px 18px}
+    .meta-row{gap:8px}
+    .meta-row .btn,.meta-row .pill{font-size:12px}
+
+    /* per-section comment button: inline, tappable */
+    .sec-fb{opacity:1;margin-left:8px;vertical-align:middle;padding:3px 9px;font-size:11px}
+
+    /* keep wide content from overflowing the viewport */
+    figure.fig img{max-width:100%}
+    .katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
+    table.results{font-size:12.5px}
+    /* taxonomy (fixed 900px) scales to fit */
+    #fig-taxonomy .tx-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    #fig-taxonomy .tx-stage{zoom:.74}
+    figcaption{max-width:100%;font-size:12.5px}
+    ol.reflist li{padding-left:34px;font-size:13.5px}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 14px}
+    h1.title{font-size:23px}
+    article h2{font-size:20px}
+    #fig-taxonomy .tx-stage{zoom:.56}
+    .meta-row .btn span,.meta-row{flex-wrap:wrap}
   }
 
   /* ---------- PRINT / PDF — single-column academic article ---------- */
@@ -480,6 +525,16 @@ _Submitted via the Fair Clustering survey._`;
     });
     this._heads = [...heads].filter(h => h.id);
     this._tocLinks = toc ? [...toc.querySelectorAll('a')] : [];
+    // Mobile: make the inline TOC a collapsible box (collapsed by default).
+    const nav = document.querySelector('nav.toc');
+    if (nav) {
+      const mq = window.matchMedia('(max-width:920px)');
+      if (mq.matches) nav.classList.add('toc-collapsed');
+      const hdr = nav.querySelector('.toc-h');
+      if (hdr) hdr.addEventListener('click', () => { if (mq.matches) nav.classList.toggle('toc-collapsed'); });
+      // collapse again after picking a destination on mobile
+      this._tocLinks.forEach(a => a.addEventListener('click', () => { if (mq.matches) nav.classList.add('toc-collapsed'); }));
+    }
     this.onScroll();
   }
 
