@@ -435,16 +435,26 @@
             <sc-for list="{{ dupPairs }}" as="d" hint-placeholder-count="3">
               <div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--bg)">
                 <div style="font-size:11px;font-weight:700;color:#c0492f;margin-bottom:6px">{{ d.sim }} similar</div>
-                <div style="font-size:13.5px;color:var(--ink);line-height:1.4">{{ d.aTitle }} <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint)">{{ d.aId }}</span></div>
-                <div style="font-size:12px;color:var(--muted);margin:1px 0 7px">{{ d.aMeta }}</div>
-                <div style="font-size:13.5px;color:var(--ink);line-height:1.4">{{ d.bTitle }} <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint)">{{ d.bId }}</span></div>
-                <div style="font-size:12px;color:var(--muted);margin-top:1px">{{ d.bMeta }}</div>
+                <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer;margin-bottom:7px">
+                  <input type="checkbox" checked="{{ d.aChecked }}" onChange="{{ d.onToggleA }}" style="width:16px;height:16px;accent-color:#c0492f;cursor:pointer;margin-top:2px;flex-shrink:0">
+                  <span><span style="font-size:13.5px;color:var(--ink);line-height:1.4">{{ d.aTitle }}</span> <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint)">{{ d.aId }}</span><br><span style="font-size:12px;color:var(--muted)">{{ d.aMeta }}</span></span>
+                </label>
+                <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer">
+                  <input type="checkbox" checked="{{ d.bChecked }}" onChange="{{ d.onToggleB }}" style="width:16px;height:16px;accent-color:#c0492f;cursor:pointer;margin-top:2px;flex-shrink:0">
+                  <span><span style="font-size:13.5px;color:var(--ink);line-height:1.4">{{ d.bTitle }}</span> <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint)">{{ d.bId }}</span><br><span style="font-size:12px;color:var(--muted)">{{ d.bMeta }}</span></span>
+                </label>
               </div>
             </sc-for>
           </div>
         </sc-if>
         <sc-if value="{{ noDups }}" hint-placeholder-val="{{ false }}">
           <div style="padding:24px 0;text-align:center;color:var(--muted);font-size:14px">No title-similar pairs found.</div>
+        </sc-if>
+        <sc-if value="{{ dupCount }}" hint-placeholder-val="{{ 0 }}">
+          <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
+            <button onClick="{{ onCloseDup }}" style="padding:8px 14px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted)">Close</button>
+            <button onClick="{{ onRemoveFromDup }}" style="padding:8px 15px;border:none;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;background:#c0492f;color:#fff">Remove selected ({{ dupRemoveCount }}) → PR</button>
+          </div>
         </sc-if>
       </div>
     </div>
@@ -996,7 +1006,13 @@ class Component extends DCLogic {
         sim: Math.round(pr.s * 100) + '%',
         aTitle: this.renderTeX(pr.a.title), aId: pr.a.id, aMeta: [pr.a.venue, pr.a.year].filter(Boolean).join(' · '),
         bTitle: this.renderTeX(pr.b.title), bId: pr.b.id, bMeta: [pr.b.venue, pr.b.year].filter(Boolean).join(' · '),
+        aChecked: !!s.removeSel[pr.a.id],
+        bChecked: !!s.removeSel[pr.b.id],
+        onToggleA: () => this.setState(st => ({ removeSel: { ...st.removeSel, [pr.a.id]: !st.removeSel[pr.a.id] } })),
+        onToggleB: () => this.setState(st => ({ removeSel: { ...st.removeSel, [pr.b.id]: !st.removeSel[pr.b.id] } })),
       })),
+      dupRemoveCount: Object.keys(s.removeSel).filter(k => s.removeSel[k]).length,
+      onRemoveFromDup: () => { this.setState({ showDup: false }); this.createRemovalPR(); },
       showTop: s.showTop,
       onScrollTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
       onOpenSubmit: () => this.setState({ showSubmit: true, submitMatches: [], submitArmed: false }),

@@ -7500,5 +7500,83 @@
     "citations_updated": "",
     "added": "2026-07-01",
     "status": "pending-review"
+  },
+  {
+    "id": "VelicheF23",
+    "title": "Improving Fairness and Robustness in End-to-End Speech Recognition Through Unsupervised Clustering",
+    "authors": "Irina-Elena Veliche, Pascale Fung",
+    "year": 2023,
+    "venue": "ICASSP",
+    "citations": 0,
+    "link": "https://doi.org/10.1109/ICASSP49357.2023.10096836",
+    "pdf": "",
+    "bib_link": "https://dblp.org/rec/conf/icassp/VelicheF23",
+    "bib_entry": "",
+    "scholar_id": "",
+    "fairness_notion": "Group fairness (balance)",
+    "work_nature": [
+      "Robustness / attacks"
+    ],
+    "tags": [],
+    "definition": "",
+    "contribution": "",
+    "open_problems": [],
+    "ai_labeled": true,
+    "ai_notes": false,
+    "citations_updated": "",
+    "added": "2026-07-01",
+    "status": "pending-review"
+  },
+  {
+    "id": "GottschOOAKYC23",
+    "title": "User-Centric Clustering Under Fairness Scheduling in Cell-Free Massive MIMO",
+    "authors": "Fabian Göttsch, Noboru Osawa, Takeo Ohseki, Yoshiaki Amano, Issei Kanno, Kosuke Yamazaki, Giuseppe Caire",
+    "year": 2023,
+    "venue": "ISIT",
+    "citations": 0,
+    "link": "https://doi.org/10.1109/ISIT54713.2023.10206527",
+    "pdf": "",
+    "bib_link": "https://dblp.org/rec/conf/isit/GottschOOAKYC23",
+    "bib_entry": "",
+    "scholar_id": "",
+    "fairness_notion": "Group fairness (balance)",
+    "work_nature": [
+      "Algorithms / systems"
+    ],
+    "tags": [],
+    "definition": "",
+    "contribution": "",
+    "open_problems": [],
+    "ai_labeled": true,
+    "ai_notes": false,
+    "citations_updated": "",
+    "added": "2026-07-01",
+    "status": "pending-review"
+  },
+  {
+    "id": "abs-2106-06755",
+    "title": "FPT Approximation for Socially Fair Clustering",
+    "authors": "Dishant Goyal, Ragesh Jaiswal",
+    "year": 2021,
+    "venue": "CoRR",
+    "citations": 0,
+    "link": "https://arxiv.org/abs/2106.06755",
+    "pdf": "",
+    "bib_link": "https://dblp.org/rec/journals/corr/abs-2106-06755",
+    "bib_entry": "",
+    "scholar_id": "",
+    "fairness_notion": "Socially fair (min-max)",
+    "work_nature": [
+      "Theory / approximation"
+    ],
+    "tags": [],
+    "definition": "",
+    "contribution": "",
+    "open_problems": [],
+    "ai_labeled": true,
+    "ai_notes": false,
+    "citations_updated": "",
+    "added": "2026-07-01",
+    "status": "pending-review"
   }
 ]
