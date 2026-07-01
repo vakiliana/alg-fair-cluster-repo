@@ -321,6 +321,10 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"></path></svg>
         Save as PDF
       </button>
+      <a class="btn ghost" href="survey.pdf" target="_blank" rel="noopener" id="dl-pdf">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
+        Download PDF
+      </a>
     </div>
   </header>
 
@@ -509,7 +513,11 @@ _Submitted via the Fair Clustering survey._`;
         const tools = document.createElement('span');
         tools.className = 'sec-admin no-print';
         tools.style.cssText = 'margin-left:10px;font-size:11px;font-weight:700;white-space:nowrap;vertical-align:middle';
-        let inner = `<a href="https://github.com/${this.REPO}/edit/main/survey/content.html" target="_blank" rel="noopener" title="Edit the survey source on GitHub" style="color:#1f5fbf;text-decoration:none">\u270e edit</a>`;
+        const tex = this.texFor(h.id);
+        let inner = `<a href="https://github.com/${this.REPO}/edit/main/survey/content.html" target="_blank" rel="noopener" title="Edit the web (HTML) source on GitHub" style="color:#1f5fbf;text-decoration:none">\u270e edit HTML</a>`;
+        if (tex) {
+          inner += ` &middot; <a href="https://github.com/${this.REPO}/edit/main/survey/latex/${tex}" target="_blank" rel="noopener" title="Edit the matching LaTeX source (keep in sync)" style="color:#9a6a18;text-decoration:none">\u270e edit .tex</a>`;
+        }
         if (h.classList.contains('ai-section')) {
           inner += ` &middot; <a href="https://github.com/${this.REPO}/actions/workflows/survey-review.yml" target="_blank" rel="noopener" title="Mark this AI section reviewed (removes the AI tag) via the admin workflow" style="color:#0f7b6c;text-decoration:none">\u2713 mark reviewed</a>`;
         }
@@ -540,6 +548,28 @@ _Submitted via the Fair Clustering survey._`;
       this._tocLinks.forEach(a => a.addEventListener('click', () => { if (mq.matches) nav.classList.add('toc-collapsed'); }));
     }
     this.onScroll();
+  }
+
+  texFor(id) {
+    const map = {
+      'introduction': 'intro.tex',
+      'preliminaries': 'ai-preliminaries.tex',
+      'group-fairness-notions-in-clustering': 'group-fair.tex',
+      'fair-representation-within-clusters': 'group-fair.tex',
+      'fair-representation-within-centers-centroid-based-': 'group-fair.tex',
+      'min-max-fairness-aka-socially-fair-clustering': 'group-fair.tex',
+      'results-summary': 'ai-results-table.tex',
+      'individual-fairness': 'individual.tex',
+      'proportionality': 'ai-proportionality.tex',
+      'proportional-core': 'ai-proportionality.tex',
+      'stability': 'ai-proportionality.tex',
+      'techniques': 'ai-techniques.tex',
+      'future-directions': 'ai-open.tex',
+    };
+    if (map[id]) return map[id];
+    // section-family fallbacks
+    if (id.startsWith('tech-')) return 'ai-techniques.tex';
+    return '';
   }
 
   applyReview() {

@@ -1,0 +1,48 @@
+name: Build survey PDF from HTML
+
+# Whenever the survey HTML/content changes, render survey.html to a PDF with
+# headless Chrome and commit survey.pdf. This keeps a downloadable PDF always
+# in sync with the web (HTML) version. (This is the web-styled PDF; the LaTeX
+# version under survey/latex/ is the separate typeset edition.)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "survey/content.html"
+      - "survey.html"
+      - "Fair Clustering Survey.dc.html"
+      - "support.js"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Puppeteer (bundled Chromium)
+        run: npm i puppeteer@23
+
+      - name: Render survey.html -> survey.pdf
+        run: node scripts/render_pdf.js
+
+      - name: Commit the PDF if it changed
+        run: |
+          git config user.name  "fair-clustering-bot"
+          git config user.email "bot@users.noreply.github.com"
+          if ! git diff --quiet -- survey.pdf; then
+            git add survey.pdf
+            git commit -m "Auto-build survey.pdf from HTML"
+            git push
+          else
+            echo "survey.pdf unchanged."
+          fi
