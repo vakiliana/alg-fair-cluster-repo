@@ -530,16 +530,42 @@ class Component extends DCLogic {
     if (!ids.length) { alert('Select at least one paper to remove.'); return; }
     const map = {}; this.state.papers.forEach(p => map[p.id] = p);
     const list = ids.map(id => `${id}${map[id] ? '  —  ' + this.stripTeX(map[id].title) : ''}`).join('\n');
-    // Copy the id list for pasting into the workflow input.
-    navigator.clipboard && navigator.clipboard.writeText(ids.join(', ')).catch(() => {});
-    const proceed = window.confirm(
-      `Remove ${ids.length} paper(s)?\n\n${list}\n\n` +
-      `The paper IDs have been copied to your clipboard. Next:\n` +
-      `1. The "Remove papers" GitHub Action will open.\n` +
-      `2. Click "Run workflow", paste the IDs into the box, and run.\n` +
-      `3. It opens a pull request you can review, then accept or reject.\n\n` +
-      `Only repository collaborators can run the workflow, so nothing is removed until you approve the PR.`);
-    if (proceed) window.open(`https://github.com/${this.REPO}/actions/workflows/remove-papers.yml`, '_blank');
+
+    let token = localStorage.getItem('fcr-gh-token') || '';
+    if (!token) {
+      token = window.prompt(
+        'Paste a GitHub token (with Actions: read/write on this repo) to auto-create the removal PR.\n\n' +
+        'Create one at github.com/settings/tokens → fine-grained token → repo alg-fair-cluster-repo → Actions: Read and write.\n\n' +
+        'It is stored only in this browser. Leave blank to instead open the Actions page and paste IDs manually.') || '';
+      if (token) localStorage.setItem('fcr-gh-token', token.trim());
+    }
+
+    if (!token) {
+      navigator.clipboard && navigator.clipboard.writeText(ids.join(', ')).catch(() => {});
+      if (window.confirm(`IDs copied. Open the "Remove papers" Action to paste and run manually?`))
+        window.open(`https://github.com/${this.REPO}/actions/workflows/remove-papers.yml`, '_blank');
+      return;
+    }
+
+    if (!window.confirm(`Create a removal PR for ${ids.length} paper(s)?\n\n${list}\n\nThe PR opens automatically; review it, then merge to remove or close to keep.`)) return;
+
+    const reason = window.prompt('Optional note for the PR (why remove these):', '') || '';
+    fetch(`https://api.github.com/repos/${this.REPO}/actions/workflows/remove-papers.yml/dispatches`, {
+      method: 'POST',
+      headers: { 'Accept': 'application/vnd.github+json', 'Authorization': 'Bearer ' + token, 'X-GitHub-Api-Version': '2022-11-28' },
+      body: JSON.stringify({ ref: 'main', inputs: { ids: ids.join(', '), reason } }),
+    }).then(r => {
+      if (r.status === 204) {
+        this.setState({ removeSel: {}, removeMode: false });
+        alert('✓ Removal workflow triggered. The pull request will appear under "Pull requests" in ~20–40 seconds for your review.');
+        setTimeout(() => window.open(`https://github.com/${this.REPO}/pulls`, '_blank'), 1200);
+      } else if (r.status === 401 || r.status === 403) {
+        localStorage.removeItem('fcr-gh-token');
+        r.text().then(t => alert('Token rejected (401/403). It has been cleared — try again with a token that has Actions: read/write on this repo.\n\n' + t.slice(0, 200)));
+      } else {
+        r.text().then(t => alert('GitHub API error ' + r.status + ':\n' + t.slice(0, 300)));
+      }
+    }).catch(e => alert('Network error triggering workflow: ' + e));
   };
 
   simTitle = (a, b) => {
