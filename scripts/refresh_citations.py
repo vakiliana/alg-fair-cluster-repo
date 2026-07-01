@@ -184,7 +184,7 @@ def main():
             continue
 
         if not matched:
-            unmatched.append(p["title"])
+            unmatched.append((p.get("id", ""), p["title"]))
             p["citations_updated"] = today          # stamp so we don't re-hit it constantly
             time.sleep(SLEEP)
             continue
@@ -208,11 +208,12 @@ def main():
     print(f"\nApplied {len(applied)}, flagged {len(flagged)}, unmatched {len(unmatched)}. "
           f"SerpApi calls: {_calls}/{MAX_QUERIES}.")
 
-    changed = len(applied) > 0 or len(flagged) > 0
+    changed = len(applied) > 0 or len(flagged) > 0 or len(unmatched) > 0
     with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as gh:
-        gh.write(f"changed={'true' if len(applied) else 'false'}\n")
+        gh.write(f"changed={'true' if changed else 'false'}\n")
         gh.write(f"count={len(applied)}\n")
         gh.write(f"flagged={len(flagged)}\n")
+        gh.write(f"unmatched={len(unmatched)}\n")
         gh.write(f"calls={_calls}\n")
 
     if changed:
@@ -234,8 +235,15 @@ def main():
                 for t, o, n, why in flagged:
                     f.write(f"| {o} | {n} | {why} | {t[:80]} |\n")
             if unmatched:
-                f.write(f"\n_{len(unmatched)} paper(s) had no confident title match this run "
-                        f"(left unchanged)._\n")
+                f.write(f"\n### \u2753 No confident title match \u2014 verify manually ({len(unmatched)})\n\n")
+                f.write("These papers were left unchanged because no Google Scholar result matched "
+                        "their title (and authors) with enough confidence. Check each one by hand; if "
+                        "you find its Scholar entry, paste the numeric `cluster` id from its "
+                        "\u201cCited by\u201d link into that paper's `scholar_id` in `data/papers.json` so "
+                        "future runs match it exactly.\n\n")
+                f.write("| # | id | paper |\n|---:|---|---|\n")
+                for i, (pid, title) in enumerate(unmatched, 1):
+                    f.write(f"| {i} | `{pid}` | {title[:90]} |\n")
 
 
 if __name__ == "__main__":

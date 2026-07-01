@@ -45,7 +45,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           branch: bot/citation-refresh
-          title: "🔢 Monthly citation refresh (${{ steps.refresh.outputs.count }} applied, ${{ steps.refresh.outputs.flagged }} flagged)"
+          title: "🔢 Monthly citation refresh (${{ steps.refresh.outputs.count }} applied, ${{ steps.refresh.outputs.flagged }} flagged, ${{ steps.refresh.outputs.unmatched }} unmatched)"
           body-path: citation_summary.md
           labels: citations, automated
           commit-message: "Monthly Google Scholar citation refresh"
