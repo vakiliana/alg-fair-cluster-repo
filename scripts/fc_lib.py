@@ -119,6 +119,56 @@ def existing_title_index(papers):
     return {normalize_title(p.get("title", "")): p for p in papers}
 
 
+# --------------------------------------------------------------------------
+# Blacklist (papers an admin removed — never auto-add them again)
+# --------------------------------------------------------------------------
+BLACKLIST_PATH = os.environ.get("FC_BLACKLIST_PATH", "data/blacklist.json")
+
+
+def load_blacklist(path=BLACKLIST_PATH):
+    """Returns {'ids': set, 'titles': set(normalized)} from data/blacklist.json."""
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception:
+        data = []
+    ids, titles = set(), set()
+    for e in (data if isinstance(data, list) else data.get("entries", [])):
+        if e.get("id"):
+            ids.add(e["id"])
+        if e.get("title"):
+            titles.add(normalize_title(e["title"]))
+    return {"ids": ids, "titles": titles, "raw": data if isinstance(data, list) else data.get("entries", [])}
+
+
+def save_blacklist(entries, path=BLACKLIST_PATH):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(entries, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+
+def title_similarity(a, b):
+    """Jaccard token overlap of two titles in [0,1]; 1.0 == identical normalized."""
+    ta = set(normalize_title(a).split())
+    tb = set(normalize_title(b).split())
+    if not ta or not tb:
+        return 0.0
+    return len(ta & tb) / len(ta | tb)
+
+
+def find_near_duplicate(title, papers, threshold=0.8):
+    """Return the most similar existing paper (>= threshold) or None."""
+    best, best_s = None, 0.0
+    nt = normalize_title(title)
+    for p in papers:
+        s = title_similarity(title, p.get("title", ""))
+        if normalize_title(p.get("title", "")) == nt:
+            return p, 1.0
+        if s > best_s:
+            best, best_s = p, s
+    return (best, best_s) if best_s >= threshold else (None, best_s)
+
+
 def new_record(title, **kw):
     """Build a fully-formed record with sensible defaults + heuristic tags."""
     rec = {
@@ -141,6 +191,7 @@ def new_record(title, **kw):
         "open_problems": [],
         "ai_labeled": True,   # heuristic fairness_notion / work_nature — awaiting human verification
         "ai_notes": False,    # set True if Definition/Contribution/Open-problems are AI-drafted
+        "possible_duplicate_of": kw.get("possible_duplicate_of", ""),  # id/title of a near-duplicate, for admin review
         "citations_updated": "",
         "added": kw.get("added", ""),
         "status": kw.get("status", "pending-review"),

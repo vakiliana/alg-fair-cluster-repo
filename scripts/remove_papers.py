@@ -47,6 +47,22 @@ def main():
     kept = [p for p in papers if p.get("id") not in remove_ids]
     save_papers(kept)
 
+    # Record removed papers in the blacklist so discovery never re-adds them.
+    from fc_lib import load_blacklist, save_blacklist, normalize_title
+    import datetime
+    bl = load_blacklist()
+    entries = list(bl["raw"])
+    have = {(e.get("id") or normalize_title(e.get("title", ""))) for e in entries}
+    today = datetime.date.today().isoformat()
+    for p in removed:
+        key = p.get("id") or normalize_title(p.get("title", ""))
+        if key in have:
+            continue
+        entries.append({"id": p.get("id", ""), "title": p.get("title", ""),
+                        "removed": today, "reason": reason})
+        have.add(key)
+    save_blacklist(entries)
+
     with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as gh:
         gh.write("changed=true\n")
         gh.write(f"count={len(removed)}\n")
@@ -55,7 +71,8 @@ def main():
         f.write(f"### Proposed removal of {len(removed)} paper(s)\n\n")
         if reason:
             f.write(f"**Reason:** {reason}\n\n")
-        f.write("Review the list below. **Merge** this PR to remove them, or **close** it to keep them.\n\n")
+        f.write("Review the list below. **Merge** this PR to remove them, or **close** it to keep them. "
+                "Removed papers are added to `data/blacklist.json` so the discovery bot will not re-add them automatically.\n\n")
         f.write("| id | title | venue | year | citations |\n|---|---|---|---:|---:|\n")
         for p in removed:
             title = (p.get("title", "") or "").replace("|", "\\|")

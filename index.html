@@ -224,6 +224,7 @@
         <span style="color:var(--muted)">Select papers to remove, then open a review PR.</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
+        <button onClick="{{ onScanDuplicates }}" style="padding:8px 13px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted)">Find potential duplicates</button>
         <button onClick="{{ onToggleRemoveMode }}" style="padding:8px 13px;background:transparent;border:1px solid #c0492f;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;color:#c0492f">{{ removeModeLabel }}</button>
         <sc-if value="{{ removeMode }}" hint-placeholder-val="{{ false }}">
           <button onClick="{{ onClearRemoval }}" style="padding:8px 13px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted)">Clear</button>
@@ -421,6 +422,34 @@
     </button>
   </sc-if>
 
+  <sc-if value="{{ showDup }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ onCloseDup }}" style="position:fixed;inset:0;background:rgba(15,17,21,.5);z-index:30;display:flex;align-items:center;justify-content:center;padding:20px">
+      <div onClick="{{ stop }}" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 26px;width:640px;max-width:100%;max-height:86vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+          <h2 style="margin:0;font-family:'Spectral',serif;font-size:20px;font-weight:600">Potential duplicate pairs <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted)">({{ dupCount }})</span></h2>
+          <button onClick="{{ onCloseDup }}" style="background:none;border:none;font-size:22px;line-height:1;cursor:pointer;color:var(--faint)">×</button>
+        </div>
+        <p style="margin:0 0 16px;font-size:12.5px;color:var(--muted);line-height:1.5">Title-similar papers already in the database. Use "Select to remove" to drop a true duplicate. IDs shown for reference.</p>
+        <sc-if value="{{ dupCount }}" hint-placeholder-val="{{ 0 }}">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ dupPairs }}" as="d" hint-placeholder-count="3">
+              <div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--bg)">
+                <div style="font-size:11px;font-weight:700;color:#c0492f;margin-bottom:6px">{{ d.sim }} similar</div>
+                <div style="font-size:13.5px;color:var(--ink);line-height:1.4">{{ d.aTitle }} <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint)">{{ d.aId }}</span></div>
+                <div style="font-size:12px;color:var(--muted);margin:1px 0 7px">{{ d.aMeta }}</div>
+                <div style="font-size:13.5px;color:var(--ink);line-height:1.4">{{ d.bTitle }} <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint)">{{ d.bId }}</span></div>
+                <div style="font-size:12px;color:var(--muted);margin-top:1px">{{ d.bMeta }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noDups }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:24px 0;text-align:center;color:var(--muted);font-size:14px">No title-similar pairs found.</div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1120,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2563eb&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;showDashboard&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
@@ -429,6 +458,7 @@ class Component extends DCLogic {
             sort: 'cite-desc', selected: {}, expanded: {}, theme: 'light', showSubmit: false, copiedId: '',
             showEdit: false, editId: null, editForm: null, showTop: false, venuesExpanded: false, showCharts: false,
             admin: false, removeMode: false, removeSel: {},
+            dupPairs: [], showDup: false,
             submitMatches: [], submitArmed: false };
 
   REPO = 'vakiliana/alg-fair-cluster-repo';
@@ -450,6 +480,9 @@ class Component extends DCLogic {
       .then(r => r.json())
       .then(d => this.setState({ papers: Array.isArray(d) ? d : [], loaded: true }))
       .catch(() => this.setState({ loaded: true }));
+    fetch('data/blacklist.json').then(r => r.json()).then(d => {
+      this.blacklist = (Array.isArray(d) ? d : (d.entries || [])).map(e => this.normTitle(e.title || ''));
+    }).catch(() => { this.blacklist = []; });
     this.detectAdmin();
     this._onScroll = () => {
       const v = (window.scrollY || document.documentElement.scrollTop || 0) > 400;
@@ -507,6 +540,27 @@ class Component extends DCLogic {
       `3. It opens a pull request you can review, then accept or reject.\n\n` +
       `Only repository collaborators can run the workflow, so nothing is removed until you approve the PR.`);
     if (proceed) window.open(`https://github.com/${this.REPO}/actions/workflows/remove-papers.yml`, '_blank');
+  };
+
+  simTitle = (a, b) => {
+    const ta = new Set(this.normTitle(a).split(' ').filter(Boolean));
+    const tb = new Set(this.normTitle(b).split(' ').filter(Boolean));
+    if (!ta.size || !tb.size) return 0;
+    let inter = 0; ta.forEach(x => { if (tb.has(x)) inter++; });
+    return inter / (new Set([...ta, ...tb]).size);
+  };
+
+  scanDuplicates = () => {
+    const ps = this.state.papers;
+    const pairs = [];
+    for (let i = 0; i < ps.length; i++) {
+      for (let j = i + 1; j < ps.length; j++) {
+        const s = this.simTitle(ps[i].title, ps[j].title);
+        if (s >= 0.7) pairs.push({ a: ps[i], b: ps[j], s });
+      }
+    }
+    pairs.sort((x, y) => y.s - x.s);
+    this.setState({ dupPairs: pairs, showDup: true });
   };
 
   // Render inline TeX ($...$) to HTML via KaTeX. Plain text (no '$') is returned
@@ -656,6 +710,10 @@ class Component extends DCLogic {
   submitForm = (e) => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.target).entries());
+    // Warn if this paper was previously removed by an admin (on the blacklist).
+    if (!this.state.submitArmed && this.blacklist && this.blacklist.includes(this.normTitle(d.title))) {
+      if (!window.confirm('⚠️ A paper with this title was previously removed by an admin (it is on the blacklist).\n\nThe discovery bot will not re-add it automatically. You can still submit it manually for review — continue?')) return;
+    }
     // First click: check the database. If matches exist, show them and require
     // an explicit "Submit anyway" before filing a ticket.
     if (!this.state.submitArmed) {
@@ -903,6 +961,16 @@ class Component extends DCLogic {
       removeBtnStyle: (() => { const n = Object.keys(s.removeSel).filter(k => s.removeSel[k]).length; return { padding: '8px 15px', borderRadius: '9px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', border: 'none', background: n > 0 ? '#c0492f' : 'var(--subtle)', color: n > 0 ? '#fff' : 'var(--faint)' }; })(),
       onCreateRemovalPR: this.createRemovalPR,
       onClearRemoval: () => this.setState({ removeSel: {} }),
+      onScanDuplicates: this.scanDuplicates,
+      showDup: s.showDup,
+      onCloseDup: () => this.setState({ showDup: false }),
+      dupCount: s.dupPairs.length,
+      noDups: s.showDup && s.dupPairs.length === 0,
+      dupPairs: s.dupPairs.map(pr => ({
+        sim: Math.round(pr.s * 100) + '%',
+        aTitle: this.renderTeX(pr.a.title), aId: pr.a.id, aMeta: [pr.a.venue, pr.a.year].filter(Boolean).join(' · '),
+        bTitle: this.renderTeX(pr.b.title), bId: pr.b.id, bMeta: [pr.b.venue, pr.b.year].filter(Boolean).join(' · '),
+      })),
       showTop: s.showTop,
       onScrollTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
       onOpenSubmit: () => this.setState({ showSubmit: true, submitMatches: [], submitArmed: false }),

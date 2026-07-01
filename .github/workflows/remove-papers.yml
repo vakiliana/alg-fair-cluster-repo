@@ -45,6 +45,8 @@ jobs:
           title: "🗑️ Remove ${{ steps.rm.outputs.count }} paper(s) — review before merge"
           body-path: removal_summary.md
           labels: data-correction, automated
-          commit-message: "Remove ${{ steps.rm.outputs.count }} paper(s)"
-          add-paths: data/papers.json
+          commit-message: "Remove ${{ steps.rm.outputs.count }} paper(s) + blacklist"
+          add-paths: |
+            data/papers.json
+            data/blacklist.json
           delete-branch: true

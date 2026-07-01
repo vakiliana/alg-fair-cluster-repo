@@ -26,7 +26,7 @@ import xml.etree.ElementTree as ET
 
 from fc_lib import (
     load_papers, save_papers, existing_title_index, normalize_title,
-    new_record, is_fair_clustering,
+    new_record, is_fair_clustering, load_blacklist, find_near_duplicate,
 )
 
 UA = {"User-Agent": "fair-clustering-repo-bot/1.0 (+https://github.com/vakiliana/alg-fair-cluster-repo)"}
@@ -123,23 +123,38 @@ def search_dblp():
 def main():
     papers = load_papers()
     seen = existing_title_index(papers)
+    blacklist = load_blacklist()
     today = datetime.date.today().isoformat()
 
     candidates = search_arxiv() + search_dblp()
     print(f"Fetched {len(candidates)} raw candidates from arXiv + DBLP.")
 
-    added = []
+    added, blocked, dup_flagged = [], [], []
     local_seen = set(seen.keys())
     for c in candidates:
         nt = normalize_title(c["title"])
         if not nt or nt in local_seen:
             continue
+        # Skip anything an admin previously removed (blacklist).
+        if c.get("id") in blacklist["ids"] or nt in blacklist["titles"]:
+            blocked.append(c["title"])
+            continue
         local_seen.add(nt)
+        # Near-duplicate check against the existing database.
+        dup, sim = find_near_duplicate(c["title"], papers, threshold=0.8)
+        dup_of = ""
+        if dup and sim < 1.0:
+            dup_of = f"{dup.get('id','')} — {dup.get('title','')}"
+            dup_flagged.append((c["title"], dup.get("title", ""), sim))
         rec = new_record(c["title"], id=c["id"], authors=c["authors"], year=c["year"],
                          venue=c["venue"], link=c["link"], pdf=c["pdf"],
-                         bib_link=c["bib_link"], added=today, status="pending-review")
+                         bib_link=c["bib_link"], added=today, status="pending-review",
+                         possible_duplicate_of=dup_of)
         papers.append(rec)
         added.append(rec)
+
+    if blocked:
+        print(f"Skipped {len(blocked)} blacklisted (previously-removed) candidate(s).")
 
     if not added:
         print("No new fair-clustering papers found. Nothing to do.")
@@ -165,6 +180,16 @@ def main():
                 "optionally add Definition / Contribution / Open-problems notes, delete anything "
                 "off-topic, then merge.\n\n")
         f.write("\n".join(lines) + "\n")
+        if dup_flagged:
+            f.write(f"\n### ⚠️ Possible duplicates ({len(dup_flagged)})\n\n")
+            f.write("These candidates closely match a paper already in the database. Check before "
+                    "merging — delete the block if it's the same paper (each carries a "
+                    "`possible_duplicate_of` field).\n\n")
+            f.write("| similarity | candidate | existing paper |\n|---:|---|---|\n")
+            for cand, exist, sim in dup_flagged:
+                f.write(f"| {int(sim*100)}% | {cand[:70]} | {exist[:70]} |\n")
+        if blocked:
+            f.write(f"\n_Skipped {len(blocked)} previously-removed (blacklisted) candidate(s)._\n")
 
 
 if __name__ == "__main__":
