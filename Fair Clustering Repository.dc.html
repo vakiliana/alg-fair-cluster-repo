@@ -217,6 +217,22 @@
     </div>
   </section>
 
+  <sc-if value="{{ admin }}" hint-placeholder-val="{{ false }}">
+    <section style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding:11px 16px;background:color-mix(in srgb,#c0492f 8%,var(--surface));border:1px solid color-mix(in srgb,#c0492f 35%,transparent);border-radius:var(--radius)">
+      <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink)">
+        <span style="font-weight:700;color:#c0492f;letter-spacing:.03em">ADMIN</span>
+        <span style="color:var(--muted)">Select papers to remove, then open a review PR.</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button onClick="{{ onToggleRemoveMode }}" style="padding:8px 13px;background:transparent;border:1px solid #c0492f;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;color:#c0492f">{{ removeModeLabel }}</button>
+        <sc-if value="{{ removeMode }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ onClearRemoval }}" style="padding:8px 13px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted)">Clear</button>
+          <button onClick="{{ onCreateRemovalPR }}" style="{{ removeBtnStyle }}">{{ removeBtnLabel }}</button>
+        </sc-if>
+      </div>
+    </section>
+  </sc-if>
+
   <sc-if value="{{ notLoaded }}" hint-placeholder-val="{{ true }}">
     <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:80px 0;color:var(--muted)">
       <div style="width:26px;height:26px;border:3px solid var(--border-strong);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite"></div>
@@ -236,7 +252,7 @@
       <article class="fcr-card" style="{{ p.cardStyle }}">
         <div style="display:flex;gap:14px;align-items:flex-start">
           <label style="display:flex;align-items:center;padding-top:3px;cursor:pointer;flex-shrink:0">
-            <input type="checkbox" checked="{{ p.selected }}" onChange="{{ p.onToggleSel }}" style="width:17px;height:17px;accent-color:var(--accent);cursor:pointer">
+            <input type="checkbox" checked="{{ p.checkboxChecked }}" onChange="{{ p.checkboxToggle }}" style="{{ p.checkboxStyle }}">
           </label>
           <div style="flex:1;min-width:0">
             <div style="display:flex;justify-content:space-between;gap:14px;align-items:baseline">
@@ -412,6 +428,7 @@ class Component extends DCLogic {
   state = { papers: [], loaded: false, q: '', notion: 'all', nature: 'all', year: 'all',
             sort: 'cite-desc', selected: {}, expanded: {}, theme: 'light', showSubmit: false, copiedId: '',
             showEdit: false, editId: null, editForm: null, showTop: false, venuesExpanded: false, showCharts: false,
+            admin: false, removeMode: false, removeSel: {},
             submitMatches: [], submitArmed: false };
 
   REPO = 'vakiliana/alg-fair-cluster-repo';
@@ -433,6 +450,7 @@ class Component extends DCLogic {
       .then(r => r.json())
       .then(d => this.setState({ papers: Array.isArray(d) ? d : [], loaded: true }))
       .catch(() => this.setState({ loaded: true }));
+    this.detectAdmin();
     this._onScroll = () => {
       const v = (window.scrollY || document.documentElement.scrollTop || 0) > 400;
       if (v !== this.state.showTop) this.setState({ showTop: v });
@@ -450,6 +468,46 @@ class Component extends DCLogic {
     if (this._kt) clearInterval(this._kt);
     if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
   }
+
+  // ---- Admin mode (cosmetic gate; real security = the removal workflow is collaborator-only) ----
+  ADMIN_HASH = 'eb1ee9795e20a7e420d8888a0218529ec9cbb1da262ac01af33abcbcf5588d70';
+  sha256(s) {
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)).then(b =>
+      [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''));
+  }
+  detectAdmin() {
+    try {
+      const p = new URLSearchParams(location.search);
+      if (p.get('admin') === '0') { localStorage.removeItem('fcr-repo-admin'); }
+      else if (p.has('admin') && localStorage.getItem('fcr-repo-admin') !== '1') {
+        const pw = window.prompt('Admin passphrase:');
+        if (pw !== null) {
+          this.sha256(pw).then(h => {
+            if (h === this.ADMIN_HASH) { localStorage.setItem('fcr-repo-admin', '1'); this.setState({ admin: true }); }
+            else window.alert('Incorrect passphrase.');
+          });
+        }
+      }
+      if (localStorage.getItem('fcr-repo-admin') === '1') this.setState({ admin: true });
+    } catch (e) { /* no-op */ }
+  }
+
+  createRemovalPR = () => {
+    const ids = Object.keys(this.state.removeSel).filter(k => this.state.removeSel[k]);
+    if (!ids.length) { alert('Select at least one paper to remove.'); return; }
+    const map = {}; this.state.papers.forEach(p => map[p.id] = p);
+    const list = ids.map(id => `${id}${map[id] ? '  —  ' + this.stripTeX(map[id].title) : ''}`).join('\n');
+    // Copy the id list for pasting into the workflow input.
+    navigator.clipboard && navigator.clipboard.writeText(ids.join(', ')).catch(() => {});
+    const proceed = window.confirm(
+      `Remove ${ids.length} paper(s)?\n\n${list}\n\n` +
+      `The paper IDs have been copied to your clipboard. Next:\n` +
+      `1. The "Remove papers" GitHub Action will open.\n` +
+      `2. Click "Run workflow", paste the IDs into the box, and run.\n` +
+      `3. It opens a pull request you can review, then accept or reject.\n\n` +
+      `Only repository collaborators can run the workflow, so nothing is removed until you approve the PR.`);
+    if (proceed) window.open(`https://github.com/${this.REPO}/actions/workflows/remove-papers.yml`, '_blank');
+  };
 
   // Render inline TeX ($...$) to HTML via KaTeX. Plain text (no '$') is returned
   // as a string so the host's inline text-editing still works on it.
@@ -775,7 +833,14 @@ class Component extends DCLogic {
         natures: (p.work_nature || []).map(n => ({ label: n })),
         selected: !!s.selected[p.id],
         onToggleSel: () => this.setState(st => ({ selected: { ...st.selected, [p.id]: !st.selected[p.id] } })),
-        cardStyle: { background: 'var(--surface)', border: s.selected[p.id] ? '1px solid var(--accent)' : '1px solid var(--border)',
+        removeChecked: !!s.removeSel[p.id],
+        onToggleRemove: () => this.setState(st => ({ removeSel: { ...st.removeSel, [p.id]: !st.removeSel[p.id] } })),
+        checkboxChecked: s.removeMode ? !!s.removeSel[p.id] : !!s.selected[p.id],
+        checkboxToggle: s.removeMode
+          ? () => this.setState(st => ({ removeSel: { ...st.removeSel, [p.id]: !st.removeSel[p.id] } }))
+          : () => this.setState(st => ({ selected: { ...st.selected, [p.id]: !st.selected[p.id] } })),
+        checkboxStyle: { width: '17px', height: '17px', accentColor: s.removeMode ? '#c0492f' : 'var(--accent)', cursor: 'pointer' },
+        cardStyle: { background: 'var(--surface)', border: s.removeSel[p.id] ? '1px solid #c0492f' : (s.selected[p.id] ? '1px solid var(--accent)' : '1px solid var(--border)'),
           borderRadius: 'var(--radius)', padding: '15px 18px', boxShadow: 'var(--shadow)', animation: 'fadeUp .3s ease both',
           transition: 'border-color .15s' },
         expanded: !!s.expanded[p.id],
@@ -829,6 +894,15 @@ class Component extends DCLogic {
       onSelectAll: () => this.setState(st => { const sel = { ...st.selected }; list.forEach(p => sel[p.id] = true); return { selected: sel }; }),
       onClear: () => this.setState({ selected: {} }),
       onDownload: this.download,
+      admin: s.admin,
+      removeMode: s.removeMode,
+      onToggleRemoveMode: () => this.setState(st => ({ removeMode: !st.removeMode, removeSel: {} })),
+      removeModeLabel: s.removeMode ? 'Done selecting' : 'Select to remove',
+      removeCount: Object.keys(s.removeSel).filter(k => s.removeSel[k]).length,
+      removeBtnLabel: (() => { const n = Object.keys(s.removeSel).filter(k => s.removeSel[k]).length; return n > 0 ? `Create removal PR (${n})` : 'Create removal PR'; })(),
+      removeBtnStyle: (() => { const n = Object.keys(s.removeSel).filter(k => s.removeSel[k]).length; return { padding: '8px 15px', borderRadius: '9px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', border: 'none', background: n > 0 ? '#c0492f' : 'var(--subtle)', color: n > 0 ? '#fff' : 'var(--faint)' }; })(),
+      onCreateRemovalPR: this.createRemovalPR,
+      onClearRemoval: () => this.setState({ removeSel: {} }),
       showTop: s.showTop,
       onScrollTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
       onOpenSubmit: () => this.setState({ showSubmit: true, submitMatches: [], submitArmed: false }),

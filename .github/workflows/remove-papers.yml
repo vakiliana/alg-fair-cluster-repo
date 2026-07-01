@@ -1,0 +1,50 @@
+name: Remove papers (admin)
+
+# Removes selected papers from data/papers.json and opens a pull request the
+# maintainer reviews (accept = merge, reject = close). Triggered from the admin
+# UI on the site, which copies the paper ids for you to paste below. Only
+# repository collaborators can run workflows, so this is admin-only.
+#
+# Actions tab -> "Remove papers (admin)" -> Run workflow -> paste ids -> Run.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Paper ids to remove (comma / space / newline separated)"
+        required: true
+      reason:
+        description: "Optional note for the PR (why these are removed)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  remove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Remove selected papers
+        id: rm
+        env:
+          FC_IDS: ${{ inputs.ids }}
+          FC_REASON: ${{ inputs.reason }}
+        run: python scripts/remove_papers.py
+
+      - name: Open pull request
+        if: steps.rm.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: bot/remove-papers
+          title: "🗑️ Remove ${{ steps.rm.outputs.count }} paper(s) — review before merge"
+          body-path: removal_summary.md
+          labels: data-correction, automated
+          commit-message: "Remove ${{ steps.rm.outputs.count }} paper(s)"
+          add-paths: data/papers.json
+          delete-branch: true
