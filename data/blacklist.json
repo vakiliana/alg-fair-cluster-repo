@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "id": "2106.05423v3",
+    "title": "A New Notion of Individually Fair Clustering: $α$-Equitable $k$-Center",
+    "removed": "2026-07-02",
+    "reason": "remove duplicates"
+  },
+  {
+    "id": "abs-2109-00708",
+    "title": "Efficient Algorithms For Fair Clustering with a New Fairness Notion",
+    "removed": "2026-07-02",
+    "reason": "remove duplicates"
+  },
+  {
+    "id": "abs-1812-10854",
+    "title": "Fair Coresets and Streaming Algorithms for Fair k-Means Clustering",
+    "removed": "2026-07-02",
+    "reason": "remove duplicates"
+  },
+  {
+    "id": "0001EMZ25-2",
+    "title": "SoK: Fair Clustering: Critique, Caveats, and Future Directions",
+    "removed": "2026-07-02",
+    "reason": "remove duplicates"
+  },
+  {
+    "id": "abs-2106-06755",
+    "title": "FPT Approximation for Socially Fair Clustering",
+    "removed": "2026-07-02",
+    "reason": "remove duplicates"
+  },
+  {
+    "id": "Amagata24",
+    "title": "$k$-Clustering with Fair Outliers",
+    "removed": "2026-07-02",
+    "reason": "remove duplicates"
+  },
+  {
+    "id": "AngelidakisKSZ22-2",
+    "title": "Fair and fast $k$-center clustering for data summarization",
+    "removed": "2026-07-02",
+    "reason": "remove duplicates"
+  }
+]

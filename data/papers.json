@@ -1229,31 +1229,6 @@
     "ai_notes": false
   },
   {
-    "id": "AngelidakisKSZ22-2",
-    "title": "Fair and fast $k$-center clustering for data summarization",
-    "authors": "Haris Angelidakis, Adam Kurpisz, Leon Sering, Rico Zenklusen",
-    "year": 2022,
-    "venue": "ICML",
-    "citations": 29,
-    "link": "https://doi.org/10.1109/ijcnn.2016.7727739",
-    "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Fair_and_fast_k-center_clustering_for_data_summarization.pdf",
-    "bib_link": "https://dblp.org/rec/conf/icml/AngelidakisKSZ22",
-    "bib_entry": "",
-    "scholar_id": "3sX9tuw62w0J",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "citations_updated": "2026-07-01",
-    "added": "2025-01-01",
-    "ai_labeled": true,
-    "ai_notes": false
-  },
-  {
     "id": "TranKB23",
     "title": "Fair-capacitated clustering",
     "authors": "Vanessa Tran, Manuel Kammermann, Philipp Baumann",
@@ -2068,31 +2043,6 @@
     "bib_link": "https://dblp.org/rec/conf/fat/DaiMV22",
     "bib_entry": "",
     "scholar_id": "H-vHJuqSMtcJ",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "citations_updated": "2026-07-01",
-    "added": "2025-01-01",
-    "ai_labeled": true,
-    "ai_notes": false
-  },
-  {
-    "id": "Amagata24",
-    "title": "$k$-Clustering with Fair Outliers",
-    "authors": "Daichi Amagata",
-    "year": 2024,
-    "venue": "AISTATS",
-    "citations": 12,
-    "link": "https://doi.org/10.1145/3488560.3498485",
-    "pdf": "",
-    "bib_link": "https://dblp.org/rec/conf/aistats/Amagata24",
-    "bib_entry": "",
-    "scholar_id": "5Q2cly7hwksJ",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems"
@@ -3475,31 +3425,6 @@
     "work_nature": [
       "Theory / approximation",
       "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "citations_updated": "2026-07-01",
-    "added": "2025-01-01",
-    "ai_labeled": true,
-    "ai_notes": false
-  },
-  {
-    "id": "0001EMZ25-2",
-    "title": "SoK: Fair Clustering: Critique, Caveats, and Future Directions",
-    "authors": "John Dickerson, Seyed A. Esmaeili, Jamie Morgenstern, Claire Jie Zhang",
-    "year": 2025,
-    "venue": "satml",
-    "citations": 3,
-    "link": "https://doi.org/10.1109/satml64287.2025.00044",
-    "pdf": "http://arxiv.org/pdf/2406.15960v1",
-    "bib_link": "https://dblp.org/rec/conf/satml/0001EMZ25",
-    "bib_entry": "",
-    "scholar_id": "M5xEFXERTiQJ",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Survey / position"
     ],
     "tags": [],
     "definition": "",
@@ -6534,32 +6459,6 @@
     "status": "pending-review"
   },
   {
-    "id": "2106.05423v3",
-    "title": "A New Notion of Individually Fair Clustering: $α$-Equitable $k$-Center",
-    "authors": "Darshan Chakrabarti, John P. Dickerson, Seyed A. Esmaeili, Aravind Srinivasan, Leonidas Tsepenekas",
-    "year": 2021,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2106.05423v3",
-    "pdf": "https://arxiv.org/pdf/2106.05423v3",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Individual fairness",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
     "id": "FengZQPY26",
     "title": "A fair spectral clustering with weighted fairness constraints",
     "authors": "Ruixin Feng, Caiming Zhong, Jiangbo Qian, Tiejun Pan, Xiaodong Yue 0002",
@@ -6833,59 +6732,6 @@
     "scholar_id": "",
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "abs-2109-00708",
-    "title": "Efficient Algorithms For Fair Clustering with a New Fairness Notion",
-    "authors": "Shivam Gupta 0004, Ganesh Ghalme, Narayanan C. Krishnan, Shweta Jain 0002",
-    "year": 2021,
-    "venue": "CoRR",
-    "citations": 0,
-    "link": "https://arxiv.org/abs/2109.00708",
-    "pdf": "",
-    "bib_link": "https://dblp.org/rec/journals/corr/abs-2109-00708",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "abs-1812-10854",
-    "title": "Fair Coresets and Streaming Algorithms for Fair k-Means Clustering",
-    "authors": "Melanie Schmidt 0001, Chris Schwiegelshohn, Christian Sohler",
-    "year": 2018,
-    "venue": "CoRR",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/1812.10854",
-    "pdf": "",
-    "bib_link": "https://dblp.org/rec/journals/corr/abs-1812-10854",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Theory / approximation",
       "Algorithms / systems"
     ],
     "tags": [],
@@ -7542,32 +7388,6 @@
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "abs-2106-06755",
-    "title": "FPT Approximation for Socially Fair Clustering",
-    "authors": "Dishant Goyal, Ragesh Jaiswal",
-    "year": 2021,
-    "venue": "CoRR",
-    "citations": 0,
-    "link": "https://arxiv.org/abs/2106.06755",
-    "pdf": "",
-    "bib_link": "https://dblp.org/rec/journals/corr/abs-2106-06755",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Socially fair (min-max)",
-    "work_nature": [
-      "Theory / approximation"
     ],
     "tags": [],
     "definition": "",
