@@ -6,7 +6,7 @@ Pure standard library (no pip installs) so the GitHub Actions runners stay fast.
 The canonical data file is data/papers.json — a JSON array of paper records:
 
     {
-      "id":               "DBLPKey or arXivId",   # stable identifier
+      "id":               "chierichetti2017fair",  # Google-Scholar-style handle: <surname><year><first-title-word>
       "title":            "...",
       "authors":          "A, B, C",
       "year":             2024,
@@ -169,10 +169,28 @@ def find_near_duplicate(title, papers, threshold=0.8):
     return (best, best_s) if best_s >= threshold else (None, best_s)
 
 
+def gscholar_id(title, authors="", year=None):
+    """Google-Scholar-style handle: <first-author-surname><year><first-title-word>,
+    e.g. gscholar_id('Fair clustering through fairlets', 'Flavio Chierichetti, ...', 2017)
+    -> 'chierichetti2017fair'. Leading articles (a/an/the) are skipped."""
+    import unicodedata
+    first = (authors or "").split(",")[0].strip()
+    parts = first.split()
+    surname = parts[-1] if parts else "unknown"
+    surname = surname.replace("\u00df", "ss")
+    surname = unicodedata.normalize("NFKD", surname).encode("ascii", "ignore").decode()
+    surname = re.sub(r"[^a-zA-Z]", "", surname).lower() or "unknown"
+    clean = re.sub(r"[${}\\]", "", (title or "").lower())
+    words = [w for w in re.split(r"[^a-z0-9]+", clean) if w and w not in ("a", "an", "the")]
+    return f"{surname}{year or ''}{words[0] if words else 'paper'}"
+
+
 def new_record(title, **kw):
-    """Build a fully-formed record with sensible defaults + heuristic tags."""
+    """Build a fully-formed record with sensible defaults + heuristic tags.
+    The id follows the Google-Scholar convention when authors are known."""
     rec = {
-        "id": kw.get("id", ""),
+        "id": (gscholar_id(title, kw.get("authors", ""), kw.get("year"))
+               if kw.get("authors") else kw.get("id", "")),
         "title": title,
         "authors": kw.get("authors", ""),
         "year": kw.get("year", None),

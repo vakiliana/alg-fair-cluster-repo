@@ -1,6 +1,6 @@
 [
   {
-    "id": "Chierichetti0LV17",
+    "id": "chierichetti2017fair",
     "title": "Fair clustering through fairlets",
     "authors": "Flavio Chierichetti, Ravi Kumar, Silvio Lattanzi, Sergei Vassilvitskii",
     "year": 2017,
@@ -30,7 +30,7 @@
     "ai_notes": true
   },
   {
-    "id": "BeraCFN19",
+    "id": "bera2019fair",
     "title": "Fair algorithms for clustering",
     "authors": "Suman Kalyan Bera, Deeparnab Chakrabarty, Nicolas Flores, Maryam Negahbani",
     "year": 2019,
@@ -59,7 +59,7 @@
     "ai_notes": true
   },
   {
-    "id": "BackursIOSVW19",
+    "id": "backurs2019scalable",
     "title": "Scalable fair clustering",
     "authors": "Arturs Backurs, Piotr Indyk, Krzysztof Onak, Baruch Schieber, Ali Vakilian, Tal Wagner",
     "year": 2019,
@@ -88,7 +88,7 @@
     "ai_notes": true
   },
   {
-    "id": "KleindessnerSAM19",
+    "id": "kleindessner2019guarantees",
     "title": "Guarantees for spectral clustering with fairness constraints",
     "authors": "Matthäus Kleindessner, Samira Samadi, Pranjal Awasthi, Jamie Morgenstern",
     "year": 2019,
@@ -118,7 +118,7 @@
     "ai_notes": true
   },
   {
-    "id": "AngelidakisKSZ22",
+    "id": "angelidakis2022fair",
     "title": "Fair $k$-center clustering for data summarization",
     "authors": "Haris Angelidakis, Adam Kurpisz, Leon Sering, Rico Zenklusen",
     "year": 2022,
@@ -148,7 +148,7 @@
     "ai_notes": true
   },
   {
-    "id": "Micha020",
+    "id": "chen2019proportionally",
     "title": "Proportionally fair clustering",
     "authors": "Xingyu Chen, Brandon Fain, Liang Lyu, Kamesh Munagala",
     "year": 2019,
@@ -177,7 +177,7 @@
     "ai_notes": true
   },
   {
-    "id": "GhadiriSV21",
+    "id": "ghadiri2021socially",
     "title": "Socially fair $k$-means clustering",
     "authors": "Mehrdad Ghadiri, Samira Samadi, Santosh S. Vempala",
     "year": 2021,
@@ -206,7 +206,7 @@
     "ai_notes": true
   },
   {
-    "id": "FabrisMSS22",
+    "id": "fabris2022algorithmic",
     "title": "Algorithmic fairness datasets: the story so far",
     "authors": "Alessandro Fabris, Stefano Messina, Gianmaria Silvello, Gian Antonio Susto",
     "year": 2022,
@@ -235,9 +235,9 @@
     "ai_notes": true
   },
   {
-    "id": "Bercea0KKRS019",
+    "id": "bercea2019on",
     "title": "On the cost of essentially fair clusterings",
-    "authors": "Ioana Oriana Bercea, Martin Großand Samir Khuller, Aounon Kumar, Clemens Rösner, Daniel R. Schmidt, Melanie Schmidt",
+    "authors": "Ioana Oriana Bercea, Martin Groß, Samir Khuller, Aounon Kumar, Clemens Rösner, Daniel R. Schmidt, Melanie Schmidt",
     "year": 2019,
     "venue": "APPROX",
     "citations": 165,
@@ -265,7 +265,7 @@
     "ai_notes": true
   },
   {
-    "id": "HuangJV19",
+    "id": "huang2019coresets",
     "title": "Coresets for clustering with fairness constraints",
     "authors": "Lingxiao Huang, Shaofeng H.-C. Jiang, Nisheeth K. Vishnoi",
     "year": 2019,
@@ -295,7 +295,7 @@
     "ai_notes": true
   },
   {
-    "id": "0001SS19",
+    "id": "schmidt2019fair",
     "title": "Fair Coresets and Streaming Algorithms for Fair $k$-means",
     "authors": "Melanie Schmidt, Chris Schwiegelshohn, Christian Sohler",
     "year": 2019,
@@ -325,7 +325,7 @@
     "ai_notes": true
   },
   {
-    "id": "AbbasiBV21",
+    "id": "abbasi2021fair",
     "title": "Fair clustering via equitable group representations",
     "authors": "Mohsen Abbasi, Aditya Bhaskara, Suresh Venkatasubramanian",
     "year": 2021,
@@ -355,7 +355,7 @@
     "ai_notes": true
   },
   {
-    "id": "ChhabraMM21",
+    "id": "chhabra2021overview",
     "title": "An overview of fairness in clustering",
     "authors": "Anshuman Chhabra, Karina Masalkovaite, Prasant Mohapatra",
     "year": 2021,
@@ -384,7 +384,7 @@
     "ai_notes": true
   },
   {
-    "id": "MahabadiV20",
+    "id": "mahabadi2020individual",
     "title": "Individual fairness for $k$-clustering",
     "authors": "Sepideh Mahabadi, Ali Vakilian",
     "year": 2020,
@@ -414,7 +414,7 @@
     "ai_notes": true
   },
   {
-    "id": "LiZL20",
+    "id": "li2020deep",
     "title": "Deep fair clustering for visual learning",
     "authors": "Peizhao Li, Han Zhao, Hongfu Liu",
     "year": 2020,
@@ -443,7 +443,7 @@
     "ai_notes": true
   },
   {
-    "id": "AhmadianE0M20",
+    "id": "ahmadian2020fair",
     "title": "Fair correlation clustering",
     "authors": "Sara Ahmadian, Alessandro Epasto, Ravi Kumar, Mohammad Mahdian",
     "year": 2020,
@@ -473,7 +473,7 @@
     "ai_notes": true
   },
   {
-    "id": "AhmadianEK0MMPV20",
+    "id": "ahmadian2020fairhierarchical",
     "title": "Fair hierarchical clustering",
     "authors": "Sara Ahmadian, Alessandro Epasto, Marina Knittel, Ravi Kumar, Mohammad Mahdian, Benjamin Moseley, Philip Pham, Sergei Vassilvitskii, Yuyan Wang",
     "year": 2020,
@@ -503,7 +503,7 @@
     "ai_notes": true
   },
   {
-    "id": "JiaSS20",
+    "id": "jia2020fair",
     "title": "Fair colorful $k$-center clustering",
     "authors": "Xinrui Jia, Kshiteej Sheth, Ola Svensson",
     "year": 2020,
@@ -532,7 +532,7 @@
     "ai_notes": true
   },
   {
-    "id": "MakarychevV21",
+    "id": "makarychev2021approximation",
     "title": "Approximation algorithms for socially fair clustering",
     "authors": "Yury Makarychev, Ali Vakilian",
     "year": 2021,
@@ -560,7 +560,7 @@
     "ai_notes": true
   },
   {
-    "id": "Micha020-2",
+    "id": "micha2020proportionally",
     "title": "Proportionally fair clustering revisited",
     "authors": "Evi Micha, Nisarg Shah",
     "year": 2020,
@@ -589,9 +589,9 @@
     "ai_notes": true
   },
   {
-    "id": "Abraham0S20",
+    "id": "abraham2020fairness",
     "title": "Fairness in clustering with multiple sensitive attributes",
-    "authors": "Savitha Sam Abraham, Deepak P, Sowmya S. Sundaram",
+    "authors": "Savitha Sam Abraham, Deepak P., Sowmya S. Sundaram",
     "year": 2020,
     "venue": "edbt",
     "citations": 75,
@@ -618,9 +618,9 @@
     "ai_notes": true
   },
   {
-    "id": "VakilianY22",
+    "id": "vakilian2022improved",
     "title": "Improved approximation algorithms for individually fair clustering",
-    "authors": "Ali Vakilian, Mustafa Yal\\cciner",
+    "authors": "Ali Vakilian, Mustafa Yalçıner",
     "year": 2022,
     "venue": "AISTATS",
     "citations": 83,
@@ -647,7 +647,7 @@
     "ai_notes": true
   },
   {
-    "id": "NegahbaniC21",
+    "id": "negahbani2021better",
     "title": "Better Algorithms for Individually Fair $k$-Clustering",
     "authors": "Maryam Negahbani, Deeparnab Chakrabarty",
     "year": 2021,
@@ -676,7 +676,7 @@
     "ai_notes": true
   },
   {
-    "id": "abs-1908-09041",
+    "id": "jung2019center",
     "title": "A center in your neighborhood: Fairness in facility location",
     "authors": "Christopher Jung, Sampath Kannan, Neil Lutz",
     "year": 2019,
@@ -705,7 +705,7 @@
     "ai_notes": true
   },
   {
-    "id": "LiWA23",
+    "id": "li2023hierarchical",
     "title": "Hierarchical clustering-based personalized federated learning for robust and fair human activity recognition",
     "authors": "Youpeng Li, Xuyu Wang, Lingling An",
     "year": 2023,
@@ -735,7 +735,7 @@
     "ai_notes": true
   },
   {
-    "id": "ZikoYGA21",
+    "id": "ziko2021variational",
     "title": "Variational fair clustering",
     "authors": "Imtiaz Masud Ziko, Jing Yuan, Eric Granger, Ismail Ben Ayed",
     "year": 2021,
@@ -765,7 +765,7 @@
     "ai_notes": true
   },
   {
-    "id": "EsmaeiliBT020",
+    "id": "esmaeili2020probabilistic",
     "title": "Probabilistic fair clustering",
     "authors": "Seyed A. Esmaeili, Brian Brubach, Leonidas Tsepenekas, John Dickerson",
     "year": 2020,
@@ -795,7 +795,7 @@
     "ai_notes": true
   },
   {
-    "id": "BrubachCDKST20",
+    "id": "brubach2020pairwise",
     "title": "A pairwise fair and community-preserving approach to $k$-center clustering",
     "authors": "Brian Brubach, Darshan Chakrabarti, John P. Dickerson, Samir Khuller, Aravind Srinivasan, Leonidas Tsepenekas",
     "year": 2020,
@@ -825,7 +825,7 @@
     "ai_notes": true
   },
   {
-    "id": "EsmaeiliBSD21",
+    "id": "esmaeili2021fair",
     "title": "Fair clustering under a bounded cost",
     "authors": "Seyed A. Esmaeili, Brian Brubach, Aravind Srinivasan, John Dickerson",
     "year": 2021,
@@ -850,7 +850,7 @@
     "ai_notes": false
   },
   {
-    "id": "JungKL20",
+    "id": "jung2020service",
     "title": "Service in your neighborhood: Fairness in center location",
     "authors": "Christopher Jung, Sampath Kannan, Neil Lutz",
     "year": 2020,
@@ -875,7 +875,7 @@
     "ai_notes": false
   },
   {
-    "id": "ChlamtacMV22",
+    "id": "chlamtac2022approximating",
     "title": "Approximating fair clustering with cascaded norm objectives",
     "authors": "Eden Chlamtác, Yury Makarychev, Ali Vakilian",
     "year": 2022,
@@ -900,7 +900,7 @@
     "ai_notes": false
   },
   {
-    "id": "ThejaswiOG21",
+    "id": "thejaswi2021diversity",
     "title": "Diversity-Aware $k$-median: Clustering with Fair Center Representation",
     "authors": "Suhas Thejaswi, Bruno Ordozgoiti, Aristides Gionis",
     "year": 2021,
@@ -925,7 +925,7 @@
     "ai_notes": false
   },
   {
-    "id": "ChakrabartiDEST22",
+    "id": "chakrabarti2022new",
     "title": "A New Notion of Individually Fair Clustering: $\\alpha$-Equitable $k$-Center",
     "authors": "Darshan Chakrabarti, John P. Dickerson, Seyed A. Esmaeili, Aravind Srinivasan, Leonidas Tsepenekas",
     "year": 2022,
@@ -950,7 +950,7 @@
     "ai_notes": false
   },
   {
-    "id": "ChhabraM22",
+    "id": "chhabra2022fair",
     "title": "Fair algorithms for hierarchical agglomerative clustering",
     "authors": "Anshuman Chhabra, Prasant Mohapatra",
     "year": 2022,
@@ -975,7 +975,7 @@
     "ai_notes": false
   },
   {
-    "id": "HarbL20",
+    "id": "harb2020kfc",
     "title": "KFC: A Scalable Approximation Algorithm for $k$-center Fair Clustering",
     "authors": "Elfarouk Harb, Ho Shan Lam",
     "year": 2020,
@@ -1001,7 +1001,7 @@
     "ai_notes": false
   },
   {
-    "id": "ChhabraLML23",
+    "id": "chhabra2023robust",
     "title": "Robust fair clustering: A novel fairness attack and defense framework",
     "authors": "Anshuman Chhabra, Peizhao Li, Prasant Mohapatra, Hongfu Liu",
     "year": 2023,
@@ -1026,7 +1026,7 @@
     "ai_notes": false
   },
   {
-    "id": "BrubachCDST21",
+    "id": "brubach2021fairness",
     "title": "Fairness, semi-supervised learning, and more: A general framework for clustering with stochastic pairwise constraints",
     "authors": "Brian Brubach, Darshan Chakrabarti, John P. Dickerson, Aravind Srinivasan, Leonidas Tsepenekas",
     "year": 2021,
@@ -1051,7 +1051,7 @@
     "ai_notes": false
   },
   {
-    "id": "WangLDB23",
+    "id": "wang2023scalable",
     "title": "Scalable spectral clustering with group fairness constraints",
     "authors": "Ji Wang, Ding Lu, Ian Davidson, Zhaojun Bai",
     "year": 2023,
@@ -1077,7 +1077,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2006-04960",
+    "id": "kleindessner2020notion",
     "title": "A notion of individual fairness for clustering",
     "authors": "Matthäus Kleindessner, Pranjal Awasthi, Jamie Morgenstern",
     "year": 2020,
@@ -1102,7 +1102,7 @@
     "ai_notes": false
   },
   {
-    "id": "LiLSWW21",
+    "id": "li2021approximate",
     "title": "Approximate group fairness for clustering",
     "authors": "Bo Li, Lijun Li, Ankang Sun, Chenhao Wang, Yingfan Wang",
     "year": 2021,
@@ -1127,7 +1127,7 @@
     "ai_notes": false
   },
   {
-    "id": "Zeng00P0023",
+    "id": "zeng2023deep",
     "title": "Deep fair clustering via maximizing and minimizing mutual information: Theory, algorithm and metric",
     "authors": "Pengxin Zeng, Yunfan Li, Peng Hu, Dezhong Peng, Jiancheng Lv, Xi Peng",
     "year": 2023,
@@ -1153,7 +1153,7 @@
     "ai_notes": false
   },
   {
-    "id": "Buet-GolfouseU22",
+    "id": "buetgolfouse2022towards",
     "title": "Towards fair unsupervised learning",
     "authors": "Francois Buet-Golfouse, Islam Utyagulov",
     "year": 2022,
@@ -1178,7 +1178,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2002-07892",
+    "id": "bohm2020fair",
     "title": "Fair clustering with multiple colors",
     "authors": "Matteo Böhm, Adriano Fazzone, Stefano Leonardi, Chris Schwiegelshohn",
     "year": 2020,
@@ -1203,7 +1203,7 @@
     "ai_notes": false
   },
   {
-    "id": "HotegniMV23",
+    "id": "hotegni2023approximation",
     "title": "Approximation algorithms for fair range clustering",
     "authors": "Sèdjro Salomon Hotegni, Sepideh Mahabadi, Ali Vakilian",
     "year": 2023,
@@ -1229,7 +1229,7 @@
     "ai_notes": false
   },
   {
-    "id": "AngelidakisKSZ22-2",
+    "id": "angelidakis2022fairand",
     "title": "Fair and fast $k$-center clustering for data summarization",
     "authors": "Haris Angelidakis, Adam Kurpisz, Leon Sering, Rico Zenklusen",
     "year": 2022,
@@ -1254,7 +1254,7 @@
     "ai_notes": false
   },
   {
-    "id": "TranKB23",
+    "id": "tran2023fair",
     "title": "Fair-capacitated clustering",
     "authors": "Vanessa Tran, Manuel Kammermann, Philipp Baumann",
     "year": 2023,
@@ -1279,7 +1279,7 @@
     "ai_notes": false
   },
   {
-    "id": "ZhengZH23",
+    "id": "zheng2023fairness",
     "title": "Fairness-aware multi-view clustering",
     "authors": "Lecheng Zheng, Yada Zhu, Jingrui He",
     "year": 2023,
@@ -1304,7 +1304,7 @@
     "ai_notes": false
   },
   {
-    "id": "ChhabraSM21",
+    "id": "chhabra2021fair",
     "title": "Fair clustering using antidote data",
     "authors": "Anshuman Chhabra, Adish Singla, Prasant Mohapatra",
     "year": 2021,
@@ -1329,7 +1329,7 @@
     "ai_notes": false
   },
   {
-    "id": "Kellerhals024",
+    "id": "kellerhals2024proportional",
     "title": "Proportional fairness in clustering: A social choice perspective",
     "authors": "Leon Kellerhals, Jannik Peters",
     "year": 2024,
@@ -1354,7 +1354,7 @@
     "ai_notes": false
   },
   {
-    "id": "GoyalJ23",
+    "id": "goyal2023tight",
     "title": "Tight fpt approximation for socially fair clustering",
     "authors": "Dishant Goyal, Ragesh Jaiswal",
     "year": 2023,
@@ -1379,7 +1379,7 @@
     "ai_notes": false
   },
   {
-    "id": "Al-WaniSASNLNH19",
+    "id": "alwani2019on",
     "title": "On short term fairness and throughput of user clustering for downlink non-orthogonal multiple access system",
     "authors": "Mohanad M. Al-Wani, Aduwati Sali, Borhanuddin Mohd Ali, Asem A. Salah, Keivan Navaie, Chee Yen Leow, Nor Kamariah Noordin, Shaiful J. Hashim",
     "year": 2019,
@@ -1404,7 +1404,7 @@
     "ai_notes": false
   },
   {
-    "id": "BajpaiCCN21",
+    "id": "bajpai2021revisiting",
     "title": "Revisiting Priority $k$-Center: Fairness and Outliers",
     "authors": "Tanvi Bajpai, Deeparnab Chakrabarty, Chandra Chekuri, Maryam Negahbani",
     "year": 2021,
@@ -1429,7 +1429,7 @@
     "ai_notes": false
   },
   {
-    "id": "GuptaGKJ23",
+    "id": "gupta2023efficient",
     "title": "Efficient algorithms for fair clustering with a new notion of fairness",
     "authors": "Shivam Gupta, Ganesh Ghalme, Narayanan C. Krishnan, Shweta Jain",
     "year": 2023,
@@ -1454,7 +1454,7 @@
     "ai_notes": false
   },
   {
-    "id": "Fu0MCBH23",
+    "id": "fu2023fairness",
     "title": "Fairness-aware clique-preserving spectral clustering of temporal graphs",
     "authors": "Dongqi Fu, Dawei Zhou, Ross Maciejewski, Arie Croitoru, Marcus Boyd, Jingrui He",
     "year": 2023,
@@ -1479,7 +1479,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2105-14146",
+    "id": "zhang2021deep",
     "title": "Deep fair discriminative clustering",
     "authors": "Hongjing Zhang, Ian Davidson",
     "year": 2021,
@@ -1504,7 +1504,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2006-12589",
+    "id": "anderson2020distributional",
     "title": "Distributional individual fairness in clustering",
     "authors": "Nihesh Anderson, Suman K. Bera, Syamantak Das, Yang Liu",
     "year": 2020,
@@ -1529,9 +1529,9 @@
     "ai_notes": false
   },
   {
-    "id": "LiuV22",
+    "id": "liu2022stochastic",
     "title": "A Stochastic Alternating Balance $k$-Means Algorithm for Fair Clustering",
-    "authors": "Suyun Liu, Lu\\'\\is Nunes Vicente",
+    "authors": "Suyun Liu, Luís Nunes Vicente",
     "year": 2022,
     "venue": "LION",
     "citations": 24,
@@ -1554,7 +1554,7 @@
     "ai_notes": false
   },
   {
-    "id": "BeraDGK22",
+    "id": "bera2022fair",
     "title": "Fair $k$-center clustering in MapReduce and streaming settings",
     "authors": "Suman K. Bera, Syamantak Das, Sainyam Galhotra, Sagar Sudhir Kale",
     "year": 2022,
@@ -1579,7 +1579,7 @@
     "ai_notes": false
   },
   {
-    "id": "FriggstadM21a",
+    "id": "friggstad2021fair",
     "title": "Fair correlation clustering with global and local guarantees",
     "authors": "Zachary Friggstad, Ramin Mousavi",
     "year": 2021,
@@ -1604,7 +1604,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2110-12020",
+    "id": "chhabra2020fairness",
     "title": "Fairness degrading adversarial attacks against clustering algorithms",
     "authors": "Anshuman Chhabra, Adish Singla, Prasant Mohapatra",
     "year": 2020,
@@ -1630,7 +1630,7 @@
     "ai_notes": false
   },
   {
-    "id": "NafeaSY22",
+    "id": "nafea2022proportional",
     "title": "Proportional fair clustered federated learning",
     "authors": "Mohamed S. Nafea, Eugine Shin, Aylin Yener",
     "year": 2022,
@@ -1655,7 +1655,7 @@
     "ai_notes": false
   },
   {
-    "id": "Chhaya0CS22",
+    "id": "chhaya2022on",
     "title": "On Coresets for Fair Regression and Individually Fair Clustering.",
     "authors": "Rachit Chhaya, Anirban Dasgupta, Jayesh Choudhari, Supratim Shit",
     "year": 2022,
@@ -1680,7 +1680,7 @@
     "ai_notes": false
   },
   {
-    "id": "LeeKBYL21",
+    "id": "lee2021fair",
     "title": "Fair clustering with fair correspondence distribution",
     "authors": "Woojin Lee, Hyungjin Ko, Junyoung Byun, Taeho Yoon, Jaewook Lee",
     "year": 2021,
@@ -1705,7 +1705,7 @@
     "ai_notes": false
   },
   {
-    "id": "GalhotraSZ21",
+    "id": "galhotra2021learning",
     "title": "Learning to generate fair clusters from demonstrations",
     "authors": "Sainyam Galhotra, Sandhya Saisubramanian, Shlomo Zilberstein",
     "year": 2021,
@@ -1730,7 +1730,7 @@
     "ai_notes": false
   },
   {
-    "id": "AhmadianN23",
+    "id": "ahmadian2023improved",
     "title": "Improved approximation for fair correlation clustering",
     "authors": "Sara Ahmadian, Maryam Negahbani",
     "year": 2023,
@@ -1755,7 +1755,7 @@
     "ai_notes": false
   },
   {
-    "id": "BateniCEL24",
+    "id": "bateni2024scalable",
     "title": "A scalable algorithm for individually fair $k$-means clustering",
     "authors": "MohammadHossein Bateni, Vincent Cohen-Addad, Alessandro Epasto, Silvio Lattanzi",
     "year": 2024,
@@ -1780,7 +1780,7 @@
     "ai_notes": false
   },
   {
-    "id": "BeraDGK22-2",
+    "id": "bera2022fairk",
     "title": "Fair $k$-Center Clustering",
     "authors": "Suman K. Bera, Syamantak Das, Sainyam Galhotra, Sagar Sudhir Kale",
     "year": 2022,
@@ -1805,7 +1805,7 @@
     "ai_notes": false
   },
   {
-    "id": "XuZYZ021",
+    "id": "xu2021fairness",
     "title": "Fairness constraint of fuzzy $c$-means clustering improves clustering fairness",
     "authors": "Xia Xu, Hui Zhang, Chunming Yang, Xujian Zhao, Bo Li",
     "year": 2021,
@@ -1830,7 +1830,7 @@
     "ai_notes": false
   },
   {
-    "id": "KarKMMSDS23",
+    "id": "kar2023feature",
     "title": "Feature-based individual fairness in $k$-clustering",
     "authors": "Debajyoti Kar, Mert Kosan, Debmalya Mandal, Sourav Medya, Arlei Silva, Palash Dey, Swagato Sanyal",
     "year": 2023,
@@ -1855,7 +1855,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2006-05645",
+    "id": "amburg2020fair",
     "title": "Fair clustering for diverse and experienced groups",
     "authors": "Ilya Amburg, Nate Veldt, Austin R. Benson",
     "year": 2020,
@@ -1880,7 +1880,7 @@
     "ai_notes": false
   },
   {
-    "id": "GuptaD22",
+    "id": "gupta2022consistency",
     "title": "Consistency of constrained spectral clustering under graph induced fair planted partitions",
     "authors": "Shubham Gupta, Ambedkar Dukkipati",
     "year": 2022,
@@ -1905,7 +1905,7 @@
     "ai_notes": false
   },
   {
-    "id": "SchwartzZ22",
+    "id": "schwartz2022fair",
     "title": "Fair correlation clustering in general graphs",
     "authors": "Roy Schwartz, Roded Zats",
     "year": 2022,
@@ -1930,7 +1930,7 @@
     "ai_notes": false
   },
   {
-    "id": "ThejaswiGOO22",
+    "id": "thejaswi2022clustering",
     "title": "Clustering with fair-center representation: Parameterized approximation algorithms and heuristics",
     "authors": "Suhas Thejaswi, Ameet Gadekar, Bruno Ordozgoiti, Michal Osadnik",
     "year": 2022,
@@ -1956,7 +1956,7 @@
     "ai_notes": false
   },
   {
-    "id": "DickersonEMZ23",
+    "id": "dickerson2023doubly",
     "title": "Doubly constrained fair clustering",
     "authors": "John P. Dickerson, Seyed A. Esmaeili, Jamie H. Morgenstern, Claire Jie Zhang",
     "year": 2023,
@@ -1981,9 +1981,9 @@
     "ai_notes": false
   },
   {
-    "id": "0001A20",
+    "id": "p2020representativity",
     "title": "Representativity fairness in clustering",
-    "authors": "Deepak P, Savitha Sam Abraham",
+    "authors": "Deepak P., Savitha Sam Abraham",
     "year": 2020,
     "venue": "websci",
     "citations": 16,
@@ -2006,7 +2006,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2206-11210",
+    "id": "ghadiri2022constant",
     "title": "Constant-Factor Approximation Algorithms for Socially Fair $k$-Clustering",
     "authors": "Mehrdad Ghadiri, Mohit Singh, Santosh S. Vempala",
     "year": 2022,
@@ -2032,7 +2032,7 @@
     "ai_notes": false
   },
   {
-    "id": "EsmaeiliDDB22",
+    "id": "esmaeili2022fair",
     "title": "Fair labeled clustering",
     "authors": "Seyed A. Esmaeili, Sharmila Duppala, John P. Dickerson, Brian Brubach",
     "year": 2022,
@@ -2057,7 +2057,7 @@
     "ai_notes": false
   },
   {
-    "id": "DaiMV22",
+    "id": "dai2022fair",
     "title": "Fair representation clustering with several protected classes",
     "authors": "Zhen Dai, Yury Makarychev, Ali Vakilian",
     "year": 2022,
@@ -2082,7 +2082,7 @@
     "ai_notes": false
   },
   {
-    "id": "Amagata24",
+    "id": "amagata2024k",
     "title": "$k$-Clustering with Fair Outliers",
     "authors": "Daichi Amagata",
     "year": 2024,
@@ -2107,7 +2107,7 @@
     "ai_notes": false
   },
   {
-    "id": "GhodsiSN24",
+    "id": "ghodsi2024towards",
     "title": "Towards cohesion-fairness harmony: Contrastive regularization in individual fair graph clustering",
     "authors": "Siamak Ghodsi, Seyed Amjad Seyedi, Eirini Ntoutsi",
     "year": 2024,
@@ -2132,7 +2132,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2304-07408",
+    "id": "nguyen2023fairness",
     "title": "Fairness in visual clustering: A novel transformer clustering approach",
     "authors": "Xuan-Bac Nguyen, Chi Nhan Duong, Marios Savvides, Kaushik Roy, Khoa Luu",
     "year": 2023,
@@ -2157,9 +2157,9 @@
     "ai_notes": false
   },
   {
-    "id": "evaluating-performance-of-scalable-fair-",
+    "id": "handa2022evaluating",
     "title": "Evaluating performance of scalable fair clustering machine learning techniques in detecting cyber attacks in industrial control systems",
-    "authors": "A Handa, P Semwal - Handbook of Big Data Analytics, Forensics, 2022 - Springer",
+    "authors": "A. Handa, P. Semwal",
     "year": 2022,
     "venue": "",
     "citations": 12,
@@ -2183,7 +2183,7 @@
     "ai_notes": false
   },
   {
-    "id": "PanZQ24",
+    "id": "pan2024balanced",
     "title": "Balanced fair $K$-Means clustering",
     "authors": "Renbo Pan, Caiming Zhong, Jiangbo Qian",
     "year": 2024,
@@ -2208,9 +2208,9 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2007-07838",
+    "id": "p2020whither",
     "title": "Whither fair clustering",
-    "authors": "Deepak P",
+    "authors": "Deepak P.",
     "year": 2020,
     "venue": "arXiv",
     "citations": 9,
@@ -2233,7 +2233,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2209-12756",
+    "id": "fajri2022fal",
     "title": "Fal-cur: fair active learning using uncertainty and representativeness on fair clustering",
     "authors": "Ricky Maulana Fajri, Akrati Saxena, Yulong Pei, Mykola Pechenizkiy",
     "year": 2022,
@@ -2258,7 +2258,7 @@
     "ai_notes": false
   },
   {
-    "id": "ZhangW24a",
+    "id": "zhang2024dual",
     "title": "A dual Laplacian framework with effective graph learning for unified fair spectral clustering",
     "authors": "Xiang Zhang, Qiao Wang",
     "year": 2024,
@@ -2283,9 +2283,9 @@
     "ai_notes": false
   },
   {
-    "id": "fairness-first-clustering-a-multi-stage-",
+    "id": "pan2023fairness",
     "title": "Fairness first clustering: A multi-stage approach for mitigating bias",
-    "authors": "R Pan, C Zhong - Electronics, 2023 - mdpi.com",
+    "authors": "Renbo Pan, Caiming Zhong",
     "year": 2023,
     "venue": "",
     "citations": 11,
@@ -2308,7 +2308,7 @@
     "ai_notes": false
   },
   {
-    "id": "CaragiannisM024",
+    "id": "caragiannis2024proportional",
     "title": "Proportional fairness in non-centroid clustering",
     "authors": "Ioannis Caragiannis, Evi Micha, Nisarg Shah",
     "year": 2024,
@@ -2333,7 +2333,7 @@
     "ai_notes": false
   },
   {
-    "id": "BohmFLMS21",
+    "id": "bohm2021algorithms",
     "title": "Algorithms for fair $k$-clustering with multiple protected attributes",
     "authors": "Matteo Böhm, Adriano Fazzone, Stefano Leonardi, Cristina Menghini, Chris Schwiegelshohn",
     "year": 2021,
@@ -2358,7 +2358,7 @@
     "ai_notes": false
   },
   {
-    "id": "CeccarelloPP24",
+    "id": "ceccarello2024fast",
     "title": "Fast and accurate fair $k$-center clustering in doubling metrics",
     "authors": "Matteo Ceccarello, Andrea Pietracaprina, Geppino Pucci",
     "year": 2024,
@@ -2383,7 +2383,7 @@
     "ai_notes": false
   },
   {
-    "id": "WangSLD23",
+    "id": "wang2023multifdf",
     "title": "MultiFDF: Multi-community clustering for fairness-aware recommendation",
     "authors": "Bang Wang, Shipeng Song, Shenghao Liu, Xianjun Deng",
     "year": 2023,
@@ -2408,7 +2408,7 @@
     "ai_notes": false
   },
   {
-    "id": "Amagata24-2",
+    "id": "amagata2024fair",
     "title": "Fair $k$-center clustering with outliers",
     "authors": "Daichi Amagata",
     "year": 2024,
@@ -2433,7 +2433,7 @@
     "ai_notes": false
   },
   {
-    "id": "KnittelSDH23",
+    "id": "knittel2023generalized",
     "title": "Generalized reductions: making any hierarchical clustering fair and balanced with low cost",
     "authors": "Marina Knittel, Max Springer, John P. Dickerson, MohammadTaghi Hajiaghayi",
     "year": 2023,
@@ -2458,7 +2458,7 @@
     "ai_notes": false
   },
   {
-    "id": "LiHDC0Z24",
+    "id": "li2024one",
     "title": "One-stage fair multi-view spectral clustering",
     "authors": "Rongwen Li, Haiyang Hu, Liang Du, Jiarong Chen, Bingbing Jiang, Peng Zhou",
     "year": 2024,
@@ -2483,9 +2483,9 @@
     "ai_notes": false
   },
   {
-    "id": "scalable-and-improved-algorithms-for-ind",
+    "id": "bateni2022scalable",
     "title": "Scalable and improved algorithms for individually fair clustering",
-    "authors": "M Bateni, V Cohen-Addad, A Epasto… - … on Trustworthy, …, 2022 - openreview.net",
+    "authors": "Mohammadhossein Bateni, Vincent Cohen-Addad, Alessandro Epasto, Silvio Lattanzi",
     "year": 2022,
     "venue": "",
     "citations": 7,
@@ -2508,7 +2508,7 @@
     "ai_notes": false
   },
   {
-    "id": "ChakrabortyBP24",
+    "id": "chakraborty2024gibbs",
     "title": "A gibbs posterior framework for fair clustering",
     "authors": "Abhisek Chakraborty, Anirban Bhattacharya, Debdeep Pati",
     "year": 2024,
@@ -2533,7 +2533,7 @@
     "ai_notes": false
   },
   {
-    "id": "GulloCMT22",
+    "id": "gullo2022when",
     "title": "When correlation clustering meets fairness constraints",
     "authors": "Francesco Gullo, Lucio La Cava, Domenico Mandaglio, Andrea Tagarelli",
     "year": 2022,
@@ -2558,7 +2558,7 @@
     "ai_notes": false
   },
   {
-    "id": "ZhouLLDL25",
+    "id": "zhou2025fair",
     "title": "Fair clustering ensemble with equal cluster capacity",
     "authors": "Peng Zhou, Rongwen Li, Zhaolong Ling, Liang Du, Xinwang Liu",
     "year": 2025,
@@ -2583,7 +2583,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2405-10378",
+    "id": "bandyapadhyay2024polynomial",
     "title": "A Polynomial-Time Approximation for Pairwise Fair $k$-Median Clustering",
     "authors": "Sayan Bandyapadhyay, Eden Chlamtác, Yury Makarychev, Ali Vakilian",
     "year": 2024,
@@ -2608,7 +2608,7 @@
     "ai_notes": false
   },
   {
-    "id": "KnittelSDH23-2",
+    "id": "knittel2023fair",
     "title": "Fair, polylog-approximate low-cost hierarchical clustering",
     "authors": "Marina Knittel, Max Springer, John P. Dickerson, MohammadTaghi Hajiaghayi",
     "year": 2023,
@@ -2633,7 +2633,7 @@
     "ai_notes": false
   },
   {
-    "id": "LawlessG24",
+    "id": "lawless2024fair",
     "title": "Fair minimum representation clustering",
     "authors": "Connor Lawless, Oktay Günlük",
     "year": 2024,
@@ -2658,7 +2658,7 @@
     "ai_notes": false
   },
   {
-    "id": "Casel0SW23",
+    "id": "casel2023fair",
     "title": "Fair correlation clustering in forests",
     "authors": "Katrin Casel, Tobias Friedrich, Martin Schirneck, Simon Wietheger",
     "year": 2023,
@@ -2683,7 +2683,7 @@
     "ai_notes": false
   },
   {
-    "id": "LinG25",
+    "id": "lin2025fairness",
     "title": "Fairness in clustering",
     "authors": "Yue Lin, George Grekousis",
     "year": 2025,
@@ -2708,7 +2708,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2408-10002",
+    "id": "hakim2024fairness",
     "title": "The Fairness-Quality Tradeoff in Clustering",
     "authors": "Rashida Hakim, Ana-Andreea Stoica, Christos H. Papadimitriou, Mihalis Yannakakis",
     "year": 2024,
@@ -2733,7 +2733,7 @@
     "ai_notes": false
   },
   {
-    "id": "Cohen-AddadJYZZ25",
+    "id": "cohenaddad2025fair",
     "title": "Fair Clustering in the Sliding Window Model",
     "authors": "Vincent Cohen-Addad, Shaofeng H.-C. Jiang, Qiaoyuan Yang, Yubo Zhang, Samson Zhou",
     "year": 2025,
@@ -2758,7 +2758,7 @@
     "ai_notes": false
   },
   {
-    "id": "WuFH0024",
+    "id": "wu2024new",
     "title": "New algorithms for distributed fair $k$-center clustering: almost accurate as sequential algorithms",
     "authors": "Xiaoliang Wu, Qilong Feng, Ziyun Huang, Jinhui Xu, Jianxin Wang",
     "year": 2024,
@@ -2783,7 +2783,7 @@
     "ai_notes": false
   },
   {
-    "id": "0001EMZ25",
+    "id": "dickerson2025fair",
     "title": "Fair clustering: Critique, caveats, and future directions",
     "authors": "John Dickerson, Seyed A. Esmaeili, Jamie Morgenstern, Claire Jie Zhang",
     "year": 2025,
@@ -2808,7 +2808,7 @@
     "ai_notes": false
   },
   {
-    "id": "QuyN21",
+    "id": "quy2021towards",
     "title": "Towards fair, explainable and actionable clustering for learning analytics.",
     "authors": "Tai Le Quy, Eirini Ntoutsi",
     "year": 2021,
@@ -2833,7 +2833,7 @@
     "ai_notes": false
   },
   {
-    "id": "YangZYLZL25",
+    "id": "yang2025spectral",
     "title": "Spectral clustering with scale fairness constraints",
     "authors": "Zhijing Yang, Hui Zhang, Chunming Yang, Bo Li, Xujian Zhao, Yin Long",
     "year": 2025,
@@ -2858,7 +2858,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2311-13766",
+    "id": "zhang2023unified",
     "title": "A unified framework for fair spectral clustering with effective graph learning",
     "authors": "Xiang Zhang, Qiao Wang",
     "year": 2023,
@@ -2883,7 +2883,7 @@
     "ai_notes": false
   },
   {
-    "id": "0025YLXRF24",
+    "id": "zhang2024towards",
     "title": "Towards a theoretical understanding of why local search works for clustering with fair-center representation",
     "authors": "Zhen Zhang, Junfeng Yang, Limei Liu, Xuesong Xu, Guozhen Rong, Qilong Feng",
     "year": 2024,
@@ -2908,9 +2908,9 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2205-02052",
+    "id": "simoes2022exploring",
     "title": "Exploring rawlsian fairness for $k$-means clustering",
-    "authors": "Stanley Simoes, Deepak P, Muiris MacCarthaigh",
+    "authors": "Stanley Simoes, Deepak P., Muiris MacCarthaigh",
     "year": 2022,
     "venue": "arXiv",
     "citations": 3,
@@ -2933,7 +2933,7 @@
     "ai_notes": false
   },
   {
-    "id": "NguyenAHAS24",
+    "id": "nguyen2024definitions",
     "title": "Definitions of Fairness Differ Across Socioeconomic Groups & Shape Perceptions of Algorithmic Decisions",
     "authors": "Tonya Nguyen, Sabriya Alam, Cathy Hu, Catherine Albiston, Niloufar Salehi",
     "year": 2024,
@@ -2958,7 +2958,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2305-17557",
+    "id": "chakraborty2023fair",
     "title": "Fair clustering via hierarchical fair-dirichlet process",
     "authors": "Abhisek Chakraborty, Anirban Bhattacharya, Debdeep Pati",
     "year": 2023,
@@ -2983,7 +2983,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2412-10923",
+    "id": "maity2023linear",
     "title": "Linear programming based approximation to individually fair $k$-clustering with outliers",
     "authors": "Binita Maity, Shrutimoy Das, Anirban Dasgupta",
     "year": 2023,
@@ -3008,7 +3008,7 @@
     "ai_notes": false
   },
   {
-    "id": "Krieger0MTA25",
+    "id": "krieger2025fairden",
     "title": "FairDen: Fair Density-Based Clustering",
     "authors": "Lena Krieger, Anna Beer, Pernille Matthews, Anneka Myrup Thiesson, Ira Assent",
     "year": 2025,
@@ -3033,14 +3033,14 @@
     "ai_notes": false
   },
   {
-    "id": "2410.12913v1",
+    "id": "gadekar2025fair",
     "title": "Fair clustering for data summarization: Improved approximation algorithms and complexity insights",
     "authors": "Ameet Gadekar, Aristides Gionis, Suhas Thejaswi",
     "year": 2025,
     "venue": "WWW",
     "citations": 7,
-    "link": "https://doi.org/10.1145/3696410.3714857",
-    "pdf": "",
+    "link": "https://arxiv.org/abs/2410.12913",
+    "pdf": "https://arxiv.org/pdf/2410.12913",
     "bib_link": "https://arxiv.org/abs/2410.12913v1",
     "bib_entry": "",
     "scholar_id": "VcDRB7XNMxwJ",
@@ -3059,9 +3059,9 @@
     "ai_notes": false
   },
   {
-    "id": "KjaersgaardP0KC24",
+    "id": "kjaersgaard2024fair",
     "title": "Fair soft clustering",
-    "authors": "Rune D. Kj\\aersgaard, Pekka Parviainen, Saket Saurabh, Madhumita Kundu, Line H. Clemmensen",
+    "authors": "Rune D. Kjærsgaard, Pekka Parviainen, Saket Saurabh, Madhumita Kundu, Line H. Clemmensen",
     "year": 2024,
     "venue": "AISTATS",
     "citations": 2,
@@ -3084,7 +3084,7 @@
     "ai_notes": false
   },
   {
-    "id": "LinG25-2",
+    "id": "lin2025can",
     "title": "Can geodemographic clustering be fair? Incorporating social fairness in crisp and fuzzy approaches through a unified framework",
     "authors": "Yue Lin, George Grekousis",
     "year": 2025,
@@ -3109,9 +3109,9 @@
     "ai_notes": false
   },
   {
-    "id": "GorantlaGDL23",
+    "id": "gorantla2023socially",
     "title": "Socially Fair Center-Based and Linear Subspace Clustering",
-    "authors": "Sruthi Gorantla, Kishen N. Gowda, Amit Deshpande, Anand Louis",
+    "authors": "Sruthi Gorantla, Kishen N. Gowda, Amit Deshpande, An, Louis",
     "year": 2023,
     "venue": "PKDD",
     "citations": 2,
@@ -3134,7 +3134,7 @@
     "ai_notes": false
   },
   {
-    "id": "YangZYYL23",
+    "id": "yang2023cost",
     "title": "Cost Guarantee for Individual Fairness on Spectral Clustering",
     "authors": "Zhijing Yang, Hui Zhang, Chunming Yang, Yi Yang, Bo Li",
     "year": 2023,
@@ -3160,7 +3160,7 @@
     "ai_notes": false
   },
   {
-    "id": "BalkanskiCM25",
+    "id": "balkanski2025cost",
     "title": "Cost-Free Fairness in Online Correlation Clustering",
     "authors": "Eric Balkanski, Jason Chatzitheodorou, Andreas Maggiori",
     "year": 2025,
@@ -3185,7 +3185,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2410-15233",
+    "id": "baharlouei2024semidefinite",
     "title": "A Semidefinite Relaxation Approach for Fair Graph Clustering",
     "authors": "Sina Baharlouei, Sadra Sabouri",
     "year": 2024,
@@ -3210,13 +3210,13 @@
     "ai_notes": false
   },
   {
-    "id": "ChhabraMM21-2",
+    "id": "chhabra2021fairclustering",
     "title": "Fair clustering: Overview",
     "authors": "Anshuman Chhabra, Karina Masalkovaite, Prasant Mohapatra",
     "year": 2021,
     "venue": "IEEE Access",
     "citations": 1,
-    "link": "",
+    "link": "https://scholar.google.com/scholar?q=Fair%20clustering%3A%20Overview",
     "pdf": "",
     "bib_link": "https://dblp.org/rec/journals/access/ChhabraMM21",
     "bib_entry": "",
@@ -3235,7 +3235,7 @@
     "ai_notes": false
   },
   {
-    "id": "2406.00599v3",
+    "id": "duppala2024robust",
     "title": "Robust fair clustering with group membership uncertainty sets",
     "authors": "Sharmila Duppala, Juan Luque, John P. Dickerson, Seyed A. Esmaeili",
     "year": 2024,
@@ -3260,9 +3260,9 @@
     "ai_notes": false
   },
   {
-    "id": "Simoes0M24",
+    "id": "simoes2024towards",
     "title": "Towards fairer centroids in $k$-means clustering",
-    "authors": "Stanley Simoes, Deepak P, Muiris MacCarthaigh",
+    "authors": "Stanley Simoes, Deepak P., Muiris MacCarthaigh",
     "year": 2024,
     "venue": "AAAI",
     "citations": 2,
@@ -3285,9 +3285,9 @@
     "ai_notes": false
   },
   {
-    "id": "an-optimization-based-order-and-cut-appr",
+    "id": "li2024optimization",
     "title": "An Optimization-Based Order-and-Cut Approach for Fair Clustering of Data Sets",
-    "authors": "S Li, H Aprahamian, M Nouiehed… - INFORMS Journal on …, 2024 - pubsonline.informs.org",
+    "authors": "S. Li, H. Aprahamian, M. Nouiehed",
     "year": 2024,
     "venue": "",
     "citations": 2,
@@ -3310,7 +3310,7 @@
     "ai_notes": false
   },
   {
-    "id": "XuHDY21",
+    "id": "xu2021k",
     "title": "$K$-Means Clustering with Fairness Constraints",
     "authors": "Weiting Xu, Jie Hu, Shengdong Du, Yan Yang",
     "year": 2021,
@@ -3335,13 +3335,13 @@
     "ai_notes": false
   },
   {
-    "id": "2503.05260v1",
+    "id": "ceccarello2025fair",
     "title": "Fair center clustering in sliding windows",
     "authors": "Matteo Ceccarello, Andrea Pietracaprina, Geppino Pucci, Francesco Visonà",
     "year": 2025,
     "venue": "CoRR",
     "citations": 2,
-    "link": "https://doi.org/10.3390/a15020052",
+    "link": "https://arxiv.org/abs/2503.05260",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Fair_Center_Clustering_in_Sliding_Windows.pdf",
     "bib_link": "https://arxiv.org/abs/2503.05260v1",
     "bib_entry": "",
@@ -3360,7 +3360,7 @@
     "ai_notes": false
   },
   {
-    "id": "YangZYLZL24",
+    "id": "yang2024scale",
     "title": "Scale fairness on spectral clustering",
     "authors": "Zhijing Yang, Hui Zhang, Chunming Yang, Bo Li, Xujian Zhao, Yin Long",
     "year": 2024,
@@ -3385,9 +3385,9 @@
     "ai_notes": false
   },
   {
-    "id": "fair-spectral-clustering-based-on-coordi",
+    "id": "feng2024fair",
     "title": "Fair Spectral Clustering Based on Coordinate Descent",
-    "authors": "R Feng, C Zhong, T Pan - Symmetry, 2024 - mdpi.com",
+    "authors": "Ruixin Feng, Caiming Zhong, Tiejun Pan",
     "year": 2024,
     "venue": "",
     "citations": 1,
@@ -3410,9 +3410,9 @@
     "ai_notes": false
   },
   {
-    "id": "group-and-individual-fairness-in-cluster",
+    "id": "gupta2023group",
     "title": "Group and individual fairness in clustering algorithms",
-    "authors": "S Gupta, S Jain, G Ghalme, NC Krishnan… - Ethics in Artificial …, 2023 - Springer",
+    "authors": "Shivam Gupta, Shweta Jain, Ganesh Ghalme, Narayanan C. Krishnan",
     "year": 2023,
     "venue": "",
     "citations": 1,
@@ -3435,9 +3435,9 @@
     "ai_notes": false
   },
   {
-    "id": "fairness-and-information-access-clusteri",
+    "id": "beilinson2020fairness",
     "title": "Fairness and Information Access Clustering in Social Networks",
-    "authors": "H Beilinson - 2020 - scholarship.tricolib.brynmawr.edu",
+    "authors": "H. Beilinson",
     "year": 2020,
     "venue": "",
     "citations": 1,
@@ -3460,13 +3460,13 @@
     "ai_notes": false
   },
   {
-    "id": "approximation-algorithms-for-clustering-",
+    "id": "negahbani2022approximation",
     "title": "Approximation Algorithms for Clustering: Fairness and Outlier Detection",
-    "authors": "M Negahbani - 2022 - search.proquest.com",
+    "authors": "Maryam Negahbani",
     "year": 2022,
     "venue": "",
     "citations": 1,
-    "link": "https://doi.org/10.1145/3447548.3470822",
+    "link": "https://scholar.google.com/scholar?q=Approximation%20Algorithms%20for%20Clustering%3A%20Fairness%20and%20Outlier%20Detection",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Approximation_Algorithms_for_Clustering_Fairness_and_Outlier_Detection.pdf",
     "bib_link": "",
     "bib_entry": "",
@@ -3486,7 +3486,7 @@
     "ai_notes": false
   },
   {
-    "id": "0001EMZ25-2",
+    "id": "dickerson2025sok",
     "title": "SoK: Fair Clustering: Critique, Caveats, and Future Directions",
     "authors": "John Dickerson, Seyed A. Esmaeili, Jamie Morgenstern, Claire Jie Zhang",
     "year": 2025,
@@ -3511,7 +3511,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2506-08143",
+    "id": "tonin2025accelerating",
     "title": "Accelerating Spectral Clustering under Fairness Constraints",
     "authors": "Francesco Tonin, Alex Lambert, Johan A. K. Suykens, Volkan Cevher",
     "year": 2025,
@@ -3536,13 +3536,13 @@
     "ai_notes": false
   },
   {
-    "id": "2505.06259v1",
+    "id": "setzu2025fair",
     "title": "Fair Clustering with Clusterlets",
     "authors": "Mattia Setzu, Riccardo Guidotti",
     "year": 2025,
     "venue": "CoRR",
     "citations": 0,
-    "link": "https://doi.org/10.1145/3534678.3539451",
+    "link": "https://arxiv.org/abs/2505.06259",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Fair_Clustering_with_Clusterlets.pdf",
     "bib_link": "https://arxiv.org/abs/2505.06259v1",
     "bib_entry": "",
@@ -3561,13 +3561,13 @@
     "ai_notes": false
   },
   {
-    "id": "2505.09131v2",
+    "id": "kim2025fair",
     "title": "Fair Clustering via Alignment",
     "authors": "Kunwoong Kim, Jihu Lee, Sangchul Park, Yongdai Kim",
     "year": 2025,
     "venue": "CoRR",
     "citations": 2,
-    "link": "https://doi.org/10.3233/faia240570",
+    "link": "https://arxiv.org/abs/2505.09131",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/Fair_Clustering_via_Alignment.pdf",
     "bib_link": "https://arxiv.org/abs/2505.09131v2",
     "bib_entry": "",
@@ -3586,13 +3586,13 @@
     "ai_notes": false
   },
   {
-    "id": "2503.00854v1",
+    "id": "quy2025facroc",
     "title": "FACROC: a fairness measure for FAir Clustering through ROC curves",
     "authors": "Tai Le Quy, Long Le Thanh, Lan Luong Thi Hong, Frank Hopfgartner",
     "year": 2025,
     "venue": "PAKDD",
     "citations": 1,
-    "link": "https://doi.org/10.1007/978-3-642-04898-2_497",
+    "link": "https://arxiv.org/abs/2503.00854",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/FACROC_a_fairness_measure_for_FAir_Clustering_through_ROC_curves.pdf",
     "bib_link": "https://arxiv.org/abs/2503.00854v1",
     "bib_entry": "",
@@ -3611,7 +3611,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2403-16201",
+    "id": "zhang2024from",
     "title": "From Discrete to Continuous: Deep Fair Clustering With Transferable Representations",
     "authors": "Xiang Zhang",
     "year": 2024,
@@ -3636,7 +3636,7 @@
     "ai_notes": false
   },
   {
-    "id": "BayerPBK25",
+    "id": "bayer2025fair",
     "title": "Fair Clustering: A Causal Perspective",
     "authors": "Fritz M. Bayer, Drago Plecko, Niko Beerenwinkel, Jack Kuipers",
     "year": 2025,
@@ -3661,7 +3661,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2506-12839",
+    "id": "lee2025fair",
     "title": "Fair Bayesian Model-Based Clustering",
     "authors": "Jihu Lee, Kunwoong Kim, Yongdai Kim",
     "year": 2025,
@@ -3686,9 +3686,9 @@
     "ai_notes": false
   },
   {
-    "id": "2508.04071",
+    "id": "jiang2025adversarial",
     "title": "Adversarial Fair Multi-View Clustering",
-    "authors": "M Jiang, J Zhou, L Hu, X Liu, Z He, Z Chen - arXiv preprint arXiv …, 2025 - arxiv.org",
+    "authors": "M. Jiang, J. Zhou, L. Hu, X. Liu, Z. He, Z. Chen",
     "year": 2025,
     "venue": "",
     "citations": 0,
@@ -3712,9 +3712,9 @@
     "ai_notes": false
   },
   {
-    "id": "deep-fair-clustering-with-multi-objectiv",
+    "id": "saha2025deep",
     "title": "Deep Fair Clustering With Multi-Objective Handling",
-    "authors": "A Saha - 2025 - elib.uni-stuttgart.de",
+    "authors": "A. Saha",
     "year": 2025,
     "venue": "",
     "citations": 0,
@@ -3737,7 +3737,7 @@
     "ai_notes": false
   },
   {
-    "id": "Xu0WG25",
+    "id": "xu2025deep",
     "title": "Deep Fair Multi-View Clustering with Attention KAN",
     "authors": "Haiming Xu, Qianqian Wang, Boyue Wang, Quanxue Gao",
     "year": 2025,
@@ -3762,7 +3762,7 @@
     "ai_notes": false
   },
   {
-    "id": "WangJLYGY24",
+    "id": "wang2024deep",
     "title": "Deep fair clustering with multi-level decorrelation",
     "authors": "Xiang Wang, Liping Jing, Huafeng Liu, Jian Yu, Weifeng Geng, Gencheng Ye",
     "year": 2024,
@@ -3787,9 +3787,9 @@
     "ai_notes": false
   },
   {
-    "id": "fair-one-step-spectral-rotation-clusteri",
+    "id": "agrawal2025fair",
     "title": "Fair One-Step Spectral Rotation Clustering via Adaptive Graph Learning",
-    "authors": "L Agrawal, VV Saradhi, T Sharma - Pacific-Asia Conference on …, 2025 - Springer",
+    "authors": "L. Agrawal, V. V. Saradhi, T. Sharma",
     "year": 2025,
     "venue": "",
     "citations": 0,
@@ -3812,7 +3812,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2505-15905",
+    "id": "gadekar2025capacitated",
     "title": "Capacitated Fair-Range Clustering: Hardness and Approximation Algorithms",
     "authors": "Ameet Gadekar, Suhas Thejaswi",
     "year": 2025,
@@ -3838,7 +3838,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2506-12287",
+    "id": "braverman2025relative",
     "title": "Relative Error Fair Clustering in the Weak-Strong Oracle Model",
     "authors": "Vladimir Braverman, Prathamesh Dharangutte, Shaofeng H.-C. Jiang, Hoai-An Nguyen, Chen Wang, Yubo Zhang, Samson Zhou",
     "year": 2025,
@@ -3863,13 +3863,13 @@
     "ai_notes": false
   },
   {
-    "id": "2505.22984v2",
+    "id": "zhou2025computational",
     "title": "A Computational Approach to Improving Fairness in $K$-means Clustering",
     "authors": "Guancheng Zhou, Haiping Xu, Hongkang Xu, Chenyu Li, Donghui Yan",
     "year": 2025,
     "venue": "CoRR",
     "citations": 1,
-    "link": "https://doi.org/10.1109/iske54062.2021.9755376",
+    "link": "https://arxiv.org/abs/2505.22984",
     "pdf": "https://vakiliana.github.io/alg-fair-cluster-repo/related-pdfs/A_Computational_Approach_to_Improving_Fairness_in_K-means_Clustering.pdf",
     "bib_link": "https://arxiv.org/abs/2505.22984v2",
     "bib_entry": "",
@@ -3888,9 +3888,9 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2212-14467",
+    "id": "simoes2022cluster",
     "title": "Cluster-level Group Representativity Fairness in $k$-means Clustering",
-    "authors": "Stanley Simoes, Deepak P, Muiris MacCarthaigh",
+    "authors": "Stanley Simoes, Deepak P., Muiris MacCarthaigh",
     "year": 2022,
     "venue": "arXiv",
     "citations": 0,
@@ -3913,9 +3913,9 @@
     "ai_notes": false
   },
   {
-    "id": "studio-e-confronto-di-tre-algoritmi-di-s",
+    "id": "lombardistudio",
     "title": "Studio e Confronto di Tre Algoritmi di Spectral Clustering con Vincolo di Group Fairness",
-    "authors": "G Lombardi - amslaurea.unibo.it",
+    "authors": "G. Lombardi",
     "year": null,
     "venue": "",
     "citations": 0,
@@ -3938,7 +3938,7 @@
     "ai_notes": false
   },
   {
-    "id": "YangYZTQZ25",
+    "id": "yang2025individual",
     "title": "Individual Fairness for Fuzzy $C$-Means Clustering",
     "authors": "Zhijing Yang, Boyang Yan, Junjie Zheng, Yiding Tang, Chuan Qian, Hui Zhang",
     "year": 2025,
@@ -3963,9 +3963,9 @@
     "ai_notes": false
   },
   {
-    "id": "study-on-locality-fairness-and-optimal-r",
+    "id": "vanguru2024study",
     "title": "Study on Locality, Fairness, and Optimal Resource Allocation in Cluster Scheduling",
-    "authors": "CR Vanguru - …, Parallel/Distributed Computing: Volume, 2024 - Springer",
+    "authors": "C. R. Vanguru",
     "year": 2024,
     "venue": "",
     "citations": 0,
@@ -3988,7 +3988,7 @@
     "ai_notes": false
   },
   {
-    "id": "2406.16557v1",
+    "id": "zhu2024efficient",
     "title": "Efficient $k$-means with Individual Fairness via Exponential Tilting",
     "authors": "Shengkun Zhu, Jinshan Zeng, Yuan Sun, Sheng Wang, Xiaodong Li, Zhiyong Peng",
     "year": 2024,
@@ -4013,7 +4013,7 @@
     "ai_notes": false
   },
   {
-    "id": "MoorthySP25",
+    "id": "moorthy2025ensuring",
     "title": "Ensuring Fairness in Spectral Clustering via Disparate Impact-Based Graph Construction",
     "authors": "Adithya K. Moorthy, V. Vijaya Saradhi, Bhanu Prasad",
     "year": 2025,
@@ -4038,9 +4038,9 @@
     "ai_notes": false
   },
   {
-    "id": "comparison-of-fairness-conditions-compar",
+    "id": "lestari2024comparison",
     "title": "Comparison of Fairness Conditions Comparison Study with Fuzzy $C$-Means and $K$-Means Methods",
-    "authors": "I Lestari, A Mahfud, E Zamroni… - QALAMUNA …, 2024 - ejournal.insuriponorogo.ac.id",
+    "authors": "I. Lestari, A. Mahfud, E. Zamroni",
     "year": 2024,
     "venue": "",
     "citations": 0,
@@ -4063,7 +4063,7 @@
     "ai_notes": false
   },
   {
-    "id": "abs-2310-03146",
+    "id": "wang2023fairness",
     "title": "Fairness-enhancing mixed effects deep learning improves fairness on in-and out-of-distribution clustered (non-iid) data",
     "authors": "Adam Wang, Son Nguyen, Albert Montillo",
     "year": 2023,
@@ -4088,7 +4088,7 @@
     "ai_notes": false
   },
   {
-    "id": "AgrawalSS25",
+    "id": "agrawal2025fairness",
     "title": "Fairness in constrained spectral clustering",
     "authors": "Laxita Agrawal, V. Vijaya Saradhi, Teena Sharma",
     "year": 2025,
@@ -4113,9 +4113,9 @@
     "ai_notes": false
   },
   {
-    "id": "spectral-clustering-preliminaries-algori",
+    "id": "shen2022spectral",
     "title": "Spectral Clustering: Preliminaries, Algorithms, and Fairness",
-    "authors": "J Shen - 2022 - math.ucdavis.edu",
+    "authors": "Junhui Shen",
     "year": 2022,
     "venue": "",
     "citations": 0,
@@ -4139,7 +4139,7 @@
     "ai_notes": false
   },
   {
-    "id": "2606.15743v1",
+    "id": "ismkhan2026unsupervised",
     "title": "Unsupervised Learning for Missing Modalities in Multimodal Learning",
     "authors": "Hassan Ismkhan, Hamid Bouchahcia",
     "year": 2026,
@@ -4165,7 +4165,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.07285v1",
+    "id": "cookson2026improved",
     "title": "Improved Lower Bounds for Proportionally Fair Clustering",
     "authors": "Benjamin Cookson, Eva Deltl, Yeeseok Oh",
     "year": 2026,
@@ -4191,7 +4191,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.04777v2",
+    "id": "karra2026unifair",
     "title": "UniFair: A unified fair clustering approach based on separation and compactness",
     "authors": "Antonia Karra, Vasiliki Papanikou, Georgios Vardakas, Evaggelia Pitoura, Aristidis Likas",
     "year": 2026,
@@ -4217,7 +4217,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.20897v1",
+    "id": "chatterjee2026creating",
     "title": "Creating Robust and Fair Graph Structures for Connectivity and Clustering",
     "authors": "Kushagra Chatterjee",
     "year": 2026,
@@ -4243,7 +4243,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.13759v1",
+    "id": "mantuano2026fast",
     "title": "Fast and effective algorithms for fair clustering at scale",
     "authors": "Claudio Mantuano, Manuel Kammermann, Philipp Baumann",
     "year": 2026,
@@ -4269,7 +4269,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.12317v2",
+    "id": "he2026check",
     "title": "Check, Please: Verifiably Fair Clustering",
     "authors": "Yu He, Jeremy Vollen, Edith Elkind",
     "year": 2026,
@@ -4295,7 +4295,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.08360v1",
+    "id": "blair2026embeddings",
     "title": "Embeddings for Preferences, Not Semantics",
     "authors": "Carter Blair, Ariel D. Procaccia, Milind Tambe",
     "year": 2026,
@@ -4321,7 +4321,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.16061v1",
+    "id": "funk2026constant",
     "title": "Constant-Factor Approximations for Doubly Constrained Fair k-Center, k-Median and k-Means",
     "authors": "Nicole Funk, Annika Hennes, Johanna Hillebrand, Sarah Sturm",
     "year": 2026,
@@ -4347,7 +4347,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.21509v1",
+    "id": "park2026fair",
     "title": "Fair Model-based Clustering",
     "authors": "Jinwon Park, Kunwoong Kim, Jihu Lee, Yongdai Kim",
     "year": 2026,
@@ -4373,7 +4373,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.11500v1",
+    "id": "chakraborty2026generic",
     "title": "A Generic Framework for Fair Consensus Clustering in Streams",
     "authors": "Diptarka Chakraborty, Kushagra Chatterjee, Debarati Das, Tien-Long Nguyen",
     "year": 2026,
@@ -4399,7 +4399,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.06776v2",
+    "id": "aziz2026fair",
     "title": "Fair Transit Stop Placement: A Clustering Perspective and Beyond",
     "authors": "Haris Aziz, Ling Gai, Yuhang Guo, Jeremy Vollen",
     "year": 2026,
@@ -4425,7 +4425,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2512.03718v1",
+    "id": "ganian2025matrix",
     "title": "Matrix Editing Meets Fair Clustering: Parameterized Algorithms and Complexity",
     "authors": "Robert Ganian, Hung P. Hoang, Simon Wietheger",
     "year": 2025,
@@ -4452,7 +4452,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2511.21109v1",
+    "id": "jiang2025interpretable",
     "title": "Interpretable Fair Clustering",
     "authors": "Mudi Jiang, Jiahui Zhou, Xinying Liu, Zengyou He, Zhikui Chen",
     "year": 2025,
@@ -4478,7 +4478,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2511.11539v1",
+    "id": "chakraborty2025generalizing",
     "title": "Generalizing Fair Clustering to Multiple Groups: Algorithms and Applications",
     "authors": "Diptarka Chakraborty, Kushagra Chatterjee, Debarati Das, Tien-Long Nguyen",
     "year": 2025,
@@ -4504,7 +4504,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2511.09889v1",
+    "id": "wei2025general",
     "title": "A General Anchor-Based Framework for Scalable Fair Clustering",
     "authors": "Shengfei Wei, Suyuan Liu, Jun Wang, Ke Liang, Miaomiao Li, Lei Luo",
     "year": 2025,
@@ -4530,7 +4530,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2511.07660v1",
+    "id": "moritaka2025euclidean",
     "title": "Euclidean k-center Fair Clusterings",
     "authors": "Ayano Moritaka, Shin-ichi Nakano, Kento Tanaka, Noriaki Yoshida",
     "year": 2025,
@@ -4556,7 +4556,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2510.27136v1",
+    "id": "vuong2025fairad",
     "title": "FairAD: Computationally Efficient Fair Graph Clustering via Algebraic Distance",
     "authors": "Minh Phu Vuong, Young-Ju Lee, Iván Ojeda-Ruiz, Chul-Ho Lee",
     "year": 2025,
@@ -4582,7 +4582,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2510.06130v1",
+    "id": "maity2025local",
     "title": "Local Search-based Individually Fair Clustering with Outliers",
     "authors": "Binita Maity, Shrutimoy Das, Anirban Dasgupta",
     "year": 2025,
@@ -4608,7 +4608,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2508.10345v1",
+    "id": "zhang2025welfare",
     "title": "Welfare-Centric Clustering",
     "authors": "Claire Jie Zhang, Seyed A. Esmaeili, Jamie Morgenstern",
     "year": 2025,
@@ -4634,7 +4634,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2506.08673v3",
+    "id": "chakraborty2025towards",
     "title": "Towards Fair Representation: Clustering and Consensus",
     "authors": "Diptarka Chakraborty, Kushagra Chatterjee, Debarati Das, Tien Long Nguyen, Romina Nobahari",
     "year": 2025,
@@ -4660,7 +4660,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2504.14683v2",
+    "id": "nezhad2025polynomial",
     "title": "Polynomial-Time Constant-Approximation for Fair Sum-of-Radii Clustering",
     "authors": "Sina Bagheri Nezhad, Sayan Bandyapadhyay, Tianzhi Chen",
     "year": 2025,
@@ -4686,7 +4686,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2502.10068v1",
+    "id": "kellerhals2025proportional",
     "title": "Proportional Clustering, the $β$-Plurality Problem, and Metric Distortion",
     "authors": "Leon Kellerhals, Jannik Peters",
     "year": 2025,
@@ -4712,7 +4712,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2410.00598v1",
+    "id": "carta2024fpt",
     "title": "FPT Approximations for Fair $k$-Min-Sum-Radii",
     "authors": "Lena Carta, Lukas Drexler, Annika Hennes, Clemens Rösner, Melanie Schmidt",
     "year": 2024,
@@ -4738,7 +4738,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2409.02963v2",
+    "id": "lawless2024fairclustering",
     "title": "Fair Clustering with Minimum Representation Constraints",
     "authors": "Connor Lawless, Oktay Gunluk",
     "year": 2024,
@@ -4764,7 +4764,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2401.05502v3",
+    "id": "thejaswi2024diversity",
     "title": "Diversity-aware clustering: Computational Complexity and Approximation Algorithms",
     "authors": "Suhas Thejaswi, Ameet Gadekar, Bruno Ordozgoiti, Aristides Gionis",
     "year": 2024,
@@ -4791,7 +4791,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2309.00834v2",
+    "id": "drexler2023approximating",
     "title": "Approximating Fair $k$-Min-Sum-Radii in Euclidean Space",
     "authors": "Lukas Drexler, Annika Hennes, Abhiruk Lahiri, Melanie Schmidt, Julian Wargalla",
     "year": 2023,
@@ -4817,7 +4817,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2306.15994v1",
+    "id": "silva2023systematic",
     "title": "Systematic analysis of the impact of label noise correction on ML Fairness",
     "authors": "I. Oliveira e Silva, C. Soares, I. Sousa, R. Ghani",
     "year": 2023,
@@ -4843,7 +4843,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2305.01471v1",
+    "id": "dabas2023fpt",
     "title": "FPT Approximations for Capacitated/Fair Clustering with Outliers",
     "authors": "Rajni Dabas, Neelima Gupta, Tanmay Inamdar",
     "year": 2023,
@@ -4869,7 +4869,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2304.13917v3",
+    "id": "aziz2023proportionally",
     "title": "Proportionally Representative Clustering",
     "authors": "Haris Aziz, Barton E. Lee, Sean Morota Chu, Jeremy Vollen",
     "year": 2023,
@@ -4895,7 +4895,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2301.03421v1",
+    "id": "quy2023review",
     "title": "A review of clustering models in educational data science towards fairness-aware learning",
     "authors": "Tai Le Quy, Gunnar Friege, Eirini Ntoutsi",
     "year": 2023,
@@ -4921,7 +4921,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2209.01901v2",
+    "id": "braverman2022power",
     "title": "The Power of Uniform Sampling for Coresets",
     "authors": "Vladimir Braverman, Vincent Cohen-Addad, Shaofeng H. -C. Jiang, Robert Krauthgamer, Chris Schwiegelshohn, Mads Bech Toftrup, Xuan Wu",
     "year": 2022,
@@ -4947,7 +4947,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2207.02609v1",
+    "id": "anegg2022techniques",
     "title": "Techniques for Generalized Colorful $k$-Center Problems",
     "authors": "Georg Anegg, Laura Vargas Koch, Rico Zenklusen",
     "year": 2022,
@@ -4973,7 +4973,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2112.03183v2",
+    "id": "froese2021modification",
     "title": "Modification-Fair Cluster Editing",
     "authors": "Vincent Froese, Leon Kellerhals, Rolf Niedermeier",
     "year": 2021,
@@ -4999,7 +4999,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.17228v1",
+    "id": "stannett2026stone",
     "title": "A Stone-Cech Collecting Semantics for Residual Process Behaviour",
     "authors": "Mike Stannett",
     "year": 2026,
@@ -5025,7 +5025,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.12343v1",
+    "id": "wang2026fair",
     "title": "Fair Comparison of Scheduling Algorithms on Heterogeneous Edge Clusters: A Continuous Adaptive Benchmark",
     "authors": "Zihang Wang, Boris Sedlak, Juan Luis Herrera, Schahram Dustdar",
     "year": 2026,
@@ -5051,7 +5051,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.09643v1",
+    "id": "shastri2026fmplex",
     "title": "FMplex: Model Virtualization for Serving Extensible Foundation Models",
     "authors": "Hetvi Shastri, Pragya Sharma, Walid A. Hanafy, David Irwin, Mani Srivastava, Prashant Shenoy",
     "year": 2026,
@@ -5077,9 +5077,9 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.07270v1",
+    "id": "sun2026two",
     "title": "Two-Phase Simulated Annealing for Equitable Team Formation: Eliminating Complaints in Large Engineering Cohorts",
-    "authors": "Yiwei Sun, Xinru Deng, Dimitrios G Papageorgiou",
+    "authors": "Yiwei Sun, Xinru Deng, Dimitrios G. Papageorgiou",
     "year": 2026,
     "venue": "arXiv",
     "citations": 0,
@@ -5103,7 +5103,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.06183v1",
+    "id": "malan2026revisiting",
     "title": "Revisiting Lexicon Evaluation in Unsupervised Word Discovery",
     "authors": "Simon Malan, Danel Slabbert, Herman Kamper",
     "year": 2026,
@@ -5129,7 +5129,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.03036v1",
+    "id": "srikantha2026trieval",
     "title": "TriEval: A Resource-Efficient Pipeline for LLM Bias, Toxicity, and Truthfulness Assessment",
     "authors": "Akshatha Srikantha, Manpreet Singh, Yash Jajoo, Shyamal Lakhanpal",
     "year": 2026,
@@ -5155,7 +5155,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.01632v1",
+    "id": "bose2026framework",
     "title": "A Framework for Graph-Conditioned Hierarchical Shapley Attribution in Patent Valuation",
     "authors": "Joy Bose",
     "year": 2026,
@@ -5181,7 +5181,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.01013v2",
+    "id": "wu2026can",
     "title": "Can AI Review Improve Paper Drafting? An Empirical Study on 20 Computer Architecture Submissions",
     "authors": "Di Wu",
     "year": 2026,
@@ -5207,7 +5207,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.29827v1",
+    "id": "masroor2026fairness",
     "title": "Fairness Beyond Demographics: Optimizing Performance Across Appearance-Based Hidden Cohorts in Medical Imaging",
     "authors": "Milad Masroor, Cuong Nguyen, Kevin Wells, Gustavo Carneiro",
     "year": 2026,
@@ -5233,7 +5233,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.27481v1",
+    "id": "molinaro2026astronomy",
     "title": "Astronomy Open Science Competence Centre in Europe",
     "authors": "Marco Molinaro, Mark Allen, Joachim Wambsganns, Enrique Solano, Baptiste Cecconi, Markus Demleitner, André Schaaff, Hendrik Heinl, Sara Bertocco",
     "year": 2026,
@@ -5259,7 +5259,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.21115v3",
+    "id": "bouchiha2026automated",
     "title": "Automated Byzantine-Resilient Clustered Decentralized Federated Learning for Battery Intelligence in Connected EVs",
     "authors": "Mouhamed Amine Bouchiha, Abdelaziz Amara Korba, Yacine Ghamri-Doudane",
     "year": 2026,
@@ -5285,7 +5285,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.16960v1",
+    "id": "deng2026achieving",
     "title": "Achieving $α$-Fairness in Clustered Cell-Free Networking: A Tight Relaxation Approach",
     "authors": "Chaowen Deng, Jie Fan, Boxiang Ren, Ziyuan Lyu, Jingchen Peng, Hao Wu, Junyuan Wang",
     "year": 2026,
@@ -5311,7 +5311,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2606.12435v1",
+    "id": "rathod2026auditing",
     "title": "Auditing Discriminatory Patterns in Mortgage Lending Through Association Rules and Fair Binning",
     "authors": "Archit Rathod, Dhwani Chande, Het Nagda",
     "year": 2026,
@@ -5337,7 +5337,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.15312v1",
+    "id": "park2026beyond",
     "title": "Beyond Performance Disparities: A Three-Level Audit of Representational Harm in CelebA",
     "authors": "Sieun Park, Yuanmo He",
     "year": 2026,
@@ -5363,7 +5363,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.11815v1",
+    "id": "bashir2026fed",
     "title": "Fed-BAC: Federated Bandit-Guided Additive Clustering in Hierarchical Federated Learning",
     "authors": "Satwat Bashir, Tasos Dagiuklas, Muddesar Iqbal",
     "year": 2026,
@@ -5389,7 +5389,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.07663v1",
+    "id": "burnat2026quotient",
     "title": "Quotient Semivalues for False-Name-Resistant Data Attribution",
     "authors": "Florian A. D. Burnat, Brittany I. Davidson",
     "year": 2026,
@@ -5415,7 +5415,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.06398v1",
+    "id": "gadekar2026on",
     "title": "On the Parameterized Approximability of (Mergeable) Sum of Radii Clustering",
     "authors": "Ameet Gadekar",
     "year": 2026,
@@ -5441,7 +5441,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.04118v2",
+    "id": "liu2026protdbench",
     "title": "ProtDBench: A Unified Benchmark of Protein Binder Design and Evaluation",
     "authors": "Cong Liu, Milong Ren, Jiaqi Guan, Chengyue Gong, Jinyuan Sun, Xinshi Chen, Wenzhi Xiao",
     "year": 2026,
@@ -5467,7 +5467,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.01971v2",
+    "id": "halawa2026protofair",
     "title": "ProtoFair: Fair Self-Supervised Contrastive Learning via Pseudo-Counterfactual Pairs",
     "authors": "Marah Halawa, Olaf Hellwich",
     "year": 2026,
@@ -5493,7 +5493,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2605.00528v2",
+    "id": "guo2026saga",
     "title": "SAGA: Workflow-Atomic Scheduling for AI Agent Inference on GPU Clusters",
     "authors": "Dongxin Guo, Jikun Wu, Siu Ming Yiu",
     "year": 2026,
@@ -5519,7 +5519,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.27479v1",
+    "id": "tan2026gender",
     "title": "Gender Bias in YouTube Exposure: Allocative and Structural Inequalities in Political Information Environments",
     "authors": "Jipeng Tan, Weifeng Zhang, Ye Wu, Jialin Guo, Yong Min",
     "year": 2026,
@@ -5545,7 +5545,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.27344v1",
+    "id": "gamboa2026bibliometric",
     "title": "Bibliometric Mapping of AI-Supported Social Presence in Online Learning Environments: Trends, Collaboration, and Thematic Directions",
     "authors": "Almer B. Gamboa, Erika M. Pineda, Rhiziel P. Manalese, Aileen P. De Leon, Vernon Grace M. Maniago, Jan Henry B. Sunga, Agnes R. Regala, Roque Francis B. Dianelo, John Paul P. Miranda",
     "year": 2026,
@@ -5571,7 +5571,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.20420v1",
+    "id": "pham2026scalable",
     "title": "Scalable AI Inference: Performance Analysis and Optimization of AI Model Serving",
     "authors": "Hung Cuong Pham, Fatih Gedikli",
     "year": 2026,
@@ -5597,7 +5597,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.17635v1",
+    "id": "zheng2026ecoshift",
     "title": "EcoShift: Performance-Aware Power Management for Power-Constrained Heterogeneous Systems",
     "authors": "Zhong Zheng, Michael E. Papka, Zhiling Lan",
     "year": 2026,
@@ -5623,7 +5623,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.15779v1",
+    "id": "yang2026crosatfl",
     "title": "CroSatFL: Energy-Efficient Federated Learning with Cross-Aggregation for Satellite Edge Computing",
     "authors": "Nan Yang, Bahman Javadi, Rodrigo Neves Calheiros, David Boland, Philip Leong",
     "year": 2026,
@@ -5649,7 +5649,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.15738v1",
+    "id": "shihab2026why",
     "title": "Why Colors Make Clustering Harder:Global Integrality Gaps, the Price of Fairness, and Color-Coupled Algorithms in Chromatic Correlation Clustering",
     "authors": "Ibne Farabi Shihab, Sanjeda Akter, Anuj Sharma",
     "year": 2026,
@@ -5675,7 +5675,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.09996v1",
+    "id": "asad2026comparative",
     "title": "A Comparative Study of Modern Object Detectors for Robust Apple Detection in Orchard Imagery",
     "authors": "Mohammed Asad, Ajai Kumar Gautam, Priyanshu Dhiman, Rishi Raj Prajapati",
     "year": 2026,
@@ -5701,7 +5701,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.03335v1",
+    "id": "go2026apparent",
     "title": "Apparent Age Estimation: Challenges and Outcomes",
     "authors": "Justin Rainier Go, Lorenz Bernard Marqueses, Mikaella Kaye Martinez, John Kevin Patrick Sarmiento, Abien Fred Agarap",
     "year": 2026,
@@ -5727,7 +5727,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.00377v1",
+    "id": "xie2026reclaiming",
     "title": "Reclaiming Idle CPU Cycles on Kubernetes: Sparse-Domain Multiplexing for Concurrent MPI-CFD Simulations",
     "authors": "Tianfang Xie",
     "year": 2026,
@@ -5753,7 +5753,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.29270v2",
+    "id": "majumdar2026unbiased",
     "title": "Unbiased Model Prediction Without Using Protected Attribute Information",
     "authors": "Puspita Majumdar, Surbhi Mittal, Saheb Chhabra, Mayank Vatsa, Richa Singh",
     "year": 2026,
@@ -5779,7 +5779,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2604.09656v1",
+    "id": "ruffle2026fairboard",
     "title": "Fairboard: a quantitative framework for equity assessment of healthcare models",
     "authors": "James K. Ruffle, Samia Mohinta, Chris Foulon, Mohamad Zeina, Zicheng Wang, Sebastian Brandner, Harpreet Hyare, Parashkev Nachev",
     "year": 2026,
@@ -5805,7 +5805,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.25349v1",
+    "id": "adibekyan2026reinforcing",
     "title": "Reinforcing Prestige: Journal Citation Biases in Astronomy",
     "authors": "Vardan Adibekyan, Olivier Demangeon, Tiago Campante, Nuno Santos, Susana Barros, Artur Hakobyan",
     "year": 2026,
@@ -5831,7 +5831,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.24015v1",
+    "id": "yamada2026stamp",
     "title": "STAMP: A shot-type-aware areal multilevel Poisson model for league-wide comparison of basketball shot charts",
     "authors": "Kazuhiro Yamada, Keisuke Fujii",
     "year": 2026,
@@ -5857,7 +5857,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.20695v1",
+    "id": "siqueira2026can",
     "title": "Can I guess where you are from? Modeling dialectal morphosyntactic similarities in Brazilian Portuguese",
     "authors": "Manoel Siqueira, Raquel Freitag",
     "year": 2026,
@@ -5883,7 +5883,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.18954v1",
+    "id": "niyonkuru2026balancing",
     "title": "Balancing Performance and Fairness in Explainable AI for Anomaly Detection in Distributed Power Plants Monitoring",
     "authors": "Corneille Niyonkuru, Marcellin Atemkeng, Gabin Maxime Nguegnang, Arnaud Nguembang Fadja",
     "year": 2026,
@@ -5909,7 +5909,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.07382v2",
+    "id": "chaganlal2026enhancing",
     "title": "Enhancing OLAP Resilience at LinkedIn",
     "authors": "Praveen Chaganlal, Jia Guo, Vivek Vaidyanathan, Dino Occhialini, Sonam Mandal, Subbu Subramaniam, Siddharth Teotia, Tianqi Li, Xiaxuan Gao, Florence Zhang",
     "year": 2026,
@@ -5935,7 +5935,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.07127v1",
+    "id": "luo2026enhancing",
     "title": "Enhancing User Fairness in Two-Layer RSMA: A Movable Antenna Approach",
     "authors": "Ji Luo, Yaxuan Chen, Guangchi Zhang, Miao Cui, Hao Fu, Changsheng You",
     "year": 2026,
@@ -5961,7 +5961,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.04837v1",
+    "id": "mohan2026design",
     "title": "Design Behaviour Codes (DBCs): A Taxonomy-Driven Layered Governance Benchmark for Large Language Models",
     "authors": "G. Madan Mohan, Veena Kiran Nambiar, Kiranmayee Janardhan",
     "year": 2026,
@@ -5987,7 +5987,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.01739v1",
+    "id": "jha2026ca",
     "title": "CA-AFP: Cluster-Aware Adaptive Federated Pruning",
     "authors": "Om Govind Jha, Harsh Shukla, Haroon R. Lone",
     "year": 2026,
@@ -6013,7 +6013,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.00356v1",
+    "id": "cunningham2026token",
     "title": "Token Management in Multi-Tenant AI Inference Platforms",
     "authors": "William J. Cunningham",
     "year": 2026,
@@ -6039,7 +6039,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.23611v2",
+    "id": "chikahara2026fairness",
     "title": "Fairness under Graph Uncertainty: Achieving Interventional Fairness with Partially Known Causal Graphs over Clusters of Variables",
     "authors": "Yoichi Chikahara",
     "year": 2026,
@@ -6065,7 +6065,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.18875v1",
+    "id": "mohammadzadeh2026channel",
     "title": "Channel-Correlation-Based Access Point Selection and Pilot Power Allocation for Cell-Free Massive MIMO",
     "authors": "Saeed Mohammadzadeh, Rodrigo C. De Lamare, Kanapathippillai Cumanan, Hien Quoc Ngo",
     "year": 2026,
@@ -6091,7 +6091,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.18201v1",
+    "id": "bingham2026somtime",
     "title": "SOMtime the World Ain$'$t Fair: Violating Fairness Using Self-Organizing Maps",
     "authors": "Joseph Bingham, Netanel Arussy, Dvir Aran",
     "year": 2026,
@@ -6117,7 +6117,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.17330v4",
+    "id": "fu2026subquad",
     "title": "SubQuad: Near-Quadratic-Free Structure Inference with Distribution-Balanced Objectives in Adaptive Receptor framework",
     "authors": "Rong Fu, Zijian Zhang, Kun Liu, Jiekai Wu, Xianda Li, Simon Fong",
     "year": 2026,
@@ -6143,7 +6143,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.16794v2",
+    "id": "liu2026beyond",
     "title": "Beyond Procedure: Substantive Fairness in Conformal Prediction",
     "authors": "Pengqi Liu, Zijun Yu, Mouloud Belbahri, Arthur Charpentier, Masoud Asgharian, Jesse C. Cresswell",
     "year": 2026,
@@ -6169,7 +6169,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.16326v1",
+    "id": "corriera2026individual",
     "title": "Individual Fairness in Community Detection: Quantitative Measure and Comparative Evaluation",
     "authors": "Fabrizio Corriera, Frank W. Takes, Akrati Saxena",
     "year": 2026,
@@ -6195,7 +6195,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2603.04433v1",
+    "id": "zan2026auction",
     "title": "Auction-Based RIS Allocation With DRL: Controlling the Cost-Performance Trade-Off",
     "authors": "Martin Mark Zan, Stefan Schwarz",
     "year": 2026,
@@ -6221,7 +6221,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.15683v1",
+    "id": "blaha2026fair",
     "title": "Fair Correlation Clustering Meets Graph Parameters",
     "authors": "Johannes Blaha, Robert Ganian, Katharina Gillig, Jonathan S. Højlev, Simon Wietheger",
     "year": 2026,
@@ -6247,7 +6247,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.14391v1",
+    "id": "salimi2026asa",
     "title": "ASA: Adaptive Smart Agent Federated Learning via Device-Aware Clustering for Heterogeneous IoT",
     "authors": "Ali Salimi, Saadat Izadi, Mahmood Ahmadi, Hadi Tabatabaee Malazi",
     "year": 2026,
@@ -6273,7 +6273,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2602.14275v1",
+    "id": "rihani2026reverse",
     "title": "Reverse N-Wise Output-Oriented Testing for AI/ML and Quantum Computing Systems",
     "authors": "Lamine Rihani",
     "year": 2026,
@@ -6299,7 +6299,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2304.03146v1",
+    "id": "abbasi2023parameterized",
     "title": "Parameterized Approximation Schemes for Clustering with General Norm Objectives",
     "authors": "Fateme Abbasi, Sandip Banerjee, Jarosław Byrka, Parinya Chalermsook, Ameet Gadekar, Kamyar Khodamoradi, Dániel Marx, Roohani Sharma, Joachim Spoerhase",
     "year": 2023,
@@ -6325,9 +6325,9 @@
     "status": "pending-review"
   },
   {
-    "id": "2512.23769v1",
+    "id": "akash2025uncovering",
     "title": "Uncovering Discrimination Clusters: Quantifying and Explaining Systematic Fairness Violations",
-    "authors": "Ranit Debnath Akash, Ashish Kumar, Verya Monjezi, Ashutosh Trivedi,  Gang,  Tan, Saeid Tizpaz-Niari",
+    "authors": "Ranit Debnath Akash, Ashish Kumar, Verya Monjezi, Ashutosh Trivedi, Gang, Tan, Saeid Tizpaz-Niari",
     "year": 2025,
     "venue": "arXiv",
     "citations": 0,
@@ -6351,7 +6351,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2412.04943v2",
+    "id": "ebbens2024subquadratic",
     "title": "A Subquadratic Time Approximation Algorithm for Individually Fair k-Center",
     "authors": "Matthijs Ebbens, Nicole Funk, Jan Höckendorff, Christian Sohler, Vera Weil",
     "year": 2024,
@@ -6378,7 +6378,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2407.01617v1",
+    "id": "tajouri2024subjective",
     "title": "Subjective fairness in algorithmic decision-support",
     "authors": "Sarra Tajouri, Alexis Tsoukiàs",
     "year": 2024,
@@ -6404,7 +6404,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2406.00213v1",
+    "id": "munagala2024individual",
     "title": "Individual Fairness in Graph Decomposition",
     "authors": "Kamesh Munagala, Govind S. Sankar",
     "year": 2024,
@@ -6430,7 +6430,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2403.10365v1",
+    "id": "mosenzon2024scalable",
     "title": "Scalable Algorithms for Individual Preference Stable Clustering",
     "authors": "Ron Mosenzon, Ali Vakilian",
     "year": 2024,
@@ -6456,7 +6456,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2212.01771v2",
+    "id": "qian2022can",
     "title": "Can Evolutionary Clustering Have Theoretical Guarantees?",
     "authors": "Chao Qian",
     "year": 2022,
@@ -6482,7 +6482,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2208.12731v2",
+    "id": "tsepenekas2022comparing",
     "title": "Comparing Apples to Oranges: Learning Similarity Functions for Data Produced by Different Distributions",
     "authors": "Leonidas Tsepenekas, Ivan Brugere, Freddy Lecue, Daniele Magazzeni",
     "year": 2022,
@@ -6508,9 +6508,9 @@
     "status": "pending-review"
   },
   {
-    "id": "2205.11173v1",
+    "id": "li2022multi",
     "title": "Multi-objective Optimization of Clustering-based Scheduling for Multi-workflow On Clouds Considering Fairness",
-    "authors": "Feng Li, Wen Jun,  Tan,  Wentong,  Cai",
+    "authors": "Feng Li, Wen Jun, Tan, Wentong, Cai",
     "year": 2022,
     "venue": "arXiv",
     "citations": 0,
@@ -6534,7 +6534,7 @@
     "status": "pending-review"
   },
   {
-    "id": "2106.05423v3",
+    "id": "chakrabarti2021new",
     "title": "A New Notion of Individually Fair Clustering: $α$-Equitable $k$-Center",
     "authors": "Darshan Chakrabarti, John P. Dickerson, Seyed A. Esmaeili, Aravind Srinivasan, Leonidas Tsepenekas",
     "year": 2021,
@@ -6560,9 +6560,9 @@
     "status": "pending-review"
   },
   {
-    "id": "FengZQPY26",
+    "id": "feng2026fair",
     "title": "A fair spectral clustering with weighted fairness constraints",
-    "authors": "Ruixin Feng, Caiming Zhong, Jiangbo Qian, Tiejun Pan, Xiaodong Yue 0002",
+    "authors": "Ruixin Feng, Caiming Zhong, Jiangbo Qian, Tiejun Pan, Xiaodong Yue",
     "year": 2026,
     "venue": "Pattern Recognit.",
     "citations": 0,
@@ -6586,9 +6586,9 @@
     "status": "pending-review"
   },
   {
-    "id": "ZhangWRWYMMLJ26",
+    "id": "zhang2026fairgc",
     "title": "FairGC: Fostering Individual and Group Fairness for Deep Graph Clustering",
-    "authors": "Haodong Zhang, Xinyue Wang, Tao Ren 0002, Yifan Wang 0014, Siyu Yi, Fanchun Meng, Zeyu Ma 0001, Qingqing Long, Wei Ju 0001",
+    "authors": "Haodong Zhang, Xinyue Wang, Tao Ren, Yifan Wang, Siyu Yi, Fanchun Meng, Zeyu Ma, Qingqing Long, Wei Ju",
     "year": 2026,
     "venue": "AAAI",
     "citations": 0,
@@ -6612,7 +6612,7 @@
     "status": "pending-review"
   },
   {
-    "id": "ZhaoCWWZD26",
+    "id": "zhao2026fairfbc",
     "title": "FairFBC: Scalable Fair Fuzzy Clustering via Group-Balanced Anchor Graphs",
     "authors": "Tongzheng Zhao, Yan Chen, Peng Wu, Chao Wen, Peng Zhou, Liang Du",
     "year": 2026,
@@ -6638,9 +6638,9 @@
     "status": "pending-review"
   },
   {
-    "id": "YangZYLZL25",
+    "id": "yang2025fair",
     "title": "Fair Laplace: A unified framework for fair spectral clustering",
-    "authors": "Zhijing Yang, Hui Zhang 0055, Chunming Yang, Bo Li 0065, Xujian Zhao, Yin Long",
+    "authors": "Zhijing Yang, Hui Zhang, Chunming Yang, Bo Li, Xujian Zhao, Yin Long",
     "year": 2025,
     "venue": "Inf. Process. Manag.",
     "citations": 0,
@@ -6664,9 +6664,9 @@
     "status": "pending-review"
   },
   {
-    "id": "MoorthyPVP25",
+    "id": "moorthy2025towards",
     "title": "Towards Fair Decision Boundaries in Clustering: Integrating Disparate Impact Criteria into Maximum Margin Clustering",
-    "authors": "Adithya K. Moorthy, Jaya Teja Reddy Pochimireddy, V. Vijaya Saradhi, Bhanu Prasad 0001",
+    "authors": "Adithya K. Moorthy, Jaya Teja Reddy Pochimireddy, V. Vijaya Saradhi, Bhanu Prasad",
     "year": 2025,
     "venue": "ACM Trans. Knowl. Discov. Data",
     "citations": 0,
@@ -6690,9 +6690,9 @@
     "status": "pending-review"
   },
   {
-    "id": "YangTYZQYZ25",
+    "id": "yang2025improving",
     "title": "Improving Fairness in Density Peak Clustering through Fair Constraints and Multi-Objective Optimization Allocation",
-    "authors": "Zhijing Yang, Yiding Tang, Boyang Yan, Junjie Zheng, Chuan Qian, Yi Yang, Hui Zhang 0055",
+    "authors": "Zhijing Yang, Yiding Tang, Boyang Yan, Junjie Zheng, Chuan Qian, Yi Yang, Hui Zhang",
     "year": 2025,
     "venue": "IJCNN",
     "citations": 0,
@@ -6716,7 +6716,7 @@
     "status": "pending-review"
   },
   {
-    "id": "LandiCMG25",
+    "id": "landi2025balancing",
     "title": "Balancing Fairness and Interpretability in Clustering with FairParTree",
     "authors": "Cristiano Landi, Alessio Cascione, Marta Marchiori Manerba, Riccardo Guidotti",
     "year": 2025,
@@ -6742,9 +6742,9 @@
     "status": "pending-review"
   },
   {
-    "id": "abs-2512-09810",
+    "id": "moorthy2025incorporating",
     "title": "Incorporating Fairness in Neighborhood Graphs for Fair Spectral Clustering",
-    "authors": "Adithya K. Moorthy, V. Vijaya Saradhi, Bhanu Prasad 0001",
+    "authors": "Adithya K. Moorthy, V. Vijaya Saradhi, Bhanu Prasad",
     "year": 2025,
     "venue": "CoRR",
     "citations": 0,
@@ -6768,7 +6768,7 @@
     "status": "pending-review"
   },
   {
-    "id": "PonticelliLKB24",
+    "id": "ponticelli2024reproducibility",
     "title": "Reproducibility study of &quot;Robust Fair Clustering: A Novel Fairness Attack and Defense Framework&quot;",
     "authors": "Lucas Ponticelli, Vincent Loos, Eren Kocadag, Kacper Bartosik",
     "year": 2024,
@@ -6794,7 +6794,7 @@
     "status": "pending-review"
   },
   {
-    "id": "BarrioIL23",
+    "id": "barrio2023attraction",
     "title": "Attraction-repulsion clustering: a way of promoting diversity linked to demographic parity in fair clustering",
     "authors": "Eustasio del Barrio, Hristo Inouzhe, Jean-Michel Loubes",
     "year": 2023,
@@ -6820,7 +6820,7 @@
     "status": "pending-review"
   },
   {
-    "id": "LiuZJ23",
+    "id": "liu2023active",
     "title": "Active learning with fairness-aware clustering for fair classification considering multiple sensitive attributes",
     "authors": "Zeyuan Liu, Xin Zhang, Benben Jiang",
     "year": 2023,
@@ -6846,9 +6846,9 @@
     "status": "pending-review"
   },
   {
-    "id": "abs-2109-00708",
+    "id": "gupta2021efficient",
     "title": "Efficient Algorithms For Fair Clustering with a New Fairness Notion",
-    "authors": "Shivam Gupta 0004, Ganesh Ghalme, Narayanan C. Krishnan, Shweta Jain 0002",
+    "authors": "Shivam Gupta, Ganesh Ghalme, Narayanan C. Krishnan, Shweta Jain",
     "year": 2021,
     "venue": "CoRR",
     "citations": 0,
@@ -6872,9 +6872,9 @@
     "status": "pending-review"
   },
   {
-    "id": "abs-1812-10854",
+    "id": "schmidt2018fair",
     "title": "Fair Coresets and Streaming Algorithms for Fair k-Means Clustering",
-    "authors": "Melanie Schmidt 0001, Chris Schwiegelshohn, Christian Sohler",
+    "authors": "Melanie Schmidt, Chris Schwiegelshohn, Christian Sohler",
     "year": 2018,
     "venue": "CoRR",
     "citations": 0,
@@ -6899,7 +6899,7 @@
     "status": "pending-review"
   },
   {
-    "id": "Garbiso17",
+    "id": "garbiso2017fair",
     "title": "Fair Auto-Adaptive Clustering for Hybrid Vehicular Networks. (Clustering auto-adaptatif et équitable dans les réseaux véhiculaires hybrides)",
     "authors": "Julian Pedro Garbiso",
     "year": 2017,
@@ -6925,9 +6925,9 @@
     "status": "pending-review"
   },
   {
-    "id": "MoorthyVP26",
+    "id": "moorthy2026graph",
     "title": "Graph pre-processing method for fairness in spectral clustering",
-    "authors": "Adithya K. Moorthy, V. Vijaya Saradhi, Bhanu Prasad 0001",
+    "authors": "Adithya K. Moorthy, V. Vijaya Saradhi, Bhanu Prasad",
     "year": 2026,
     "venue": "Data Min. Knowl. Discov.",
     "citations": 0,
@@ -6951,9 +6951,9 @@
     "status": "pending-review"
   },
   {
-    "id": "MoorthyVP26a",
+    "id": "moorthy2026correction",
     "title": "Correction: Graph pre-processing method for fairness in spectral clustering",
-    "authors": "Adithya K. Moorthy, V. Vijaya Saradhi, Bhanu Prasad 0001",
+    "authors": "Adithya K. Moorthy, V. Vijaya Saradhi, Bhanu Prasad",
     "year": 2026,
     "venue": "Data Min. Knowl. Discov.",
     "citations": 0,
@@ -6977,7 +6977,7 @@
     "status": "pending-review"
   },
   {
-    "id": "WuLHF26",
+    "id": "wu2026learning",
     "title": "Learning-augmented approximation algorithms for group fair k-center clustering",
     "authors": "Xiaoliang Wu, Ting Liang, Junyu Huang, Qilong Feng",
     "year": 2026,
@@ -7004,9 +7004,9 @@
     "status": "pending-review"
   },
   {
-    "id": "ZhangCLCHF26",
+    "id": "zhang2026parameterized",
     "title": "Parameterized approximation schemes for fair-range clustering",
-    "authors": "Zhen Zhang 0025, Xiaohong Chen, Limei Liu, Jie Chen, Junyu Huang, Qilong Feng",
+    "authors": "Zhen Zhang, Xiaohong Chen, Limei Liu, Jie Chen, Junyu Huang, Qilong Feng",
     "year": 2026,
     "venue": "Inf. Comput.",
     "citations": 0,
@@ -7030,7 +7030,7 @@
     "status": "pending-review"
   },
   {
-    "id": "Ahmad26",
+    "id": "ahmad2026ml",
     "title": "ML-based agglomerative hierarchical clustering and MMSE precoding for fair user scheduling in LEO MU-MIMO systems",
     "authors": "Bilal Ahmad",
     "year": 2026,
@@ -7056,9 +7056,9 @@
     "status": "pending-review"
   },
   {
-    "id": "GuoLJC26",
+    "id": "guo2026improved",
     "title": "Improved Streaming Algorithm for Fair k-Center Clustering",
-    "authors": "Longkun Guo, Zeyu Lin, Chaoqi Jia, Chao Chen 0015",
+    "authors": "Longkun Guo, Zeyu Lin, Chaoqi Jia, Chao Chen",
     "year": 2026,
     "venue": "AAAI",
     "citations": 0,
@@ -7083,9 +7083,9 @@
     "status": "pending-review"
   },
   {
-    "id": "WangXFG26",
+    "id": "wang2026adversarial",
     "title": "Adversarial Fair Incomplete Multi-View Clustering",
-    "authors": "Qianqian Wang 0001, Haiming Xu, Wei Feng 0010, Quanxue Gao",
+    "authors": "Qianqian Wang, Haiming Xu, Wei Feng, Quanxue Gao",
     "year": 2026,
     "venue": "AAAI",
     "citations": 0,
@@ -7110,7 +7110,7 @@
     "status": "pending-review"
   },
   {
-    "id": "MartinsSS26",
+    "id": "martins2026fairness",
     "title": "Fairness-Conscious Feature Engineering and Clustering for Debt Recovery: Performance, Ethics, and Regulation",
     "authors": "Bianca Garcia Martins, Luiz Sergio de Souza, Solange N. Alves Souza",
     "year": 2026,
@@ -7136,9 +7136,9 @@
     "status": "pending-review"
   },
   {
-    "id": "GuoJC26",
+    "id": "guo2026fair",
     "title": "Fair k-Center Clustering on Massive Social Network Data Streams",
-    "authors": "Longkun Guo, Chaoqi Jia, Chao Chen 0015",
+    "authors": "Longkun Guo, Chaoqi Jia, Chao Chen",
     "year": 2026,
     "venue": "WWW",
     "citations": 0,
@@ -7162,9 +7162,9 @@
     "status": "pending-review"
   },
   {
-    "id": "abs-2601-00447",
+    "id": "cookson2026unifying",
     "title": "Unifying Proportional Fairness in Centroid and Non-Centroid Clustering",
-    "authors": "Benjamin Cookson, Nisarg Shah 0001, Ziqi Yu",
+    "authors": "Benjamin Cookson, Nisarg Shah, Ziqi Yu",
     "year": 2026,
     "venue": "CoRR",
     "citations": 0,
@@ -7188,7 +7188,7 @@
     "status": "pending-review"
   },
   {
-    "id": "KaushalS25",
+    "id": "kaushal2025fairness",
     "title": "Fairness-driven federated learning-based spam email detection using clustering techniques",
     "authors": "Vishal Kaushal, Sangeeta Sharma",
     "year": 2025,
@@ -7214,7 +7214,7 @@
     "status": "pending-review"
   },
   {
-    "id": "SantosC25",
+    "id": "santos2025group",
     "title": "Group Fairness in Recommendation Systems: The Importance of Hierarchical Clustering in Identifying Latent Groups in MovieLens and Amazon Books",
     "authors": "Rafael Vargas Mesquita dos Santos, Giovanni V. Comarela",
     "year": 2025,
@@ -7240,9 +7240,9 @@
     "status": "pending-review"
   },
   {
-    "id": "GhodsiSQ0N25",
+    "id": "ghodsi2025deep",
     "title": "A Deep Latent Factor Graph Clustering with Fairness-Utility Trade-Off Perspective",
-    "authors": "Siamak Ghodsi, Amjad Seyedi, Tai Le Quy, Fariba Karimi 0001, Eirini Ntoutsi",
+    "authors": "Siamak Ghodsi, Amjad Seyedi, Tai Le Quy, Fariba Karimi, Eirini Ntoutsi",
     "year": 2025,
     "venue": "IEEE Big Data",
     "citations": 0,
@@ -7267,7 +7267,7 @@
     "status": "pending-review"
   },
   {
-    "id": "GulloCMT25",
+    "id": "gullo2025correlation",
     "title": "Correlation Clustering with Fairness Constraints",
     "authors": "Francesco Gullo, Lucio La Cava, Domenico Mandaglio, Andrea Tagarelli",
     "year": 2025,
@@ -7293,9 +7293,9 @@
     "status": "pending-review"
   },
   {
-    "id": "YangQZTYZ25",
+    "id": "yang2025enhancing",
     "title": "Enhancing Fairness in Gaussian Mixture Clustering through Impact Factor",
-    "authors": "Zhijing Yang, Chuan Qian, Junjie Zheng, Yiding Tang, Boyang Yan, Hui Zhang 0055",
+    "authors": "Zhijing Yang, Chuan Qian, Junjie Zheng, Yiding Tang, Boyang Yan, Hui Zhang",
     "year": 2025,
     "venue": "ICASSP",
     "citations": 0,
@@ -7319,7 +7319,7 @@
     "status": "pending-review"
   },
   {
-    "id": "WuYY25",
+    "id": "wu2025individual",
     "title": "Individual Fairness in K-means Clustering: A Density-Aware Similarity Approach (S)",
     "authors": "Tao Wu, Yi Yang, Chunming Yang",
     "year": 2025,
@@ -7345,7 +7345,7 @@
     "status": "pending-review"
   },
   {
-    "id": "abs-2510-20220",
+    "id": "ojedaruiz2025alternatives",
     "title": "Alternatives to the Laplacian for Scalable Spectral Clustering with Group Fairness Constraints",
     "authors": "Iván Ojeda-Ruiz, Young Ju-Lee, Malcolm Dickens, Leonardo Cambisaca",
     "year": 2025,
@@ -7372,9 +7372,9 @@
     "status": "pending-review"
   },
   {
-    "id": "0007TS024",
+    "id": "li2024clustering",
     "title": "Clustering-based multi-objective optimization considering fairness for multi-workflow scheduling on clouds",
-    "authors": "Feng Li 0007, Wen Jun Tan, Moon Gi Seok, Wentong Cai 0001",
+    "authors": "Feng Li, Wen Jun Tan, Moon Gi Seok, Wentong Cai",
     "year": 2024,
     "venue": "J. Parallel Distributed Comput.",
     "citations": 0,
@@ -7398,7 +7398,7 @@
     "status": "pending-review"
   },
   {
-    "id": "MashdourSLSL24",
+    "id": "mashdour2024clustering",
     "title": "Clustering and Scheduling With Fairness Based on Information Rates for Cell-Free MIMO Networks",
     "authors": "Saeed Mashdour, Shirin Salehi, Rodrigo C. de Lamare, Anke Schmeink, João Paulo S. H. Lima",
     "year": 2024,
@@ -7424,7 +7424,7 @@
     "status": "pending-review"
   },
   {
-    "id": "abs-2402-07578",
+    "id": "garciagarcia2024lfoc",
     "title": "LFOC: A Lightweight Fairness-Oriented Cache Clustering Policy for Commodity Multicores",
     "authors": "Adrián García-García, Juan Carlos Saez, Fernando Castro, Manuel Prieto-Matías",
     "year": 2024,
@@ -7450,7 +7450,7 @@
     "status": "pending-review"
   },
   {
-    "id": "abs-2404-18032",
+    "id": "mashdour2024study",
     "title": "Study of Clustering Techniques and Scheduling Algorithms with Fairness for Cell-Free MIMO Networks",
     "authors": "Saeed Mashdour, Rodrigo Caiado de Lamare",
     "year": 2024,
@@ -7476,33 +7476,7 @@
     "status": "pending-review"
   },
   {
-    "id": "abs-2408-10002",
-    "title": "The Fairness-Quality Trade-off in Clustering",
-    "authors": "Rashida Hakim, Ana-Andreea Stoica, Christos H. Papadimitriou, Mihalis Yannakakis",
-    "year": 2024,
-    "venue": "CoRR",
-    "citations": 0,
-    "link": "https://doi.org/10.48550/arXiv.2408.10002",
-    "pdf": "",
-    "bib_link": "https://dblp.org/rec/journals/corr/abs-2408-10002",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "VelicheF23",
+    "id": "veliche2023improving",
     "title": "Improving Fairness and Robustness in End-to-End Speech Recognition Through Unsupervised Clustering",
     "authors": "Irina-Elena Veliche, Pascale Fung",
     "year": 2023,
@@ -7528,7 +7502,7 @@
     "status": "pending-review"
   },
   {
-    "id": "GottschOOAKYC23",
+    "id": "gottsch2023user",
     "title": "User-Centric Clustering Under Fairness Scheduling in Cell-Free Massive MIMO",
     "authors": "Fabian Göttsch, Noboru Osawa, Takeo Ohseki, Yoshiaki Amano, Issei Kanno, Kosuke Yamazaki, Giuseppe Caire",
     "year": 2023,
@@ -7554,7 +7528,7 @@
     "status": "pending-review"
   },
   {
-    "id": "abs-2106-06755",
+    "id": "goyal2021fpt",
     "title": "FPT Approximation for Socially Fair Clustering",
     "authors": "Dishant Goyal, Ragesh Jaiswal",
     "year": 2021,

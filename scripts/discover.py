@@ -150,6 +150,13 @@ def main():
                          venue=c["venue"], link=c["link"], pdf=c["pdf"],
                          bib_link=c["bib_link"], added=today, status="pending-review",
                          possible_duplicate_of=dup_of)
+        # Keep gscholar-style ids unique across the database.
+        existing_ids = {p.get("id") for p in papers}
+        if rec["id"] in existing_ids:
+            for suf in "abcdefgh":
+                if rec["id"] + suf not in existing_ids:
+                    rec["id"] += suf
+                    break
         papers.append(rec)
         added.append(rec)
 
