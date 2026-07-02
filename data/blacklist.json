@@ -34,5 +34,347 @@
     "title": "Fair and fast $k$-center clustering for data summarization",
     "removed": "2026-07-02",
     "reason": "duplicate removed"
+  },
+  {
+    "id": "gottsch2023user",
+    "title": "User-Centric Clustering Under Fairness Scheduling in Cell-Free Massive MIMO",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "mashdour2024study",
+    "title": "Study of Clustering Techniques and Scheduling Algorithms with Fairness for Cell-Free MIMO Networks",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "garciagarcia2024lfoc",
+    "title": "LFOC: A Lightweight Fairness-Oriented Cache Clustering Policy for Commodity Multicores",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "mashdour2024clustering",
+    "title": "Clustering and Scheduling With Fairness Based on Information Rates for Cell-Free MIMO Networks",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "li2024clustering",
+    "title": "Clustering-based multi-objective optimization considering fairness for multi-workflow scheduling on clouds",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "ojedaruiz2025alternatives",
+    "title": "Alternatives to the Laplacian for Scalable Spectral Clustering with Group Fairness Constraints",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "yang2025enhancing",
+    "title": "Enhancing Fairness in Gaussian Mixture Clustering through Impact Factor",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "santos2025group",
+    "title": "Group Fairness in Recommendation Systems: The Importance of Hierarchical Clustering in Identifying Latent Groups in MovieLens and Amazon Books",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "martins2026fairness",
+    "title": "Fairness-Conscious Feature Engineering and Clustering for Debt Recovery: Performance, Ethics, and Regulation",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "ahmad2026ml",
+    "title": "ML-based agglomerative hierarchical clustering and MMSE precoding for fair user scheduling in LEO MU-MIMO systems",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "garbiso2017fair",
+    "title": "Fair Auto-Adaptive Clustering for Hybrid Vehicular Networks. (Clustering auto-adaptatif et équitable dans les réseaux véhiculaires hybrides)",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "tsepenekas2022comparing",
+    "title": "Comparing Apples to Oranges: Learning Similarity Functions for Data Produced by Different Distributions",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "akash2025uncovering",
+    "title": "Uncovering Discrimination Clusters: Quantifying and Explaining Systematic Fairness Violations",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "rihani2026reverse",
+    "title": "Reverse N-Wise Output-Oriented Testing for AI/ML and Quantum Computing Systems",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "salimi2026asa",
+    "title": "ASA: Adaptive Smart Agent Federated Learning via Device-Aware Clustering for Heterogeneous IoT",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "zan2026auction",
+    "title": "Auction-Based RIS Allocation With DRL: Controlling the Cost-Performance Trade-Off",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "liu2026beyond",
+    "title": "Beyond Procedure: Substantive Fairness in Conformal Prediction",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "fu2026subquad",
+    "title": "SubQuad: Near-Quadratic-Free Structure Inference with Distribution-Balanced Objectives in Adaptive Receptor framework",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "bingham2026somtime",
+    "title": "SOMtime the World Ain$'$t Fair: Violating Fairness Using Self-Organizing Maps",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "mohammadzadeh2026channel",
+    "title": "Channel-Correlation-Based Access Point Selection and Pilot Power Allocation for Cell-Free Massive MIMO",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "cunningham2026token",
+    "title": "Token Management in Multi-Tenant AI Inference Platforms",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "jha2026ca",
+    "title": "CA-AFP: Cluster-Aware Adaptive Federated Pruning",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "mohan2026design",
+    "title": "Design Behaviour Codes (DBCs): A Taxonomy-Driven Layered Governance Benchmark for Large Language Models",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "luo2026enhancing",
+    "title": "Enhancing User Fairness in Two-Layer RSMA: A Movable Antenna Approach",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "chaganlal2026enhancing",
+    "title": "Enhancing OLAP Resilience at LinkedIn",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "niyonkuru2026balancing",
+    "title": "Balancing Performance and Fairness in Explainable AI for Anomaly Detection in Distributed Power Plants Monitoring",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "siqueira2026can",
+    "title": "Can I guess where you are from? Modeling dialectal morphosyntactic similarities in Brazilian Portuguese",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "yamada2026stamp",
+    "title": "STAMP: A shot-type-aware areal multilevel Poisson model for league-wide comparison of basketball shot charts",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "adibekyan2026reinforcing",
+    "title": "Reinforcing Prestige: Journal Citation Biases in Astronomy",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "ruffle2026fairboard",
+    "title": "Fairboard: a quantitative framework for equity assessment of healthcare models",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "majumdar2026unbiased",
+    "title": "Unbiased Model Prediction Without Using Protected Attribute Information",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "xie2026reclaiming",
+    "title": "Reclaiming Idle CPU Cycles on Kubernetes: Sparse-Domain Multiplexing for Concurrent MPI-CFD Simulations",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "go2026apparent",
+    "title": "Apparent Age Estimation: Challenges and Outcomes",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "shihab2026why",
+    "title": "Why Colors Make Clustering Harder:Global Integrality Gaps, the Price of Fairness, and Color-Coupled Algorithms in Chromatic Correlation Clustering",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "yang2026crosatfl",
+    "title": "CroSatFL: Energy-Efficient Federated Learning with Cross-Aggregation for Satellite Edge Computing",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "zheng2026ecoshift",
+    "title": "EcoShift: Performance-Aware Power Management for Power-Constrained Heterogeneous Systems",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "pham2026scalable",
+    "title": "Scalable AI Inference: Performance Analysis and Optimization of AI Model Serving",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "gamboa2026bibliometric",
+    "title": "Bibliometric Mapping of AI-Supported Social Presence in Online Learning Environments: Trends, Collaboration, and Thematic Directions",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "tan2026gender",
+    "title": "Gender Bias in YouTube Exposure: Allocative and Structural Inequalities in Political Information Environments",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "guo2026saga",
+    "title": "SAGA: Workflow-Atomic Scheduling for AI Agent Inference on GPU Clusters",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "liu2026protdbench",
+    "title": "ProtDBench: A Unified Benchmark of Protein Binder Design and Evaluation",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "burnat2026quotient",
+    "title": "Quotient Semivalues for False-Name-Resistant Data Attribution",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "bashir2026fed",
+    "title": "Fed-BAC: Federated Bandit-Guided Additive Clustering in Hierarchical Federated Learning",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "rathod2026auditing",
+    "title": "Auditing Discriminatory Patterns in Mortgage Lending Through Association Rules and Fair Binning",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "bouchiha2026automated",
+    "title": "Automated Byzantine-Resilient Clustered Decentralized Federated Learning for Battery Intelligence in Connected EVs",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "molinaro2026astronomy",
+    "title": "Astronomy Open Science Competence Centre in Europe",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "masroor2026fairness",
+    "title": "Fairness Beyond Demographics: Optimizing Performance Across Appearance-Based Hidden Cohorts in Medical Imaging",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "wu2026can",
+    "title": "Can AI Review Improve Paper Drafting? An Empirical Study on 20 Computer Architecture Submissions",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "bose2026framework",
+    "title": "A Framework for Graph-Conditioned Hierarchical Shapley Attribution in Patent Valuation",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "srikantha2026trieval",
+    "title": "TriEval: A Resource-Efficient Pipeline for LLM Bias, Toxicity, and Truthfulness Assessment",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "malan2026revisiting",
+    "title": "Revisiting Lexicon Evaluation in Unsupervised Word Discovery",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "sun2026two",
+    "title": "Two-Phase Simulated Annealing for Equitable Team Formation: Eliminating Complaints in Large Engineering Cohorts",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "shastri2026fmplex",
+    "title": "FMplex: Model Virtualization for Serving Extensible Foundation Models",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "wang2026fair",
+    "title": "Fair Comparison of Scheduling Algorithms on Heterogeneous Edge Clusters: A Continuous Adaptive Benchmark",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "stannett2026stone",
+    "title": "A Stone-Cech Collecting Semantics for Residual Process Behaviour",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "quy2023review",
+    "title": "A review of clustering models in educational data science towards fairness-aware learning",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
+  },
+  {
+    "id": "silva2023systematic",
+    "title": "Systematic analysis of the impact of label noise correction on ML Fairness",
+    "removed": "2026-07-02",
+    "reason": "unrelated papers to algorithmic aspects"
   }
 ]
