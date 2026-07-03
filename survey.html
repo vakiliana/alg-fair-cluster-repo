@@ -333,9 +333,9 @@
       <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9L12 2z"></path></svg>
       Provenance &amp; AI disclosure
     </div>
-    This document combines author-written material with clearly-marked AI-drafted sections.
+    <span id="prov-body">This document combines author-written material with clearly-marked AI-drafted sections.
     <b>Author-written (Ali Vakilian):</b> Abstract, Introduction, Group-Fairness Notions, Individual Fairness, and Conclusion.
-    <b>AI-drafted (Claude, pending author review):</b> Preliminaries &amp; Notation, Proportionality/Core &amp; Stability, Algorithmic Techniques, Future Directions, the taxonomy (Fig.&nbsp;2) and the results table (Table&nbsp;1). AI-drafted passages also carry an inline banner; please verify before relying on them.
+    <b>AI-drafted (Claude, pending author review):</b> Preliminaries &amp; Notation, Proportionality/Core &amp; Stability, Algorithmic Techniques, Future Directions, the taxonomy (Fig.&nbsp;1) and the results table (Table&nbsp;1). AI-drafted passages also carry an inline banner; please verify before relying on them.</span>
   </aside>
 
   <section class="abstract">
@@ -518,10 +518,18 @@ _Submitted via the Fair Clustering survey._`;
         if (tex) {
           inner += ` &middot; <a href="https://github.com/${this.REPO}/edit/main/survey/latex/${tex}" target="_blank" rel="noopener" title="Edit the matching LaTeX source (keep in sync)" style="color:#9a6a18;text-decoration:none">\u270e edit .tex</a>`;
         }
-        if (h.classList.contains('ai-section')) {
-          inner += ` &middot; <a href="https://github.com/${this.REPO}/actions/workflows/survey-review.yml" target="_blank" rel="noopener" title="Mark this AI section reviewed (removes the AI tag) via the admin workflow" style="color:#0f7b6c;text-decoration:none">\u2713 mark reviewed</a>`;
-        }
         tools.innerHTML = inner;
+        const skey = this.statusKeyFor(h.id);
+        if (h.classList.contains('ai-section') && skey) {
+          const sep = document.createElement('span'); sep.textContent = ' \u00b7 '; sep.style.color = '#9aa3b1';
+          tools.appendChild(sep);
+          const rb = document.createElement('a');
+          rb.href = '#'; rb.textContent = '\u2713 mark reviewed';
+          rb.title = 'Scrubs ALL AI-drafted labels for this section (web + LaTeX) and opens a PR for your approval';
+          rb.style.cssText = 'color:#0f7b6c;text-decoration:none';
+          rb.onclick = (e) => { e.preventDefault(); this.markReviewed(skey, title); };
+          tools.appendChild(rb);
+        }
         h.appendChild(tools);
       }
       // toc entry
@@ -550,29 +558,83 @@ _Submitted via the Fair Clustering survey._`;
     this.onScroll();
   }
 
+  statusKeyFor(id) {
+    if (id === 'preliminaries') return 'preliminaries';
+    if (id === 'proportionality' || id === 'proportional-core' || id === 'stability') return 'proportionality';
+    if (id === 'techniques' || id.startsWith('tech-')) return 'techniques';
+    if (id === 'future-directions') return 'future-directions';
+    if (id === 'results-summary') return 'tab-results';
+    return '';
+  }
+
   texFor(id) {
+    // AI sections: filename depends on review status (scrub renames ai-X.tex -> X.tex)
+    const TEX = { preliminaries: ['ai-preliminaries.tex', 'preliminaries.tex'],
+                  proportionality: ['ai-proportionality.tex', 'proportionality.tex'],
+                  techniques: ['ai-techniques.tex', 'techniques.tex'],
+                  'future-directions': ['ai-open.tex', 'open.tex'],
+                  'tab-results': ['ai-results-table.tex', 'results-table.tex'] };
+    const key = this.statusKeyFor(id);
+    if (key && TEX[key]) return (this.aiStatus && this.aiStatus[key]) ? TEX[key][1] : TEX[key][0];
     const map = {
       'introduction': 'intro.tex',
-      'preliminaries': 'ai-preliminaries.tex',
       'group-fairness-notions-in-clustering': 'group-fair.tex',
       'fair-representation-within-clusters': 'group-fair.tex',
       'fair-representation-within-centers-centroid-based-': 'group-fair.tex',
       'min-max-fairness-aka-socially-fair-clustering': 'group-fair.tex',
-      'results-summary': 'ai-results-table.tex',
       'individual-fairness': 'individual.tex',
-      'proportionality': 'ai-proportionality.tex',
-      'proportional-core': 'ai-proportionality.tex',
-      'stability': 'ai-proportionality.tex',
-      'techniques': 'ai-techniques.tex',
-      'future-directions': 'ai-open.tex',
     };
-    if (map[id]) return map[id];
-    // section-family fallbacks
-    if (id.startsWith('tech-')) return 'ai-techniques.tex';
-    return '';
+    return map[id] || '';
+  }
+
+  markReviewed(key, sectionTitle) {
+    let token = localStorage.getItem('fcr-gh-token') || '';
+    if (!token) {
+      token = window.prompt(
+        'Paste a GitHub token (Actions: read/write on alg-fair-cluster-repo) to trigger the review PR automatically.\n\n' +
+        'Create one at github.com/settings/tokens (fine-grained, this repo only, Actions: Read and write). ' +
+        'Stored only in this browser. Leave blank to open the workflow page instead.') || '';
+      if (token) localStorage.setItem('fcr-gh-token', token.trim());
+    }
+    if (!token) { window.open(`https://github.com/${this.REPO}/actions/workflows/survey-review.yml`, '_blank'); return; }
+    if (!window.confirm(`Mark \u201c${sectionTitle}\u201d as author-reviewed?\n\nThis triggers a workflow that scrubs ALL AI-drafted labels for this section \u2014 web banner + tag, LaTeX % AI-DRAFTED comments and \\aibanner, renames ai-*.tex, and updates the provenance box \u2014 then opens a pull request. Merge the PR to publish, close it to reject.`)) return;
+    fetch(`https://api.github.com/repos/${this.REPO}/actions/workflows/survey-review.yml/dispatches`, {
+      method: 'POST',
+      headers: { 'Accept': 'application/vnd.github+json', 'Authorization': 'Bearer ' + token, 'X-GitHub-Api-Version': '2022-11-28' },
+      body: JSON.stringify({ ref: 'main', inputs: { section: key, reviewed: 'true' } }),
+    }).then(r => {
+      if (r.status === 204) {
+        alert('\u2713 Review workflow triggered. The pull request will appear in ~20\u201340 seconds \u2014 merge it to publish.');
+        setTimeout(() => window.open(`https://github.com/${this.REPO}/pulls`, '_blank'), 1200);
+      } else if (r.status === 401 || r.status === 403) {
+        localStorage.removeItem('fcr-gh-token');
+        alert('Token rejected (401/403) \u2014 cleared. Try again with a token that has Actions: read/write on this repo.');
+      } else {
+        r.text().then(t => alert('GitHub API error ' + r.status + ':\n' + t.slice(0, 250)));
+      }
+    }).catch(e => alert('Network error triggering the workflow: ' + e));
+  }
+
+  updateProvenance() {
+    const el = document.getElementById('prov-body');
+    if (!el) return;
+    const st = this.aiStatus || {};
+    const NAMES = { abstract: 'Abstract', preliminaries: 'Preliminaries &amp; Notation',
+                    proportionality: 'Proportionality/Core &amp; Stability', techniques: 'Algorithmic Techniques',
+                    'future-directions': 'Future Directions', 'fig-taxonomy': 'the taxonomy (Fig.&nbsp;1)',
+                    'tab-results': 'the results table (Table&nbsp;1)' };
+    const authors = ['Introduction', 'Group-Fairness Notions', 'Individual Fairness', 'Conclusion'];
+    const pending = [];
+    Object.keys(NAMES).forEach(k => { (st[k] ? authors : pending).push(NAMES[k]); });
+    let html = pending.length
+      ? 'This document combines author-written material with clearly-marked AI-drafted sections. <b>Author-written or author-reviewed:</b> ' + authors.join(', ') + '. '
+        + '<b>AI-drafted (pending author review):</b> ' + pending.join(', ') + '. AI-drafted passages carry an inline banner; please verify before relying on them.'
+      : 'Portions of this document were initially drafted with AI assistance. <b>All AI-drafted material has been reviewed and approved by the author.</b>';
+    el.innerHTML = html;
   }
 
   applyReview() {
+    this.updateProvenance();
     const st = this.aiStatus || {};
     document.querySelectorAll('#article h2.ai-section').forEach(h => {
       if (st[h.id]) {

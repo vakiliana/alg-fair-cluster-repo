@@ -1,17 +1,17 @@
 name: Survey — mark AI section reviewed (admin)
 
-# Marks an AI-drafted survey section as author-reviewed, which removes its
-# "AI-drafted" banner and tag on the website. Only repository collaborators
-# can run workflows, so this is effectively admin-only.
-#
-# Actions tab → "Survey — mark AI section reviewed" → Run workflow →
-# pick the section (or "all") → Run.
+# Marks an AI-drafted survey section as author-reviewed and SCRUBS every
+# AI-generated label for it (web banner/tag in survey/content.html, the
+# % AI-DRAFTED comments + \aibanner in the LaTeX, renames ai-*.tex, and the
+# provenance box), then opens a PULL REQUEST for the maintainer to merge
+# (accept) or close (reject). Triggered from the survey admin UI (which calls
+# the GitHub API) or manually from this Actions page. Collaborator-only.
 
 on:
   workflow_dispatch:
     inputs:
       section:
-        description: "Which AI section to mark"
+        description: "Which AI section to mark reviewed"
         required: true
         type: choice
         default: all
@@ -25,12 +25,13 @@ on:
           - fig-taxonomy
           - tab-results
       reviewed:
-        description: "Reviewed? (untick to restore the AI tag)"
+        description: "Reviewed? (untick to restore the pending flag)"
         type: boolean
         default: true
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   review:
@@ -40,17 +41,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Update review status
+
+      - name: Scrub AI labels
         id: rev
         env:
           FC_SECTION: ${{ inputs.section }}
           FC_REVIEWED: ${{ inputs.reviewed }}
         run: python scripts/survey_review.py
-      - name: Commit
+
+      - name: Open pull request
         if: steps.rev.outputs.changed == 'true'
-        run: |
-          git config user.name  "fair-clustering-bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add survey/ai_status.json
-          git commit -m "Survey review: ${{ steps.rev.outputs.summary }}"
-          git push
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: bot/survey-review
+          title: "✅ Survey: mark ${{ inputs.section }} as author-reviewed"
+          body-path: review_summary.md
+          labels: survey-feedback, automated
+          commit-message: "Survey review: ${{ inputs.section }} (scrub AI labels)"
+          add-paths: |
+            survey/**
+          delete-branch: true
