@@ -1,0 +1,48 @@
+name: Sync LaTeX from HTML
+
+# survey/content.html is the single source of truth for the survey prose.
+# When it changes, this regenerates the prose LaTeX section files
+# (ai-preliminaries / ai-proportionality / ai-techniques / ai-open) and opens
+# a pull request so you can review before merge. Figures, tables, the preamble,
+# and the author-written sections (intro, group-fair, individual) are NOT
+# touched — they stay hand-maintained in LaTeX.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "survey/content.html"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Regenerate LaTeX prose from content.html
+        id: sync
+        run: node scripts/sync_html_to_tex.js
+      - name: Open pull request
+        if: steps.sync.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: bot/sync-latex
+          title: "🔁 Sync LaTeX prose from content.html"
+          body: |
+            `survey/content.html` changed, so the prose LaTeX sections were regenerated to match.
+
+            Updated: ${{ steps.sync.outputs.files }}
+
+            Review and merge to keep the LaTeX edition in sync with the web version. Figures, tables, the preamble, and author-written sections are untouched.
+          labels: survey, automated
+          commit-message: "Sync LaTeX prose from content.html"
+          add-paths: |
+            survey/latex/*.tex
+          delete-branch: true
