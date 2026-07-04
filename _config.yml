@@ -1,0 +1,24 @@
+# Jekyll configuration for GitHub Pages
+# https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll
+
+url: "https://vakiliana.github.io"
+baseurl: "/alg-fair-cluster-repo"
+
+theme: jekyll-theme-primer
+
+# Exclude files and directories that are not part of the deployed web site.
+# Only HTML/JS/CSS/images and the data files fetched at runtime are needed.
+exclude:
+  - scripts/
+  - legacy/
+  - papers/
+  - survey/latex/
+  - conf_names.csv
+  - fc_papers.csv
+  - data/papers.json.bak
+  - data/scholar_authors.json
+  - "Fair Clustering Repository.dc.html"
+  - "Fair Clustering Survey.dc.html"
+  - "Logo Concepts.dc.html"
+  - SYNC.md
+  - ".thumbnail"
