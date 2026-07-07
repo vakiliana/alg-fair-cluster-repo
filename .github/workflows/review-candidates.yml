@@ -22,6 +22,10 @@ on:
         description: "Set 'true' to clear the update-survey queue"
         required: false
         default: "false"
+      queue_remove:
+        description: "Paper ids to EXCLUDE from the survey update (drop from the queue)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -41,6 +45,7 @@ jobs:
           FC_ACCEPT: ${{ inputs.accept }}
           FC_REJECT: ${{ inputs.reject }}
           FC_CLEAR_QUEUE: ${{ inputs.clear_queue }}
+          FC_QUEUE_REMOVE: ${{ inputs.queue_remove }}
         run: python scripts/review_candidates.py
       - name: Open pull request
         if: steps.rev.outputs.changed == 'true'

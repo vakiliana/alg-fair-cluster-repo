@@ -17,6 +17,8 @@ Env:
   FC_REJECT       ids to reject
   FC_CLEAR_QUEUE  "true" to empty survey/new_papers_queue.json (after the
                   survey has been updated with those papers)
+  FC_QUEUE_REMOVE ids to drop from the update-survey queue (exclude specific
+                  accepted papers from the next survey update)
 """
 import datetime
 import json
@@ -36,6 +38,7 @@ def main():
     accept = ids_from(os.environ.get("FC_ACCEPT"))
     reject = ids_from(os.environ.get("FC_REJECT"))
     clear_q = os.environ.get("FC_CLEAR_QUEUE", "").strip().lower() in ("1", "true", "yes")
+    queue_remove = set(ids_from(os.environ.get("FC_QUEUE_REMOVE")))
 
     papers = load_papers()
     by_id = {p.get("id"): p for p in papers}
@@ -58,8 +61,10 @@ def main():
         p["status"] = ""
         p.pop("was_blacklisted", None)
         accepted.append(p)
-        queue.append({"id": p.get("id", ""), "title": p.get("title", ""),
-                      "link": p.get("link") or p.get("pdf") or "", "added": today})
+        # append to the update-survey queue (skip if this id is already queued)
+        if not any((q.get("id") == p.get("id")) for q in queue):
+            queue.append({"id": p.get("id", ""), "title": p.get("title", ""),
+                          "link": p.get("link") or p.get("pdf") or "", "added": today})
 
     bl = load_blacklist()
     entries = list(bl["raw"])
@@ -79,10 +84,13 @@ def main():
             have.add(key)
 
     papers = [p for p in papers if p.get("id") not in rej_ids]
+    removed_from_queue = [q for q in queue if q.get("id") in queue_remove]
+    if queue_remove:
+        queue = [q for q in queue if q.get("id") not in queue_remove]
     if clear_q:
         queue = []
 
-    changed = bool(accepted or rejected or clear_q)
+    changed = bool(accepted or rejected or clear_q or removed_from_queue)
     if changed:
         save_papers(papers)
         save_blacklist(entries)
@@ -105,10 +113,15 @@ def main():
                 f.write("\n")
             if clear_q:
                 f.write("**Update-survey queue cleared.**\n\n")
+            if removed_from_queue:
+                f.write(f"**Excluded from the survey update ({len(removed_from_queue)}):**\n\n")
+                for q in removed_from_queue:
+                    f.write(f"- {(q.get('title','') or q.get('id','')).replace('|', '\\|')[:90]}\n")
+                f.write("\n")
             if missing:
                 f.write("_Ids not found (skipped): " + ", ".join(f"`{m}`" for m in missing) + "._\n")
 
-    summary = f"accept {len(accepted)}, reject {len(rejected)}" + (", queue cleared" if clear_q else "")
+    summary = f"accept {len(accepted)}, reject {len(rejected)}" + (", queue cleared" if clear_q else "") + (f", {len(removed_from_queue)} excluded from survey" if removed_from_queue else "")
     with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as gh:
         gh.write(f"changed={'true' if changed else 'false'}\n")
         gh.write(f"summary={summary}\n")
