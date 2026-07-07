@@ -514,10 +514,12 @@ _Submitted via the Fair Clustering survey._`;
         tools.className = 'sec-admin no-print';
         tools.style.cssText = 'margin-left:10px;font-size:11px;font-weight:700;white-space:nowrap;vertical-align:middle';
         const tex = this.texFor(h.id);
-        let inner = `<a href="https://github.com/${this.REPO}/edit/main/survey/content.html" target="_blank" rel="noopener" title="Edit the web (HTML) source on GitHub" style="color:#1f5fbf;text-decoration:none">\u270e edit HTML</a>`;
-        if (tex) {
-          inner += ` &middot; <a href="https://github.com/${this.REPO}/edit/main/survey/latex/${tex}" target="_blank" rel="noopener" title="Edit the matching LaTeX source (keep in sync)" style="color:#9a6a18;text-decoration:none">\u270e edit .tex</a>`;
-        }
+        const SYNCED = ['intro.tex', 'ai-preliminaries.tex', 'preliminaries.tex', 'ai-proportionality.tex', 'proportionality.tex', 'ai-techniques.tex', 'techniques.tex', 'ai-open.tex', 'open.tex'];
+        const target = (tex && SYNCED.includes(tex)) ? 'survey/latex/' + tex : 'survey/content.html';
+        const tip = target.endsWith('.tex')
+          ? 'Edit this section\u2019s LaTeX source (normal TeX: $math$, \\citep{}, \\emph{}) \u2014 the website HTML is regenerated automatically via a PR'
+          : 'Edit the web (HTML) source \u2014 this section\u2019s figures/tables live here';
+        let inner = `<a href="https://github.com/${this.REPO}/edit/main/${target}" target="_blank" rel="noopener" title="${tip}" style="color:#1f5fbf;text-decoration:none">\u270e edit</a>`;
         tools.innerHTML = inner;
         const skey = this.statusKeyFor(h.id);
         if (h.classList.contains('ai-section') && skey) {

@@ -1,0 +1,45 @@
+name: Sync HTML from LaTeX
+
+# survey/latex/*.tex is the source of truth for the survey PROSE. When any of
+# those files change, this regenerates the matching sections of
+# survey/content.html and opens a pull request for review. Figures, tables,
+# and the references stay hand-maintained (figures are re-inserted at
+# %%FIGURE:<id> markers in the .tex).
+#
+# This REPLACES the old sync-tex.yml (HTML→LaTeX) — do not run both, or they
+# will loop against each other.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "survey/latex/*.tex"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Regenerate content.html prose from LaTeX
+        id: sync
+        run: node scripts/sync_tex_to_html.js
+      - name: Open pull request
+        if: steps.sync.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: bot/sync-html
+          title: "\U0001F501 Sync website HTML from LaTeX (${{ steps.sync.outputs.files }})"
+          body-path: sync_warnings.md
+          labels: survey, automated
+          commit-message: "Sync content.html prose from survey/latex"
+          add-paths: |
+            survey/content.html
+          delete-branch: true

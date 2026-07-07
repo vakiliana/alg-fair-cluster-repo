@@ -1,26 +1,17 @@
 % ===== AI-DRAFTED (pending author review) =====
-% Auto-generated from survey/content.html by scripts/sync_html_to_tex.js — do not edit by hand.
 \section{Algorithmic Techniques}\label{sec:tech}
 \aibanner
 
-A compact toolbox underlies most guarantees in this survey; we summarize the recurring techniques and where they appear.
+A compact toolbox underlies most of the guarantees in this survey. We summarize the recurring techniques and where they appear.
 
-\subsection{Fairlet decomposition}
+\paragraph{Fairlet decomposition.} Introduced by \citet{DBLP:conf/nips/Chierichetti0LV17}, a \emph{fairlet} is a minimal balanced group of points. The two-phase recipe---partition the data into fairlets, then cluster the fairlet representatives with any off-the-shelf algorithm---decouples fairness from optimization and transfers existing approximation guarantees to the fair setting. The bottleneck is the decomposition itself, which \citet{backurs2019scalable} reduced to a near-linear-time computation via metric embeddings.
 
-Introduced by Chierichetti et al.~\citep{DBLP:conf/nips/Chierichetti0LV17}, a \emph{fairlet} is a minimal balanced group of points. The two-phase recipe --- partition the data into fairlets, then cluster their representatives with any off-the-shelf algorithm --- decouples fairness from optimization and transfers existing approximation guarantees to the fair setting. The bottleneck is the decomposition itself, which Backurs et al.~\citep{backurs2019scalable} reduced to near-linear time via metric embeddings.
+%%FIGURE:fig-fairlet
 
-\subsection{LP / convex relaxation and rounding}
+\paragraph{LP/convex relaxation and rounding.} The most versatile approach writes an assignment linear program with fairness constraints and rounds it. \citet{bera2019fair} round a standard LP into clusterings with small additive fairness violation for every $\ell_p$ objective; \citet{DBLP:conf/fat/DaiMV22} use tree-metric LPs to obtain purely multiplicative guarantees; and \citet{makarychev2021approximation,DBLP:conf/soda/ChlamtacMV22} design strengthened convex relaxations for the min-max and $(p,q)$-fair objectives. Individually fair clustering is likewise driven by LP rounding~\citep{ChakrabartyN21,VakilianY22}.
 
-The most versatile approach writes an assignment LP with fairness constraints and rounds it. Bera et al.~\citep{bera2019fair} round a standard LP into clusterings with small additive violation for every $\ell_p$ objective; Dai et al.~\citep{DBLP:conf/fat/DaiMV22} use tree-metric LPs for purely multiplicative guarantees; and Makarychev and Vakilian~\citep{makarychev2021approximation} and Chlamtac et al.~\citep{DBLP:conf/soda/ChlamtacMV22} design strengthened convex relaxations for the min-max and $(p,q)$-fair objectives. Individually fair clustering is likewise driven by LP rounding \citep{ChakrabartyN21,VakilianY22}.
+\paragraph{Coresets and subsampling.} To scale to massive or streaming data, one computes a \emph{coreset}---a small weighted subset that approximately preserves the (fair) clustering cost. Fairness-aware coresets~\citep{DBLP:conf/waoa/0001SS19,DBLP:conf/nips/HuangJV19,DBLP:conf/icalp/BandyapadhyayFS21} yield constant-factor algorithms that, in some regimes, avoid fairness violations entirely and feed directly into insertion-only and sliding-window streaming pipelines~\citep{cohenfair25}.
 
-\subsection{Coresets and subsampling}
+\paragraph{Metric tree embeddings.} Probabilistically approximating an arbitrary metric by a distribution over dominating tree metrics~\citep{bartal1998approximating,fakcharoenphol2003tight} turns hard assignment problems into tractable ones on trees, underlying both the near-linear two-group algorithm of \citet{backurs2019scalable} and the multiplicative multi-group bounds of \citet{DBLP:conf/fat/DaiMV22}.
 
-To scale to massive or streaming data, one computes a \emph{coreset} --- a small weighted subset approximately preserving the (fair) clustering cost. Fairness-aware coresets \citep{DBLP:conf/waoa/0001SS19,DBLP:conf/nips/HuangJV19,DBLP:conf/icalp/BandyapadhyayFS21} yield constant-factor algorithms that, in some regimes, avoid fairness violations entirely and feed directly into insertion-only and sliding-window streaming pipelines \citep{cohenfair25}.
-
-\subsection{Metric tree embeddings}
-
-Approximating an arbitrary metric by a distribution over dominating tree metrics \citep{bartal1998approximating,fakcharoenphol2003tight} turns hard assignment problems into tractable ones on trees, underlying both the near-linear two-group algorithm of Backurs et al.~\citep{backurs2019scalable} and the multiplicative multi-group bounds of Dai et al.~\citep{DBLP:conf/fat/DaiMV22}.
-
-\subsection{Local search and matroid methods}
-
-Local search --- iteratively swapping centers --- yields clean bicriteria guarantees for individual fairness \citep{MahabadiV20} and scales to hundreds of thousands of points via anchor-zone bookkeeping \citep{bateni2024scalable}. When fairness constrains the \emph{set of centers}, the problem becomes clustering under a matroid constraint, for which LP-with-matroid-polytope rounding, swap/pipage rounding, and matroid-aware local search give constant-factor approximations \citep{krishnaswamy2011matroid,chen2016matroid,krishnaswamy2018constant}.
+\paragraph{Local search and matroid methods.} Local search---iteratively swapping centers---yields clean bicriteria guarantees for individual fairness~\citep{MahabadiV20} and scales to hundreds of thousands of points via anchor-zone bookkeeping~\citep{bateni2024scalable}. When fairness is expressed as a constraint on the \emph{set of centers}, the problem becomes clustering under a matroid constraint, for which LP-with-matroid-polytope rounding, swap/pipage rounding, and matroid-aware local search provide constant-factor approximations~\citep{krishnaswamy2011matroid,chen2016matroid,krishnaswamy2018constant}.
