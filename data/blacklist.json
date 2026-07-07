@@ -472,5 +472,17 @@
     "title": "User-Centric Clustering Under Fairness Scheduling in Cell-Free Massive MIMO",
     "removed": "2026-07-07",
     "reason": "rejected in admin review"
+  },
+  {
+    "id": "goyal2021fpt",
+    "title": "FPT Approximation for Socially Fair Clustering",
+    "removed": "2026-07-07",
+    "reason": "duplicate"
+  },
+  {
+    "id": "zhang2023unified",
+    "title": "A unified framework for fair spectral clustering with effective graph learning",
+    "removed": "2026-07-07",
+    "reason": "duplicate"
   }
 ]
