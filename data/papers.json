@@ -4064,32 +4064,6 @@
     "ai_notes": false
   },
   {
-    "id": "ismkhan2026unsupervised",
-    "title": "Unsupervised Learning for Missing Modalities in Multimodal Learning",
-    "authors": "Hassan Ismkhan, Hamid Bouchahcia",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2606.15743v1",
-    "pdf": "https://arxiv.org/pdf/2606.15743v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
     "id": "cookson2026improved",
     "title": "Improved Lower Bounds for Proportionally Fair Clustering",
     "authors": "Benjamin Cookson, Eva Deltl, Yeeseok Oh",
@@ -4113,7 +4087,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "karra2026unifair",
@@ -4139,7 +4113,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "chatterjee2026creating",
@@ -4165,7 +4139,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "mantuano2026fast",
@@ -4191,7 +4165,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "he2026check",
@@ -4217,33 +4191,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "blair2026embeddings",
-    "title": "Embeddings for Preferences, Not Semantics",
-    "authors": "Carter Blair, Ariel D. Procaccia, Milind Tambe",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2605.08360v1",
-    "pdf": "https://arxiv.org/pdf/2605.08360v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "funk2026constant",
@@ -4269,7 +4217,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "park2026fair",
@@ -4295,7 +4243,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "chakraborty2026generic",
