@@ -1,18 +1,19 @@
 name: Discover new papers (monthly)
 
-# Scans arXiv + DBLP for new fair-clustering papers and opens a pull request
-# with the candidates. The PR is your approval queue — review, fix tags,
-# delete off-topic entries, then merge to publish.
+# Scans arXiv + DBLP for new fair-clustering papers (skipping anything on the
+# blacklist) and commits them to data/papers.json with status
+# "pending-review". Pending papers are ONLY visible in the site's admin mode,
+# in the "Review new papers" queue, where the admin Accepts (publish) or
+# Rejects (blacklist) each one — so no PR is needed here.
 
 on:
   schedule:
     # 06:00 UTC on the 1st of every month.
     - cron: "0 6 1 * *"
-  workflow_dispatch: {}        # lets you run it on demand from the Actions tab
+  workflow_dispatch: {}        # run on demand from the Actions tab
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   discover:
@@ -28,15 +29,11 @@ jobs:
         id: scan
         run: python scripts/discover.py
 
-      - name: Open pull request
+      - name: Commit candidates for admin review
         if: steps.scan.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          branch: bot/new-papers
-          title: "📚 ${{ steps.scan.outputs.count }} new fair-clustering paper(s) for review"
-          body-path: discovery_summary.md
-          labels: paper-submission, automated
-          commit-message: "Add ${{ steps.scan.outputs.count }} discovered paper(s) for review"
-          add-paths: |
-            data/papers.json
-          delete-branch: true
+        run: |
+          git config user.name  "fair-clustering-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/papers.json
+          git commit -m "Discovery: queue ${{ steps.scan.outputs.count }} candidate(s) for admin review"
+          git push

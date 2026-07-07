@@ -1,0 +1,51 @@
+name: Review candidates (admin)
+
+# Applies the admin's Accept/Reject decisions on pending papers, dispatched
+# from the site's admin "Review new papers" modal (or run manually here).
+# Accept -> paper goes live + queued for the survey update feed.
+# Reject -> removed + blacklisted (never auto-suggested again).
+# Commits directly to main: the in-modal decision IS the review, and only
+# repository collaborators can dispatch workflows.
+
+on:
+  workflow_dispatch:
+    inputs:
+      accept:
+        description: "Paper ids to ACCEPT (publish)"
+        required: false
+        default: ""
+      reject:
+        description: "Paper ids to REJECT (remove + blacklist)"
+        required: false
+        default: ""
+      clear_queue:
+        description: "Set 'true' to clear the update-survey queue"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Apply review decisions
+        id: rev
+        env:
+          FC_ACCEPT: ${{ inputs.accept }}
+          FC_REJECT: ${{ inputs.reject }}
+          FC_CLEAR_QUEUE: ${{ inputs.clear_queue }}
+        run: python scripts/review_candidates.py
+      - name: Commit
+        if: steps.rev.outputs.changed == 'true'
+        run: |
+          git config user.name  "fair-clustering-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/papers.json data/blacklist.json survey/new_papers_queue.json
+          git commit -m "Admin review: ${{ steps.rev.outputs.summary }}"
+          git push
