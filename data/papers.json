@@ -4269,33 +4269,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "aziz2026fair",
-    "title": "Fair Transit Stop Placement: A Clustering Perspective and Beyond",
-    "authors": "Haris Aziz, Ling Gai, Yuhang Guo, Jeremy Vollen",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2602.06776v2",
-    "pdf": "https://arxiv.org/pdf/2602.06776v2",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Survey / position"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "ganian2025matrix",
@@ -4322,7 +4296,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "jiang2025interpretable",
@@ -4348,7 +4322,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "chakraborty2025generalizing",
@@ -4374,7 +4348,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "wei2025general",
@@ -4400,7 +4374,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "moritaka2025euclidean",
@@ -4426,7 +4400,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "vuong2025fairad",
@@ -4452,7 +4426,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "maity2025local",
@@ -4478,7 +4452,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "zhang2025welfare",
@@ -4504,7 +4478,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "chakraborty2025towards",
@@ -4530,7 +4504,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "nezhad2025polynomial",
@@ -4556,7 +4530,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "kellerhals2025proportional",
@@ -4582,7 +4556,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "carta2024fpt",
@@ -4608,7 +4582,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "lawless2024fairclustering",
@@ -4634,7 +4608,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "thejaswi2024diversity",
@@ -4661,7 +4635,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "drexler2023approximating",
@@ -4687,33 +4661,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "silva2023systematic",
-    "title": "Systematic analysis of the impact of label noise correction on ML Fairness",
-    "authors": "I. Oliveira e Silva, C. Soares, I. Sousa, R. Ghani",
-    "year": 2023,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2306.15994v1",
-    "pdf": "https://arxiv.org/pdf/2306.15994v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "dabas2023fpt",
@@ -4739,7 +4687,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "aziz2023proportionally",
@@ -4765,59 +4713,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "quy2023review",
-    "title": "A review of clustering models in educational data science towards fairness-aware learning",
-    "authors": "Tai Le Quy, Gunnar Friege, Eirini Ntoutsi",
-    "year": 2023,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2301.03421v1",
-    "pdf": "https://arxiv.org/pdf/2301.03421v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "braverman2022power",
-    "title": "The Power of Uniform Sampling for Coresets",
-    "authors": "Vladimir Braverman, Vincent Cohen-Addad, Shaofeng H. -C. Jiang, Robert Krauthgamer, Chris Schwiegelshohn, Mads Bech Toftrup, Xuan Wu",
-    "year": 2022,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2209.01901v2",
-    "pdf": "https://arxiv.org/pdf/2209.01901v2",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Theory / approximation"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "anegg2022techniques",
@@ -4843,7 +4739,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "froese2021modification",
@@ -4869,423 +4765,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "stannett2026stone",
-    "title": "A Stone-Cech Collecting Semantics for Residual Process Behaviour",
-    "authors": "Mike Stannett",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2606.17228v1",
-    "pdf": "https://arxiv.org/pdf/2606.17228v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "wang2026fair",
-    "title": "Fair Comparison of Scheduling Algorithms on Heterogeneous Edge Clusters: A Continuous Adaptive Benchmark",
-    "authors": "Zihang Wang, Boris Sedlak, Juan Luis Herrera, Schahram Dustdar",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2606.12343v1",
-    "pdf": "https://arxiv.org/pdf/2606.12343v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "shastri2026fmplex",
-    "title": "FMplex: Model Virtualization for Serving Extensible Foundation Models",
-    "authors": "Hetvi Shastri, Pragya Sharma, Walid A. Hanafy, David Irwin, Mani Srivastava, Prashant Shenoy",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2606.09643v1",
-    "pdf": "https://arxiv.org/pdf/2606.09643v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "sun2026two",
-    "title": "Two-Phase Simulated Annealing for Equitable Team Formation: Eliminating Complaints in Large Engineering Cohorts",
-    "authors": "Yiwei Sun, Xinru Deng, Dimitrios G. Papageorgiou",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2606.07270v1",
-    "pdf": "https://arxiv.org/pdf/2606.07270v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Individual fairness",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "malan2026revisiting",
-    "title": "Revisiting Lexicon Evaluation in Unsupervised Word Discovery",
-    "authors": "Simon Malan, Danel Slabbert, Herman Kamper",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2606.06183v1",
-    "pdf": "https://arxiv.org/pdf/2606.06183v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "srikantha2026trieval",
-    "title": "TriEval: A Resource-Efficient Pipeline for LLM Bias, Toxicity, and Truthfulness Assessment",
-    "authors": "Akshatha Srikantha, Manpreet Singh, Yash Jajoo, Shyamal Lakhanpal",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2606.03036v1",
-    "pdf": "https://arxiv.org/pdf/2606.03036v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "bose2026framework",
-    "title": "A Framework for Graph-Conditioned Hierarchical Shapley Attribution in Patent Valuation",
-    "authors": "Joy Bose",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2606.01632v1",
-    "pdf": "https://arxiv.org/pdf/2606.01632v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "wu2026can",
-    "title": "Can AI Review Improve Paper Drafting? An Empirical Study on 20 Computer Architecture Submissions",
-    "authors": "Di Wu",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2606.01013v2",
-    "pdf": "https://arxiv.org/pdf/2606.01013v2",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "masroor2026fairness",
-    "title": "Fairness Beyond Demographics: Optimizing Performance Across Appearance-Based Hidden Cohorts in Medical Imaging",
-    "authors": "Milad Masroor, Cuong Nguyen, Kevin Wells, Gustavo Carneiro",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2605.29827v1",
-    "pdf": "https://arxiv.org/pdf/2605.29827v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "molinaro2026astronomy",
-    "title": "Astronomy Open Science Competence Centre in Europe",
-    "authors": "Marco Molinaro, Mark Allen, Joachim Wambsganns, Enrique Solano, Baptiste Cecconi, Markus Demleitner, André Schaaff, Hendrik Heinl, Sara Bertocco",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2605.27481v1",
-    "pdf": "https://arxiv.org/pdf/2605.27481v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "bouchiha2026automated",
-    "title": "Automated Byzantine-Resilient Clustered Decentralized Federated Learning for Battery Intelligence in Connected EVs",
-    "authors": "Mouhamed Amine Bouchiha, Abdelaziz Amara Korba, Yacine Ghamri-Doudane",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2605.21115v3",
-    "pdf": "https://arxiv.org/pdf/2605.21115v3",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "deng2026achieving",
-    "title": "Achieving $α$-Fairness in Clustered Cell-Free Networking: A Tight Relaxation Approach",
-    "authors": "Chaowen Deng, Jie Fan, Boxiang Ren, Ziyuan Lyu, Jingchen Peng, Hao Wu, Junyuan Wang",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2605.16960v1",
-    "pdf": "https://arxiv.org/pdf/2605.16960v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Theory / approximation"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "rathod2026auditing",
-    "title": "Auditing Discriminatory Patterns in Mortgage Lending Through Association Rules and Fair Binning",
-    "authors": "Archit Rathod, Dhwani Chande, Het Nagda",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2606.12435v1",
-    "pdf": "https://arxiv.org/pdf/2606.12435v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "park2026beyond",
-    "title": "Beyond Performance Disparities: A Three-Level Audit of Representational Harm in CelebA",
-    "authors": "Sieun Park, Yuanmo He",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2605.15312v1",
-    "pdf": "https://arxiv.org/pdf/2605.15312v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Deep / ML"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "bashir2026fed",
-    "title": "Fed-BAC: Federated Bandit-Guided Additive Clustering in Hierarchical Federated Learning",
-    "authors": "Satwat Bashir, Tasos Dagiuklas, Muddesar Iqbal",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2605.11815v1",
-    "pdf": "https://arxiv.org/pdf/2605.11815v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "burnat2026quotient",
-    "title": "Quotient Semivalues for False-Name-Resistant Data Attribution",
-    "authors": "Florian A. D. Burnat, Brittany I. Davidson",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2605.07663v1",
-    "pdf": "https://arxiv.org/pdf/2605.07663v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "gadekar2026on",
@@ -5311,7 +4791,7 @@
     "ai_notes": false,
     "citations_updated": "",
     "added": "2026-07-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "liu2026protdbench",
