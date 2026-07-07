@@ -166,5 +166,167 @@
     "title": "On the Parameterized Approximability of (Mergeable) Sum of Radii Clustering",
     "link": "http://arxiv.org/abs/2605.06398v1",
     "added": "2026-07-07"
+  },
+  {
+    "id": "blaha2026fair",
+    "title": "Fair Correlation Clustering Meets Graph Parameters",
+    "link": "http://arxiv.org/abs/2602.15683v1",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "abbasi2023parameterized",
+    "title": "Parameterized Approximation Schemes for Clustering with General Norm Objectives",
+    "link": "http://arxiv.org/abs/2304.03146v1",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "akash2025uncovering",
+    "title": "Uncovering Discrimination Clusters: Quantifying and Explaining Systematic Fairness Violations",
+    "link": "http://arxiv.org/abs/2512.23769v1",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "ebbens2024subquadratic",
+    "title": "A Subquadratic Time Approximation Algorithm for Individually Fair k-Center",
+    "link": "http://arxiv.org/abs/2412.04943v2",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "tajouri2024subjective",
+    "title": "Subjective fairness in algorithmic decision-support",
+    "link": "http://arxiv.org/abs/2407.01617v1",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "munagala2024individual",
+    "title": "Individual Fairness in Graph Decomposition",
+    "link": "http://arxiv.org/abs/2406.00213v1",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "mosenzon2024scalable",
+    "title": "Scalable Algorithms for Individual Preference Stable Clustering",
+    "link": "http://arxiv.org/abs/2403.10365v1",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "qian2022can",
+    "title": "Can Evolutionary Clustering Have Theoretical Guarantees?",
+    "link": "http://arxiv.org/abs/2212.01771v2",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "feng2026fair",
+    "title": "A fair spectral clustering with weighted fairness constraints",
+    "link": "https://doi.org/10.1016/j.patcog.2025.112821",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "zhang2026fairgc",
+    "title": "FairGC: Fostering Individual and Group Fairness for Deep Graph Clustering",
+    "link": "https://doi.org/10.1609/aaai.v40i33.40046",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "zhao2026fairfbc",
+    "title": "FairFBC: Scalable Fair Fuzzy Clustering via Group-Balanced Anchor Graphs",
+    "link": "https://doi.org/10.1145/3805622.3810706",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "yang2025fair",
+    "title": "Fair Laplace: A unified framework for fair spectral clustering",
+    "link": "https://doi.org/10.1016/j.ipm.2025.104124",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "yang2025improving",
+    "title": "Improving Fairness in Density Peak Clustering through Fair Constraints and Multi-Objective Optimization Allocation",
+    "link": "https://doi.org/10.1109/IJCNN64981.2025.11227190",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "landi2025balancing",
+    "title": "Balancing Fairness and Interpretability in Clustering with FairParTree",
+    "link": "https://doi.org/10.1007/978-3-032-08324-1_5",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "moorthy2025incorporating",
+    "title": "Incorporating Fairness in Neighborhood Graphs for Fair Spectral Clustering",
+    "link": "https://doi.org/10.48550/arXiv.2512.09810",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "wu2026learning",
+    "title": "Learning-augmented approximation algorithms for group fair k-center clustering",
+    "link": "https://doi.org/10.1007/s11704-025-50627-2",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "zhang2026parameterized",
+    "title": "Parameterized approximation schemes for fair-range clustering",
+    "link": "https://doi.org/10.1016/j.ic.2026.105457",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "guo2026improved",
+    "title": "Improved Streaming Algorithm for Fair k-Center Clustering",
+    "link": "https://doi.org/10.1609/aaai.v40i43.41022",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "wang2026adversarial",
+    "title": "Adversarial Fair Incomplete Multi-View Clustering",
+    "link": "https://doi.org/10.1609/aaai.v40i12.37967",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "guo2026fair",
+    "title": "Fair k-Center Clustering on Massive Social Network Data Streams",
+    "link": "https://doi.org/10.1145/3774904.3792450",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "cookson2026unifying",
+    "title": "Unifying Proportional Fairness in Centroid and Non-Centroid Clustering",
+    "link": "https://doi.org/10.48550/arXiv.2601.00447",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "gullo2025correlation",
+    "title": "Correlation Clustering with Fairness Constraints",
+    "link": "https://ceur-ws.org/Vol-4165/paper15.pdf",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "yang2025enhancing",
+    "title": "Enhancing Fairness in Gaussian Mixture Clustering through Impact Factor",
+    "link": "https://doi.org/10.1109/ICASSP49660.2025.10888644",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "wu2025individual",
+    "title": "Individual Fairness in K-means Clustering: A Density-Aware Similarity Approach (S)",
+    "link": "https://doi.org/10.18293/SEKE2025-086",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "ojedaruiz2025alternatives",
+    "title": "Alternatives to the Laplacian for Scalable Spectral Clustering with Group Fairness Constraints",
+    "link": "https://doi.org/10.48550/arXiv.2510.20220",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "li2024clustering",
+    "title": "Clustering-based multi-objective optimization considering fairness for multi-workflow scheduling on clouds",
+    "link": "https://doi.org/10.1016/j.jpdc.2024.104968",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "goyal2021fpt",
+    "title": "FPT Approximation for Socially Fair Clustering",
+    "link": "https://arxiv.org/abs/2106.06755",
+    "added": "2026-07-07"
   }
 ]
