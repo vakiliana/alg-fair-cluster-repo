@@ -34,5 +34,17 @@
     "title": "Fair and fast $k$-center clustering for data summarization",
     "removed": "2026-07-04",
     "reason": "remove duplicate papers"
+  },
+  {
+    "id": "ismkhan2026unsupervised",
+    "title": "Unsupervised Learning for Missing Modalities in Multimodal Learning",
+    "removed": "2026-07-07",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "blair2026embeddings",
+    "title": "Embeddings for Preferences, Not Semantics",
+    "removed": "2026-07-07",
+    "reason": "rejected in admin review"
   }
 ]

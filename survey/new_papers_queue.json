@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "id": "cookson2026improved",
+    "title": "Improved Lower Bounds for Proportionally Fair Clustering",
+    "link": "http://arxiv.org/abs/2606.07285v1",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "karra2026unifair",
+    "title": "UniFair: A unified fair clustering approach based on separation and compactness",
+    "link": "http://arxiv.org/abs/2606.04777v2",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "chatterjee2026creating",
+    "title": "Creating Robust and Fair Graph Structures for Connectivity and Clustering",
+    "link": "http://arxiv.org/abs/2605.20897v1",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "mantuano2026fast",
+    "title": "Fast and effective algorithms for fair clustering at scale",
+    "link": "http://arxiv.org/abs/2605.13759v1",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "he2026check",
+    "title": "Check, Please: Verifiably Fair Clustering",
+    "link": "http://arxiv.org/abs/2605.12317v2",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "funk2026constant",
+    "title": "Constant-Factor Approximations for Doubly Constrained Fair k-Center, k-Median and k-Means",
+    "link": "http://arxiv.org/abs/2604.16061v1",
+    "added": "2026-07-07"
+  },
+  {
+    "id": "park2026fair",
+    "title": "Fair Model-based Clustering",
+    "link": "http://arxiv.org/abs/2602.21509v1",
+    "added": "2026-07-07"
+  }
+]
