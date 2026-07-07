@@ -2808,31 +2808,6 @@
     "ai_notes": false
   },
   {
-    "id": "zhang2023unified",
-    "title": "A unified framework for fair spectral clustering with effective graph learning",
-    "authors": "Xiang Zhang, Qiao Wang",
-    "year": 2023,
-    "venue": "arXiv",
-    "citations": 3,
-    "link": "https://arxiv.org/abs/2311.13766",
-    "pdf": "",
-    "bib_link": "https://dblp.org/rec/journals/corr/abs-2311-13766",
-    "bib_entry": "",
-    "scholar_id": "AgVDcV_51MMJ",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Deep / ML"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "citations_updated": "2026-07-01",
-    "added": "2025-01-01",
-    "ai_labeled": true,
-    "ai_notes": false
-  },
-  {
     "id": "zhang2024towards",
     "title": "Towards a theoretical understanding of why local search works for clustering with fair-center representation",
     "authors": "Zhen Zhang, Junfeng Yang, Limei Liu, Xuesong Xu, Guozhen Rong, Qilong Feng",
@@ -5463,32 +5438,6 @@
     "fairness_notion": "Group fairness (balance)",
     "work_nature": [
       "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "citations_updated": "",
-    "added": "2026-07-01",
-    "status": ""
-  },
-  {
-    "id": "goyal2021fpt",
-    "title": "FPT Approximation for Socially Fair Clustering",
-    "authors": "Dishant Goyal, Ragesh Jaiswal",
-    "year": 2021,
-    "venue": "CoRR",
-    "citations": 0,
-    "link": "https://arxiv.org/abs/2106.06755",
-    "pdf": "",
-    "bib_link": "https://dblp.org/rec/journals/corr/abs-2106-06755",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Socially fair (min-max)",
-    "work_nature": [
-      "Theory / approximation"
     ],
     "tags": [],
     "definition": "",
