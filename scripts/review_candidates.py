@@ -89,6 +89,24 @@ def main():
         with open(QUEUE, "w", encoding="utf-8") as f:
             json.dump(queue, f, ensure_ascii=False, indent=2)
             f.write("\n")
+        with open("review_summary.md", "w", encoding="utf-8") as f:
+            f.write("### Admin review decisions\n\n")
+            f.write("**Merge** this PR to finalize the decisions below; **close** it to discard them. "
+                    "Undecided papers were not touched and remain in the review queue.\n\n")
+            if accepted:
+                f.write(f"**Accepted \u2192 published ({len(accepted)}):**\n\n| id | title |\n|---|---|\n")
+                for p in accepted:
+                    f.write(f"| `{p.get('id','')}` | {(p.get('title','') or '').replace('|', '\\|')[:90]} |\n")
+                f.write("\n")
+            if rejected:
+                f.write(f"**Rejected \u2192 removed + blacklisted ({len(rejected)}):**\n\n| id | title |\n|---|---|\n")
+                for p in rejected:
+                    f.write(f"| `{p.get('id','')}` | {(p.get('title','') or '').replace('|', '\\|')[:90]} |\n")
+                f.write("\n")
+            if clear_q:
+                f.write("**Update-survey queue cleared.**\n\n")
+            if missing:
+                f.write("_Ids not found (skipped): " + ", ".join(f"`{m}`" for m in missing) + "._\n")
 
     summary = f"accept {len(accepted)}, reject {len(rejected)}" + (", queue cleared" if clear_q else "")
     with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as gh:

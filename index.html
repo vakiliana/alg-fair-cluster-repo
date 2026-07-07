@@ -431,7 +431,7 @@
           <h2 style="margin:0;font-family:'Spectral',serif;font-size:20px;font-weight:600">New papers awaiting review <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#b06e1c">({{ pendingCount }})</span></h2>
           <button onClick="{{ onCloseReview }}" style="background:none;border:none;font-size:22px;line-height:1;cursor:pointer;color:var(--faint)">×</button>
         </div>
-        <p style="margin:0 0 16px;font-size:12.5px;color:var(--muted);line-height:1.5">Scraped by the discovery bot or submitted by users. <b style="color:#1f9d57">Accept</b> publishes to the repository (and queues it for the survey update); <b style="color:#c0492f">Reject</b> removes it and blacklists it from future automatic suggestions (a user can still submit it manually).</p>
+        <p style="margin:0 0 16px;font-size:12.5px;color:var(--muted);line-height:1.5">Scraped by the discovery bot or submitted by users. <b style="color:#1f9d57">Accept</b> publishes to the repository (and queues it for the survey update); <b style="color:#c0492f">Reject</b> removes it and blacklists it from future automatic suggestions (a user can still submit it manually). <b>Partial reviews are fine</b> — apply the ones you've decided and the rest stay queued. Applying opens a <b>pull request</b>: merge to finalize; once merged, decided papers leave this queue and accepted ones appear as normal papers.</p>
         <sc-if value="{{ pendingCount }}" hint-placeholder-val="{{ 0 }}">
           <div style="display:flex;flex-direction:column;gap:10px">
             <sc-for list="{{ pendingPapers }}" as="p" hint-placeholder-count="3">
@@ -688,10 +688,10 @@ class Component extends DCLogic {
     const acc = Object.keys(dec).filter(k => dec[k] === 'accept');
     const rej = Object.keys(dec).filter(k => dec[k] === 'reject');
     if (!acc.length && !rej.length) { alert('Mark at least one paper Accept or Reject first.'); return; }
-    if (!window.confirm(`Apply decisions?\n\nAccept (publish): ${acc.length}\nReject (remove + blacklist): ${rej.length}\n\nThis commits directly to main; accepted papers also join the “update survey” queue.`)) return;
+    if (!window.confirm(`Apply decisions?\n\nAccept (publish): ${acc.length}\nReject (remove + blacklist): ${rej.length}\n\nA pull request opens for your final approval — papers change only when you merge it. Undecided papers stay in the queue.`)) return;
     this.ghDispatch('review-candidates.yml', { accept: acc.join(', '), reject: rej.join(', ') },
-      '✓ Review applied. The commit lands in ~20–40s; the live site updates after the Pages rebuild (~1 min).')
-      .then(ok => { if (ok) this.setState({ reviewDec: {}, showReview: false }); });
+      '✓ Review workflow triggered. A pull request will appear in ~20–40s — merge it to finalize (accepted papers go live, rejected ones are blacklisted), or close it to discard.')
+      .then(ok => { if (ok) { this.setState({ reviewDec: {}, showReview: false }); setTimeout(() => window.open(`https://github.com/${this.REPO}/pulls`, '_blank'), 1200); } });
   };
 
   copySurveyPrompt = () => {
@@ -704,7 +704,7 @@ class Component extends DCLogic {
 
   clearSurveyQueue = () => {
     if (!window.confirm('Clear the update-survey queue?\n\nDo this after the survey has been updated with these papers.')) return;
-    this.ghDispatch('review-candidates.yml', { clear_queue: 'true' }, '✓ Queue cleared (commit lands in ~20s).')
+    this.ghDispatch('review-candidates.yml', { clear_queue: 'true' }, '✓ Queue-clear PR triggered — merge it to finalize (appears under Pull requests in ~20s).')
       .then(ok => { if (ok) { this.surveyQueue = []; this.setState({ surveyQLen: 0, showSurveyQ: false }); } });
   };
 

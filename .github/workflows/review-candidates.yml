@@ -2,10 +2,10 @@ name: Review candidates (admin)
 
 # Applies the admin's Accept/Reject decisions on pending papers, dispatched
 # from the site's admin "Review new papers" modal (or run manually here).
+# Partial decisions are fine — undecided papers stay in the queue.
 # Accept -> paper goes live + queued for the survey update feed.
 # Reject -> removed + blacklisted (never auto-suggested again).
-# Commits directly to main: the in-modal decision IS the review, and only
-# repository collaborators can dispatch workflows.
+# The result is opened as a PULL REQUEST: merge to finalize, close to discard.
 
 on:
   workflow_dispatch:
@@ -25,6 +25,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   review:
@@ -41,11 +42,17 @@ jobs:
           FC_REJECT: ${{ inputs.reject }}
           FC_CLEAR_QUEUE: ${{ inputs.clear_queue }}
         run: python scripts/review_candidates.py
-      - name: Commit
+      - name: Open pull request
         if: steps.rev.outputs.changed == 'true'
-        run: |
-          git config user.name  "fair-clustering-bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add data/papers.json data/blacklist.json survey/new_papers_queue.json
-          git commit -m "Admin review: ${{ steps.rev.outputs.summary }}"
-          git push
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: bot/admin-review
+          title: "\u2705 Admin review: ${{ steps.rev.outputs.summary }}"
+          body-path: review_summary.md
+          labels: data-correction, automated
+          commit-message: "Admin review: ${{ steps.rev.outputs.summary }}"
+          add-paths: |
+            data/papers.json
+            data/blacklist.json
+            survey/new_papers_queue.json
+          delete-branch: true
