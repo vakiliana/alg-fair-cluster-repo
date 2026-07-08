@@ -8,7 +8,7 @@
         "Suresh Venkatasubramanian"
       ],
       "title": "Fair clustering via equitable group representations",
-      "venue": "ACM conference on fairness, accountability, and transparency",
+      "venue": "ACM Conference on Fairness, Accountability, and Transparency (FAccT)",
       "year": "2021",
       "url": "https://scholar.google.com/scholar?q=Fair%20clustering%20via%20equitable%20group%20representations",
       "num": 1
@@ -40,7 +40,7 @@
         "Mohammad Mahdian"
       ],
       "title": "Clustering without over-representation",
-      "venue": "25th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining",
+      "venue": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)",
       "year": "2019",
       "url": "https://scholar.google.com/scholar?q=Clustering%20without%20over-representation",
       "num": 3
@@ -59,7 +59,7 @@
         "Yuyan Wang"
       ],
       "title": "Fair Hierarchical Clustering",
-      "venue": "Advances in Neural Information Processing Systems 33: Annual Conference on Neural Information Processing Systems , NeurIPS 2020, December 6-12, 2020, virtual",
+      "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
       "year": "2020",
       "url": "https://scholar.google.com/scholar?q=Fair%20Hierarchical%20Clustering",
       "num": 4
@@ -73,7 +73,7 @@
         "Lauren Kirchner"
       ],
       "title": "Machine bias",
-      "venue": "Ethics of data and analytics",
+      "venue": "Ethics of Data and Analytics",
       "year": "2022",
       "url": "https://scholar.google.com/scholar?q=Machine%20bias",
       "num": 5
@@ -103,7 +103,7 @@
         "Tal Wagner"
       ],
       "title": "Scalable fair clustering",
-      "venue": "International conference on machine learning",
+      "venue": "International Conference on Machine Learning (ICML)",
       "year": "2019",
       "url": "https://scholar.google.com/scholar?q=Scalable%20fair%20clustering",
       "num": 7
@@ -116,7 +116,7 @@
         "Kirill Simonov"
       ],
       "title": "On Coresets for Fair Clustering in Metric and Euclidean Spaces and Their Applications",
-      "venue": "48th International Colloquium on Automata, Languages, and Programming, ICALP , July 12-16, 2021, Glasgow, Scotland (Virtual Conference)",
+      "venue": "International Colloquium on Automata, Languages, and Programming (ICALP)",
       "year": "2021",
       "url": "https://scholar.google.com/scholar?q=On%20Coresets%20for%20Fair%20Clustering%20in%20Metric%20and%20Euclidean%20Spaces%20and%20Their%20Applications",
       "num": 8
@@ -132,7 +132,7 @@
         "Ali Vakilian"
       ],
       "title": "A Polynomial-Time Approximation for Pairwise Fair $ k $-Median Clustering",
-      "venue": "arXiv preprint arXiv:2405.10378",
+      "venue": "arXiv preprint",
       "year": "2024",
       "url": "https://scholar.google.com/scholar?q=A%20Polynomial-Time%20Approximation%20for%20Pairwise%20Fair%20%24%20k%20%24-Median%20Clustering",
       "num": 9
@@ -146,7 +146,7 @@
         "Mahya Jamshidian"
       ],
       "title": "A Constant-Factor Approximation for Pairwise Fair k-Center Clustering",
-      "venue": "International Conference on Integer Programming and Combinatorial Optimization",
+      "venue": "Integer Programming and Combinatorial Optimization (IPCO)",
       "year": "2025",
       "url": "https://scholar.google.com/scholar?q=A%20Constant-Factor%20Approximation%20for%20Pairwise%20Fair%20k-Center%20Clustering",
       "num": 10
@@ -159,7 +159,7 @@
         "Arvind Narayanan"
       ],
       "title": "Fairness in machine learning",
-      "venue": "arXiv preprint arXiv:1908.09635",
+      "venue": "arXiv preprint",
       "year": "2017",
       "url": "https://scholar.google.com/scholar?q=Fairness%20in%20machine%20learning",
       "num": 11
@@ -170,7 +170,7 @@
         "Yair Bartal"
       ],
       "title": "On approximating arbitrary metrices by tree metrics",
-      "venue": "thirtieth annual ACM symposium on Theory of computing",
+      "venue": "Symposium on Theory of Computing (STOC)",
       "year": "1998",
       "url": "https://scholar.google.com/scholar?q=On%20approximating%20arbitrary%20metrices%20by%20tree%20metrics",
       "num": 12
@@ -184,7 +184,7 @@
         "Silvio Lattanzi"
       ],
       "title": "A scalable algorithm for individually fair k-means clustering",
-      "venue": "International Conference on Artificial Intelligence and Statistics",
+      "venue": "International Conference on Artificial Intelligence and Statistics (AISTATS)",
       "year": "2024",
       "url": "https://scholar.google.com/scholar?q=A%20scalable%20algorithm%20for%20individually%20fair%20k-means%20clustering",
       "num": 13
@@ -198,7 +198,7 @@
         "Maryam Negahbani"
       ],
       "title": "Fair algorithms for clustering",
-      "venue": "Advances in Neural Information Processing Systems",
+      "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
       "year": "2019",
       "url": "https://scholar.google.com/scholar?q=Fair%20algorithms%20for%20clustering",
       "num": 14
@@ -215,7 +215,7 @@
         "Melanie Schmidt"
       ],
       "title": "On the Cost of Essentially Fair Clusterings",
-      "venue": "Approximation, Randomization, and Combinatorial Optimization. Algorithms and Techniques, APPROX/RANDOM , September 20-22, 2019, Massachusetts Institute of Technology, Cambridge, MA, USA",
+      "venue": "Approximation, Randomization, and Combinatorial Optimization (APPROX)",
       "year": "2019",
       "url": "https://scholar.google.com/scholar?q=On%20the%20Cost%20of%20Essentially%20Fair%20Clusterings",
       "num": 15
@@ -229,7 +229,7 @@
         "Adrian Neumann"
       ],
       "title": "New approximability results for the robust k-median problem",
-      "venue": "Scandinavian Workshop on Algorithm Theory",
+      "venue": "Scandinavian Workshop on Algorithm Theory (SWAT)",
       "year": "2014",
       "url": "https://scholar.google.com/scholar?q=New%20approximability%20results%20for%20the%20robust%20k-median%20problem",
       "num": 16
@@ -244,7 +244,7 @@
         "Chris Schwiegelshohn"
       ],
       "title": "Algorithms for fair -clustering with multiple protected attributes",
-      "venue": "Oper. Res. Lett.",
+      "venue": "Operations Research Letters",
       "year": "2021",
       "url": "https://scholar.google.com/scholar?q=Algorithms%20for%20fair%20-clustering%20with%20multiple%20protected%20attributes",
       "num": 17
@@ -259,7 +259,7 @@
         "Melanie Schmidt"
       ],
       "title": "FPT Approximations for Fair $ k $-Min-Sum-Radii",
-      "venue": "arXiv preprint arXiv:2410.00598",
+      "venue": "arXiv preprint",
       "year": "2024",
       "url": "https://scholar.google.com/scholar?q=FPT%20Approximations%20for%20Fair%20%24%20k%20%24-Min-Sum-Radii",
       "num": 18
@@ -274,7 +274,7 @@
         "Romina Nobahari"
       ],
       "title": "Towards Fair Representation: Clustering and Consensus",
-      "venue": "arXiv preprint arXiv:2506.08673",
+      "venue": "arXiv preprint",
       "year": "2025",
       "url": "https://scholar.google.com/scholar?q=Towards%20Fair%20Representation%3A%20Clustering%20and%20Consensus",
       "num": 19
@@ -328,7 +328,7 @@
         "Prasant Mohapatra"
       ],
       "title": "Fair Clustering Using Antidote Data",
-      "venue": "Algorithmic Fairness through the Lens of Causality and Robustness Workshop, AFCR , virtual, December 13, 2021",
+      "venue": "Algorithmic Fairness through the Lens of Causality and Robustness Workshop (AFCR)",
       "year": "2021",
       "url": "https://scholar.google.com/scholar?q=Fair%20Clustering%20Using%20Antidote%20Data",
       "num": 23
@@ -356,7 +356,7 @@
         "Sergei Vassilvitskii"
       ],
       "title": "Fair Clustering Through Fairlets",
-      "venue": "Advances in Neural Information Processing Systems 30: Annual Conference on Neural Information Processing Systems , December 4-9, 2017, Long Beach, CA, USA",
+      "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
       "year": "2017",
       "url": "https://scholar.google.com/scholar?q=Fair%20Clustering%20Through%20Fairlets",
       "num": 25
@@ -382,7 +382,7 @@
         "Ali Vakilian"
       ],
       "title": "Approximating Fair Clustering with Cascaded Norm Objectives",
-      "venue": "ACM-SIAM Symposium on Discrete Algorithms, SODA 2022, Virtual Conference / Alexandria, VA, USA, January 9 - 12, 2022",
+      "venue": "Symposium on Discrete Algorithms (SODA)",
       "year": "2022",
       "url": "https://scholar.google.com/scholar?q=Approximating%20Fair%20Clustering%20with%20Cascaded%20Norm%20Objectives",
       "num": 27
@@ -397,7 +397,7 @@
         "Samson Zhou"
       ],
       "title": "Fair Clustering in the Sliding Window Model",
-      "venue": "The Thirteenth International Conference on Learning Representations",
+      "venue": "International Conference on Learning Representations (ICLR)",
       "year": "2025",
       "url": "https://scholar.google.com/scholar?q=Fair%20Clustering%20in%20the%20Sliding%20Window%20Model",
       "num": 28
@@ -410,7 +410,7 @@
         "Ali Vakilian"
       ],
       "title": "Fair Representation Clustering with Several Protected Classes",
-      "venue": "FAccT '22:  ACM Conference on Fairness, Accountability, and Transparency, Seoul, Republic of Korea, June 21 - 24, 2022",
+      "venue": "ACM Conference on Fairness, Accountability, and Transparency (FAccT)",
       "year": "2022",
       "url": "https://scholar.google.com/scholar?q=Fair%20Representation%20Clustering%20with%20Several%20Protected%20Classes",
       "num": 29
@@ -425,7 +425,7 @@
         "Richard Zemel"
       ],
       "title": "Fairness through awareness",
-      "venue": "3rd Innovations in Theoretical Computer Science Conference (ITCS)",
+      "venue": "Innovations in Theoretical Computer Science (ITCS)",
       "year": "2012",
       "url": "https://scholar.google.com/scholar?q=Fairness%20through%20awareness",
       "num": 30
@@ -455,7 +455,7 @@
         "John Dickerson"
       ],
       "title": "Fair Clustering Under a Bounded Cost",
-      "venue": "Advances in Neural Information Processing Systems 34: Annual Conference on Neural Information Processing Systems , NeurIPS 2021, December 6-14, 2021, virtual",
+      "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
       "year": "2021",
       "url": "https://scholar.google.com/scholar?q=Fair%20Clustering%20Under%20a%20Bounded%20Cost",
       "num": 32
@@ -469,7 +469,7 @@
         "Brian Brubach"
       ],
       "title": "Fair labeled clustering",
-      "venue": "28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+      "venue": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)",
       "year": "2022",
       "url": "https://scholar.google.com/scholar?q=Fair%20labeled%20clustering",
       "num": 33
@@ -482,7 +482,7 @@
         "Kunal Talwar"
       ],
       "title": "A tight bound on approximating arbitrary metrics by tree metrics",
-      "venue": "thirty-fifth annual ACM symposium on Theory of computing",
+      "venue": "Symposium on Theory of Computing (STOC)",
       "year": "2003",
       "url": "https://scholar.google.com/scholar?q=A%20tight%20bound%20on%20approximating%20arbitrary%20metrics%20by%20tree%20metrics",
       "num": 34
@@ -495,7 +495,7 @@
         "Santosh Vempala"
       ],
       "title": "Socially fair k-means clustering",
-      "venue": "ACM Conference on Fairness, Accountability, and Transparency",
+      "venue": "ACM Conference on Fairness, Accountability, and Transparency (FAccT)",
       "year": "2021",
       "url": "https://scholar.google.com/scholar?q=Socially%20fair%20k-means%20clustering",
       "num": 35
@@ -507,7 +507,7 @@
         "Ragesh Jaiswal"
       ],
       "title": "Tight FPT Approximation for Socially Fair Clustering",
-      "venue": "Inf. Process. Lett.",
+      "venue": "Information Processing Letters",
       "year": "2023",
       "url": "https://scholar.google.com/scholar?q=Tight%20FPT%20Approximation%20for%20Socially%20Fair%20Clustering",
       "num": 36
@@ -547,7 +547,7 @@
         "Ho Shan Lam"
       ],
       "title": "KFC: A Scalable Approximation Algorithm for -center Fair Clustering",
-      "venue": "Advances in Neural Information Processing Systems 33: Annual Conference on Neural Information Processing Systems , NeurIPS 2020, December 6-12, 2020, virtual",
+      "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
       "year": "2020",
       "url": "https://scholar.google.com/scholar?q=KFC%3A%20A%20Scalable%20Approximation%20Algorithm%20for%20-center%20Fair%20Clustering",
       "num": 39
@@ -573,7 +573,7 @@
         "Ali Vakilian"
       ],
       "title": "Approximation algorithms for fair range clustering",
-      "venue": "International Conference on Machine Learning",
+      "venue": "International Conference on Machine Learning (ICML)",
       "year": "2023",
       "url": "https://scholar.google.com/scholar?q=Approximation%20algorithms%20for%20fair%20range%20clustering",
       "num": 41
@@ -586,7 +586,7 @@
         "Nisheeth K. Vishnoi"
       ],
       "title": "Coresets for Clustering with Fairness Constraints",
-      "venue": "Advances in Neural Information Processing Systems 32: Annual Conference on Neural Information Processing Systems , NeurIPS 2019, December 8-14, 2019, Vancouver, BC, Canada",
+      "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
       "year": "2019",
       "url": "https://scholar.google.com/scholar?q=Coresets%20for%20Clustering%20with%20Fairness%20Constraints",
       "num": 42
@@ -627,7 +627,7 @@
         "Jamie Morgenstern"
       ],
       "title": "Guarantees for Spectral Clustering with Fairness Constraints",
-      "venue": "36th International Conference on Machine Learning, ICML , 9-15 June 2019, Long Beach, California, USA",
+      "venue": "International Conference on Machine Learning (ICML)",
       "year": "2019",
       "url": "https://scholar.google.com/scholar?q=Guarantees%20for%20Spectral%20Clustering%20with%20Fairness%20Constraints",
       "num": 45
@@ -640,7 +640,7 @@
         "Jamie Morgenstern"
       ],
       "title": "Fair k-center clustering for data summarization",
-      "venue": "International Conference on Machine Learning",
+      "venue": "International Conference on Machine Learning (ICML)",
       "year": "2019",
       "url": "https://scholar.google.com/scholar?q=Fair%20k-center%20clustering%20for%20data%20summarization",
       "num": 46
@@ -669,7 +669,7 @@
         "MohammadTaghi Hajiaghayi"
       ],
       "title": "Generalized Reductions: Making any Hierarchical Clustering Fair and Balanced with Low Cost",
-      "venue": "International Conference on Machine Learning, ICML , 23-29 July 2023, Honolulu, Hawaii, USA",
+      "venue": "International Conference on Machine Learning (ICML)",
       "year": "2023",
       "url": "https://scholar.google.com/scholar?q=Generalized%20Reductions%3A%20Making%20any%20Hierarchical%20Clustering%20Fair%20and%20Balanced%20with%20Low%20Cost",
       "num": 48
@@ -683,7 +683,7 @@
         "MohammadTaghi Hajiaghayi"
       ],
       "title": "Fair, Polylog-Approximate Low-Cost Hierarchical Clustering",
-      "venue": "Advances in Neural Information Processing Systems 36: Annual Conference on Neural Information Processing Systems , NeurIPS 2023, New Orleans, LA, USA, December 10 - 16, 2023",
+      "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
       "year": "2023",
       "url": "https://scholar.google.com/scholar?q=Fair%2C%20Polylog-Approximate%20Low-Cost%20Hierarchical%20Clustering",
       "num": 49
@@ -736,7 +736,7 @@
         "Ali Vakilian"
       ],
       "title": "Approximation algorithms for socially fair clustering",
-      "venue": "Conference on Learning Theory",
+      "venue": "Conference on Learning Theory (COLT)",
       "year": "2021",
       "url": "https://scholar.google.com/scholar?q=Approximation%20algorithms%20for%20socially%20fair%20clustering",
       "num": 53
@@ -748,7 +748,7 @@
         "Nisarg Shah"
       ],
       "title": "Proportionally Fair Clustering Revisited",
-      "venue": "47th International Colloquium on Automata, Languages, and Programming, ICALP 2020, July 8-11, 2020, Saarbr\\\"ucken, Germany (Virtual Conference)",
+      "venue": "International Colloquium on Automata, Languages, and Programming (ICALP)",
       "year": "2020",
       "url": "https://scholar.google.com/scholar?q=Proportionally%20fair%20clustering%20revisited",
       "num": 54
@@ -789,7 +789,7 @@
         "Tianzhi Chen"
       ],
       "title": "Polynomial-Time Constant-Approximation for Fair Sum-of-Radii Clustering",
-      "venue": "arXiv preprint arXiv:2504.14683",
+      "venue": "arXiv preprint",
       "year": "2025",
       "url": "https://scholar.google.com/scholar?q=Polynomial-Time%20Constant-Approximation%20for%20Fair%20Sum-of-Radii%20Clustering",
       "num": 57
@@ -802,7 +802,7 @@
         "Matthew Jones"
       ],
       "title": "Fair range k-center",
-      "venue": "arXiv preprint arXiv:2207.11337",
+      "venue": "arXiv preprint",
       "year": "2022",
       "url": "https://scholar.google.com/scholar?q=Fair%20range%20k-center",
       "num": 58
@@ -814,7 +814,7 @@
         "Melanie Schmidt"
       ],
       "title": "Privacy Preserving Clustering with Constraints",
-      "venue": "45th International Colloquium on Automata, Languages, and Programming (ICALP )",
+      "venue": "International Colloquium on Automata, Languages, and Programming (ICALP)",
       "year": "2018",
       "url": "https://scholar.google.com/scholar?q=Privacy%20Preserving%20Clustering%20with%20Constraints",
       "num": 59
@@ -827,7 +827,7 @@
         "Christian Sohler"
       ],
       "title": "Fair Coresets and Streaming Algorithms for Fair k-means",
-      "venue": "Approximation and Online Algorithms - 17th International Workshop, WAOA , Munich, Germany, September 12-13, 2019, Revised Selected Papers",
+      "venue": "Approximation, Randomization, and Combinatorial Optimization (APPROX)",
       "year": "2019",
       "url": "https://scholar.google.com/scholar?q=Fair%20Coresets%20and%20Streaming%20Algorithms%20for%20Fair%20k-means",
       "num": 60
@@ -852,7 +852,7 @@
         "Volkan Cevher"
       ],
       "title": "Accelerating Spectral Clustering under Fairness Constraints",
-      "venue": "arXiv preprint arXiv:2506.08143",
+      "venue": "arXiv preprint",
       "year": "2025",
       "url": "https://scholar.google.com/scholar?q=Accelerating%20Spectral%20Clustering%20under%20Fairness%20Constraints",
       "num": 62
@@ -879,7 +879,7 @@
         "Zhaojun Bai"
       ],
       "title": "Scalable Spectral Clustering with Group Fairness Constraints",
-      "venue": "International Conference on Artificial Intelligence and Statistics, 25-27 April , Palau de Congressos, Valencia, Spain",
+      "venue": "International Conference on Artificial Intelligence and Statistics (AISTATS)",
       "year": "2023",
       "url": "https://scholar.google.com/scholar?q=Scalable%20Spectral%20Clustering%20with%20Group%20Fairness%20Constraints",
       "num": 64
@@ -892,7 +892,7 @@
         "Yeeseok Oh"
       ],
       "title": "Improved Lower Bounds for Proportionally Fair Clustering",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2026",
       "url": "http://arxiv.org/abs/2606.07285",
       "ai_added": true,
@@ -906,7 +906,7 @@
         "Philipp Baumann"
       ],
       "title": "Fast and Effective Algorithms for Fair Clustering at Scale",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2026",
       "url": "http://arxiv.org/abs/2605.13759",
       "ai_added": true,
@@ -921,7 +921,7 @@
         "Sarah Sturm"
       ],
       "title": "Constant-Factor Approximations for Doubly Constrained Fair k-Center, k-Median and k-Means",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2026",
       "url": "http://arxiv.org/abs/2604.16061",
       "ai_added": true,
@@ -936,7 +936,7 @@
         "Tien-Long Nguyen"
       ],
       "title": "Generalizing Fair Clustering to Multiple Groups: Algorithms and Applications",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2025",
       "url": "http://arxiv.org/abs/2511.11539",
       "ai_added": true,
@@ -953,7 +953,7 @@
         "Lei Luo"
       ],
       "title": "A General Anchor-Based Framework for Scalable Fair Clustering",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2025",
       "url": "http://arxiv.org/abs/2511.09889",
       "ai_added": true,
@@ -968,7 +968,7 @@
         "Noriaki Yoshida"
       ],
       "title": "Euclidean k-center Fair Clusterings",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2025",
       "url": "http://arxiv.org/abs/2511.07660",
       "ai_added": true,
@@ -982,7 +982,7 @@
         "Anirban Dasgupta"
       ],
       "title": "Local Search-based Individually Fair Clustering with Outliers",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2025",
       "url": "http://arxiv.org/abs/2510.06130",
       "ai_added": true,
@@ -998,7 +998,7 @@
         "Romina Nobahari"
       ],
       "title": "Towards Fair Representation: Clustering and Consensus",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2025",
       "url": "http://arxiv.org/abs/2506.08673",
       "ai_added": true,
@@ -1012,7 +1012,7 @@
         "Tianzhi Chen"
       ],
       "title": "Polynomial-Time Constant-Approximation for Fair Sum-of-Radii Clustering",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2025",
       "url": "http://arxiv.org/abs/2504.14683",
       "ai_added": true,
@@ -1025,7 +1025,7 @@
         "Jannik Peters"
       ],
       "title": "Proportional Clustering, the beta-Plurality Problem, and Metric Distortion",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2025",
       "url": "http://arxiv.org/abs/2502.10068",
       "ai_added": true,
@@ -1041,7 +1041,7 @@
         "Melanie Schmidt"
       ],
       "title": "FPT Approximations for Fair k-Min-Sum-Radii",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2024",
       "url": "http://arxiv.org/abs/2410.00598",
       "ai_added": true,
@@ -1054,7 +1054,7 @@
         "Oktay Gunluk"
       ],
       "title": "Fair Clustering with Minimum Representation Constraints",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2024",
       "url": "http://arxiv.org/abs/2409.02963",
       "ai_added": true,
@@ -1069,7 +1069,7 @@
         "Aristides Gionis"
       ],
       "title": "Diversity-aware Clustering: Computational Complexity and Approximation Algorithms",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2024",
       "url": "http://arxiv.org/abs/2401.05502",
       "ai_added": true,
@@ -1085,7 +1085,7 @@
         "Julian Wargalla"
       ],
       "title": "Approximating Fair k-Min-Sum-Radii in Euclidean Space",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2023",
       "url": "http://arxiv.org/abs/2309.00834",
       "ai_added": true,
@@ -1099,7 +1099,7 @@
         "Tanmay Inamdar"
       ],
       "title": "FPT Approximations for Capacitated/Fair Clustering with Outliers",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2023",
       "url": "http://arxiv.org/abs/2305.01471",
       "ai_added": true,
@@ -1114,7 +1114,7 @@
         "Jeremy Vollen"
       ],
       "title": "Proportionally Representative Clustering",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2023",
       "url": "http://arxiv.org/abs/2304.13917",
       "ai_added": true,
@@ -1128,7 +1128,7 @@
         "Rico Zenklusen"
       ],
       "title": "Techniques for Generalized Colorful k-Center Problems",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2022",
       "url": "http://arxiv.org/abs/2207.02609",
       "ai_added": true,
@@ -1142,7 +1142,7 @@
         "Rolf Niedermeier"
       ],
       "title": "Modification-Fair Cluster Editing",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2021",
       "url": "http://arxiv.org/abs/2112.03183",
       "ai_added": true,
@@ -1154,7 +1154,7 @@
         "Ameet Gadekar"
       ],
       "title": "On the Parameterized Approximability of (Mergeable) Sum of Radii Clustering",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2026",
       "url": "http://arxiv.org/abs/2605.06398",
       "ai_added": true,
@@ -1174,7 +1174,7 @@
         "Joachim Spoerhase"
       ],
       "title": "Parameterized Approximation Schemes for Clustering with General Norm Objectives",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2023",
       "url": "http://arxiv.org/abs/2304.03146",
       "ai_added": true,
@@ -1187,7 +1187,7 @@
         "Ali Vakilian"
       ],
       "title": "Scalable Algorithms for Individual Preference Stable Clustering",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2024",
       "url": "http://arxiv.org/abs/2403.10365",
       "ai_added": true,
@@ -1204,7 +1204,7 @@
         "Qilong Feng"
       ],
       "title": "Parameterized Approximation Schemes for Fair-Range Clustering",
-      "venue": "",
+      "venue": "Information and Computation",
       "year": "2026",
       "url": "https://doi.org/10.1016/j.ic.2026.105457",
       "ai_added": true,
@@ -1218,7 +1218,7 @@
         "Ziqi Yu"
       ],
       "title": "Unifying Proportional Fairness in Centroid and Non-Centroid Clustering",
-      "venue": "",
+      "venue": "arXiv preprint",
       "year": "2026",
       "url": "https://doi.org/10.48550/arXiv.2601.00447",
       "ai_added": true,
@@ -1232,7 +1232,7 @@
         "Chunming Yang"
       ],
       "title": "Individual Fairness in K-means Clustering: A Density-Aware Similarity Approach",
-      "venue": "",
+      "venue": "International Conference on Software Engineering and Knowledge Engineering (SEKE)",
       "year": "2025",
       "url": "https://doi.org/10.18293/SEKE2025-086",
       "ai_added": true,
@@ -1245,7 +1245,7 @@
         "Ragesh Jaiswal"
       ],
       "title": "FPT Approximation for Socially Fair Clustering",
-      "venue": "",
+      "venue": "Information Processing Letters",
       "year": "2021",
       "url": "https://arxiv.org/abs/2106.06755",
       "ai_added": true,
