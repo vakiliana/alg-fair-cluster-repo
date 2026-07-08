@@ -26,6 +26,10 @@ on:
         description: "Paper ids to EXCLUDE from the survey update (drop from the queue)"
         required: false
         default: ""
+      queue_add:
+        description: "Existing paper ids to ADD to the survey-update queue"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -46,6 +50,7 @@ jobs:
           FC_REJECT: ${{ inputs.reject }}
           FC_CLEAR_QUEUE: ${{ inputs.clear_queue }}
           FC_QUEUE_REMOVE: ${{ inputs.queue_remove }}
+          FC_QUEUE_ADD: ${{ inputs.queue_add }}
         run: python scripts/review_candidates.py
       - name: Open pull request
         if: steps.rev.outputs.changed == 'true'

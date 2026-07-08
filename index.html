@@ -221,7 +221,7 @@
     <section style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding:11px 16px;background:color-mix(in srgb,#c0492f 8%,var(--surface));border:1px solid color-mix(in srgb,#c0492f 35%,transparent);border-radius:var(--radius)">
       <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink)">
         <span style="font-weight:700;color:#c0492f;letter-spacing:.03em">ADMIN</span>
-        <span style="color:var(--muted)">Review new papers, curate duplicates, or remove papers.</span>
+        <span style="color:var(--muted)">Review new papers, curate duplicates, pick papers to update the survey, or remove papers.</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
         <button onClick="{{ onOpenReview }}" style="padding:8px 13px;background:color-mix(in srgb,#e0922f 14%,transparent);border:1px solid #e0922f;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;color:#b06e1c">Review new papers ({{ pendingCount }})</button>
@@ -231,6 +231,11 @@
         <sc-if value="{{ removeMode }}" hint-placeholder-val="{{ false }}">
           <button onClick="{{ onClearRemoval }}" style="padding:8px 13px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted)">Clear</button>
           <button onClick="{{ onCreateRemovalPR }}" style="{{ removeBtnStyle }}">{{ removeBtnLabel }}</button>
+        </sc-if>
+        <button onClick="{{ onToggleSurveyMode }}" style="padding:8px 13px;background:transparent;border:1px solid var(--accent);border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;color:var(--accent)">{{ surveyModeLabel }}</button>
+        <sc-if value="{{ surveyMode }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ onClearSurveyAdd }}" style="padding:8px 13px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted)">Clear</button>
+          <button onClick="{{ onAddToSurveyQueue }}" style="{{ surveyAddBtnStyle }}">{{ surveyAddBtnLabel }}</button>
         </sc-if>
       </div>
     </section>
@@ -546,6 +551,7 @@ class Component extends DCLogic {
             admin: false, removeMode: false, removeSel: {},
             dupPairs: [], showDup: false,
             showReview: false, reviewDec: {}, showSurveyQ: false, surveyQLen: 0, surveyExclude: {},
+            surveyMode: false, surveyAddSel: {},
             submitMatches: [], submitArmed: false };
 
   REPO = 'vakiliana/alg-fair-cluster-repo';
@@ -616,6 +622,15 @@ class Component extends DCLogic {
       if (localStorage.getItem('fcr-repo-admin') === '1') this.setState({ admin: true });
     } catch (e) { /* no-op */ }
   }
+
+  addToSurveyQueue = () => {
+    const ids = Object.keys(this.state.surveyAddSel).filter(k => this.state.surveyAddSel[k]);
+    if (!ids.length) { alert('Select at least one paper to add to the survey update.'); return; }
+    if (!window.confirm(`Add ${ids.length} paper(s) to the update-survey queue?\n\nThey stay in the repository as normal papers; they'll be fed to the next survey update. A pull request opens for your approval.`)) return;
+    this.ghDispatch('review-candidates.yml', { queue_add: ids.join(', ') },
+      '\u2713 Survey-add PR triggered \u2014 merge it to queue those papers for the survey update (appears under Pull requests in ~20s).')
+      .then(ok => { if (ok) this.setState({ surveyAddSel: {}, surveyMode: false }); });
+  };
 
   createRemovalPR = () => {
     const ids = Object.keys(this.state.removeSel).filter(k => this.state.removeSel[k]);
@@ -1072,12 +1087,14 @@ class Component extends DCLogic {
         onToggleSel: () => this.setState(st => ({ selected: { ...st.selected, [p.id]: !st.selected[p.id] } })),
         removeChecked: !!s.removeSel[p.id],
         onToggleRemove: () => this.setState(st => ({ removeSel: { ...st.removeSel, [p.id]: !st.removeSel[p.id] } })),
-        checkboxChecked: s.removeMode ? !!s.removeSel[p.id] : !!s.selected[p.id],
+        checkboxChecked: s.removeMode ? !!s.removeSel[p.id] : (s.surveyMode ? !!s.surveyAddSel[p.id] : !!s.selected[p.id]),
         checkboxToggle: s.removeMode
           ? () => this.setState(st => ({ removeSel: { ...st.removeSel, [p.id]: !st.removeSel[p.id] } }))
-          : () => this.setState(st => ({ selected: { ...st.selected, [p.id]: !st.selected[p.id] } })),
-        checkboxStyle: { width: '17px', height: '17px', accentColor: s.removeMode ? '#c0492f' : 'var(--accent)', cursor: 'pointer' },
-        cardStyle: { background: 'var(--surface)', border: s.removeSel[p.id] ? '1px solid #c0492f' : (s.selected[p.id] ? '1px solid var(--accent)' : '1px solid var(--border)'),
+          : (s.surveyMode
+            ? () => this.setState(st => ({ surveyAddSel: { ...st.surveyAddSel, [p.id]: !st.surveyAddSel[p.id] } }))
+            : () => this.setState(st => ({ selected: { ...st.selected, [p.id]: !st.selected[p.id] } }))),
+        checkboxStyle: { width: '17px', height: '17px', accentColor: s.removeMode ? '#c0492f' : (s.surveyMode ? 'var(--accent)' : 'var(--accent)'), cursor: 'pointer' },
+        cardStyle: { background: 'var(--surface)', border: s.removeSel[p.id] && s.removeMode ? '1px solid #c0492f' : (s.surveyAddSel[p.id] && s.surveyMode ? '1px solid var(--accent)' : (s.selected[p.id] ? '1px solid var(--accent)' : '1px solid var(--border)')),
           borderRadius: 'var(--radius)', padding: '15px 18px', boxShadow: 'var(--shadow)', animation: 'fadeUp .3s ease both',
           transition: 'border-color .15s' },
         expanded: !!s.expanded[p.id],
@@ -1133,8 +1150,15 @@ class Component extends DCLogic {
       onDownload: this.download,
       admin: s.admin,
       removeMode: s.removeMode,
-      onToggleRemoveMode: () => this.setState(st => ({ removeMode: !st.removeMode, removeSel: {} })),
+      onToggleRemoveMode: () => this.setState(st => ({ removeMode: !st.removeMode, removeSel: {}, surveyMode: false, surveyAddSel: {} })),
       removeModeLabel: s.removeMode ? 'Done selecting' : 'Select to remove',
+      surveyMode: s.surveyMode,
+      onToggleSurveyMode: () => this.setState(st => ({ surveyMode: !st.surveyMode, surveyAddSel: {}, removeMode: false, removeSel: {} })),
+      surveyModeLabel: s.surveyMode ? 'Done selecting' : 'Select for survey update',
+      onClearSurveyAdd: () => this.setState({ surveyAddSel: {} }),
+      onAddToSurveyQueue: this.addToSurveyQueue,
+      surveyAddBtnLabel: (() => { const n = Object.keys(s.surveyAddSel).filter(k => s.surveyAddSel[k]).length; return n > 0 ? `Add ${n} to survey update` : 'Add to survey update'; })(),
+      surveyAddBtnStyle: (() => { const n = Object.keys(s.surveyAddSel).filter(k => s.surveyAddSel[k]).length; return { padding: '8px 15px', borderRadius: '9px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', border: 'none', background: n > 0 ? 'var(--accent)' : 'var(--subtle)', color: n > 0 ? '#fff' : 'var(--faint)' }; })(),
       removeCount: Object.keys(s.removeSel).filter(k => s.removeSel[k]).length,
       removeBtnLabel: (() => { const n = Object.keys(s.removeSel).filter(k => s.removeSel[k]).length; return n > 0 ? `Create removal PR (${n})` : 'Create removal PR'; })(),
       removeBtnStyle: (() => { const n = Object.keys(s.removeSel).filter(k => s.removeSel[k]).length; return { padding: '8px 15px', borderRadius: '9px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', border: 'none', background: n > 0 ? '#c0492f' : 'var(--subtle)', color: n > 0 ? '#fff' : 'var(--faint)' }; })(),
