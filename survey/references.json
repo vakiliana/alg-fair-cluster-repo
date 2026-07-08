@@ -883,6 +883,306 @@
       "year": "2023",
       "url": "https://scholar.google.com/scholar?q=Scalable%20Spectral%20Clustering%20with%20Group%20Fairness%20Constraints",
       "num": 64
+    },
+    {
+      "key": "proplowerbounds2026",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Improved Lower Bounds for Proportionally Fair Clustering",
+      "venue": "",
+      "year": "2026",
+      "url": "http://arxiv.org/abs/2606.07285",
+      "ai_added": true,
+      "num": 65
+    },
+    {
+      "key": "fastfairscale2026",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Fast and Effective Algorithms for Fair Clustering at Scale",
+      "venue": "",
+      "year": "2026",
+      "url": "http://arxiv.org/abs/2605.13759",
+      "ai_added": true,
+      "num": 66
+    },
+    {
+      "key": "doublyconstrained2026",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Constant-Factor Approximations for Doubly Constrained Fair k-Center, k-Median and k-Means",
+      "venue": "",
+      "year": "2026",
+      "url": "http://arxiv.org/abs/2604.16061",
+      "ai_added": true,
+      "num": 67
+    },
+    {
+      "key": "multigroupfair2025",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Generalizing Fair Clustering to Multiple Groups: Algorithms and Applications",
+      "venue": "",
+      "year": "2025",
+      "url": "http://arxiv.org/abs/2511.11539",
+      "ai_added": true,
+      "num": 68
+    },
+    {
+      "key": "anchorfair2025",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "A General Anchor-Based Framework for Scalable Fair Clustering",
+      "venue": "",
+      "year": "2025",
+      "url": "http://arxiv.org/abs/2511.09889",
+      "ai_added": true,
+      "num": 69
+    },
+    {
+      "key": "euclideankcenterfair2025",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Euclidean k-center Fair Clusterings",
+      "venue": "",
+      "year": "2025",
+      "url": "http://arxiv.org/abs/2511.07660",
+      "ai_added": true,
+      "num": 70
+    },
+    {
+      "key": "lsindivoutliers2025",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Local Search-based Individually Fair Clustering with Outliers",
+      "venue": "",
+      "year": "2025",
+      "url": "http://arxiv.org/abs/2510.06130",
+      "ai_added": true,
+      "num": 71
+    },
+    {
+      "key": "fairrepconsensus2025",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Towards Fair Representation: Clustering and Consensus",
+      "venue": "",
+      "year": "2025",
+      "url": "http://arxiv.org/abs/2506.08673",
+      "ai_added": true,
+      "num": 72
+    },
+    {
+      "key": "fairsumradii2025",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Polynomial-Time Constant-Approximation for Fair Sum-of-Radii Clustering",
+      "venue": "",
+      "year": "2025",
+      "url": "http://arxiv.org/abs/2504.14683",
+      "ai_added": true,
+      "num": 73
+    },
+    {
+      "key": "propplurality2025",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Proportional Clustering, the beta-Plurality Problem, and Metric Distortion",
+      "venue": "",
+      "year": "2025",
+      "url": "http://arxiv.org/abs/2502.10068",
+      "ai_added": true,
+      "num": 74
+    },
+    {
+      "key": "fptminsumradii2024",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "FPT Approximations for Fair k-Min-Sum-Radii",
+      "venue": "",
+      "year": "2024",
+      "url": "http://arxiv.org/abs/2410.00598",
+      "ai_added": true,
+      "num": 75
+    },
+    {
+      "key": "minrepconstraints2024",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Fair Clustering with Minimum Representation Constraints",
+      "venue": "",
+      "year": "2024",
+      "url": "http://arxiv.org/abs/2409.02963",
+      "ai_added": true,
+      "num": 76
+    },
+    {
+      "key": "diversityaware2024",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Diversity-aware Clustering: Computational Complexity and Approximation Algorithms",
+      "venue": "",
+      "year": "2024",
+      "url": "http://arxiv.org/abs/2401.05502",
+      "ai_added": true,
+      "num": 77
+    },
+    {
+      "key": "fairminsumradiieuclid2023",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Approximating Fair k-Min-Sum-Radii in Euclidean Space",
+      "venue": "",
+      "year": "2023",
+      "url": "http://arxiv.org/abs/2309.00834",
+      "ai_added": true,
+      "num": 78
+    },
+    {
+      "key": "fptcapfairoutliers2023",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "FPT Approximations for Capacitated/Fair Clustering with Outliers",
+      "venue": "",
+      "year": "2023",
+      "url": "http://arxiv.org/abs/2305.01471",
+      "ai_added": true,
+      "num": 79
+    },
+    {
+      "key": "proprepclustering2023",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Proportionally Representative Clustering",
+      "venue": "",
+      "year": "2023",
+      "url": "http://arxiv.org/abs/2304.13917",
+      "ai_added": true,
+      "num": 80
+    },
+    {
+      "key": "colorfulkcenter2022",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Techniques for Generalized Colorful k-Center Problems",
+      "venue": "",
+      "year": "2022",
+      "url": "http://arxiv.org/abs/2207.02609",
+      "ai_added": true,
+      "num": 81
+    },
+    {
+      "key": "modfairclusterediting2021",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Modification-Fair Cluster Editing",
+      "venue": "",
+      "year": "2021",
+      "url": "http://arxiv.org/abs/2112.03183",
+      "ai_added": true,
+      "num": 82
+    },
+    {
+      "key": "mergeablesumradii2026",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "On the Parameterized Approximability of (Mergeable) Sum of Radii Clustering",
+      "venue": "",
+      "year": "2026",
+      "url": "http://arxiv.org/abs/2605.06398",
+      "ai_added": true,
+      "num": 83
+    },
+    {
+      "key": "genericnormfpt2023",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Parameterized Approximation Schemes for Clustering with General Norm Objectives",
+      "venue": "",
+      "year": "2023",
+      "url": "http://arxiv.org/abs/2304.03146",
+      "ai_added": true,
+      "num": 84
+    },
+    {
+      "key": "ipstablescalable2024",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Scalable Algorithms for Individual Preference Stable Clustering",
+      "venue": "",
+      "year": "2024",
+      "url": "http://arxiv.org/abs/2403.10365",
+      "ai_added": true,
+      "num": 85
+    },
+    {
+      "key": "fairrangefpt2026",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Parameterized Approximation Schemes for Fair-Range Clustering",
+      "venue": "",
+      "year": "2026",
+      "url": "https://doi.org/10.1016/j.ic.2026.105457",
+      "ai_added": true,
+      "num": 86
+    },
+    {
+      "key": "unifyingprop2026",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Unifying Proportional Fairness in Centroid and Non-Centroid Clustering",
+      "venue": "",
+      "year": "2026",
+      "url": "https://doi.org/10.48550/arXiv.2601.00447",
+      "ai_added": true,
+      "num": 87
+    },
+    {
+      "key": "densityindivkmeans2025",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "Individual Fairness in K-means Clustering: A Density-Aware Similarity Approach",
+      "venue": "",
+      "year": "2025",
+      "url": "https://doi.org/10.18293/SEKE2025-086",
+      "ai_added": true,
+      "num": 88
+    },
+    {
+      "key": "fptsociallyfair2021",
+      "authors": [
+        "(authors to verify)"
+      ],
+      "title": "FPT Approximation for Socially Fair Clustering",
+      "venue": "",
+      "year": "2021",
+      "url": "https://arxiv.org/abs/2106.06755",
+      "ai_added": true,
+      "num": 89
     }
   ],
   "keyToNum": {
@@ -950,6 +1250,30 @@
     "tonin2025accelerating": 62,
     "VakilianY22": 63,
     "DBLP:conf/aistats/WangLDB23": 64,
-    "dai2022fair": 29
+    "proplowerbounds2026": 65,
+    "fastfairscale2026": 66,
+    "doublyconstrained2026": 67,
+    "multigroupfair2025": 68,
+    "anchorfair2025": 69,
+    "euclideankcenterfair2025": 70,
+    "lsindivoutliers2025": 71,
+    "fairrepconsensus2025": 72,
+    "fairsumradii2025": 73,
+    "propplurality2025": 74,
+    "fptminsumradii2024": 75,
+    "minrepconstraints2024": 76,
+    "diversityaware2024": 77,
+    "fairminsumradiieuclid2023": 78,
+    "fptcapfairoutliers2023": 79,
+    "proprepclustering2023": 80,
+    "colorfulkcenter2022": 81,
+    "modfairclusterediting2021": 82,
+    "mergeablesumradii2026": 83,
+    "genericnormfpt2023": 84,
+    "ipstablescalable2024": 85,
+    "fairrangefpt2026": 86,
+    "unifyingprop2026": 87,
+    "densityindivkmeans2025": 88,
+    "fptsociallyfair2021": 89
   }
 }
