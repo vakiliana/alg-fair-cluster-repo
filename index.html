@@ -712,12 +712,30 @@ class Component extends DCLogic {
       .then(ok => { if (ok) { this.setState({ reviewDec: {}, showReview: false }); setTimeout(() => window.open(`https://github.com/${this.REPO}/pulls`, '_blank'), 1200); } });
   };
 
+  copyText = (text) => {
+    const fallback = () => {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+        document.body.appendChild(ta); ta.focus(); ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta); return ok;
+      } catch (e) { return false; }
+    };
+    return new Promise((resolve) => {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => resolve(true), () => resolve(fallback()));
+      } else { resolve(fallback()); }
+    });
+  };
+
   copySurveyPrompt = () => {
     const q = (this.surveyQueue || []).filter(e => !this.state.surveyExclude[e.id]);
     if (!q.length) { alert('No papers to include (all excluded, or the queue is empty).'); return; }
     const lines = q.map(e => `- ${this.stripTeX(e.title)}${e.link ? ' — ' + e.link : ''}`).join('\n');
     const prompt = `The Fair Clustering Repository has ${q.length} newly accepted paper(s). Please read each one and update the fair-clustering survey accordingly: integrate them where they belong (fairness-notion sections, algorithmic techniques, the results table if a paper has a headline guarantee, and the references), keeping the existing tone, notation, and citation style. The survey prose lives in survey/latex/*.tex (source of truth; the site HTML regenerates automatically).\n\nNew papers:\n${lines}`;
-    navigator.clipboard.writeText(prompt).then(() => alert('✓ AI prompt copied — paste it to Claude to update the survey.'), () => alert('Could not copy — clipboard blocked.'));
+    this.copyText(prompt).then(ok => alert(ok ? '✓ AI prompt copied — paste it to Claude to update the survey.' : 'Copy failed — try again.'));
   };
 
   excludeFromQueue = () => {
