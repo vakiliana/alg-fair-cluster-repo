@@ -573,9 +573,10 @@ class Component extends DCLogic {
       .then(r => r.json())
       .then(d => this.setState({ papers: Array.isArray(d) ? d : [], loaded: true }))
       .catch(() => this.setState({ loaded: true }));
-    fetch('data/blacklist.json').then(r => r.json()).then(d => {
-      this.blacklist = (Array.isArray(d) ? d : (d.entries || [])).map(e => this.normTitle(e.title || ''));
-    }).catch(() => { this.blacklist = []; });
+    // Blacklist is intentionally NOT fetched by the public site (kept out of the
+    // client so the secret list isn't referenced from the page). Enforcement of
+    // the blacklist happens server-side in the discovery/review GitHub Actions.
+    this.blacklist = [];
     this.surveyQueue = [];
     fetch('survey/new_papers_queue.json').then(r => r.json()).then(d => {
       this.surveyQueue = Array.isArray(d) ? d : [];

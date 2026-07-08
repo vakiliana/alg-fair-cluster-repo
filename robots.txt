@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /data/blacklist.json
 
 Sitemap: https://vakiliana.github.io/alg-fair-cluster-repo/sitemap.xml
