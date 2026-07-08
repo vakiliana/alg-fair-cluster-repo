@@ -887,7 +887,9 @@
     {
       "key": "proplowerbounds2026",
       "authors": [
-        "(authors to verify)"
+        "Benjamin Cookson",
+        "Eva Deltl",
+        "Yeeseok Oh"
       ],
       "title": "Improved Lower Bounds for Proportionally Fair Clustering",
       "venue": "",
@@ -899,7 +901,9 @@
     {
       "key": "fastfairscale2026",
       "authors": [
-        "(authors to verify)"
+        "Claudio Mantuano",
+        "Manuel Kammermann",
+        "Philipp Baumann"
       ],
       "title": "Fast and Effective Algorithms for Fair Clustering at Scale",
       "venue": "",
@@ -911,7 +915,10 @@
     {
       "key": "doublyconstrained2026",
       "authors": [
-        "(authors to verify)"
+        "Nicole Funk",
+        "Annika Hennes",
+        "Johanna Hillebrand",
+        "Sarah Sturm"
       ],
       "title": "Constant-Factor Approximations for Doubly Constrained Fair k-Center, k-Median and k-Means",
       "venue": "",
@@ -923,7 +930,10 @@
     {
       "key": "multigroupfair2025",
       "authors": [
-        "(authors to verify)"
+        "Diptarka Chakraborty",
+        "Kushagra Chatterjee",
+        "Debarati Das",
+        "Tien-Long Nguyen"
       ],
       "title": "Generalizing Fair Clustering to Multiple Groups: Algorithms and Applications",
       "venue": "",
@@ -935,7 +945,12 @@
     {
       "key": "anchorfair2025",
       "authors": [
-        "(authors to verify)"
+        "Shengfei Wei",
+        "Suyuan Liu",
+        "Jun Wang",
+        "Ke Liang",
+        "Miaomiao Li",
+        "Lei Luo"
       ],
       "title": "A General Anchor-Based Framework for Scalable Fair Clustering",
       "venue": "",
@@ -947,7 +962,10 @@
     {
       "key": "euclideankcenterfair2025",
       "authors": [
-        "(authors to verify)"
+        "Ayano Moritaka",
+        "Shin-ichi Nakano",
+        "Kento Tanaka",
+        "Noriaki Yoshida"
       ],
       "title": "Euclidean k-center Fair Clusterings",
       "venue": "",
@@ -959,7 +977,9 @@
     {
       "key": "lsindivoutliers2025",
       "authors": [
-        "(authors to verify)"
+        "Binita Maity",
+        "Shrutimoy Das",
+        "Anirban Dasgupta"
       ],
       "title": "Local Search-based Individually Fair Clustering with Outliers",
       "venue": "",
@@ -971,7 +991,11 @@
     {
       "key": "fairrepconsensus2025",
       "authors": [
-        "(authors to verify)"
+        "Diptarka Chakraborty",
+        "Kushagra Chatterjee",
+        "Debarati Das",
+        "Tien Long Nguyen",
+        "Romina Nobahari"
       ],
       "title": "Towards Fair Representation: Clustering and Consensus",
       "venue": "",
@@ -983,7 +1007,9 @@
     {
       "key": "fairsumradii2025",
       "authors": [
-        "(authors to verify)"
+        "Sina Bagheri Nezhad",
+        "Sayan Bandyapadhyay",
+        "Tianzhi Chen"
       ],
       "title": "Polynomial-Time Constant-Approximation for Fair Sum-of-Radii Clustering",
       "venue": "",
@@ -995,7 +1021,8 @@
     {
       "key": "propplurality2025",
       "authors": [
-        "(authors to verify)"
+        "Leon Kellerhals",
+        "Jannik Peters"
       ],
       "title": "Proportional Clustering, the beta-Plurality Problem, and Metric Distortion",
       "venue": "",
@@ -1007,7 +1034,11 @@
     {
       "key": "fptminsumradii2024",
       "authors": [
-        "(authors to verify)"
+        "Lena Carta",
+        "Lukas Drexler",
+        "Annika Hennes",
+        "Clemens Rösner",
+        "Melanie Schmidt"
       ],
       "title": "FPT Approximations for Fair k-Min-Sum-Radii",
       "venue": "",
@@ -1019,7 +1050,8 @@
     {
       "key": "minrepconstraints2024",
       "authors": [
-        "(authors to verify)"
+        "Connor Lawless",
+        "Oktay Gunluk"
       ],
       "title": "Fair Clustering with Minimum Representation Constraints",
       "venue": "",
@@ -1031,7 +1063,10 @@
     {
       "key": "diversityaware2024",
       "authors": [
-        "(authors to verify)"
+        "Suhas Thejaswi",
+        "Ameet Gadekar",
+        "Bruno Ordozgoiti",
+        "Aristides Gionis"
       ],
       "title": "Diversity-aware Clustering: Computational Complexity and Approximation Algorithms",
       "venue": "",
@@ -1043,7 +1078,11 @@
     {
       "key": "fairminsumradiieuclid2023",
       "authors": [
-        "(authors to verify)"
+        "Lukas Drexler",
+        "Annika Hennes",
+        "Abhiruk Lahiri",
+        "Melanie Schmidt",
+        "Julian Wargalla"
       ],
       "title": "Approximating Fair k-Min-Sum-Radii in Euclidean Space",
       "venue": "",
@@ -1055,7 +1094,9 @@
     {
       "key": "fptcapfairoutliers2023",
       "authors": [
-        "(authors to verify)"
+        "Rajni Dabas",
+        "Neelima Gupta",
+        "Tanmay Inamdar"
       ],
       "title": "FPT Approximations for Capacitated/Fair Clustering with Outliers",
       "venue": "",
@@ -1067,7 +1108,10 @@
     {
       "key": "proprepclustering2023",
       "authors": [
-        "(authors to verify)"
+        "Haris Aziz",
+        "Barton E. Lee",
+        "Sean Morota Chu",
+        "Jeremy Vollen"
       ],
       "title": "Proportionally Representative Clustering",
       "venue": "",
@@ -1079,7 +1123,9 @@
     {
       "key": "colorfulkcenter2022",
       "authors": [
-        "(authors to verify)"
+        "Georg Anegg",
+        "Laura Vargas Koch",
+        "Rico Zenklusen"
       ],
       "title": "Techniques for Generalized Colorful k-Center Problems",
       "venue": "",
@@ -1091,7 +1137,9 @@
     {
       "key": "modfairclusterediting2021",
       "authors": [
-        "(authors to verify)"
+        "Vincent Froese",
+        "Leon Kellerhals",
+        "Rolf Niedermeier"
       ],
       "title": "Modification-Fair Cluster Editing",
       "venue": "",
@@ -1103,7 +1151,7 @@
     {
       "key": "mergeablesumradii2026",
       "authors": [
-        "(authors to verify)"
+        "Ameet Gadekar"
       ],
       "title": "On the Parameterized Approximability of (Mergeable) Sum of Radii Clustering",
       "venue": "",
@@ -1115,7 +1163,15 @@
     {
       "key": "genericnormfpt2023",
       "authors": [
-        "(authors to verify)"
+        "Fateme Abbasi",
+        "Sandip Banerjee",
+        "Jarosław Byrka",
+        "Parinya Chalermsook",
+        "Ameet Gadekar",
+        "Kamyar Khodamoradi",
+        "Dániel Marx",
+        "Roohani Sharma",
+        "Joachim Spoerhase"
       ],
       "title": "Parameterized Approximation Schemes for Clustering with General Norm Objectives",
       "venue": "",
@@ -1127,7 +1183,8 @@
     {
       "key": "ipstablescalable2024",
       "authors": [
-        "(authors to verify)"
+        "Ron Mosenzon",
+        "Ali Vakilian"
       ],
       "title": "Scalable Algorithms for Individual Preference Stable Clustering",
       "venue": "",
@@ -1139,7 +1196,12 @@
     {
       "key": "fairrangefpt2026",
       "authors": [
-        "(authors to verify)"
+        "Zhen Zhang",
+        "Xiaohong Chen",
+        "Limei Liu",
+        "Jie Chen",
+        "Junyu Huang",
+        "Qilong Feng"
       ],
       "title": "Parameterized Approximation Schemes for Fair-Range Clustering",
       "venue": "",
@@ -1151,7 +1213,9 @@
     {
       "key": "unifyingprop2026",
       "authors": [
-        "(authors to verify)"
+        "Benjamin Cookson",
+        "Nisarg Shah",
+        "Ziqi Yu"
       ],
       "title": "Unifying Proportional Fairness in Centroid and Non-Centroid Clustering",
       "venue": "",
@@ -1163,7 +1227,9 @@
     {
       "key": "densityindivkmeans2025",
       "authors": [
-        "(authors to verify)"
+        "Tao Wu",
+        "Yi Yang",
+        "Chunming Yang"
       ],
       "title": "Individual Fairness in K-means Clustering: A Density-Aware Similarity Approach",
       "venue": "",
@@ -1175,7 +1241,8 @@
     {
       "key": "fptsociallyfair2021",
       "authors": [
-        "(authors to verify)"
+        "Dishant Goyal",
+        "Ragesh Jaiswal"
       ],
       "title": "FPT Approximation for Socially Fair Clustering",
       "venue": "",
