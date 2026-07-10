@@ -167,6 +167,26 @@
   </sc-if>
   </sc-if>
 
+  <section id="notions" style="margin:8px 0 4px">
+    <button onClick="{{ onToggleNotionRef }}" style="display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border-strong);border-radius:9px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--accent);cursor:pointer;box-shadow:var(--shadow)">{{ notionRefLabel }}</button>
+    <button onClick="{{ onOpenNotion }}" style="margin-left:8px;display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--border-strong);border-radius:9px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer">+ Suggest a fairness notion</button>
+    <sc-if value="{{ showNotionRef }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px">
+        <sc-for list="{{ notionRef }}" as="n" hint-placeholder-count="4">
+          <div id="{{ n.anchor }}" style="{{ n.cardStyle }}">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+              <span style="{{ n.dotStyle }}"></span>
+              <span style="font-weight:600;font-size:14px;color:var(--ink)">{{ n.label }}</span>
+              <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">{{ n.count }}</span>
+            </div>
+            <p style="margin:0 0 10px;font-size:12.5px;line-height:1.5;color:var(--muted)">{{ n.def }}</p>
+            <button onClick="{{ n.onView }}" style="background:none;border:none;padding:0;font-size:12.5px;font-weight:600;color:var(--accent);cursor:pointer">View {{ n.count }} papers →</button>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+  </section>
+
   <section style="position:sticky;top:0;z-index:6;padding:14px 0 4px;background:var(--bg);backdrop-filter:blur(6px)">
     <div class="fcr-searchrow" style="display:flex;gap:12px;align-items:center">
       <div style="position:relative;flex:1">
@@ -269,7 +289,7 @@
                 <a href="{{ p.scholarUrl }}" target="_blank" rel="noopener" title="Google Scholar" style="display:flex;color:var(--accent)">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 8l11 6 9-4.9V16h2V8L12 2zM3 13.2v3.3C3 18.4 7 20 12 20s9-1.6 9-3.5v-3.3l-9 4.9-9-4.9z"></path></svg>
                 </a>
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500">{{ p.citations }}</span>
+                <span title="{{ p.citationsUpdated }}" style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;cursor:help">{{ p.citations }}</span>
               </div>
             </div>
             <div style="font-size:13.5px;color:var(--muted);margin-top:5px;line-height:1.45">{{ p.authorsText }}</div>
@@ -338,6 +358,30 @@
     </div>
     <div style="font-size:12px;color:var(--faint);font-family:'IBM Plex Mono',monospace">All submissions &amp; edits are manually approved before appearing.</div>
   </footer>
+
+  <sc-if value="{{ showNotion }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ onCloseNotion }}" style="position:fixed;inset:0;background:rgba(15,17,21,.5);z-index:30;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeUp .2s ease both">
+      <div onClick="{{ stop }}" class="fcr-modal" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px;width:440px;max-width:100%;max-height:88vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+          <h2 style="margin:0;font-family:'Spectral',serif;font-size:20px;font-weight:600">Suggest a fairness notion</h2>
+          <button onClick="{{ onCloseNotion }}" style="background:none;border:none;font-size:22px;line-height:1;cursor:pointer;color:var(--faint)">×</button>
+        </div>
+        <p style="margin:0 0 14px;font-size:12.5px;color:var(--muted);line-height:1.5">A new fairness notion becomes a new tag in the taxonomy, so it needs maintainer review. Please first check it isn't one of the existing notions: <b>Group fairness (balance)</b>, <b>Individual fairness</b>, <b>Socially fair (min-max)</b>, <b>Proportional / core</b>.</p>
+        <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:16px;font-size:12.5px;color:var(--ink);line-height:1.45;cursor:pointer">
+          <input type="checkbox" checked="{{ notionConfirmed }}" onChange="{{ onToggleNotionConfirm }}" style="margin-top:2px;width:16px;height:16px;accent-color:var(--accent);cursor:pointer">
+          <span>I've checked — this is a genuinely new notion, not one of the four above.</span>
+        </label>
+        <label style="display:block;font-size:12.5px;font-weight:500;margin-bottom:5px">Notion name <span style="color:var(--accent)">*</span></label>
+        <input value="{{ notionName }}" onInput="{{ onNotionName }}" placeholder="e.g. Envy-free clustering" style="width:100%;padding:9px 12px;margin-bottom:13px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13.5px;outline:none">
+        <label style="display:block;font-size:12.5px;font-weight:500;margin-bottom:5px">One-sentence definition <span style="color:var(--accent)">*</span></label>
+        <textarea value="{{ notionDef }}" onInput="{{ onNotionDef }}" rows="3" placeholder="What does this notion require, and how does it differ from the existing ones?" style="width:100%;padding:9px 12px;margin-bottom:13px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13px;line-height:1.5;outline:none;resize:vertical"></textarea>
+        <label style="display:block;font-size:12.5px;font-weight:500;margin-bottom:5px">Representative paper(s) <span style="font-weight:400;color:var(--faint)">— title or link, optional</span></label>
+        <textarea value="{{ notionPapers }}" onInput="{{ onNotionPapers }}" rows="2" placeholder="Papers that introduce or use this notion" style="width:100%;padding:9px 12px;margin-bottom:16px;background:var(--bg);border:1px solid var(--border-strong);border-radius:8px;font-size:13px;line-height:1.5;outline:none;resize:vertical"></textarea>
+        <button onClick="{{ onSubmitNotion }}" style="{{ notionSubmitStyle }}">Open notion proposal</button>
+        <p style="margin:12px 0 0;font-size:11.5px;color:var(--faint);line-height:1.5">Opens a pre-filled GitHub issue labelled <code>notion-proposal</code>. A maintainer reviews it and, if accepted, adds the new tag to the taxonomy.</p>
+      </div>
+    </div>
+  </sc-if>
 
   <sc-if value="{{ showSubmit }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ onCloseSubmit }}" style="position:fixed;inset:0;background:rgba(15,17,21,.5);z-index:30;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeUp .2s ease both">
@@ -551,7 +595,8 @@ class Component extends DCLogic {
             admin: false, removeMode: false, removeSel: {},
             dupPairs: [], showDup: false,
             showReview: false, reviewDec: {}, showSurveyQ: false, surveyQLen: 0, surveyExclude: {},
-            surveyMode: false, surveyAddSel: {},
+            surveyMode: false, surveyAddSel: {}, showNotionRef: false,
+            showNotion: false, notionConfirmed: false, notionName: '', notionDef: '', notionPapers: '',
             submitMatches: [], submitArmed: false };
 
   REPO = 'vakiliana/alg-fair-cluster-repo';
@@ -562,6 +607,12 @@ class Component extends DCLogic {
     ['Proportional / core', '--proportional'],
   ];
   NATURES = ['Theory / approximation', 'Algorithms / systems', 'Deep / ML', 'Robustness / attacks', 'Survey / position'];
+  NOTION_DEFS = {
+    'Group fairness (balance)': { anchor: 'balance', def: 'Each cluster should reflect the population-level mix of protected groups, so no cluster over- or under-represents a demographic group (the balance / (α,β)-representation family).' },
+    'Individual fairness': { anchor: 'individual', def: 'Every point deserves a center within its own neighborhood radius (the distance to its ⌈n/k⌉-th nearest neighbor), so no individual is served far worse than its local peers.' },
+    'Socially fair (min-max)': { anchor: 'socially-fair', def: 'Minimize the worst group\u2019s clustering cost rather than the total, protecting the group that would otherwise bear disproportionately high cost.' },
+    'Proportional / core': { anchor: 'proportional', def: 'A game-theoretic guarantee: no large enough coalition of points (\u2265 n/k) can all move closer to a shared alternative center \u2014 the clustering lies in the core.' },
+  };
 
   texCache = new Map();
 
@@ -938,6 +989,16 @@ class Component extends DCLogic {
     window.open(url, '_blank');
     this.setState({ showSubmit: false, submitMatches: [], submitArmed: false });
   };
+  submitNotion = () => {
+    const s = this.state;
+    if (!s.notionConfirmed) { alert('Please confirm this is a genuinely new notion (tick the box).'); return; }
+    if (!s.notionName.trim() || !s.notionDef.trim()) { alert('Please give the notion a name and a one-sentence definition.'); return; }
+    const body = `**Proposed notion (new tag):** ${s.notionName.trim()}\n**Definition:** ${s.notionDef.trim()}\n**Representative paper(s):** ${s.notionPapers.trim() || '(none given)'}\n\n> ⏳ Pending maintainer review — a new fairness notion adds a tag to the taxonomy and is **not** applied until a maintainer accepts it.\n\n_Proposed via the Fair Clustering Repository._`;
+    const url = `https://github.com/${this.REPO}/issues/new?title=${encodeURIComponent('[notion] ' + s.notionName.trim())}&labels=${encodeURIComponent('notion-proposal,tag-proposal,needs-approval')}&body=${encodeURIComponent(body)}`;
+    window.open(url, '_blank');
+    this.setState({ showNotion: false, notionConfirmed: false, notionName: '', notionDef: '', notionPapers: '' });
+  };
+
   report = (p) => {
     const body = `**Paper:** ${p.title}\n**Issue:** (describe the correction — wrong venue, citation, BibTeX, tag, etc.)\n\n_Reported via the Fair Clustering Repository._`;
     const url = `https://github.com/${this.REPO}/issues/new?title=${encodeURIComponent('[correction] ' + p.title)}&labels=data-correction&body=${encodeURIComponent(body)}`;
@@ -1097,6 +1158,7 @@ class Component extends DCLogic {
         authorsText: p.authors || 'Authors not listed',
         venueYearText: [p.venue, p.year].filter(Boolean).join(' · ') || '—',
         citations: (p.citations || 0).toLocaleString(),
+        citationsUpdated: p.citations_updated ? 'Google Scholar count, verified ' + p.citations_updated : 'Citation count not yet verified',
         scholarUrl: 'https://scholar.google.com/scholar?q=' + encodeURIComponent(this.stripTeX(p.title)),
         notionLabel: p.fairness_notion,
         notionStyle: { display: 'inline-block', padding: '3px 10px', borderRadius: '7px', fontSize: '11.5px', fontWeight: 600,
@@ -1159,6 +1221,29 @@ class Component extends DCLogic {
       sortValue: s.sort, onSort: (e) => this.setState({ sort: e.target.value }),
       selectedYear: s.year, onYear: (e) => this.setState({ year: e.target.value }), yearOptions,
       notionFilters, natureFilters,
+      showNotionRef: s.showNotionRef,
+      onToggleNotionRef: () => this.setState(st => ({ showNotionRef: !st.showNotionRef })),
+      notionRefLabel: s.showNotionRef ? '▴  Hide fairness-notion reference' : '▾  What do the fairness notions mean?',
+      showNotion: s.showNotion,
+      onOpenNotion: () => this.setState({ showNotion: true }),
+      onCloseNotion: () => this.setState({ showNotion: false }),
+      notionConfirmed: s.notionConfirmed,
+      onToggleNotionConfirm: () => this.setState(st => ({ notionConfirmed: !st.notionConfirmed })),
+      notionName: s.notionName, onNotionName: (e) => this.setState({ notionName: e.target.value }),
+      notionDef: s.notionDef, onNotionDef: (e) => this.setState({ notionDef: e.target.value }),
+      notionPapers: s.notionPapers, onNotionPapers: (e) => this.setState({ notionPapers: e.target.value }),
+      onSubmitNotion: this.submitNotion,
+      notionSubmitStyle: { width: '100%', padding: '11px', background: s.notionConfirmed ? 'var(--accent)' : 'var(--subtle)', color: s.notionConfirmed ? '#fff' : 'var(--faint)', border: 'none', borderRadius: '9px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' },
+      notionRef: this.NOTIONS.map(([label, v]) => {
+        const d = this.NOTION_DEFS[label] || { anchor: '', def: '' };
+        return {
+          label, anchor: 'notion-' + d.anchor, def: d.def,
+          count: all.filter(p => p.fairness_notion === label).length,
+          dotStyle: { width: '12px', height: '12px', borderRadius: '4px', background: `var(${v})`, flexShrink: 0 },
+          cardStyle: { background: 'var(--surface)', border: '1px solid var(--border)', borderLeft: `3px solid var(${v})`, borderRadius: 'var(--radius)', padding: '14px 16px', boxShadow: 'var(--shadow)', scrollMarginTop: '12px' },
+          onView: () => { this.setState({ notion: s.notion === label ? 'all' : label }); const el = document.querySelector('.fcr-searchrow'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); },
+        };
+      }),
       showingText: s.loaded ? `Showing ${list.length} of ${all.length} publications` : '',
       selectedCount: selCount,
       downloadLabel: selCount > 0 ? `Download BibTeX (${selCount})` : 'Download BibTeX',

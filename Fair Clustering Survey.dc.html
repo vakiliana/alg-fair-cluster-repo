@@ -436,7 +436,8 @@ _Submitted via the Fair Clustering survey._`;
       const au = (r.authors || []).join(', ');
       const ai = r.ai_added ? ' <span class="rai" title="Reference added during AI augmentation; verify">added by AI</span>' : '';
       const link = r.url ? ` <a class="rlink" href="${r.url}" target="_blank" rel="noopener">link ↗</a>` : '';
-      return `<li id="${this.safeId(r.key)}"><span class="rn">[${r.num}]</span>${au}. <span class="rtitle">${r.title}.</span> <span class="rvenue">${r.venue||''}</span> ${r.year||''}.${ai}${link}</li>`;
+      const repo = r.repo_title ? ` <a class="rlink" href="index.html?q=${encodeURIComponent(r.repo_title)}" title="Find this paper in the repository">in repository ↗</a>` : '';
+      return `<li id="${this.safeId(r.key)}"><span class="rn">[${r.num}]</span>${au}. <span class="rtitle">${r.title}.</span> <span class="rvenue">${r.venue||''}</span> ${r.year||''}.${ai}${link}${repo}</li>`;
     }).join('');
     ol.innerHTML = html;
     document.getElementById('refs-section').style.display = '';
@@ -546,6 +547,17 @@ _Submitted via the Fair Clustering survey._`;
       }
     });
     this._heads = [...heads].filter(h => h.id);
+    // admin edit link for the abstract (it's not a heading in the loop above)
+    if (this.admin) {
+      const ah = document.querySelector('.abstract h2');
+      if (ah && !ah.querySelector('.sec-admin')) {
+        const t = document.createElement('span');
+        t.className = 'sec-admin no-print';
+        t.style.cssText = 'margin-left:10px;font-size:11px;font-weight:700;vertical-align:middle';
+        t.innerHTML = `<a href="https://github.com/${this.REPO}/edit/main/Fair%20Clustering%20Survey.dc.html" target="_blank" rel="noopener" title="Edit the abstract (lives in the survey page source); mirror the change in survey/latex/fair_clustering_survey.tex" style="color:#1f5fbf;text-decoration:none">\u270e edit</a>`;
+        ah.appendChild(t);
+      }
+    }
     this._tocLinks = toc ? [...toc.querySelectorAll('a')] : [];
     // Mobile: make the inline TOC a collapsible box (collapsed by default).
     const nav = document.querySelector('nav.toc');
