@@ -6,8 +6,8 @@ name: Maintenance digest (monthly)
 
 on:
   schedule:
-    # 07:00 UTC on the 2nd — the day after the monthly discovery + citation runs.
-    - cron: "0 7 2 * *"
+    # 07:00 UTC on the 6th — the day after the monthly discovery + citation runs.
+    - cron: "0 7 6 * *"
   workflow_dispatch: {}
 
 permissions:

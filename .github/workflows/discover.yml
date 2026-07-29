@@ -8,8 +8,8 @@ name: Discover new papers (monthly)
 
 on:
   schedule:
-    # 06:00 UTC on the 1st of every month.
-    - cron: "0 6 1 * *"
+    # 06:00 UTC on the 5th of every month (same day as the citation refresh).
+    - cron: "0 6 5 * *"
   workflow_dispatch: {}        # run on demand from the Actions tab
 
 permissions:

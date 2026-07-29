@@ -1,30 +1,43 @@
 #!/usr/bin/env python3
 """
-refresh_citations.py — robust, cautious Google Scholar citation refresh via SerpApi.
+refresh_citations.py — cautious Google Scholar citation refresh via SerpApi.
 
-Design goals (after an author-batch attempt produced wrong matches):
+TWO-PHASE, BUDGET-AWARE DESIGN
+------------------------------
 
-  * ACCURACY FIRST. Each paper is looked up with a Google Scholar *search*
-    (engine=google_scholar). Among the returned results we keep only those whose
-    title matches the paper (exact-normalized or high token overlap) and take the
-    one with the HIGHEST citation count — i.e. Scholar's canonical merged entry,
-    not a low-cited preprint duplicate.
+  PHASE 1 — BULK SWEEP (cheap).  A handful of broad topic queries
+    ("fair clustering", "socially fair clustering", "fairlets", ...) are paged
+    through the Google Scholar search engine.  Each SerpApi call returns up to
+    20 results (Scholar's hard per-page limit), so FC_SWEEP_PAGES=5 buys ~100
+    hits for 5 calls.  Every hit carries its own title, authors, cluster id and
+    citation count, so ONE call can refresh dozens of papers at once.  For a
+    corpus that is mostly "fair clustering" papers this typically resolves the
+    large majority of the database for ~40-60 calls instead of ~210.
 
-  * SANITY GUARD. Citation counts essentially never fall and never jump by orders
-    of magnitude month-to-month. Any proposed change that DROPS the count (beyond
-    a tiny tolerance) or SPIKES it implausibly is treated as a likely mismatch:
-    it is NOT written, and is surfaced in the PR under "Needs manual check".
-    This alone catches every bad value from the previous run (301→41, 66→2851, …).
+  PHASE 2 — PRECISE RESIDUAL (exact).  Whatever the sweep did not confidently
+    match (odd titles, off-topic venues, papers whose sweep value tripped the
+    sanity guard) is looked up one paper at a time — by cached `scholar_id`
+    cluster when we have one, else by a title search — exactly as before.
 
-  * CAUTIOUS API USE. A staleness gate skips papers refreshed within
-    FC_MIN_AGE_DAYS; papers are processed oldest-first; and FC_MAX_QUERIES hard-
-    caps SerpApi calls per run, so a large corpus refreshes gradually. Cluster ids
-    are cached per paper in `scholar_id` for exact, cheap re-lookups.
+ACCURACY RULES (unchanged, applied to both phases)
+  * A sweep hit is only accepted when its cluster id equals the paper's cached
+    `scholar_id`, or its normalized title matches exactly, or its title overlaps
+    >= 0.82 by tokens AND at least one author surname matches.
+  * Among all matching hits (Scholar often lists several versions of a paper)
+    we keep the HIGHEST citation count — the canonical merged entry.
+  * SANITY GUARD: counts essentially never fall and never jump by orders of
+    magnitude. A proposed DROP or implausible SPIKE is never written. From the
+    sweep it is instead re-checked exactly in phase 2; if it survives that, it
+    is surfaced in the PR under "Needs manual check".
 
 Env (all optional except the key):
   SERPAPI_KEY        required — https://serpapi.com/manage-api-key
   FC_MIN_AGE_DAYS    skip papers refreshed more recently than this (default 25)
-  FC_MAX_QUERIES     hard cap on SerpApi calls this run (default 200)
+  FC_MAX_QUERIES     hard cap on TOTAL SerpApi calls this run (default 200)
+  FC_SWEEP           "0" to disable the bulk sweep (default on)
+  FC_SWEEP_PAGES     pages of 20 results per sweep query (default 5 => ~100 hits)
+  FC_SWEEP_CALLS     cap on calls spent inside the sweep (default 60)
+  FC_SWEEP_QUERIES   "|"-separated override of the sweep query list
   FC_SLEEP           seconds between calls (default 1.2)
   FC_FORCE           "1" to ignore the staleness gate
   FC_DECREASE_TOL    allowed downward wobble before flagging (default 2)
@@ -54,7 +67,30 @@ DECREASE_TOL = int(os.environ.get("FC_DECREASE_TOL", "2"))
 SPIKE_FACTOR = float(os.environ.get("FC_SPIKE_FACTOR", "4"))
 SPIKE_ABS = int(os.environ.get("FC_SPIKE_ABS", "150"))
 
+SWEEP_ON = os.environ.get("FC_SWEEP", "1") != "0"
+SWEEP_PAGES = int(os.environ.get("FC_SWEEP_PAGES", "5"))     # 20 results per page
+SWEEP_CALLS = int(os.environ.get("FC_SWEEP_CALLS", "60"))
+PAGE_SIZE = 20                                               # Scholar's maximum
+
+DEFAULT_SWEEP_QUERIES = [
+    "fair clustering",
+    "algorithmic fair clustering",
+    "fairness in clustering",
+    "fair k-means clustering",
+    "fair k-center k-median approximation",
+    "socially fair clustering",
+    "individually fair clustering",
+    "proportionally fair clustering core",
+    "fair correlation clustering",
+    "fair clustering coreset streaming",
+    "fairlets fair clustering",
+    "deep fair clustering spectral",
+]
+SWEEP_QUERIES = [q.strip() for q in os.environ.get("FC_SWEEP_QUERIES", "").split("|") if q.strip()] \
+    or DEFAULT_SWEEP_QUERIES
+
 _calls = 0
+_sweep_calls = 0
 
 
 def serp_get(params):
@@ -113,11 +149,91 @@ def title_match(a, b):
     return jac >= 0.82
 
 
+def classify(old, new):
+    """'apply' | 'drop' | 'spike' | 'none' — the sanity guard."""
+    if new is None:
+        return "none"
+    if new < old - DECREASE_TOL:
+        return "drop"
+    if old >= 10 and new > old * SPIKE_FACTOR and (new - old) > SPIKE_ABS:
+        return "spike"
+    return "apply"
+
+
+# --------------------------------------------------------------------------
+# PHASE 1 — bulk sweep
+# --------------------------------------------------------------------------
+def sweep(stale):
+    """Page through broad topic queries and harvest citation counts in bulk.
+
+    Returns {paper_index: (best_count, cluster_id)} for confidently matched
+    papers. Costs at most min(FC_SWEEP_CALLS, remaining budget) SerpApi calls
+    no matter how many papers get matched."""
+    global _sweep_calls
+    budget = min(SWEEP_CALLS, MAX_QUERIES)
+
+    # Pre-index the stale set so each incoming result is cheap to route.
+    by_norm, by_cid, meta = {}, {}, []
+    for i, p in enumerate(stale):
+        by_norm.setdefault(normalize_title(p.get("title", "")), []).append(i)
+        if p.get("scholar_id"):
+            by_cid.setdefault(str(p["scholar_id"]), []).append(i)
+        meta.append((tokens(p.get("title", "")), surnames(p.get("authors", ""))))
+
+    found = {}
+
+    def route(r):
+        count = cited_by(r)
+        if count is None:
+            return
+        cid = cluster_id(r) or r.get("result_id", "")
+        rtitle = r.get("title", "")
+        matched = set(by_cid.get(str(cid), [])) | set(by_norm.get(normalize_title(rtitle), []))
+        if not matched:                       # fuzzy fallback, author-verified
+            rtok, rsur = tokens(rtitle), surnames(result_authors(r))
+            if rtok and rsur:
+                for i, (ptok, psur) in enumerate(meta):
+                    if not ptok or not (rsur & psur):
+                        continue
+                    if len(rtok & ptok) / len(rtok | ptok) >= 0.82:
+                        matched.add(i)
+        for i in matched:
+            prev = found.get(i)
+            if prev is None or count > prev[0]:
+                found[i] = (count, cid)
+
+    for q in SWEEP_QUERIES:
+        if _calls >= budget:
+            break
+        for page in range(SWEEP_PAGES):
+            if _calls >= budget:
+                break
+            try:
+                data = serp_get({"engine": "google_scholar", "q": q, "hl": "en",
+                                 "num": str(PAGE_SIZE), "start": str(page * PAGE_SIZE),
+                                 "api_key": API_KEY})
+            except Exception as e:
+                print(f"  ! sweep '{q}' p{page}: {e}", file=sys.stderr)
+                break
+            _sweep_calls += 1
+            res = data.get("organic_results") or []
+            for r in res:
+                route(r)
+            time.sleep(SLEEP)
+            if len(res) < PAGE_SIZE:          # end of this query's results
+                break
+        print(f"  sweep '{q}': {len(found)}/{len(stale)} stale papers matched so far "
+              f"({_sweep_calls} calls)")
+        if len(found) == len(stale):
+            break
+
+    return found
+
+
 def best_count(paper):
-    """Return (count, cluster_id, matched) for a paper. One SerpApi call.
-    Among title-matching results, prefers the one whose AUTHORS overlap this
-    paper's authors, then the highest citation count (Scholar's merged entry).
-    Author verification stops a wrong same-titled paper from being matched."""
+    """PHASE 2 — exact per-paper lookup. Returns (count, cluster_id, matched).
+    One SerpApi call. Among title-matching results, prefers the one whose
+    AUTHORS overlap this paper's authors, then the highest citation count."""
     if paper.get("scholar_id"):
         data = serp_get({"engine": "google_scholar", "cluster": paper["scholar_id"], "api_key": API_KEY})
         res = data.get("organic_results") or []
@@ -129,24 +245,11 @@ def best_count(paper):
     cands = [r for r in res if title_match(r.get("title", ""), paper["title"])]
     if not cands:
         return None, "", False
-    # If any candidate's authors match ours, restrict to those (kills same-title
-    # different-paper mismatches like the old 301->41); else fall back to all.
     verified = [r for r in cands if author_overlap(r, paper) > 0]
     pool = verified or cands
     best = max(pool, key=lambda r: (author_overlap(r, paper), cited_by(r) or -1))
     cid = cluster_id(best) or best.get("result_id", "")
     return cited_by(best), cid, True
-
-
-def classify(old, new):
-    """'apply' | 'drop' | 'spike' — the sanity guard."""
-    if new is None:
-        return "none"
-    if new < old - DECREASE_TOL:
-        return "drop"
-    if old >= 10 and new > old * SPIKE_FACTOR and (new - old) > SPIKE_ABS:
-        return "spike"
-    return "apply"
 
 
 def main():
@@ -170,10 +273,37 @@ def main():
     stale.sort(key=lambda p: p.get("citations_updated") or "")
     print(f"{len(stale)} of {len(papers)} papers stale (> {MIN_AGE_DAYS}d). Budget {MAX_QUERIES} calls.")
 
-    applied, flagged, unmatched = [], [], []
-    for p in stale:
+    applied, flagged, unmatched, deferred = [], [], [], []
+    resolved = set()
+
+    # ---- Phase 1: bulk sweep --------------------------------------------
+    if SWEEP_ON and stale:
+        print(f"Sweep: {len(SWEEP_QUERIES)} topic queries x up to {SWEEP_PAGES} pages "
+              f"({PAGE_SIZE}/page), cap {SWEEP_CALLS} calls.")
+        for idx, (new, cid) in sweep(stale).items():
+            p = stale[idx]
+            old = p.get("citations", 0) or 0
+            if cid and not p.get("scholar_id"):
+                p["scholar_id"] = cid
+            if classify(old, new) == "apply":
+                p["citations_updated"] = today
+                resolved.add(idx)
+                if new != old:
+                    p["citations"] = new
+                    applied.append((p["title"], old, new))
+                    print(f"  {old:>5} -> {new:<5}  {p['title'][:60]}   [sweep]")
+            # A drop/spike seen in the sweep may just be a low-cited duplicate
+            # version, so leave the paper unresolved: phase 2 checks it exactly.
+        print(f"Sweep resolved {len(resolved)}/{len(stale)} papers in {_sweep_calls} calls.")
+
+    # ---- Phase 2: precise residual ---------------------------------------
+    residual = [p for i, p in enumerate(stale) if i not in resolved]
+    print(f"Residual: {len(residual)} paper(s) to look up individually "
+          f"({MAX_QUERIES - _calls} calls left).")
+    for n, p in enumerate(residual):
         if _calls >= MAX_QUERIES:
-            print(f"Budget reached ({MAX_QUERIES}); remaining papers left for next run.")
+            deferred = [q["title"] for q in residual[n:]]
+            print(f"Budget reached ({MAX_QUERIES}); {len(deferred)} paper(s) left for next run.")
             break
         old = p.get("citations", 0) or 0
         try:
@@ -205,8 +335,10 @@ def main():
         time.sleep(SLEEP)
 
     save_papers(papers)
-    print(f"\nApplied {len(applied)}, flagged {len(flagged)}, unmatched {len(unmatched)}. "
-          f"SerpApi calls: {_calls}/{MAX_QUERIES}.")
+    precise_calls = _calls - _sweep_calls
+    print(f"\nApplied {len(applied)}, flagged {len(flagged)}, unmatched {len(unmatched)}, "
+          f"deferred {len(deferred)}. SerpApi calls: {_calls}/{MAX_QUERIES} "
+          f"({_sweep_calls} sweep + {precise_calls} precise).")
 
     changed = len(applied) > 0 or len(flagged) > 0 or len(unmatched) > 0
     with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as gh:
@@ -215,11 +347,14 @@ def main():
         gh.write(f"flagged={len(flagged)}\n")
         gh.write(f"unmatched={len(unmatched)}\n")
         gh.write(f"calls={_calls}\n")
+        gh.write(f"sweep_calls={_sweep_calls}\n")
 
     if changed:
         with open("citation_summary.md", "w", encoding="utf-8") as f:
             f.write(f"### Google Scholar citation refresh — {today}\n\n")
             f.write(f"Applied **{len(applied)}** update(s) using **{_calls}** SerpApi call(s) "
+                    f"— {_sweep_calls} in the bulk topic sweep (up to {PAGE_SIZE * SWEEP_PAGES} "
+                    f"hits per query) + {precise_calls} exact per-paper lookup(s) "
                     f"(stale-gated at {MIN_AGE_DAYS}d, budget {MAX_QUERIES}).\n\n")
             if applied:
                 applied.sort(key=lambda d: d[2] - d[1], reverse=True)
@@ -244,6 +379,10 @@ def main():
                 f.write("| # | id | paper |\n|---:|---|---|\n")
                 for i, (pid, title) in enumerate(unmatched, 1):
                     f.write(f"| {i} | `{pid}` | {title[:90]} |\n")
+            if deferred:
+                f.write(f"\n### \u23ed Deferred to next run \u2014 call budget reached ({len(deferred)})\n\n")
+                for t in deferred[:50]:
+                    f.write(f"- {t[:90]}\n")
 
 
 if __name__ == "__main__":

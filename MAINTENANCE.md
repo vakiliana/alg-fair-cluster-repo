@@ -22,9 +22,9 @@ scripts/
   digest.py              monthly: summary of what's awaiting you → issue
 
 .github/workflows/
-  discover.yml         cron: 1st of month (discovery)
-  citations.yml        cron: 1st of month (citation refresh)
-  digest.yml           cron: 2nd of month (admin digest)
+  discover.yml         cron: 5th of month (discovery)
+  citations.yml        cron: 5th of month (citation refresh)
+  digest.yml           cron: 6th of month (admin digest)
 ```
 
 Each record in `data/papers.json` carries the two **tag facets** plus the

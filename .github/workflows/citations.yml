@@ -3,15 +3,16 @@ name: Refresh citations (monthly)
 # Pulls current Google Scholar citation counts via SerpApi and opens a pull
 # request with the deltas. Review the numbers, then merge to publish.
 #
-# SerpApi is used cautiously: an author-batch pass (one call returns up to 100
-# of an author's papers), a staleness gate (skips recently-refreshed papers),
-# and a hard per-run call budget. Tune via the env vars below.
+# SerpApi is used cautiously: a bulk topic sweep runs first (each call returns
+# 20 Scholar hits, so ~5 calls harvest ~100 papers at once), then exact
+# per-paper lookups only for whatever the sweep missed — plus a staleness gate
+# (skips recently-refreshed papers) and a hard per-run call budget.
 # To skip review and commit straight to main, set OPEN_PR: "false".
 
 on:
   schedule:
-    # 06:00 UTC on the 1st of every month.
-    - cron: "0 6 1 * *"
+    # 06:00 UTC on the 5th of every month.
+    - cron: "0 6 5 * *"
   workflow_dispatch: {}
 
 permissions:
@@ -36,7 +37,9 @@ jobs:
         env:
           SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
           FC_MIN_AGE_DAYS: "25"     # don't re-query papers refreshed in the last 25 days
-          FC_MAX_QUERIES: "200"     # hard cap on SerpApi calls per run
+          FC_MAX_QUERIES: "200"     # hard cap on TOTAL SerpApi calls per run
+          FC_SWEEP_PAGES: "5"       # bulk sweep: 5 pages x 20 hits = ~100 papers per query
+          FC_SWEEP_CALLS: "60"      # cap on the calls the bulk sweep may spend
         run: python scripts/refresh_citations.py
 
       # --- Option A (default): open a PR with the citation deltas ---
