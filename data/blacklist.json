@@ -484,5 +484,41 @@
     "title": "A unified framework for fair spectral clustering with effective graph learning",
     "removed": "2026-07-07",
     "reason": "duplicate"
+  },
+  {
+    "id": "tardif2026anonymous",
+    "title": "Anonymous sharing is pairwise phase-blind",
+    "removed": "2026-08-02",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "jiang2026serverlesst2i",
+    "title": "ServerlessT2I: Efficient Text-to-Image Workflow Serving on a Serverless Platform",
+    "removed": "2026-08-02",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "zhao2026deterministic",
+    "title": "A Deterministic Binary Fingerprinting Framework with Zero-Trained Feature Extraction for Sparse Count Matrices",
+    "removed": "2026-08-02",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "apartsin2026modeling",
+    "title": "Modeling Normal Is All You Need: Joint Latent Clustering for Anomaly Detection in Multimodal Cyber-Physical Systems",
+    "removed": "2026-08-02",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "boutebicha2026flair",
+    "title": "FLAIR: Distributed Federated Learning with Dynamic Clustering",
+    "removed": "2026-08-02",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "shrestha2026whose",
+    "title": "Whose fairness? Structural concentration in AI bias research",
+    "removed": "2026-08-02",
+    "reason": "rejected in admin review"
   }
 ]
