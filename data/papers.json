@@ -5530,5 +5530,33 @@
     "citations_updated": "",
     "added": "2026-08-01",
     "status": ""
+  },
+  {
+    "id": "2512.24934",
+    "title": "Fair Committee Selection under Ordinal Preferences and Limited Cardinal Information",
+    "authors": "",
+    "year": null,
+    "venue": "",
+    "citations": 0,
+    "link": "https://arxiv.org/abs/2512.24934",
+    "pdf": "",
+    "bib_link": "@inproceedings{10.65109/KFMY7437,",
+    "bib_entry": "",
+    "scholar_id": "",
+    "fairness_notion": "Group fairness (balance)",
+    "work_nature": [
+      "Algorithms / systems"
+    ],
+    "tags": [],
+    "definition": "",
+    "contribution": "",
+    "open_problems": [],
+    "ai_labeled": true,
+    "ai_notes": false,
+    "possible_duplicate_of": "",
+    "citations_updated": "",
+    "added": "2026-08-25",
+    "status": "pending-review",
+    "submitted_via": "issue #25"
   }
 ]
