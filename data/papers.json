@@ -5558,5 +5558,33 @@
     "added": "2026-08-25",
     "status": "pending-review",
     "submitted_via": "issue #25"
+  },
+  {
+    "id": "on-the-hardness-of-approximation-of-the",
+    "title": "On the Hardness of Approximation of the Fair k-Center Problem",
+    "authors": "",
+    "year": null,
+    "venue": "",
+    "citations": 0,
+    "link": "https://www.sciencedirect.com/science/article/pii/S0890540126001008",
+    "pdf": "",
+    "bib_link": "@article{thejaswi2026hardness,",
+    "bib_entry": "",
+    "scholar_id": "",
+    "fairness_notion": "Group fairness (balance)",
+    "work_nature": [
+      "Theory / approximation"
+    ],
+    "tags": [],
+    "definition": "",
+    "contribution": "",
+    "open_problems": [],
+    "ai_labeled": true,
+    "ai_notes": false,
+    "possible_duplicate_of": "",
+    "citations_updated": "",
+    "added": "2026-08-25",
+    "status": "pending-review",
+    "submitted_via": "issue #26"
   }
 ]
