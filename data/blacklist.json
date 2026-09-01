@@ -520,5 +520,77 @@
     "title": "Whose fairness? Structural concentration in AI bias research",
     "removed": "2026-08-02",
     "reason": "rejected in admin review"
+  },
+  {
+    "id": "gong2026approximation",
+    "title": "Approximation Algorithms for Perfect Fair-Triangle Packing",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "wojcik2026vericam",
+    "title": "VeriCam: A Verification Baseline for the Classification of Unknown Data",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "zhao2026movable",
+    "title": "Movable Antenna Arrays with Imperfect Channel State Information in Rich Scattering Environments",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "jafarli2026false",
+    "title": "False-CSI Attacks in Power-Domain NOMA for 6G: A Threat Taxonomy and System-Level Impacts",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "luo2026anchoring",
+    "title": "Anchoring Bias: A Persistent Fairness Backdoor Attack against MLLMs under Continual Learning",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "jackson2026modeling",
+    "title": "Modeling the Structure of Human Behavior with AI Prompt Vectors",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "sarkar2026four",
+    "title": "A Four-Axis Trustworthiness Benchmark for LLM-as-Judge in Principle-Based Regulation",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "wu2026ap",
+    "title": "AP Association for RHS-Enabled Cell-Free Uplink MIMO in Industrial Indoor UAV Networks",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "bagci2026cluster",
+    "title": "Cluster-Aware Over-the-Air Federated Learning with Energy-Harvesting Devices: From Global Training to Model Personalization",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "shamsabadi2026gnn",
+    "title": "GNN-RSMA: An Interference Management Framework for a Large-Scale HAPS Network",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "wu2026evidence",
+    "title": "Evidence-Unit Fairness and the Limits of Query-Adaptive Sparse-Dense Fusion in Financial Document Retrieval",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "zhu2026lottery",
+    "title": "Lottery BP: Unlocking Quantum Error Decoding at Scale",
+    "removed": "2026-09-01",
+    "reason": "rejected in admin review"
   }
 ]

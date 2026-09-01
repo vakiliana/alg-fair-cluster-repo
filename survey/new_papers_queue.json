@@ -16,5 +16,41 @@
     "title": "A scalable linear programming-based framework for data clustering",
     "link": "http://arxiv.org/abs/2607.06709v1",
     "added": "2026-08-02"
+  },
+  {
+    "id": "2512.24934",
+    "title": "Fair Committee Selection under Ordinal Preferences and Limited Cardinal Information",
+    "link": "https://arxiv.org/abs/2512.24934",
+    "added": "2026-09-01"
+  },
+  {
+    "id": "on-the-hardness-of-approximation-of-the",
+    "title": "On the Hardness of Approximation of the Fair k-Center Problem",
+    "link": "https://www.sciencedirect.com/science/article/pii/S0890540126001008",
+    "added": "2026-09-01"
+  },
+  {
+    "id": "anand2026socially",
+    "title": "Socially Fair Clustering: Parameterized Approximation and Local Search",
+    "link": "http://arxiv.org/abs/2608.30026v1",
+    "added": "2026-09-01"
+  },
+  {
+    "id": "cookson2026optimally",
+    "title": "Optimally Selecting Representative Agents from a Metric Space",
+    "link": "http://arxiv.org/abs/2608.29097v1",
+    "added": "2026-09-01"
+  },
+  {
+    "id": "maity2026individual",
+    "title": "Individual Fairness in Hierarchical Clustering",
+    "link": "http://arxiv.org/abs/2608.25586v1",
+    "added": "2026-09-01"
+  },
+  {
+    "id": "voudouris2026group",
+    "title": "Group-Fair Metric Distortion of Facility Assignment Problems",
+    "link": "http://arxiv.org/abs/2608.16252v1",
+    "added": "2026-09-01"
   }
 ]
