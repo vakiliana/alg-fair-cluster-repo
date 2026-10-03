@@ -592,5 +592,29 @@
     "title": "Lottery BP: Unlocking Quantum Error Decoding at Scale",
     "removed": "2026-09-01",
     "reason": "rejected in admin review"
+  },
+  {
+    "id": "teusch2026freeze",
+    "title": "Freeze, Validate, Report: Auditing Urban Station Plans with Common Evidence",
+    "removed": "2026-10-03",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "kerzel2026ebsdmagus",
+    "title": "EBSDmagus: Managing Multi-Stage Dynamical Electron Backscatter Diffraction Simulations",
+    "removed": "2026-10-03",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "he2026breaking",
+    "title": "Breaking Cycles for Scalable Fair Ordering in Blockchain Systems",
+    "removed": "2026-10-03",
+    "reason": "rejected in admin review"
+  },
+  {
+    "id": "aljbab2026oak",
+    "title": "OAK: Restart- and Age-Aware Scheduling for Distributed Machine Learning on Shared GPU Clusters",
+    "removed": "2026-10-03",
+    "reason": "rejected in admin review"
   }
 ]
