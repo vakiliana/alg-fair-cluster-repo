@@ -5720,61 +5720,7 @@
     "possible_duplicate_of": "",
     "citations_updated": "",
     "added": "2026-10-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "teusch2026freeze",
-    "title": "Freeze, Validate, Report: Auditing Urban Station Plans with Common Evidence",
-    "authors": "Julian Teusch, Oliver Keszöcze",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2609.39064v1",
-    "pdf": "https://arxiv.org/pdf/2609.39064v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "possible_duplicate_of": "",
-    "citations_updated": "",
-    "added": "2026-10-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "kerzel2026ebsdmagus",
-    "title": "EBSDmagus: Managing Multi-Stage Dynamical Electron Backscatter Diffraction Simulations",
-    "authors": "Ulrich Kerzel, Lukas Berners, Sanddra Korte-Kerzel",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2609.08334v1",
-    "pdf": "https://arxiv.org/pdf/2609.08334v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "possible_duplicate_of": "",
-    "citations_updated": "",
-    "added": "2026-10-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "cheng2026sub",
@@ -5801,7 +5747,7 @@
     "possible_duplicate_of": "",
     "citations_updated": "",
     "added": "2026-10-01",
-    "status": "pending-review"
+    "status": ""
   },
   {
     "id": "lin2026parameterized",
@@ -5829,87 +5775,6 @@
     "possible_duplicate_of": "",
     "citations_updated": "",
     "added": "2026-10-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "he2026breaking",
-    "title": "Breaking Cycles for Scalable Fair Ordering in Blockchain Systems",
-    "authors": "Jinchun He, Wangjie Qiu, Yizhong Liu, Shengda Zhuo, Kwok-Yan Lam",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2609.00837v1",
-    "pdf": "https://arxiv.org/pdf/2609.00837v1",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "possible_duplicate_of": "",
-    "citations_updated": "",
-    "added": "2026-10-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "jackson2026modeling",
-    "title": "Modeling Human Behavior with Type Vectors Using AI",
-    "authors": "Matthew O. Jackson, Benjamin S. Manning, Yutong Xie, Walter Yuan, Qiaozhu Mei",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2608.18265v4",
-    "pdf": "https://arxiv.org/pdf/2608.18265v4",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "possible_duplicate_of": "",
-    "citations_updated": "",
-    "added": "2026-10-01",
-    "status": "pending-review"
-  },
-  {
-    "id": "aljbab2026oak",
-    "title": "OAK: Restart- and Age-Aware Scheduling for Distributed Machine Learning on Shared GPU Clusters",
-    "authors": "Khaled Aljbab, Amine Barrak",
-    "year": 2026,
-    "venue": "arXiv",
-    "citations": 0,
-    "link": "http://arxiv.org/abs/2609.19024v2",
-    "pdf": "https://arxiv.org/pdf/2609.19024v2",
-    "bib_link": "",
-    "bib_entry": "",
-    "scholar_id": "",
-    "fairness_notion": "Group fairness (balance)",
-    "work_nature": [
-      "Algorithms / systems"
-    ],
-    "tags": [],
-    "definition": "",
-    "contribution": "",
-    "open_problems": [],
-    "ai_labeled": true,
-    "ai_notes": false,
-    "possible_duplicate_of": "",
-    "citations_updated": "",
-    "added": "2026-10-01",
-    "status": "pending-review"
+    "status": ""
   }
 ]

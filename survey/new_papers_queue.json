@@ -52,5 +52,23 @@
     "title": "Group-Fair Metric Distortion of Facility Assignment Problems",
     "link": "http://arxiv.org/abs/2608.16252v1",
     "added": "2026-09-01"
+  },
+  {
+    "id": "jiang2026multi",
+    "title": "Multi-View Fair Clustering Guided by Cross-View Sensitive Information Discrepancy",
+    "link": "http://arxiv.org/abs/2609.25811v1",
+    "added": "2026-10-03"
+  },
+  {
+    "id": "cheng2026sub",
+    "title": "A Sub-4 Approximation for Fair $k$-Means",
+    "link": "http://arxiv.org/abs/2609.07974v1",
+    "added": "2026-10-03"
+  },
+  {
+    "id": "lin2026parameterized",
+    "title": "Parameterized and Streaming Algorithms for Euclidean Fair $k$-Center Clustering",
+    "link": "http://arxiv.org/abs/2609.06384v1",
+    "added": "2026-10-03"
   }
 ]
